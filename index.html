@@ -1,102 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Manauna Dham – Official Pilgrim Guide</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; }
-    header, footer { background:#222; color:#fff; padding:20px; text-align:center; }
-    nav { margin:15px; text-align:center; }
-    nav a { margin:0 15px; text-decoration:none; color:#222; font-weight:bold; }
-    .hero { background:#f4f4f4; padding:50px; text-align:center; }
-    .section { padding:40px 20px; }
-    .cards { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
-    .card { border:1px solid #ddd; padding:20px; width:300px; border-radius:8px; }
-    .card h3 { margin-top:0; }
-    footer p { margin:5px; font-size:14px; }
-  </style>
+<head>
+<meta charset="UTF-8">
+<title>Manauna Dham – Official Pilgrim Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#fff8f0;
+}
+header {
+    background:#8b0000;
+    color:white;
+    padding:10px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+header h1 {
+    font-size:22px;
+}
+nav a {
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+.hero {
+    background:linear-gradient(to right, #a30000, #ffcc80);
+    color:white;
+    padding:40px 20px;
+    text-align:center;
+}
+.section {
+    padding:40px 20px;
+}
+.section h2 {
+    color:#8b0000;
+    border-bottom:3px solid #ffcc80;
+    display:inline-block;
+    padding-bottom:5px;
+}
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+.card {
+    background:white;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+.card img {
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+.card div {
+    padding:15px;
+}
+button {
+    background:#8b0000;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+button:hover {
+    background:#a30000;
+}
+footer {
+    background:#4b0000;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+video {
+    width:100%;
+    border-radius:10px;
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Manauna Dham – Official Pilgrim Guide</h1>
-    <p>Your complete guide to visiting, darshan, travel & updates</p>
-  </header>
-
+<header>
+  <h1>Manauna Dham</h1>
   <nav>
     <a href="#about">About</a>
-    <a href="#visit">Plan Your Visit</a>
-    <a href="#media">Gallery</a>
-    <a href="#contact">Contact</a>
+    <a href="#darshan">Darshan</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#updates">Updates</a>
   </nav>
+</header>
 
-  <div class="hero">
-    <h2>Coming Soon: Accommodations, Transport, Booking Options</h2>
-    <p>All services will be updated soon. Join our WhatsApp for early access.</p>
-  </div>
+<div class="hero">
+  <h2>Shri Khatu Shyam Ji – Manauna Dham</h2>
+  <p>Official Pilgrim Information Portal</p>
+  <button>Plan Your Visit</button>
+</div>
 
-  <section id="about" class="section">
-    <h2>About Manauna Dham</h2>
-    <p>
-      Manauna Dham, also referred to in online sources as Manauna / Manona Khatu Shyam Ji Temple, is a growing pilgrimage site near Aonla in Bareilly district, Uttar Pradesh. Devotees visit the shrine for darshan and worship of Khatu Shyam Ji. It has become increasingly popular with visitors sharing experiences online and in local travel guides.
-    </p>
-    <p>
-      While the temple’s official timings and details are being confirmed, many pilgrims report large gatherings during weekends and festivals. This site will provide verified details as soon as they are available.
-    </p>
-  </section>
+<section id="about" class="section">
+<h2>About Manauna Dham</h2>
+<p>
+Manauna Dham, also known as Manona Dham, is a rapidly growing spiritual destination in Bareilly district, Uttar Pradesh. The temple is dedicated to Shri Khatu Shyam Ji and attracts thousands of devotees who come for darshan, aarti and blessings.
+</p>
 
-  <section id="visit" class="section">
-    <h2>Plan Your Visit</h2>
-    <div class="cards">
+<div class="grid">
+<div class="card">
+<img src="EntryGate.jfif">
+<div><b>Main Entrance</b></div>
+</div>
+<div class="card">
+<img src="Mandir1.webp">
+<div><b>Temple View</b></div>
+</div>
+<div class="card">
+<img src="Mandir2.jfif">
+<div><b>Mandir Complex</b></div>
+</div>
+</div>
+</section>
 
-      <div class="card">
-        <h3>How to Reach</h3>
-        <p>
-          Manauna Dham is located in the Bareilly district of Uttar Pradesh with road connections from nearby cities. The nearest major city is Bareilly, and local transportation (bus, taxi) is common from Aonla.
-        </p>
-        <p>Exact transport info and schedules will be updated soon.</p>
-      </div>
+<section id="darshan" class="section">
+<h2>Darshan & Worship</h2>
+<div class="grid">
 
-      <div class="card">
-        <h3>Darshan & Timings</h3>
-        <p>
-          Temple visit times and darshan schedules are currently in draft. They will be verified and updated as soon as official information is confirmed.
-        </p>
-      </div>
+<div class="card">
+<img src="KhatuShyam.jpg">
+<div>
+<b>Shri Khatu Shyam Ji</b>
+<p>Devotees visit Manauna Dham to offer prayers and seek blessings from Shri Khatu Shyam Ji.</p>
+</div>
+</div>
 
-      <div class="card">
-        <h3>Festivals & Events</h3>
-        <p>
-          Manauna Dham sees increased visits during weekends and religious festivals. Specific event calendars will be published here when confirmed.
-        </p>
-      </div>
+<div class="card">
+<img src="Omendra.jfif">
+<div>
+<b>Mahant Shri Omendra Ji</b>
+<p>Spiritual head associated with Manauna Dham and its daily religious activities.</p>
+</div>
+</div>
 
-    </div>
-  </section>
+<div class="card">
+<img src="Indoor1.jpg">
+<div>
+<b>Temple Interior</b>
+<p>Peaceful darshan and aarti atmosphere inside the temple.</p>
+</div>
+</div>
 
-  <section id="media" class="section">
-    <h2>Gallery & Media</h2>
-    <p>Below are embedded videos available online related to Manauna Dham (subject to source availability):</p>
+</div>
+</section>
 
-    <!-- Example embedded video placeholder -->
-    <div style="text-align:center;">
-      <iframe width="320" height="180" src="https://www.youtube.com/embed/t0VmjD07dEc" title="Aarti Manauna Dham" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <p>More photos & videos will be added when available.</p>
-  </section>
+<section id="gallery" class="section">
+<h2>Temple Gallery</h2>
+<div class="grid">
+<div class="card"><img src="Patient1.webp"></div>
+<div class="card"><img src="Mandir1.webp"></div>
+<div class="card"><img src="Mandir2.jfif"></div>
+<div class="card"><img src="EntryGate.jfif"></div>
+</div>
+</section>
 
-  <section id="contact" class="section">
-    <h2>Contact & Updates</h2>
-    <p>Temple contact numbers and official info will be published once verified.</p>
-    <p>Join our WhatsApp group for early service updates and bookings.</p>
-  </section>
+<section id="updates" class="section">
+<h2>Latest Video Update</h2>
+<p>Watch the latest Manauna Dham video:</p>
 
-  <footer>
-    <p>Manauna Dham Digital Portal – Draft Version</p>
-    <p>This website is an independent pilgrim guide. Official temple authorities are not directly affiliated unless indicated.</p>
-    <p>Content will be updated with verified information over time.</p>
-  </footer>
+<video controls>
+<source src="Manona Dham Best Train #shortsfeed #shorts #manonadham.mp4" type="video/mp4">
+</video>
+
+<p>More official updates will be added soon.</p>
+</section>
+
+<footer>
+<p>Manauna Dham Digital Portal</p>
+<p>This website provides pilgrim information & updates. Temple services, bookings & donations will be launched soon.</p>
+</footer>
 
 </body>
 </html>
