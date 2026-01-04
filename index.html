@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Manauna Dham – Official Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -15,7 +14,6 @@ header{background:#7a0000;color:white}
 nav{display:flex;gap:15px}
 nav a{color:white;text-decoration:none;font-weight:600}
 nav a.donate{background:#d10000;padding:8px 14px;border-radius:5px}
-
 .menu-btn{display:none;font-size:24px;cursor:pointer}
 .mobile-menu{display:none;flex-direction:column;background:#7a0000;padding:10px}
 .mobile-menu a{padding:10px;color:white;text-decoration:none;border-bottom:1px solid #aa0000}
@@ -23,13 +21,14 @@ nav a.donate{background:#d10000;padding:8px 14px;border-radius:5px}
 .social i{margin-left:15px;font-size:18px}
 
 /* Carousel */
-.slider{position:relative;max-width:100%;overflow:hidden}
-.slides{display:flex;transition:0.6s ease}
-.slides img{width:100vw;height:420px;object-fit:cover}
+.carousel{overflow:hidden;background:black}
+.track{display:flex;animation:scroll 40s linear infinite}
+.track img{height:420px;object-fit:cover}
 
-.dots{text-align:center;background:#7a0000;padding:10px}
-.dot{height:12px;width:12px;margin:0 5px;background:#ccc;border-radius:50%;display:inline-block;cursor:pointer}
-.dot.active{background:#ffd700}
+@keyframes scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
 
 .section{padding:50px 30px}
 .section h2{color:#7a0000;border-bottom:4px solid #d4a017;display:inline-block;padding-bottom:6px}
@@ -46,13 +45,14 @@ nav a.donate{background:#d10000;padding:8px 14px;border-radius:5px}
 .service{background:white;padding:20px;text-align:center;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1)}
 .service i{font-size:40px;color:#7a0000;margin-bottom:10px}
 
-footer{background:#4d0000;color:white;padding:40px;text-align:center}
+footer{background:#4d0000;color:white;padding:40px}
+.footergrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
 
-/* Mobile */
 @media(max-width:800px){
 nav{display:none}
 .menu-btn{display:block}
 .aboutbox{flex-direction:column;text-align:center}
+.track img{height:260px}
 }
 </style>
 </head>
@@ -62,54 +62,32 @@ nav{display:none}
 <header>
 <div class="topbar">
 <div class="logo">Manauna Dham</div>
-
 <nav>
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Story</a>
-<a href="#">About</a>
-<a href="#">Upcoming</a>
-<a href="#">Contact</a>
-<a class="donate" href="#">Donate</a>
+<a href="#">Home</a><a href="#">Services</a><a href="#">Story</a><a href="#">About</a><a href="#">Upcoming</a><a href="#">Contact</a><a class="donate" href="#">Donate</a>
 </nav>
-
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-<div class="social">
-<i class="fab fa-youtube"></i>
-<i class="fab fa-instagram"></i>
-<i class="fab fa-facebook"></i>
-</div>
+<div class="social"><i class="fab fa-youtube"></i><i class="fab fa-instagram"></i><i class="fab fa-facebook"></i></div>
 </div>
 
 <div class="mobile-menu" id="mobileMenu">
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Story</a>
-<a href="#">About</a>
-<a href="#">Upcoming</a>
-<a href="#">Contact</a>
-<a href="#">Donate</a>
+<a href="#">Home</a><a href="#">Services</a><a href="#">Story</a><a href="#">About</a><a href="#">Upcoming</a><a href="#">Contact</a><a href="#">Donate</a>
 </div>
 </header>
 
-<!-- Slider -->
-<div class="slider">
-<div class="slides" id="slides">
+<!-- Auto Scrolling Carousel -->
+<div class="carousel">
+<div class="track">
 <img src="Mandir5.jpg">
 <img src="Gathering.jpg">
 <img src="Gathering2.jpg">
-<img src="Mandir3.jfif">
-<img src="Mandir4.jfif">
+<img src="Mandir6.webp">
+<img src="ILoveManaunaDham.webp">
+<img src="Mandir5.jpg">
+<img src="Gathering.jpg">
+<img src="Gathering2.jpg">
+<img src="Mandir6.webp">
+<img src="ILoveManaunaDham.webp">
 </div>
-</div>
-
-<div class="dots">
-<span class="dot active" onclick="moveSlide(0)"></span>
-<span class="dot" onclick="moveSlide(1)"></span>
-<span class="dot" onclick="moveSlide(2)"></span>
-<span class="dot" onclick="moveSlide(3)"></span>
-<span class="dot" onclick="moveSlide(4)"></span>
 </div>
 
 <section class="section">
@@ -117,7 +95,7 @@ nav{display:none}
 <img src="KhatuShyam.jpg">
 <div class="abouttext">
 <h2>Manauna Dham</h2>
-<p>Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a famous faith-based healing pilgrimage site near Aonla, Bareilly. Devotees believe blessings, holy water and sacred rituals bring peace and healing.</p>
+<p>Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a famous faith-based healing pilgrimage site near Aonla, Bareilly. Devotees believe sacred rituals and holy water bring peace and divine blessings.</p>
 <button class="btn">About Chief Priest</button>
 <button class="btn">About Khatu Shyam</button>
 <button class="btn">Live Darshan</button>
@@ -134,26 +112,37 @@ nav{display:none}
 
 <h2 style="margin-top:50px">Services</h2>
 <div class="services">
-<div class="service"><i class="fa fa-hotel"></i><br>Accommodation</div>
-<div class="service"><i class="fa fa-bus"></i><br>Transport</div>
-<div class="service"><i class="fa fa-ticket"></i><br>Patient Token</div>
-<div class="service"><i class="fa fa-star"></i><br>VIP Darshan</div>
-<div class="service"><i class="fa fa-utensils"></i><br>Food</div>
+<div class="service"><i class="fa fa-hotel"></i>Accommodation</div>
+<div class="service"><i class="fa fa-bus"></i>Transport</div>
+<div class="service"><i class="fa fa-ticket"></i>Patient Token</div>
+<div class="service"><i class="fa fa-star"></i>VIP Darshan</div>
+<div class="service"><i class="fa fa-utensils"></i>Food</div>
 </div>
 </section>
 
 <footer>
-<p>© 2026 | Manauna Dham | All Rights Reserved</p>
+<div class="footergrid">
+<div>
+<h3>Contact</h3>
+<p>+91 7817823342<br>+91 9997772601</p>
+<p>Ayush0108.gupta@gmail.com<br>gaurav.gupta@outlook.in</p>
+</div>
+
+<div>
+<h3>Address</h3>
+<p>Manona Mandir (Khatu Shyam Dham)<br>Manona Village, Tehsil Aonla<br>Bareilly, Uttar Pradesh – 243301</p>
+</div>
+
+<div>
+<h3>Menu</h3>
+<a href="#">Home</a><a href="#">Services</a><a href="#">Story</a><a href="#">About</a><a href="#">Contact</a>
+</div>
+</div>
+
+<p style="text-align:center;margin-top:30px">© 2026 | Manauna Dham | All Rights Reserved</p>
 </footer>
 
 <script>
-let index=0;
-function moveSlide(i){
-index=i;
-document.getElementById("slides").style.transform="translateX("+(i*-100)+"vw)";
-document.querySelectorAll(".dot").forEach(d=>d.classList.remove("active"));
-document.querySelectorAll(".dot")[i].classList.add("active");
-}
 function toggleMenu(){
 let m=document.getElementById("mobileMenu");
 m.style.display=m.style.display=="flex"?"none":"flex";
