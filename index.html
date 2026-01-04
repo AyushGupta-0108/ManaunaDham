@@ -14,15 +14,15 @@ header{background:#7a0000;color:white}
 nav{display:flex;gap:15px}
 nav a{color:white;text-decoration:none;font-weight:600}
 nav a.donate{background:#d10000;padding:8px 14px;border-radius:5px}
+nav a.live{background:#008000;padding:8px 14px;border-radius:5px}
 .menu-btn{display:none;font-size:24px;cursor:pointer}
 .mobile-menu{display:none;flex-direction:column;background:#7a0000;padding:10px}
 .mobile-menu a{padding:10px;color:white;text-decoration:none;border-bottom:1px solid #aa0000}
-
 .social i{margin-left:15px;font-size:18px}
 
 /* Carousel */
 .carousel{overflow:hidden;background:black}
-.track{display:flex;animation:scroll 40s linear infinite}
+.track{display:flex;animation:scroll 25s linear infinite}
 .track img{height:420px;object-fit:cover}
 
 @keyframes scroll{
@@ -47,6 +47,8 @@ nav a.donate{background:#d10000;padding:8px 14px;border-radius:5px}
 
 footer{background:#4d0000;color:white;padding:40px}
 .footergrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+footer a{color:white;text-decoration:none}
+footer a:hover{text-decoration:underline}
 
 @media(max-width:800px){
 nav{display:none}
@@ -63,30 +65,24 @@ nav{display:none}
 <div class="topbar">
 <div class="logo">Manauna Dham</div>
 <nav>
-<a href="#">Home</a><a href="#">Services</a><a href="#">Story</a><a href="#">About</a><a href="#">Upcoming</a><a href="#">Contact</a><a class="donate" href="#">Donate</a>
+<a href="#">Home</a><a href="#">Services</a><a href="#">Story</a><a href="#">About</a><a href="#">Events</a><a href="#">Contact</a>
+<a class="live" href="#">LIVE</a>
+<a class="donate" href="#">Donate</a>
 </nav>
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 <div class="social"><i class="fab fa-youtube"></i><i class="fab fa-instagram"></i><i class="fab fa-facebook"></i></div>
 </div>
 
 <div class="mobile-menu" id="mobileMenu">
-<a href="#">Home</a><a href="#">Services</a><a href="#">Story</a><a href="#">About</a><a href="#">Upcoming</a><a href="#">Contact</a><a href="#">Donate</a>
+<a href="#">Home</a><a href="#">Services</a><a href="#">Story</a><a href="#">About</a><a href="#">Events</a><a href="#">Contact</a><a href="#">LIVE</a><a href="#">Donate</a>
 </div>
 </header>
 
 <!-- Auto Scrolling Carousel -->
 <div class="carousel">
 <div class="track">
-<img src="Mandir5.jpg">
-<img src="Gathering.jpg">
-<img src="Gathering2.jpg">
-<img src="Mandir6.webp">
-<img src="ILoveManaunaDham.webp">
-<img src="Mandir5.jpg">
-<img src="Gathering.jpg">
-<img src="Gathering2.jpg">
-<img src="Mandir6.webp">
-<img src="ILoveManaunaDham.webp">
+<img src="ILoveManaunaDham.webp"><img src="Omendra3.webp"><img src="Mandir1.webp"><img src="Omendra2.jfif"><img src="Mandir6.webp">
+<img src="ILoveManaunaDham.webp"><img src="Omendra3.webp"><img src="Mandir1.webp"><img src="Omendra2.jfif"><img src="Mandir6.webp">
 </div>
 </div>
 
@@ -95,9 +91,9 @@ nav{display:none}
 <img src="KhatuShyam.jpg">
 <div class="abouttext">
 <h2>Manauna Dham</h2>
-<p>Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a famous faith-based healing pilgrimage site near Aonla, Bareilly. Devotees believe sacred rituals and holy water bring peace and divine blessings.</p>
-<button class="btn">About Chief Priest</button>
-<button class="btn">About Khatu Shyam</button>
+<p>Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a famous faith-based healing pilgrimage site near Aonla, Bareilly where devotees seek peace, blessings and spiritual healing.</p>
+<button class="btn">About Mahant Ji</button>
+<button class="btn">About Shri Khatu Shyam Ji</button>
 <button class="btn">Live Darshan</button>
 </div>
 </div>
@@ -107,7 +103,7 @@ nav{display:none}
 <p>Darshan: 7 AM – 9 PM</p>
 <p>Aarti: 8 AM & 5 PM</p>
 <p>Best Time: June – December</p>
-<p>Mahant Ji unavailable Wed & Thu</p>
+<p>Mahant Ji unavailable: Wednesday & Thursday</p>
 </div>
 
 <h2 style="margin-top:50px">Services</h2>
@@ -118,6 +114,12 @@ nav{display:none}
 <div class="service"><i class="fa fa-star"></i>VIP Darshan</div>
 <div class="service"><i class="fa fa-utensils"></i>Food</div>
 </div>
+
+<h2 style="margin-top:50px">Temple Location</h2>
+<p>Shri Khatu Shyam Mandir, Manauna Village, Tehsil Aonla, Bareilly, Uttar Pradesh – 243301</p>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin!4v1767561817860!5m2!1sen!2sin" width="100%" height="400" style="border:0;" loading="lazy"></iframe>
+
 </section>
 
 <footer>
@@ -125,17 +127,21 @@ nav{display:none}
 <div>
 <h3>Contact</h3>
 <p>+91 7817823342<br>+91 9997772601</p>
-<p>Ayush0108.gupta@gmail.com<br>gaurav.gupta@outlook.in</p>
+<p>ayush0108.gupta@gmail.com<br>gaurav.gupta@outlook.in</p>
 </div>
 
 <div>
 <h3>Address</h3>
-<p>Manona Mandir (Khatu Shyam Dham)<br>Manona Village, Tehsil Aonla<br>Bareilly, Uttar Pradesh – 243301</p>
+<p>Shri Khatu Shyam Mandir<br>Manauna Village, Tehsil Aonla<br>Bareilly, Uttar Pradesh – 243301</p>
 </div>
 
 <div>
 <h3>Menu</h3>
-<a href="#">Home</a><a href="#">Services</a><a href="#">Story</a><a href="#">About</a><a href="#">Contact</a>
+<a href="#">Home</a>
+<a href="#">Services</a>
+<a href="#">Story</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
 </div>
 </div>
 
