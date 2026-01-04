@@ -14,8 +14,8 @@ nav a{color:white;margin:0 12px;text-decoration:none;font-weight:600}
 nav a.donate{background:#d10000;padding:8px 14px;border-radius:5px}
 .social i{margin-left:15px;font-size:18px}
 
-.slider{display:flex;overflow:hidden}
-.slider img{width:100%;max-height:420px;object-fit:cover}
+.carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}
+.carousel img{width:100%;max-width:100vw;height:420px;object-fit:cover;scroll-snap-align:start}
 
 .section{padding:50px 30px}
 .section h2{color:#7a0000;border-bottom:4px solid #d4a017;display:inline-block;padding-bottom:6px}
@@ -29,7 +29,13 @@ nav a.donate{background:#d10000;padding:8px 14px;border-radius:5px}
 
 .timings{background:#fff;border-left:8px solid #d4a017;padding:30px;margin-top:40px;box-shadow:0 0 10px rgba(0,0,0,0.15)}
 
-footer{background:#4d0000;color:white;text-align:center;padding:25px;margin-top:50px}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:30px}
+.service{background:white;padding:20px;text-align:center;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.1)}
+.service i{font-size:40px;color:#7a0000;margin-bottom:10px}
+
+footer{background:#4d0000;color:white;padding:40px}
+.footergrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+footer a{color:white;text-decoration:none;display:block;margin:5px 0}
 </style>
 </head>
 
@@ -55,25 +61,26 @@ footer{background:#4d0000;color:white;text-align:center;padding:25px;margin-top:
 </div>
 </header>
 
-<!-- Image Carousel -->
-<div class="slider">
+<!-- Scrollable Image Carousel -->
+<div class="carousel">
 <img src="Mandir5.jpg">
 <img src="Gathering.jpg">
 <img src="Gathering2.jpg">
+<img src="Mandir3.jfif">
+<img src="Mandir4.jfif">
 </div>
 
 <section class="section">
 <div class="aboutbox">
 <img src="KhatuShyam.jpg">
-
 <div class="abouttext">
 <h2>Manauna Dham</h2>
 <p>
-Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a popular Hindu pilgrimage site near Aonla (Bareilly), famous for its strong faith-based healing. Devotees believe miraculous cures for illnesses, even critical ones, occur through rituals such as tying threads on a sacred Siddh tree and drinking holy water blessed by the chief priest, Mahant Omendra Chauhan. Large crowds and even ambulances with seriously ill patients regularly arrive seeking divine intervention, peace, and blessings.
+Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a popular Hindu pilgrimage site near Aonla (Bareilly), famous for its strong faith-based healing where devotees believe miraculous cures for illnesses occur through rituals such as tying threads on a Siddh tree and drinking holy water blessed by Mahant Omendra Chauhan.
 </p>
-
 <button class="btn">About Chief Priest</button>
 <button class="btn">About Khatu Shyam</button>
+<button class="btn">Live Darshan</button>
 </div>
 </div>
 
@@ -81,17 +88,51 @@ Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a popular Hind
 <h2>Mandir Timings</h2>
 <p><b>Darshan:</b> 7:00 AM – 9:00 PM</p>
 <p><b>Aarti:</b> 8:00 AM & 5:00 PM</p>
-<p><b>Best Time to Visit:</b> June to December (pleasant weather)</p>
-<p><b>Crowds:</b> Heavy – plan extra time or full-day visit</p>
-<p><b>Mahant Ji Availability:</b> Usually not available on Wednesdays & Thursdays (Darshan remains open)</p>
-<p><b>Festivals:</b> Timings may vary during special occasions</p>
+<p><b>Best Time:</b> June – December</p>
+<p><b>Mahant Ji:</b> Not available Wed & Thu</p>
+<p><b>Festivals:</b> Timings may vary</p>
 </div>
+
+<h2 style="margin-top:50px">Services</h2>
+<div class="services">
+<div class="service"><i class="fa fa-hotel"></i><br>Accommodation</div>
+<div class="service"><i class="fa fa-bus"></i><br>Transport</div>
+<div class="service"><i class="fa fa-ticket"></i><br>Patient Token</div>
+<div class="service"><i class="fa fa-star"></i><br>VIP Darshan</div>
+<div class="service"><i class="fa fa-utensils"></i><br>Food</div>
+</div>
+
+<h2 style="margin-top:50px">Temple Location</h2>
+<p>The Manona Mandir (Khatu Shyam Dham), Manona Village, Tehsil Aonla, District Bareilly, Uttar Pradesh – 243301</p>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin!4v1767561817860!5m2!1sen!2sin" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
 </section>
 
 <footer>
-<p>Manauna Dham Digital Portal</p>
-<p>Services like Accommodation, Taxi, Bus, Train, VIP Darshan, Food & Patient Tokens launching soon.</p>
+<div class="footergrid">
+<div>
+<h3>Manauna Dham</h3>
+<p>Manona Village, Tehsil Aonla<br>Bareilly, Uttar Pradesh – 243301</p>
+</div>
+
+<div>
+<h3>Menu</h3>
+<a href="#">Home</a>
+<a href="#">Services</a>
+<a href="#">Story</a>
+<a href="#">About</a>
+<a href="#">Contact</a>
+</div>
+
+<div>
+<h3>Important</h3>
+<a href="#">Donate</a>
+<a href="#">Live Darshan</a>
+<a href="#">Plan Visit</a>
+<a href="#">How to Reach</a>
+</div>
+</div>
 </footer>
 
 </body>
