@@ -21,14 +21,30 @@ nav a.live{background:#008000;padding:8px 14px;border-radius:5px}
 .social i{margin-left:15px;font-size:18px}
 
 /* Carousel */
-.carousel{overflow:hidden;background:black}
-.track{display:flex;animation:scroll 7s linear infinite}
-.track img{height:420px;object-fit:cover}
+.carousel{
+  overflow:hidden;
+  width:100%;
+  background:black;
+}
+
+.track{
+  display:flex;
+  width:max-content;
+  animation:scroll 5s linear infinite;
+}
+
+.track img{
+  width:100vw;
+  height:60vh;
+  object-fit:cover;
+  flex-shrink:0;
+}
 
 @keyframes scroll{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
+  from{transform:translateX(0)}
+  to{transform:translateX(-100%)}
 }
+
 
 .section{padding:50px 30px}
 .section h2{color:#7a0000;border-bottom:4px solid #d4a017;display:inline-block;padding-bottom:6px}
@@ -81,8 +97,17 @@ nav{display:none}
 <!-- Auto Scrolling Carousel -->
 <div class="carousel">
 <div class="track">
-<img src="ILoveManaunaDham.webp"><img src="Omendra3.webp"><img src="Mandir1.webp"><img src="Omendra2.jfif"><img src="Mandir6.webp">
-<img src="ILoveManaunaDham.webp"><img src="Omendra3.webp"><img src="Mandir1.webp"><img src="Omendra2.jfif"><img src="Mandir6.webp">
+<img src="ILoveManaunaDham.webp">
+<img src="Omendra3.webp">
+<img src="Mandir1.webp">
+<img src="Omendra2.jfif">
+<img src="Mandir6.webp">
+  
+<img src="ILoveManaunaDham.webp">
+<img src="Omendra3.webp">
+<img src="Mandir1.webp">
+<img src="Omendra2.jfif">
+<img src="Mandir6.webp">
 </div>
 </div>
 
