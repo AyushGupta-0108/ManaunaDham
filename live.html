@@ -17,7 +17,36 @@
 }
 
 body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6;text-align:center}
-header{background:#7a0000;color:white;padding:20px;font-size:26px}
+header{background:#7a0000;color:white}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px
+}
+.logo{
+  font-weight:bold;
+  font-size:20px;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+nav a:hover{
+  text-decoration:underline;
+}
+nav a.live{
+  background:#008000;
+  padding:8px 14px;
+  border-radius:5px;
+}
+nav a.donate{
+  background:#d10000;
+  padding:8px 14px;
+  border-radius:5px;
+}
+
 .section{padding:70px 30px}
 img{max-width:320px;border-radius:16px;box-shadow:0 0 20px rgba(0,0,0,.35)}
 h2{color:#7a0000;margin-top:30px}
@@ -27,7 +56,6 @@ p{font-size:18px}
 </head>
 
 <body>
-
 <header>
 <div class="topbar">
   <div class="logo">Manauna Dham</div>
@@ -57,6 +85,7 @@ p{font-size:18px}
   <a href="donate.html">Donate</a>
 </div>
 </header>
+
 
 <div class="section">
 <img src="live.jfif">
