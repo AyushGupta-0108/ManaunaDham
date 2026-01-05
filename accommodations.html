@@ -8,6 +8,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+  .desktop-nav{display:flex;gap:15px}
+.menu-btn{display:none;font-size:26px;cursor:pointer;color:white}
+.mobile-menu{display:none;flex-direction:column;background:#7a0000}
+.mobile-menu a{color:white;padding:12px;border-bottom:1px solid #aa0000;text-decoration:none}
+
+@media(max-width:900px){
+  .desktop-nav{display:none}
+  .menu-btn{display:block}
+}
+
 body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6}
 header{background:#7a0000;color:white}
 .topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
@@ -33,20 +43,36 @@ footer{background:#4d0000;color:white;text-align:center;padding:30px;margin-top:
 </head>
 
 <body>
-
 <header>
 <div class="topbar">
-<div class="logo">Manauna Dham</div>
-<nav>
-<a href="index.html">Home</a>
-<a href="accommodation.html">Accommodation</a>
-<a href="#">Services</a>
-<a href="#">Contact</a>
-<a class="live" href="#">LIVE</a>
-<a class="donate" href="#">Donate</a>
-</nav>
+  <div class="logo">Manauna Dham</div>
+
+  <nav class="desktop-nav">
+    <a href="index.html">Home</a>
+    <a href="accommodations.html">Stay</a>
+    <a href="food.html">Food</a>
+    <a href="transport.html">Travel</a>
+    <a href="vipdarshan.html">VIP</a>
+    <a href="patient.html">Patient</a>
+    <a href="live.html" class="live">LIVE</a>
+    <a href="#" class="donate">Donate</a>
+  </nav>
+
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+</div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="accommodations.html">Accommodation</a>
+  <a href="food.html">Food</a>
+  <a href="transport.html">Transport</a>
+  <a href="vipdarshan.html">VIP Darshan</a>
+  <a href="patient.html">Patient Token</a>
+  <a href="live.html">Live Darshan</a>
+  <a href="#">Donate</a>
 </div>
 </header>
+
 
 <section class="section">
 <h2>Accommodation Near Manauna Dham</h2>
@@ -109,6 +135,12 @@ footer{background:#4d0000;color:white;text-align:center;padding:30px;margin-top:
 <footer>
 <p>© 2026 | Manauna Dham | All Rights Reserved</p>
 </footer>
+<script>
+function toggleMenu(){
+  let m=document.getElementById("mobileMenu");
+  m.style.display = m.style.display==="flex" ? "none" : "flex";
+}
+</script>
 
 </body>
 </html>
