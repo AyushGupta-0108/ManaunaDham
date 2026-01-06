@@ -5,64 +5,110 @@
 <title>Mahant Omendra Chauhan – Manauna Dham</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
-body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6}
+body{
+  margin:0;
+  font-family:Segoe UI,Arial;
+  background:#fff6e6;
+}
+
+/* HEADER */
 header{background:#7a0000;color:white}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+}
 .logo{font-weight:bold;font-size:20px}
 
-.desktop-nav{display:flex;gap:15px}
-.desktop-nav a{color:white;text-decoration:none;font-weight:600}
-.desktop-nav a.live{background:#008000;padding:8px 14px;border-radius:5px}
-.desktop-nav a.donate{background:#d10000;padding:8px 14px;border-radius:5px}
+.desktop-nav{
+  display:flex;
+  gap:15px;
+}
+.desktop-nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+.desktop-nav a.live{
+  background:#008000;
+  padding:8px 14px;
+  border-radius:6px;
+}
+.desktop-nav a.donate{
+  background:#d10000;
+  padding:8px 14px;
+  border-radius:6px;
+}
 
-.menu-btn{display:none;font-size:26px;cursor:pointer}
-.mobile-menu{display:none;flex-direction:column;background:#7a0000}
-.mobile-menu a{color:white;padding:12px;border-bottom:1px solid #aa0000;text-decoration:none}
+/* MOBILE MENU */
+.menu-btn{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+.mobile-menu{
+  display:none;
+  flex-direction:column;
+  background:#7a0000;
+}
+.mobile-menu a{
+  color:white;
+  padding:14px;
+  border-bottom:1px solid #aa0000;
+  text-decoration:none;
+}
 
 @media(max-width:900px){
   .desktop-nav{display:none}
   .menu-btn{display:block}
 }
 
-.section{padding:40px 25px}
-h2{color:#7a0000;border-bottom:4px solid #d4a017;display:inline-block;padding-bottom:6px}
-
-.profile{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  margin-top:30px
+/* PAGE */
+.section{
+  padding:40px 25px;
+  max-width:1000px;
+  margin:auto;
 }
-.profile img{
-  width:100%;
-  max-width:350px;
-  border-radius:15px;
-  box-shadow:0 0 15px rgba(0,0,0,.3)
+.hero{
+  display:flex;
+  gap:30px;
+  align-items:flex-start;
+  flex-wrap:wrap;
 }
-
-.text p{
-  line-height:1.6;
-  font-size:16px;
-  margin-bottom:15px
+.hero img{
+  width:320px;
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(0,0,0,.3);
 }
+.hero-text{
+  flex:1;
+  min-width:280px;
+}
+h2{color:#7a0000}
+p{line-height:1.7;font-size:16px}
 
-.quote{
-  background:#fff;
-  border-left:6px solid #d4a017;
-  padding:20px;
-  margin:30px 0;
-  font-style:italic
+/* GALLERY */
+.gallery{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  margin-top:30px;
+}
+.gallery img{
+  height:200px;
+  border-radius:12px;
+  flex-shrink:0;
+  box-shadow:0 0 10px rgba(0,0,0,.3);
 }
 
 footer{
   background:#4d0000;
   color:white;
-  padding:40px;
   text-align:center;
-  margin-top:60px
+  padding:25px;
+  margin-top:50px;
 }
 </style>
 </head>
@@ -100,65 +146,46 @@ footer{
 </header>
 
 <section class="section">
-<h2>Mahant Omendra Chauhan</h2>
 
-<div class="profile">
-  <div>
-    <img src="Omendra.jfif" alt="Mahant Omendra Chauhan">
-    <br><br>
-    <img src="Omendra3.webp" alt="Mahant Omendra Chauhan">
-  </div>
-
-  <div class="text">
+<div class="hero">
+  <img src="Omendra3.webp">
+  <div class="hero-text">
+    <h2>Mahant Shri Omendra Chauhan</h2>
     <p>
-      Mahant Shri Omendra Chauhan is the spiritual head of Shri Khatu Shyam Ji Manauna Dham, located in Manona village, Aonla Tehsil, Bareilly District, Uttar Pradesh. He is known for his devotional leadership and for attracting large numbers of pilgrims who visit the Dham seeking peace, blessings and spiritual comfort.
+Mahant Shri Omendra Singh Chauhan is the spiritual head of Manauna Dham in Bareilly, Uttar Pradesh. Born in 1984 in Manona village, he transformed from a national social activist into a spiritual healer devoted to Shri Khatu Shyam Ji.
     </p>
-
     <p>
-      Born in 1984, Mahant Ji’s life journey includes a period of social activism before turning fully toward spiritual life. In 2021, he dedicated himself to establishing Manauna Dham as a center for bhakti (devotion), prayer, and faith-based spiritual support for devotees of Shri Khatu Shyam Ji.
+He founded Manauna Dham in 2021 after a spiritual awakening and today guides thousands of devotees seeking healing, peace and divine blessings.
     </p>
-
     <p>
-      Under his leadership, Manauna Dham has grown into a major pilgrimage site. Thousands of devotees visit the temple every month from across Uttar Pradesh, Rajasthan, Delhi NCR and other regions.
-    </p>
-
-    <p>
-      A distinctive aspect of Manauna Dham is the practice of distributing sanctified water, commonly called “Shyam Jal”. Devotees believe this water, blessed through prayer and mantra, brings spiritual strength, hope, and relief from suffering. Many visitors come with deep faith, seeking divine grace for physical, emotional, and family problems.
-    </p>
-
-    <div class="quote">
-      “I am not a miracle-worker. I am only a medium. All blessings come from Shri Shyam Baba.” – Mahant Omendra Chauhan
-    </div>
-
-    <p>
-      Manauna Dham operates as a community-focused spiritual center. Free or low-cost dharamshala accommodation is available for pilgrims, and major Hindu festivals such as Holi, Janmashtami, and the annual Phalgun Mela are celebrated with large gatherings and devotional programs.
-    </p>
-
-    <p>
-      Mahant Ji also maintains an active digital presence through social media and video platforms, allowing devotees who cannot travel to remain connected with the Dham and its spiritual activities.
-    </p>
-
-    <p style="font-size:14px;color:#555">
-      Note: Manauna Dham is a faith-based spiritual institution. Devotional practices and spiritual healing are matters of personal belief. Visitors are encouraged to continue appropriate medical and professional care alongside spiritual activities.
+Mahant Ji is known for the sacred “Kala Paani” (blessed water) prepared through mantra chanting, which devotees believe brings relief from illness and suffering.
     </p>
   </div>
+</div>
+
+<h2 style="margin-top:40px">Spiritual Work & Dham</h2>
+<p>
+Manauna Dham spans over 20 bighas and serves thousands of pilgrims every week. The dham offers free water, dharamshala accommodation and spiritual counseling to devotees from across India.
+</p>
+
+<h2 style="margin-top:40px">Gallery</h2>
+<div class="gallery">
+  <img src="Omendra.jfif">
+  <img src="Omendra3.webp">
+  <img src="Patient1.webp">
+  <img src="Mandir6.webp">
 </div>
 
 </section>
 
 <footer>
-<p>
-Shri Khatu Shyam Mandir<br>
-Manauna Village, Tehsil Aonla<br>
-Bareilly, Uttar Pradesh – 243301
-</p>
-<p style="margin-top:15px">© 2026 | Manauna Dham | All Rights Reserved</p>
+© 2026 | Manauna Dham | All Rights Reserved
 </footer>
 
 <script>
 function toggleMenu(){
-  let m=document.getElementById("mobileMenu");
-  m.style.display = m.style.display==="flex" ? "none" : "flex";
+  const menu = document.getElementById("mobileMenu");
+  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
 }
 </script>
 
