@@ -146,6 +146,17 @@ flex-wrap:wrap;
 align-items:center;
 gap:40px;
 }
+@media(max-width:800px){
+.aboutbox{
+flex-direction:column;
+text-align:center;
+}
+
+.aboutbox img{
+margin:0 auto 20px auto;
+}
+}
+
 
 .aboutbox img{
 width:300px;
@@ -199,15 +210,20 @@ margin-bottom:10px;
 .gallery-row{
 display:flex;
 overflow-x:auto;
-gap:15px;
-margin-top:30px;
+width:100vw;
+margin-left:calc(-50vw + 50%);
+margin-right:calc(-50vw + 50%);
+scroll-snap-type:x mandatory;
 }
 
 .gallery-row img,
 .gallery-row iframe{
-height:200px;
-border-radius:10px;
+width:100vw;
+height:65vh;   /* NOT full height */
+object-fit:cover;
 flex-shrink:0;
+scroll-snap-align:start;
+border-radius:0;
 }
 
 footer{
@@ -306,17 +322,14 @@ nav{display:none}
 <img src="KhatuShyam.jpg" alt=" Khatu Shyam Ji">
 <div class="abouttext">
 <h2>Manauna Dham</h2>
-<p>Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a prominent spiritual pilgrimage site near Aonla in Bareilly district, Uttar Pradesh.</p>
-<p>Devotees visit Manauna Dham for darshan, aarti, and spiritual peace.</p>
 <p>
-Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is one of the most rapidly growing spiritual pilgrimage sites in india. 
-Located near Aonla in Bareilly district, the Dham attracts lakhs of devotees every day who come seeking blessings, peace, and relief from life’s difficulties.
+Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is one of the most rapidly growing spiritual pilgrimage sites in india. Located near Aonla in Bareilly district, the Dham attracts lakhs of devotees every day who come seeking blessings, peace, and relief from life’s difficulties.
 </p>
 <p>
-Devotees believe that sincere prayer at Manauna Dham brings divine grace through Shri Khatu Shyam Ji. The temple is especially known for its strong faith-based traditions, spiritual atmosphere, and the sacred rituals conducted under the guidance of the Mahant.
+Devotees believe that sincere prayer at Manauna Dham brings divine grace through Shri Khatu Shyam Ji. The temple is especially known for its sacred rituals conducted by it's Chief Priest(Mahant Shri Omendra Chauhan).
 </p>
 <p>
-People travel here from across all over India and abroad to participate in darshan, aarti, and special prayer ceremonies.
+People travel here from across all over India and abroad to participate in darshan, aarti, and to seek blessings of Shri Khatu Shyam Ji.
 </p>
 <a href="mahant.html"><button class="btn">About Mahant Ji</button></a>
 <a href="khatushyam.html"><button class="btn">About Shri Khatu Shyam Ji</button></a>
