@@ -152,6 +152,18 @@ width:300px;
 border-radius:10px;
 }
 
+@media(max-width:800px){
+.aboutbox{
+flex-direction:column;
+text-align:center;
+}
+
+.aboutbox img{
+margin:0 auto 20px auto;
+}
+}
+
+
 .abouttext{flex:1}
 
 .btn{
@@ -199,16 +211,22 @@ margin-bottom:10px;
 .gallery-row{
 display:flex;
 overflow-x:auto;
-gap:15px;
-margin-top:30px;
+width:100vw;
+margin-left:calc(-50vw + 50%);
+margin-right:calc(-50vw + 50%);
+scroll-snap-type:x mandatory;
 }
 
 .gallery-row img,
 .gallery-row iframe{
-height:200px;
-border-radius:10px;
+width:100vw;
+height:65vh;   /* NOT full height */
+object-fit:cover;
 flex-shrink:0;
+scroll-snap-align:start;
+border-radius:0;
 }
+
 
 footer{
 background:#4d0000;
