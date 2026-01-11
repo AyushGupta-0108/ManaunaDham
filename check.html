@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Manauna Dham | Pilgrim Information & Visitor Services</title>
+<title>Manauna Dham | Latest Information & Services</title>
 
 <meta name="description" content="Manauna Dham is a prominent spiritual pilgrimage site near Aonla, Bareilly. Find darshan timings, location, gallery, live updates, and pilgrim services for devotees of Shri Khatu Shyam Ji.">
 <meta name="robots" content="index, follow">
@@ -10,8 +10,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" href="logonobg.png" type="image/png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://www.youtube.com">
+
+<!-- Font Awesome - async load -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+
+<!-- Google Analytics - async -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1401GVEYWR"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -21,7 +30,7 @@ gtag('config', 'G-1401GVEYWR');
 </script>
 
 <style>
-body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6}
+body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6;line-height:1.6}
 
 header{background:#7a0000;color:white}
 
@@ -91,7 +100,7 @@ height:32px;
 nav a.live{background:#008000}
 nav a.donate{background:#d10000}
 
-.menu-btn{display:none;font-size:26px;cursor:pointer}
+.menu-btn{display:none;font-size:26px;cursor:pointer;background:none;border:none;color:white}
 
 .mobile-menu{
 display:none;
@@ -127,10 +136,35 @@ border-bottom:1px solid #aa0000;
 
 .dropdown:hover .dropdown-menu{display:block}
 
-.carousel{overflow:hidden;width:100%;background:black}
-.track{display:flex;width:max-content;animation:scroll 18s linear infinite}
-.track img{width:100vw;height:60vh;object-fit:cover}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Carousel optimization - prevent layout shift */
+.carousel{
+overflow:hidden;
+width:100%;
+background:black;
+aspect-ratio:16/9;
+position:relative;
+}
+.track{
+display:flex;
+width:max-content;
+animation:scroll 18s linear infinite;
+will-change:transform;
+}
+.track img{
+width:100vw;
+height:100%;
+object-fit:cover;
+}
+
+/* Lazy loading placeholder */
+.track img[loading="lazy"]{
+background:#333;
+}
+
+@keyframes scroll{
+from{transform:translateX(0)}
+to{transform:translateX(-50%)}
+}
 
 .section{padding:50px 30px}
 .section h2{
@@ -138,6 +172,7 @@ color:#7a0000;
 border-bottom:4px solid #d4a017;
 display:inline-block;
 padding-bottom:6px;
+margin-bottom:20px;
 }
 
 .aboutbox{
@@ -149,22 +184,12 @@ gap:40px;
 
 .aboutbox img{
 width:300px;
+max-width:100%;
+height:auto;
 border-radius:10px;
 }
 
-@media(max-width:800px){
-.aboutbox{
-flex-direction:column;
-text-align:center;
-}
-
-.aboutbox img{
-margin:0 auto 20px auto;
-}
-}
-
-
-.abouttext{flex:1}
+.abouttext{flex:1;min-width:280px}
 
 .btn{
 background:#7a0000;
@@ -175,6 +200,8 @@ border-radius:5px;
 font-size:16px;
 margin:10px 10px 0 0;
 cursor:pointer;
+text-decoration:none;
+display:inline-block;
 }
 
 .timings{
@@ -183,7 +210,10 @@ border-left:8px solid #d4a017;
 padding:30px;
 margin-top:40px;
 box-shadow:0 0 10px rgba(0,0,0,.15);
+border-radius:8px;
 }
+
+.timings p{margin:8px 0}
 
 .services{
 display:grid;
@@ -201,13 +231,21 @@ box-shadow:0 0 10px rgba(0,0,0,.1);
 color:#7a0000;
 font-weight:600;
 text-decoration:none;
+transition:transform .2s,box-shadow .2s;
+}
+
+.service:hover{
+transform:translateY(-4px);
+box-shadow:0 4px 15px rgba(0,0,0,.2);
 }
 
 .service i{
 font-size:36px;
 margin-bottom:10px;
+display:block;
 }
 
+/* Gallery optimization */
 .gallery-row{
 display:flex;
 overflow-x:auto;
@@ -215,18 +253,39 @@ width:100vw;
 margin-left:calc(-50vw + 50%);
 margin-right:calc(-50vw + 50%);
 scroll-snap-type:x mandatory;
+-webkit-overflow-scrolling:touch;
 }
 
 .gallery-row img,
 .gallery-row iframe{
 width:100vw;
-height:65vh;   /* NOT full height */
+height:65vh;
+min-height:400px;
 object-fit:cover;
 flex-shrink:0;
 scroll-snap-align:start;
 border-radius:0;
 }
 
+/* Iframe lazy loading style */
+.gallery-row iframe{
+background:#000;
+}
+
+/* Map optimization */
+.map-container{
+position:relative;
+width:100%;
+height:400px;
+background:#e0e0e0;
+margin-top:20px;
+}
+
+.map-container iframe{
+width:100%;
+height:100%;
+border:0;
+}
 
 footer{
 background:#4d0000;
@@ -242,7 +301,20 @@ nav{display:none}
 .brand img{height:42px}
 .brand-text strong{font-size:16px}
 .brand-text span{font-size:12px}
-.track img{height:260px}
+.carousel{aspect-ratio:4/3}
+.aboutbox{
+flex-direction:column;
+text-align:center;
+}
+.aboutbox img{
+margin:0 auto 20px auto;
+}
+}
+
+/* Reduce animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+.track{animation:none}
+.service{transition:none}
 }
 </style>
 </head>
@@ -253,7 +325,7 @@ nav{display:none}
 <div class="topbar">
 
 <div class="brand">
-<img src="logonobg.png" alt="Manauna Dham">
+<img src="logonobg.png" alt="Manauna Dham Logo" width="48" height="48">
 <div class="brand-text">
 <strong>Manauna Dham</strong>
 <span>Pilgrim Information & Services</span>
@@ -264,7 +336,7 @@ nav{display:none}
 <a href="index.html" class="underline">Home</a>
 
 <div class="dropdown">
-<a href="#" class="underline">Services ▾</a>
+<a href="#services" class="underline">Services ▾</a>
 <div class="dropdown-menu">
 <a href="accommodations.html">Hotel/Dharmshala</a>
 <a href="food.html">Food</a>
@@ -277,7 +349,7 @@ nav{display:none}
 <a href="#gallery" class="underline">Gallery</a>
 
 <div class="dropdown">
-<a href="#" class="underline">About ▾</a>
+<a href="#about" class="underline">About ▾</a>
 <div class="dropdown-menu">
 <a href="khatushyam.html">Shri Khatu Shyam Ji</a>
 <a href="mahant.html">Mahant Omendra Ji</a>
@@ -285,12 +357,12 @@ nav{display:none}
 </div>
 </div>
 
-<a href="https://wa.me/917817823342" class="underline" target="_blank">Contact</a>
+<a href="https://wa.me/917817803342" class="underline" target="_blank" rel="noopener">Contact</a>
 <a class="live" href="live.html">LIVE</a>
 <a class="donate" href="donate.html">Seva</a>
 </nav>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
 </div>
 
 <div class="mobile-menu" id="mobileMenu">
@@ -302,45 +374,52 @@ nav{display:none}
 <a href="patient.html">Patient Token</a>
 <a href="live.html">Live Darshan</a>
 <a href="donate.html">Seva</a>
-<a href="https://wa.me/917817823342">Contact</a>
+<a href="https://wa.me/917817803342" rel="noopener">Contact</a>
 </div>
 </header>
 
 <div class="carousel">
 <div class="track">
-<img src="ILoveManaunaDham.webp" alt="">
-<img src="Omendra3.webp" alt="">
-<img src="Mandir1.webp" alt="">
-<img src="Mandir6.webp" alt="">
-<img src="ILoveManaunaDham.webp" alt="">
-<img src="Omendra3.webp" alt="">
-<img src="Mandir1.webp" alt="">
-<img src="Mandir6.webp" alt="">
+<img src="ILoveManaunaDham.webp" alt="Manauna Dham Temple" width="1920" height="1080" loading="eager">
+<img src="Omendra3.webp" alt="Mahant Ji" width="1920" height="1080" loading="lazy">
+<img src="Mandir1.webp" alt="Khatu Shyam Ji Temple" width="1920" height="1080" loading="lazy">
+<img src="Mandir6.webp" alt="Shyam Ji Mandir" width="1920" height="1080" loading="lazy">
+<img src="ILoveManaunaDham.webp" alt="I Love Manauna Dham" width="1920" height="1080" loading="lazy">
+<img src="Omendra3.webp" alt="Baba Manauna Waale" width="1920" height="1080" loading="lazy">
+<img src="Mandir1.webp" alt="Mandir Khatu Shyam" width="1920" height="1080" loading="lazy">
+<img src="Mandir6.webp" alt="Mandir" width="1920" height="1080" loading="lazy">
 </div>
 </div>
 
-<section class="section">
-<div class="aboutbox" id="manauna">
-<img src="KhatuShyam.jpg">
+<section class="section" id="manauna">
+<div class="aboutbox">
+<img src="KhatuShyam.jpg" alt="Khatu Shyam Ji" width="300" height="400" loading="lazy">
 <div class="abouttext">
 <h2>Manauna Dham</h2>
-<p>Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is a prominent spiritual pilgrimage site near Aonla in Bareilly district, Uttar Pradesh.</p>
-<p>Devotees visit Manauna Dham for darshan, aarti, and spiritual peace.</p>
-<a href="mahant.html"><button class="btn">About Mahant Ji</button></a>
-<a href="khatushyam.html"><button class="btn">About Shri Khatu Shyam Ji</button></a>
-<a href="live.html"><button class="btn">Live Darshan</button></a>
+<p>
+Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is one of the most rapidly growing spiritual pilgrimage sites in India. Located near Aonla in Bareilly district, the Dham attracts lakhs of devotees every day who come seeking blessings, peace, and relief from life's difficulties.
+</p>
+<p>
+Devotees believe that sincere prayer at Manauna Dham brings divine grace through Shri Khatu Shyam Ji. The temple is especially known for its sacred rituals conducted by its Chief Priest (Mahant Shri Omendra Chauhan).
+</p>
+<p>
+People travel here from across all over India and abroad to participate in darshan, aarti, and to seek blessings of Shri Khatu Shyam Ji.
+</p>
+<a href="mahant.html" class="btn">About Mahant Ji</a>
+<a href="khatushyam.html" class="btn">About Shri Khatu Shyam Ji</a>
+<a href="live.html" class="btn">Live Darshan</a>
 </div>
 </div>
 
 <div class="timings">
 <h2>Mandir Timings</h2>
-<p>Darshan: 7 AM – 9 PM</p>
-<p>Aarti: 8 AM & 5 PM</p>
-<p>Best Time: June – December</p>
-<p>Mahant Ji unavailable: Wednesday & Thursday</p>
+<p><strong>Darshan:</strong> 7 AM – 9 PM</p>
+<p><strong>Aarti:</strong> 8 AM & 5 PM</p>
+<p><strong>Best Time:</strong> June – December</p>
+<p><strong>Mahant Ji unavailable:</strong> Wednesday & Thursday</p>
 </div>
 
-<h2 style="margin-top:50px">Services</h2>
+<h2 style="margin-top:50px" id="services">Services</h2>
 <div class="services">
 <a href="accommodations.html" class="service"><i class="fa fa-hotel"></i><br>Hotel/Dharmshala</a>
 <a href="transport.html" class="service"><i class="fa fa-bus"></i><br>Transport</a>
@@ -351,46 +430,56 @@ nav{display:none}
 
 <h2 style="margin-top:50px">Temple Location</h2>
 <p>
-Shri Khatu Shyam Mandir, Manauna Village,  
+Shri Khatu Shyam Mandir, Manauna Village,<br>
 Tehsil Aonla, Bareilly, Uttar Pradesh – 243301
 </p>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" width="100%" height="400" style="border:0;"></iframe>
+<div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" loading="lazy" title="Manauna Dham Location Map"></iframe>
+</div>
+</section>
 
 <div id="gallery" class="section">
 <h2>Temple Gallery</h2>
 <div class="gallery-row">
-<img src="EntryGate.jfif" alt="">
-<img src="Gathering.jpg" alt="">
-<img src="Gathering2.jpg" alt="">
-<img src="Indoor1.jpg" alt="">
-<img src="KhatuShyam.jpg" alt="">
-<img src="Mandir5.jpg" alt="">
-<img src="Omendra.jfif" alt="">
-<img src="ILoveManaunaDham.webp" alt="">
-<img src="Mandir1.webp" alt="">
-<img src="Mandir6.webp" alt="">
-<img src="Omendra3.webp" alt="">
-<img src="Patient1.webp" alt="">
+<img src="EntryGate.jfif" alt="Entry Gate of Manauna Mandir" width="1920" height="1080" loading="lazy">
+<img src="Gathering.jpg" alt="Devotees gathering at Manauna" width="1920" height="1080" loading="lazy">
+<img src="Gathering2.jpg" alt="Manauna temple crowd" width="1920" height="1080" loading="lazy">
+<img src="Indoor1.jpg" alt="Inside Khatu Shyam Mandir" width="1920" height="1080" loading="lazy">
+<img src="KhatuShyam.jpg" alt="Khatu Shyam Ji deity" width="1920" height="1080" loading="lazy">
+<img src="Mandir5.jpg" alt="Manauna Mandir Khatu Shyam Ji" width="1920" height="1080" loading="lazy">
+<img src="Omendra.jfif" alt="Mahant Ji blessing devotees" width="1920" height="1080" loading="lazy">
+<img src="ILoveManaunaDham.webp" alt="I love Khatu Baba" width="1920" height="1080" loading="lazy">
+<img src="Mandir1.webp" alt="Haare ka Sahara Baba Shyam Hamara" width="1920" height="1080" loading="lazy">
+<img src="Mandir6.webp" alt="Mandir exterior view" width="1920" height="1080" loading="lazy">
+<img src="Omendra3.webp" alt="Mahant Ji during rituals" width="1920" height="1080" loading="lazy">
+<img src="Patient1.webp" alt="Blessings and miracles" width="1920" height="1080" loading="lazy">
 </div>
 
 <h2 style="margin-top:40px">Temple Videos</h2>
 <div class="gallery-row">
-<iframe src="https://www.youtube.com/embed/6fNenBT97Xg"></iframe>
-<iframe src="https://www.youtube.com/embed/UqItDGc4qk8"></iframe>
-<iframe src="https://www.youtube.com/embed/1uVgMx8TA9U"></iframe>
-<iframe src="https://www.youtube.com/embed/YiDp6M69Uko"></iframe>
+<iframe src="https://www.youtube.com/embed/6fNenBT97Xg" loading="lazy" title="Manauna Dham Video 1"></iframe>
+<iframe src="https://www.youtube.com/embed/UqItDGc4qk8" loading="lazy" title="Manauna Dham Video 2"></iframe>
+<iframe src="https://www.youtube.com/embed/1uVgMx8TA9U" loading="lazy" title="Manauna Dham Video 3"></iframe>
+<iframe src="https://www.youtube.com/embed/YiDp6M69Uko" loading="lazy" title="Manauna Dham Video 4"></iframe>
 </div>
 </div>
 
 <footer>
-© 2026 | Manauna Dham | All Rights Reserved
+<p>© 2026 | Manauna Dham | All Rights Reserved</p>
 </footer>
 
 <script>
 function toggleMenu(){
-let m=document.getElementById("mobileMenu");
+const m=document.getElementById("mobileMenu");
 m.style.display = m.style.display==="flex" ? "none" : "flex";
+}
+
+// Defer non-critical initialization
+if ('requestIdleCallback' in window) {
+requestIdleCallback(() => {
+// Any non-critical JS here
+});
 }
 </script>
 
