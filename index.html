@@ -372,11 +372,83 @@ Tehsil Aonla, Bareilly, Uttar Pradesh – 243301
 
 <div id="gallery" class="section">
 
-<h2>Manauna Dham Weather</h2>
-<iframe 
-src="https://www.google.com/search?q=weather+manauna" 
-style="width:100%;height:200px;border:0">
-</iframe>
+<h2 style="margin-top:50px">Manauna Dham Weather (Bareilly Region)</h2>
+
+<div class="services" id="weatherCards">
+  <!-- Weather cards will be injected here -->
+</div>
+
+<script>
+async function loadManaunaWeather(){
+  try {
+    const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=28.2711&longitude=79.1403&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Asia/Kolkata");
+    const data = await res.json();
+
+    const days = data.daily.time;
+    const maxT = data.daily.temperature_2m_max;
+    const minT = data.daily.temperature_2m_min;
+    const codes = data.daily.weathercode;
+
+    const icon = (c)=>{
+      if(c===0) return "☀️";
+      if(c<=3) return "🌤️";
+      if(c<=48) return "🌫️";
+      if(c<=67) return "🌧️";
+      if(c<=77) return "🌨️";
+      if(c<=82) return "⛈️";
+      return "🌥️";
+    };
+
+    let html="";
+    for(let i=0;i<5;i++){
+      const d = new Date(days[i]);
+      const day = d.toLocaleDateString("en-IN",{weekday:"short"});
+      html += `
+      <div class="service">
+        <div style="font-size:32px">${icon(codes[i])}</div>
+        <div style="font-weight:700">${day}</div>
+        <div style="font-size:14px;opacity:.85">${maxT[i]}°C / ${minT[i]}°C</div>
+      </div>`;
+    }
+
+    document.getElementById("weatherCards").innerHTML = html;
+
+  } catch(e){
+    document.getElementById("weatherCards").innerHTML = "<div class='service'>Weather unavailable</div>";
+  }
+}
+
+loadManaunaWeather();
+</script>
+<h2 style="margin-top:50px">Today Weather</h2>
+
+<div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;">
+
+  <div class="service" style="flex:1;min-width:200px;max-width:300px;text-align:center;">
+    <div id="openWeather" style="padding:20px;"></div>
+    <div style="font-size:14px;opacity:.8;margin-top:10px;">Weather in Bareilly (nearest city to Manauna)</div>
+  </div>
+
+</div>
+
+<script>
+async function loadWeather(){
+  try {
+    const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=28.2711&longitude=79.1403&current_weather=true");
+    const data = await res.json();
+    const w = data.current_weather;
+    const html = 
+      "<div style='font-size:24px;font-weight:700;'>"+w.temperature+"°C</div>"
+      +"<div style='font-size:16px;opacity:.9;'>Wind: "+w.windspeed+" km/h</div>"
+      +"<div style='font-size:14px;opacity:.8;'>⚡ "+w.weathercode+"</div>";
+    document.getElementById("openWeather").innerHTML = html;
+  } catch(err){
+    document.getElementById("openWeather").textContent = "Weather unavailable";
+  }
+}
+loadWeather();
+</script>
+
 
 <h2>Temple Gallery</h2>
 <div class="gallery-row">
