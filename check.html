@@ -155,6 +155,54 @@ nav{display:none}
 <a href="jal.html" class="service">Buy Shyam Jal</a>
 <a href="parshaad.html" class="service">Buy Parshaad</a>
 </div>
+<h2 style="margin-top:50px">Manauna Dham Weather (Bareilly)</h2>
+
+<div class="services" id="weatherCards">
+  <!-- Weather cards will be injected here -->
+</div>
+
+<script>
+async function loadManaunaWeather(){
+  try {
+    const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=28.2711&longitude=79.1403&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Asia/Kolkata");
+    const data = await res.json();
+
+    const days = data.daily.time;
+    const maxT = data.daily.temperature_2m_max;
+    const minT = data.daily.temperature_2m_min;
+    const codes = data.daily.weathercode;
+
+    const icon = (c)=>{
+      if(c===0) return "☀️";
+      if(c<=3) return "🌤️";
+      if(c<=48) return "🌫️";
+      if(c<=67) return "🌧️";
+      if(c<=77) return "🌨️";
+      if(c<=82) return "⛈️";
+      return "🌥️";
+    };
+
+    let html="";
+    for(let i=0;i<5;i++){
+      const d = new Date(days[i]);
+      const day = d.toLocaleDateString("en-IN",{weekday:"short"});
+      html += `
+      <div class="service">
+        <div style="font-size:32px">${icon(codes[i])}</div>
+        <div style="font-weight:700">${day}</div>
+        <div style="font-size:14px;opacity:.85">${maxT[i]}°C / ${minT[i]}°C</div>
+      </div>`;
+    }
+
+    document.getElementById("weatherCards").innerHTML = html;
+
+  } catch(e){
+    document.getElementById("weatherCards").innerHTML = "<div class='service'>Weather unavailable</div>";
+  }
+}
+
+loadManaunaWeather();
+</script>
 
 <h2 id="gallery">Gallery</h2>
 <div class="gallery-row">
