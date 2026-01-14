@@ -31,6 +31,7 @@
 </script>
 
 <style>
+
 .cta-btn{
   display:inline-flex;
   align-items:center;
@@ -39,7 +40,68 @@
   border-radius:30px;
   text-decoration:none;
 }
+  header{
+  background:#7a0000;
+  color:white;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img{height:42px}
+
+.brand-text{display:flex;flex-direction:column;line-height:1}
+
+.brand-text strong{font-size:16px}
+.brand-text span{font-size:12px;opacity:.8}
+
+nav{display:flex;gap:18px}
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.menu-btn{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+.mobile-menu{
+  display:none;
+  flex-direction:column;
+  background:#7a0000;
+  position:absolute;
+  top:60px;
+  width:100%;
+  left:0;
+}
+
+.mobile-menu a{
+  padding:12px;
+  border-top:1px solid rgba(255,255,255,.15);
+  color:white;
+  text-decoration:none;
+}
+
+@media(max-width:900px){
+  nav{display:none}
+  .menu-btn{display:block}
+}
 body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6}
 .hero{background:linear-gradient(135deg,#7a0000,#4d0000);color:white;text-align:center;padding:70px 20px}
 .hero h1{font-size:40px;margin:0}
@@ -70,6 +132,31 @@ footer{background:#4d0000;color:white;text-align:center;padding:30px}
 </head>
 
 <body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <img src="logonobg.png" alt="Manauna Dham">
+      <div class="brand-text">
+        <strong>Manauna Dham</strong>
+        <span>Food Services</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="food.html">All Restaurants</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="food.html">All Restaurants</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</header>
 
 <div class="hero">
 <h1>Food Plaza Aonla</h1>
@@ -176,6 +263,12 @@ Google customers consistently praise its food quality, cleanliness and family-fr
 <footer>
 <p>© 2026 ManaunaDham.org.in | Food Plaza Aonla</p>
 </footer>
+<script>
+function toggleMenu(){
+  const m = document.getElementById("mobileMenu");
+  m.style.display = m.style.display === "flex" ? "none" : "flex";
+}
+</script>
 
 </body>
 </html>
