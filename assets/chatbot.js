@@ -1,94 +1,135 @@
 (function () {
 
-const css = `
-*{box-sizing:border-box}
+  if (window.manaunaChatLoaded) return;
+  window.manaunaChatLoaded = true;
 
-.chat-float{
- position:fixed;bottom:25px;right:25px;width:65px;height:65px;
- background:linear-gradient(135deg,#7a0000,#4d0000);
- border-radius:50%;display:flex;align-items:center;justify-content:center;
- cursor:pointer;z-index:999999;box-shadow:0 5px 20px rgba(0,0,0,.3);
- animation:pulse 2s infinite;
-}
-.chat-float i{color:#fff;font-size:30px}
+  const style = document.createElement("style");
+  style.innerHTML = `
+  .chat-float{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    width:60px;
+    height:60px;
+    background:linear-gradient(135deg,#7a0000,#4d0000);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:99999;
+    box-shadow:0 5px 20px rgba(0,0,0,.4);
+  }
+  .chat-float i{color:white;font-size:26px}
 
-@keyframes pulse{
- 0%,100%{box-shadow:0 5px 20px rgba(122,0,0,.4)}
- 50%{box-shadow:0 5px 30px rgba(122,0,0,.8)}
-}
+  .chat-box{
+    position:fixed;
+    bottom:90px;
+    left:20px;
+    width:360px;
+    max-height:75vh;
+    background:white;
+    border-radius:15px;
+    display:none;
+    flex-direction:column;
+    box-shadow:0 5px 40px rgba(0,0,0,.4);
+    overflow:hidden;
+    z-index:99999;
+  }
+  .chat-box.active{display:flex}
 
-.chat-container{
- position:fixed;bottom:100px;right:25px;width:380px;height:550px;
- background:#fff;border-radius:15px;box-shadow:0 5px 40px rgba(0,0,0,.3);
- display:none;flex-direction:column;overflow:hidden;z-index:999999;
-}
-.chat-container.active{display:flex}
+  .chat-header{
+    background:#7a0000;
+    color:white;
+    padding:14px;
+    font-weight:700;
+    flex-shrink:0;
+  }
 
-.chat-header{
- background:#7a0000;color:#fff;padding:15px;font-weight:bold;
- display:flex;justify-content:space-between;align-items:center
-}
+  .chat-messages{
+    flex:1;
+    overflow-y:auto;
+    padding:15px;
+    background:#f6f6f6;
+  }
 
-.chat-messages{flex:1;padding:15px;overflow-y:auto;background:#f9f9f9}
-.message{margin-bottom:10px}
-.bot{background:#fff;padding:10px;border-radius:10px;max-width:80%}
-.user{text-align:right}
-.user span{background:#7a0000;color:#fff;padding:10px;border-radius:10px;display:inline-block}
+  .chat-input{
+    display:flex;
+    padding:10px;
+    border-top:1px solid #ddd;
+  }
+  .chat-input input{
+    flex:1;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:20px;
+    outline:none;
+  }
+  .chat-input button{
+    margin-left:8px;
+    background:#7a0000;
+    color:white;
+    border:none;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+  }
 
-.chat-input{display:flex;border-top:1px solid #ddd}
-.chat-input input{flex:1;border:none;padding:12px;font-size:14px}
-.chat-input button{background:#7a0000;color:#fff;border:none;padding:12px 15px;cursor:pointer}
-`;
+  .bot{background:white;padding:10px;border-radius:10px;margin-bottom:8px;max-width:85%}
+  .user{background:#7a0000;color:white;padding:10px;border-radius:10px;margin-bottom:8px;margin-left:auto;max-width:85%}
 
-const style = document.createElement("style");
-style.innerHTML = css;
-document.head.appendChild(style);
+  @media(max-width:480px){
+    .chat-box{
+      left:10px;
+      width:calc(100vw - 20px);
+      max-height:70vh;
+    }
+    .chat-float{left:10px}
+  }
+  `;
+  document.head.appendChild(style);
 
-document.body.insertAdjacentHTML("beforeend",`
-<div class="chat-float" id="chatToggle"><i class="fas fa-comments"></i></div>
-
-<div class="chat-container" id="chatBox">
-  <div class="chat-header">
-    Manauna Dham
-    <span style="cursor:pointer" id="chatClose">×</span>
+  const html = `
+  <div class="chat-float" id="chatOpen">
+    <i class="fa fa-comments"></i>
   </div>
-  <div class="chat-messages" id="chatMessages">
-    <div class="message bot">🙏 Jai Shree Shyam! Aap kaise madad chahte hain?</div>
+
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header">Manauna Dham Sahayak</div>
+    <div class="chat-messages" id="chatMsgs">
+      <div class="bot">🙏 Jai Shree Shyam! Aapko kis cheez ki madad chahiye?</div>
+      <div class="bot">Food, Hotel, Shyam Jal, ya Darshan?</div>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="Type here...">
+      <button id="chatSend">➤</button>
+    </div>
   </div>
-  <div class="chat-input">
-    <input id="chatInput" placeholder="Type here...">
-    <button id="chatSend">Send</button>
-  </div>
-</div>
-`);
+  `;
+  document.body.insertAdjacentHTML("beforeend", html);
 
-document.getElementById("chatToggle").onclick = () => {
- document.getElementById("chatBox").classList.toggle("active");
-};
+  const open = document.getElementById("chatOpen");
+  const box = document.getElementById("chatBox");
+  const msgs = document.getElementById("chatMsgs");
+  const input = document.getElementById("chatInput");
 
-document.getElementById("chatClose").onclick = () => {
- document.getElementById("chatBox").classList.remove("active");
-};
+  open.onclick = () => box.classList.toggle("active");
 
-document.getElementById("chatSend").onclick = sendMessage;
-document.getElementById("chatInput").addEventListener("keypress",e=>{
- if(e.key==="Enter") sendMessage();
-});
+  document.getElementById("chatSend").onclick = send;
+  input.onkeypress = e => { if (e.key === "Enter") send(); };
 
-function sendMessage(){
- const i=document.getElementById("chatInput");
- if(!i.value) return;
- const msg=i.value;
- i.value="";
- document.getElementById("chatMessages").innerHTML+=`<div class="message user"><span>${msg}</span></div>`;
- document.getElementById("chatMessages").innerHTML+=`<div class="message bot">WhatsApp par booking ke liye button dabaiye.</div>`;
- document.getElementById("chatMessages").innerHTML+=`
-   <div style="margin-top:10px">
-     <a href="https://wa.me/917817803342?text=${encodeURIComponent(msg)}" target="_blank"
-        style="display:inline-block;background:#25D366;color:white;padding:10px 15px;border-radius:8px;text-decoration:none">
-        WhatsApp
-     </a>
-   </div>`;
-}
+  function send(){
+    const t = input.value.trim();
+    if(!t) return;
+    msgs.innerHTML += `<div class="user">${t}</div>`;
+    input.value = "";
+
+    setTimeout(()=>{
+      msgs.innerHTML += `<div class="bot">Hum WhatsApp par connect kar denge. Kripya neeche click karein.</div>
+      <div class="bot"><a href="https://wa.me/917817803342" target="_blank">📲 WhatsApp Open</a></div>`;
+      msgs.scrollTop = msgs.scrollHeight;
+    },600);
+  }
 
 })();
