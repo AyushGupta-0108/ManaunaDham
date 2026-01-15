@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manauna Dham Chatbot System</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff6e6; }
+
+.chat-float {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, #7a0000, #4d0000);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  z-index: 9998;
+  transition: transform 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.chat-float:hover { transform: scale(1.1); }
+.chat-float i { color: white; font-size: 32px; }
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 5px 20px rgba(122, 0, 0, 0.4); }
+  50% { box-shadow: 0 5px 30px rgba(122, 0, 0, 0.7); }
+}
+
+.chat-container {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  left: 25px;
+  width: 400px;
+  height: 600px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 40px rgba(0,0,0,0.3);
+  z-index: 9999;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.chat-container.active { display: flex; }
+
+.chat-header {
+  background: linear-gradient(135deg, #7a0000, #4d0000); color: white;
+  padding: 20px; display: flex; align-items: center; gap: 12px;
+}
+.chat-header img {
+  width: 45px; height: 45px; border-radius: 50%; border: 2px solid #ffd56b;
+}
+.chat-header-text h3 { font-size: 18px; margin-bottom: 3px; }
+.chat-header-text p { font-size: 12px; opacity: 0.9; }
+.chat-close {
+  margin-left: auto; font-size: 24px; cursor: pointer;
+  opacity: 0.8; transition: opacity 0.2s;
+}
+.chat-close:hover { opacity: 1; }
+
+.chat-messages {
+  flex: 1; padding: 20px; overflow-y: auto; background: #f9f9f9;
+}
+.message { margin-bottom: 15px; animation: slideIn 0.3s ease; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bot-message { display: flex; gap: 10px; align-items: flex-start; }
+.bot-avatar {
+  width: 35px; height: 35px; background: #7a0000; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 18px; flex-shrink: 0;
+}
+.bot-bubble {
+  background: white; padding: 12px 16px; border-radius: 15px 15px 15px 5px;
+  max-width: 75%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.user-message { display: flex; justify-content: flex-end; }
+.user-bubble {
+  background: #7a0000; color: white; padding: 12px 16px;
+  border-radius: 15px 15px 5px 15px; max-width: 75%;
+}
+
+.options { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.option-btn {
+  background: white; border: 2px solid #7a0000; color: #7a0000;
+  padding: 12px 16px; border-radius: 10px; cursor: pointer;
+  font-weight: 600; transition: all 0.3s ease; text-align: left; font-size: 14px;
+}
+.option-btn:hover {
+  background: #7a0000; color: white; transform: translateX(5px);
+}
+.option-btn i { margin-right: 8px; }
+
+.choice-card {
+  background: #fff6e6; border: 2px solid #d4a017; padding: 15px;
+  border-radius: 10px; margin-bottom: 10px; cursor: pointer;
+  transition: all 0.3s ease;
+}
+.choice-card:hover { background: #7a0000; color: white; border-color: #7a0000; }
+.choice-card h4 { margin-bottom: 5px; font-size: 15px; }
+.choice-card p { font-size: 13px; opacity: 0.9; margin: 3px 0; }
+.choice-card .price {
+  font-size: 16px; font-weight: bold; color: #008000; margin-top: 5px;
+}
+.choice-card:hover .price { color: #ffd56b; }
+
+.chat-input-area {
+  padding: 15px; background: white; border-top: 1px solid #eee; display: none;
+}
+.chat-input-area.active { display: flex; gap: 10px; }
+.chat-input {
+  flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 25px;
+  outline: none; font-size: 14px;
+}
+.chat-input:focus { border-color: #7a0000; }
+.send-btn {
+  background: #7a0000; color: white; border: none; width: 45px; height: 45px;
+  border-radius: 50%; cursor: pointer; font-size: 18px; transition: all 0.3s ease;
+}
+.send-btn:hover { background: #5a0000; transform: scale(1.1); }
+
+.typing-indicator {
+  display: none; align-items: center; gap: 10px; margin-bottom: 15px;
+}
+.typing-indicator.active { display: flex; }
+.typing-dots {
+  background: white; padding: 15px 20px; border-radius: 15px 15px 15px 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.typing-dots span {
+  display: inline-block; width: 8px; height: 8px; background: #7a0000;
+  border-radius: 50%; margin: 0 2px; animation: bounce 1.4s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-10px); }
+}
+
+.whatsapp-btn {
+  background: #25D366; color: white; padding: 15px 25px; border: none;
+  border-radius: 10px; cursor: pointer; font-size: 16px; font-weight: bold;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-top: 10px; transition: all 0.3s ease;
+}
+.whatsapp-btn:hover { background: #20BA5A; transform: scale(1.05); }
+
+.restart-btn {
+  background: #666; color: white; padding: 10px 20px; border: none;
+  border-radius: 10px; cursor: pointer; font-size: 14px; margin-top: 10px; width: 100%;
+}
+.restart-btn:hover { background: #444; }
+
+@media (max-width: 480px) {
+  .chat-container {
+    width: calc(100vw - 20px); height: calc(100vh - 120px);
+    right: 10px; bottom: 90px;
+  }
+  .chat-float { right: 15px; bottom: 15px; width: 60px; height: 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="chat-float" onclick="toggleChat()">
+  <i class="fas fa-comments"></i>
+</div>
+
+<div class="chat-container" id="chatContainer">
+  <div class="chat-header">
+    <img src="https://via.placeholder.com/45/7a0000/ffffff?text=MD" alt="Bot">
+    <div class="chat-header-text">
+      <h3>Manauna Dham Sahayak</h3>
+      <p>🟢 Kaise madad kar sakte hain?</p>
+    </div>
+    <div class="chat-close" onclick="toggleChat()">×</div>
+  </div>
+
+  <div class="chat-messages" id="chatMessages"></div>
+
+  <div class="typing-indicator" id="typingIndicator">
+    <div class="bot-avatar">🙏</div>
+    <div class="typing-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <div class="chat-input-area" id="chatInput">
+    <input type="text" class="chat-input" id="userInput" placeholder="Apna message likhiye...">
+    <button class="send-btn" onclick="sendMessage()"><i class="fa fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script>
+let CHATBOT_MODE = 'home';
+function detectPage() {
+  const path = window.location.pathname;
+  if (path.includes('food') || path.includes('kipps') || path.includes('plaza') || path.includes('shiv-pizza')) {
+    CHATBOT_MODE = 'food';
+  } else if (path.includes('accommodation') || path.includes('harshdeep')) {
+    CHATBOT_MODE = 'accommodation';
+  } else if (path.includes('jal')) {
+    CHATBOT_MODE = 'jal';
+  } else {
+    CHATBOT_MODE = 'home';
+  }
+}
+detectPage();
+
+let currentStep = 0, bookingData = {}, currentFlow = '', isFirstOpen = true;
+
+function toggleChat() {
+  const container = document.getElementById('chatContainer');
+  container.classList.toggle('active');
+  if (container.classList.contains('active') && isFirstOpen) {
+    isFirstOpen = false;
+    initializeChat();
+  }
+}
+
+function addBotMessage(html) {
+  const div = document.createElement('div');
+  div.className = 'message bot-message';
+  div.innerHTML = `<div class="bot-avatar">🙏</div><div class="bot-bubble">${html}</div>`;
+  document.getElementById('chatMessages').appendChild(div);
+  document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+}
+
+function addUserMessage(text) {
+  const div = document.createElement('div');
+  div.className = 'message user-message';
+  div.innerHTML = `<div class="user-bubble">${text}</div>`;
+  document.getElementById('chatMessages').appendChild(div);
+  document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+}
+
+function showTyping() {
+  document.getElementById('typingIndicator').classList.add('active');
+  document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+}
+function hideTyping() { document.getElementById('typingIndicator').classList.remove('active'); }
+function delay(ms) { return new Promise(r => setTimeout(r, ms)); }
+function enableInput() {
+  document.getElementById('chatInput').classList.add('active');
+  document.getElementById('userInput').focus();
+}
+function disableInput() { document.getElementById('chatInput').classList.remove('active'); }
+
+async function initializeChat() {
+  await delay(500);
+  if (CHATBOT_MODE === 'food') initFoodBot();
+  else if (CHATBOT_MODE === 'accommodation') initAccommodationBot();
+  else if (CHATBOT_MODE === 'jal') initJalBot();
+  else initHomeBot();
+}
+
+function restartChat() {
+  document.getElementById('chatMessages').innerHTML = '';
+  currentStep = 0; bookingData = {}; currentFlow = '';
+  disableInput();
+  initializeChat();
+}
+
+// FOOD BOT
+async function initFoodBot() {
+  addBotMessage(`
+    <p><strong>🍽️ Jai Shree Shyam!</strong></p>
+    <p style="margin-top: 8px;">Manauna Dham ke paas khaane ka intezaam chahiye?</p>
+    <div class="options">
+      <button class="option-btn" onclick="startFoodBooking()"><i class="fa fa-utensils"></i> Food Order/Table Booking</button>
+      <button class="option-btn" onclick="askFoodInfo()"><i class="fa fa-question-circle"></i> Restaurant ki Jaankari</button>
+    </div>
+  `);
+}
+
+async function startFoodBooking() {
+  addUserMessage('Food Order/Table Booking');
+  currentFlow = 'food'; currentStep = 0;
+  showTyping(); await delay(1000); hideTyping();
+  
+  addBotMessage(`
+    <p><strong>Kaunsa restaurant pasand karenge?</strong></p>
+    <div class="choice-card" onclick="selectRestaurant('Food Plaza Aonla')">
+      <h4>🔥 Food Plaza Aonla</h4>
+      <p>Chaap King - North Indian & Chinese</p>
+      <p class="price">₹50-₹570</p>
+    </div>
+    <div class="choice-card" onclick="selectRestaurant('Kipps Restaurant')">
+      <h4>🥟 Kipps Restaurant & Sweets</h4>
+      <p>Chinese, Momos, Pizza & Desserts</p>
+      <p class="price">₹20-₹670</p>
+    </div>
+    <div class="choice-card" onclick="selectRestaurant('Shiv Pizza Point')">
+      <h4>🍕 Shiv Pizza Point</h4>
+      <p>Pizza, Burgers, Pasta</p>
+      <p class="price">₹100-₹450</p>
+    </div>
+  `);
+}
+
+async function selectRestaurant(name) {
+  bookingData.restaurant = name;
+  addUserMessage(name);
+  showTyping(); await delay(800); hideTyping();
+  
+  addBotMessage(`
+    <p><strong>${name}</strong> - Badhiya choice! 👍</p>
+    <div class="options">
+      <button class="option-btn" onclick="selectFoodAction('table')"><i class="fa fa-chair"></i> Table Booking</button>
+      <button class="option-btn" onclick="selectFoodAction('order')"><i class="fa fa-shopping-bag"></i> Food Order</button>
+    </div>
+  `);
+}
+
+async function selectFoodAction(action) {
+  bookingData.action = action;
+  addUserMessage(action === 'table' ? 'Table Booking' : 'Food Order');
+  showTyping(); await delay(1000); hideTyping();
+  
+  if (action === 'order') {
+    addBotMessage(`
+      <p><strong>Menu dekhen aur order bataiye:</strong></p>
+      <p style="font-size: 12px;">• Food Plaza: <a href="food-plaza.html" target="_blank">Menu</a></p>
+      <p style="font-size: 12px;">• Kipps: <a href="kipps.html" target="_blank">Menu</a></p>
+      <p style="font-size: 12px;">• Shiv Pizza: <a href="shiv-pizza.html" target="_blank">Menu</a></p>
+      <p style="margin-top: 10px;"><strong>Apna order type karein:</strong></p>
+      <p style="font-size: 11px; opacity: 0.8;">Example: 2 Malai Chaap, 1 Butter Paneer</p>
+    `);
+    currentStep = 1;
+    enableInput();
+  } else {
+    addBotMessage(`<p><strong>Table booking ke liye date:</strong></p><p style="font-size: 12px; opacity: 0.8;">Format: DD/MM/YYYY</p>`);
+    currentStep = 10;
+    enableInput();
+  }
+}
+
+async function askFoodInfo() {
+  addUserMessage('Restaurant ki Jaankari');
+  showTyping(); await delay(800); hideTyping();
+  addBotMessage(`
+    <div class="options">
+      <button class="option-btn" onclick="window.open('food-plaza.html')"><i class="fa fa-utensils"></i> Food Plaza</button>
+      <button class="option-btn" onclick="window.open('kipps.html')"><i class="fa fa-utensils"></i> Kipps</button>
+      <button class="option-btn" onclick="window.open('shiv-pizza.html')"><i class="fa fa-pizza-slice"></i> Shiv Pizza</button>
+      <button class="option-btn" onclick="restartChat()"><i class="fa fa-arrow-left"></i> Wapas</button>
+    </div>
+  `);
+}
+
+// ACCOMMODATION BOT
+async function initAccommodationBot() {
+  addBotMessage(`
+    <p><strong>🏨 Jai Shree Shyam!</strong></p>
+    <p style="margin-top: 8px;">Rukne ka intezaam chahiye?</p>
+    <div class="options">
+      <button class="option-btn" onclick="startHotelBooking()"><i class="fa fa-hotel"></i> Hotel Booking</button>
+      <button class="option-btn" onclick="askHotelInfo()"><i class="fa fa-question-circle"></i> Hotel Info</button>
+    </div>
+  `);
+}
+
+async function startHotelBooking() {
+  addUserMessage('Hotel Booking');
+  currentFlow = 'hotel'; currentStep = 0;
+  showTyping(); await delay(1000); hideTyping();
+  
+  addBotMessage(`
+    <p><strong>Room select karein:</strong></p>
+    <div class="choice-card" onclick="selectRoom('single')">
+      <h4>🛏️ Single Bed Extension</h4>
+      <p>• 1 Double Bed + Free Extra Bed</p>
+      <p>• Up to 5 people</p>
+      <p class="price">₹1,200 / Night</p>
+    </div>
+    <div class="choice-card" onclick="selectRoom('double')">
+      <h4>🛏️🛏️ Double Bed Extension</h4>
+      <p>• 2 Double Beds + Free Extra Bed</p>
+      <p>• Up to 7 people</p>
+      <p class="price">₹2,400 / Night</p>
+    </div>
+  `);
+}
+
+async function selectRoom(type) {
+  bookingData.roomType = type;
+  const name = type === 'single' ? 'Single Bed (₹1,200)' : 'Double Bed (₹2,400)';
+  addUserMessage(name);
+  showTyping(); await delay(800); hideTyping();
+  addBotMessage(`<p><strong>${name}</strong> selected ✅</p><p><strong>Check-in date:</strong></p><p style="font-size: 12px;">Format: DD/MM/YYYY</p>`);
+  currentStep = 20;
+  enableInput();
+}
+
+async function askHotelInfo() {
+  addUserMessage('Hotel Info');
+  showTyping(); await delay(800); hideTyping();
+  addBotMessage(`
+    <div class="options">
+      <button class="option-btn" onclick="window.open('harshdeep.html')"><i class="fa fa-hotel"></i> Hotel Harshdeep Details</button>
+      <button class="option-btn" onclick="restartChat()"><i class="fa fa-arrow-left"></i> Wapas</button>
+    </div>
+  `);
+}
+
+// JAL BOT
+async function initJalBot() {
+  addBotMessage(`
+    <p><strong>💧 Jai Shree Shyam!</strong></p>
+    <p>Shyam Jal home delivery chahiye?</p>
+    <div class="options">
+      <button class="option-btn" onclick="startJalOrder()"><i class="fa fa-tint"></i> Jal Order Karein</button>
+      <button class="option-btn" onclick="askJalInfo()"><i class="fa fa-question-circle"></i> Jal ke baare mein</button>
+    </div>
+  `);
+}
+
+async function startJalOrder() {
+  addUserMessage('Jal Order');
+  currentFlow = 'jal'; currentStep = 30;
+  showTyping(); await delay(800); hideTyping();
+  addBotMessage(`<p><strong>Kitni bottles chahiye?</strong></p><p style="font-size: 12px; opacity: 0.8;">Number type karein (Example: 2)</p>`);
+  enableInput();
+}
+
+async function askJalInfo() {
+  addUserMessage('Jal Information');
+  showTyping(); await delay(800); hideTyping();
+  addBotMessage(`
+    <p><strong>Shyam Jal Details:</strong></p>
+    <p>• ₹20 per bottle + packing</p>
+    <p>• Shipping charges alag (location ke hisaab se)</p>
+    <p>• 5-7 days delivery</p>
+    <p>• India mein kahin bhi delivery</p>
+    <div class="options">
+      <button class="option-btn" onclick="startJalOrder()"><i class="fa fa-tint"></i> Order Karein</button>
+      <button class="option-btn" onclick="restartChat()"><i class="fa fa-arrow-left"></i> Wapas</button>
+    </div>
+  `);
+}
+
+// HOME/INFO BOT
+async function initHomeBot() {
+  addBotMessage(`
+    <p><strong>🙏 Jai Shree Shyam!</strong></p>
+    <p>Kya jaankari chahiye?</p>
+    <div class="options">
+      <button class="option-btn" onclick="showDarshanInfo()"><i class="fa fa-clock"></i> Darshan Timings</button>
+      <button class="option-btn" onclick="showMahantInfo()"><i class="fa fa-user"></i> Mahant Ji Availability</button>
+      <button class="option-btn" onclick="showTokenInfo()"><i class="fa fa-ticket"></i> Patient Token</button>
+      <button class="option-btn" onclick="showBookingInfo()"><i class="fa fa-info-circle"></i> Booking Services</button>
+      <button class="option-btn" onclick="contactWhatsApp()"><i class="fab fa-whatsapp"></i> Booking ke liye Contact</button>
+    </div>
+  `);
+}
+
+async function showDarshanInfo() {
+  addUserMessage('Darshan Timings');
+  showTyping(); await delay(800); hideTyping();
+  addBotMessage(`
+    <p><strong>🕉️ Darshan Timings:</strong></p>
+    <p>🕐 <strong>Darshan:</strong> 7 AM - 9 PM</p>
+    <p>🙏 <strong>Aarti:</strong> 8 AM & 5 PM</p>
+    <p>✨ <strong>Best Time:</strong> Subah 7-10 AM</p>
+    <button class="restart-btn" onclick="restartChat()">← Wapas</button>
+  `);
+}
+
+async function showMahantInfo() {
+  addUserMessage('Mahant Ji');
+  showTyping(); await delay(800); hideTyping();
+  addBotMessage(`
+    <p><strong>👤 Mahant Ji Availability:</strong></p>
+    <p>✅ Available: Sunday-Tuesday, Friday-Saturday</p>
+    <p>❌ Unavailable: Wednesday & Thursday (pakka)</p>
+    <p style="margin-top: 10px; font-size: 13px; background: #fff3cd; padding: 10px; border-radius: 5px;">
+    ⚠️ Kabhi urgent kaam se doosre din bhi unavailable ho sakte hain. Confirm booking ke time humse contact karein.
+    </p>
+    <button class="restart-btn" onclick="restartChat()">← Wapas</button>
+  `);
+}
+
+async function showTokenInfo() {
+  addUserMessage('Token Info');
+  showTyping(); await delay(1000); hideTyping();
+  addBotMessage(`
+    <p><strong>🎫 Token & Abhimantrit Jal:</strong></p>
+    <p><strong>Khasiyat:</strong> Mahant ji abhimantrit jal dete hain jo negative energies door karta hai.</p>
+    
+    <p style="margin-top: 10px;"><strong>Patient Token:</strong></p>
+    <p>• Patients ko special token</p>
+    <p>• Separate line - jaldi number</p>
+    <p>• Maharaj ji haatho se jal denge</p>
+    
+    <p style="margin-top: 10px;"><strong>Agar Patient Nahi Hai:</strong></p>
+    <p>• Family ho aur patient saath nahi?</p>
+    <p>• Normal line (lambi hogi)</p>
+    <p>• Mahant ji jal abhimantrit karenge</p>
+    
+    <p style="margin-top: 10px;"><strong>Aa Nahi Sakte?</strong></p>
+    <div class="options">
+      <button class="option-btn" onclick="window.location.href='jal.html'"><i class="fa fa-tint"></i> Shyam Jal Home Delivery</button>
+      <button class="option-btn" onclick="restartChat()"><i class="fa fa-arrow-left"></i> Wapas</button>
+    </div>
+  `);
+}
+
+async function showBookingInfo() {
+  addUserMessage('Services');
+  showTyping(); await delay(800); hideTyping();
+  addBotMessage(`
+    <p><strong>📋 Services:</strong></p>
+    <p style="background: #fff3cd; padding: 10px; border-radius: 5px; font-size: 13px; margin: 10px 0;">
+    <strong>⚠️ Peak Days:</strong> Hotels aur dharamshalas full ho jaate hain. Bina booking ke raat mein, thand mein problem ho sakti hai. Advance planning zaroori hai!
+    </p>
+    
+    <p><strong>Available Services (Paid):</strong></p>
+    <p>✅ Hotel/Dharmshala booking</p>
+    <p>✅ Restaurant table & food (COD)</p>
+    <p>✅ Shyam Jal delivery</p>
+    <p>✅ Prasad delivery</p>
+    
+    <p style="font-size: 13px; opacity: 0.9; margin-top: 10px;">Service availability date aur demand pe depend karta hai.</p>
+    
+    <p style="margin-top: 15px;"><strong>Booking ke liye WhatsApp karein:</strong></p>
+    <button class="whatsapp-btn" onclick="contactWhatsApp()"><i class="fab fa-whatsapp"></i> Contact for Booking</button>
+    <button class="restart-btn" onclick="restartChat()">← Wapas</button>
+  `);
+}
+
+function contactWhatsApp() {
+  window.open('https://wa.me/917817803342?text=Namaste! Main booking ke baare mein jaankari chahta hoon.', '_blank');
+}
+
+// MESSAGE HANDLER
+async function sendMessage() {
+  const input = document.getElementById('userInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  
+  addUserMessage(msg);
+  input.value = '';
+  
+  showTyping(); await delay(1000); hideTyping();
+  
+  // FOOD ORDER FLOW
+  if (currentFlow === 'food' && currentStep === 1) {
+    bookingData.order = msg;
+    disableInput();
+    addBotMessage(`<p>Order noted: <strong>${msg}</strong> ✅</p>`);
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Apna naam:</strong></p>`);
+    currentStep = 2;
+    enableInput();
+  } else if (currentFlow === 'food' && currentStep === 2) {
+    bookingData.name = msg;
+    disableInput();
+    addBotMessage(`<p>Naam: <strong>${msg}</strong> ✅</p>`);
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Delivery address:</strong></p>`);
+    currentStep = 3;
+    enableInput();
+  } else if (currentFlow === 'food' && currentStep === 3) {
+    bookingData.address = msg;
+    disableInput();
+    addBotMessage(`<p>Address: <strong>${msg}</strong> ✅</p>`);
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Phone number:</strong></p>`);
+    currentStep = 4;
+    enableInput();
+  } else if (currentFlow === 'food' && currentStep === 4) {
+    bookingData.phone = msg;
+    disableInput();
+    addBotMessage(`<p>Phone: <strong>${msg}</strong> ✅</p>`);
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`
+      <p><strong>Payment method:</strong></p>
+      <div class="options">
+        <button class="option-btn" onclick="selectPayment('Online')"><i class="fa fa-mobile-alt"></i> Online Payment</button>
+        <button class="option-btn" onclick="selectPayment('COD')"><i class="fa fa-hand-holding-usd"></i> Cash on Delivery</button>
+      </div>
+    `);
+    currentStep = 5;
+  }
+  
+  // TABLE BOOKING
+  else if (currentFlow === 'food' && currentStep === 10) {
+    bookingData.date = msg;
+    disableInput();
+    addBotMessage(`<p>Date: <strong>${msg}</strong> ✅</p>`);
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Apna naam:</strong></p>`);
+    currentStep = 11;
+    enableInput();
+  } else if (currentFlow === 'food' && currentStep === 11) {
+    bookingData.name = msg;
+    disableInput();
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Phone number:</strong></p>`);
+    currentStep = 12;
+    enableInput();
+  } else if (currentFlow === 'food' && currentStep === 12) {
+    bookingData.phone = msg;
+    disableInput();
+    confirmFoodBooking('table');
+  }
+  
+  // HOTEL BOOKING
+  else if (currentFlow === 'hotel' && currentStep === 20) {
+    bookingData.checkin = msg;
+    disableInput();
+    addBotMessage(`<p>Check-in: <strong>${msg}</strong> ✅</p>`);
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Check-out date:</strong></p><p style="font-size: 12px;">Format: DD/MM/YYYY</p>`);
+    currentStep = 21;
+    enableInput();
+  } else if (currentFlow === 'hotel' && currentStep === 21) {
+    bookingData.checkout = msg;
+    disableInput();
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Kitne log rahenge?</strong></p>`);
+    currentStep = 22;
+    enableInput();
+  } else if (currentFlow === 'hotel' && currentStep === 22) {
+    bookingData.guests = msg;
+    disableInput();
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Apna naam:</strong></p>`);
+    currentStep = 23;
+    enableInput();
+  } else if (currentFlow === 'hotel' && currentStep === 23) {
+    bookingData.name = msg;
+    disableInput();
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Phone number:</strong></p>`);
+    currentStep = 24;
+    enableInput();
+  } else if (currentFlow === 'hotel' && currentStep === 24) {
+    bookingData.phone = msg;
+    disableInput();
+    confirmHotelBooking();
+  }
+  
+  // JAL BOOKING
+  else if (currentFlow === 'jal' && currentStep === 30) {
+    bookingData.bottles = msg;
+    disableInput();
+    addBotMessage(`<p>${msg} bottles ✅</p>`);
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Apna naam:</strong></p>`);
+    currentStep = 31;
+    enableInput();
+  } else if (currentFlow === 'jal' && currentStep === 31) {
+    bookingData.name = msg;
+    disableInput();
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Delivery address (pura address with pincode):</strong></p>`);
+    currentStep = 32;
+    enableInput();
+  } else if (currentFlow === 'jal' && currentStep === 32) {
+    bookingData.address = msg;
+    disableInput();
+    await delay(1000); showTyping(); await delay(800); hideTyping();
+    addBotMessage(`<p><strong>Contact number:</strong></p>`);
+    currentStep = 33;
+    enableInput();
+  } else if (currentFlow === 'jal' && currentStep === 33) {
+    bookingData.phone = msg;
+    disableInput();
+    confirmJalOrder();
+  }
+}
+
+async function selectPayment(method) {
+  bookingData.payment = method;
+  addUserMessage(method);
+  disableInput();
+  await delay(800);
+  confirmFoodBooking('order');
+}
+
+async function confirmFoodBooking(type) {
+  showTyping(); await delay(1200); hideTyping();
+  
+  if (type === 'order') {
+    const summary = `🍽️ *Food Order Request*
+
+*Restaurant:* ${bookingData.restaurant}
+*Order:* ${bookingData.order}
+*Name:* ${bookingData.name}
+*Address:* ${bookingData.address}
+*Phone:* ${bookingData.phone}
+*Payment:* ${bookingData.payment}
+
+_Sent via ManaunaDham.org.in chatbot_`;
+    
+    addBotMessage(`
+      <p><strong>🎉 Order Summary:</strong></p>
+      <div style="background: #fff6e6; padding: 15px; border-radius: 10px; margin-top: 10px;">
+        <p><strong>Restaurant:</strong> ${bookingData.restaurant}</p>
+        <p><strong>Order:</strong> ${bookingData.order}</p>
+        <p><strong>Name:</strong> ${bookingData.name}</p>
+        <p><strong>Address:</strong> ${bookingData.address}</p>
+        <p><strong>Phone:</strong> ${bookingData.phone}</p>
+        <p><strong>Payment:</strong> ${bookingData.payment}</p>
+      </div>
+      <button class="whatsapp-btn" onclick="sendToWhatsApp(\`${encodeURIComponent(summary)}\`)">
+        <i class="fab fa-whatsapp"></i> Confirm Order
+      </button>
+      <button class="restart-btn" onclick="restartChat()">← Naya Order</button>
+    `);
+  } else {
+    const summary = `🍽️ *Table Booking Request*
+
+*Restaurant:* ${bookingData.restaurant}
+*Date:* ${bookingData.date}
+*Name:* ${bookingData.name}
+*Phone:* ${bookingData.phone}
+
+_Sent via ManaunaDham.org.in chatbot_`;
+    
+    addBotMessage(`
+      <p><strong>🎉 Table Booking Summary:</strong></p>
+      <div style="background: #fff6e6; padding: 15px; border-radius: 10px; margin-top: 10px;">
+        <p><strong>Restaurant:</strong> ${bookingData.restaurant}</p>
+        <p><strong>Date:</strong> ${bookingData.date}</p>
+        <p><strong>Name:</strong> ${bookingData.name}</p>
+        <p><strong>Phone:</strong> ${bookingData.phone}</p>
+      </div>
+      <button class="whatsapp-btn" onclick="sendToWhatsApp(\`${encodeURIComponent(summary)}\`)">
+        <i class="fab fa-whatsapp"></i> Confirm Booking
+      </button>
+      <button class="restart-btn" onclick="restartChat()">← New Booking</button>
+    `);
+  }
+}
+
+async function confirmHotelBooking() {
+  showTyping(); await delay(1200); hideTyping();
+  
+  const roomDetails = bookingData.roomType === 'single' 
+    ? 'Single Bed Extension (₹1,200/night, up to 5 people)'
+    : 'Double Bed Extension (₹2,400/night, up to 7 people)';
+  
+  const summary = `🏨 *Hotel Booking Request*
+
+*Hotel:* Harshdeep, Aonla
+*Room:* ${roomDetails}
+*Check-in:* ${bookingData.checkin}
+*Check-out:* ${bookingData.checkout}
+*Guests:* ${bookingData.guests}
+*Name:* ${bookingData.name}
+*Phone:* ${bookingData.phone}
+
+_Sent via ManaunaDham.org.in chatbot_`;
+  
+  addBotMessage(`
+    <p><strong>🎉 Booking Summary:</strong></p>
+    <div style="background: #fff6e6; padding: 15px; border-radius: 10px; margin-top: 10px;">
+      <p><strong>Hotel:</strong> Harshdeep</p>
+      <p><strong>Room:</strong> ${roomDetails}</p>
+      <p><strong>Check-in:</strong> ${bookingData.checkin}</p>
+      <p><strong>Check-out:</strong> ${bookingData.checkout}</p>
+      <p><strong>Guests:</strong> ${bookingData.guests}</p>
+      <p><strong>Name:</strong> ${bookingData.name}</p>
+      <p><strong>Phone:</strong> ${bookingData.phone}</p>
+    </div>
+    <button class="whatsapp-btn" onclick="sendToWhatsApp(\`${encodeURIComponent(summary)}\`)">
+      <i class="fab fa-whatsapp"></i> Confirm Booking
+    </button>
+    <button class="restart-btn" onclick="restartChat()">← New Booking</button>
+  `);
+}
+
+async function confirmJalOrder() {
+  showTyping(); await delay(1200); hideTyping();
+  
+  const summary = `💧 *Shyam Jal Order Request*
+
+*Bottles:* ${bookingData.bottles}
+*Name:* ${bookingData.name}
+*Address:* ${bookingData.address}
+*Phone:* ${bookingData.phone}
+
+Price aur delivery charges address ke according batayenge.
+
+_Sent via ManaunaDham.org.in chatbot_`;
+  
+  addBotMessage(`
+    <p><strong>🎉 Jal Order Summary:</strong></p>
+    <div style="background: #fff6e6; padding: 15px; border-radius: 10px; margin-top: 10px;">
+      <p><strong>Bottles:</strong> ${bookingData.bottles}</p>
+      <p><strong>Name:</strong> ${bookingData.name}</p>
+      <p><strong>Address:</strong> ${bookingData.address}</p>
+      <p><strong>Phone:</strong> ${bookingData.phone}</p>
+    </div>
+    <p style="font-size: 13px; margin-top: 10px; opacity: 0.9;">Final price aur delivery charges aapke address ke according WhatsApp par batayenge.</p>
+    <button class="whatsapp-btn" onclick="sendToWhatsApp(\`${encodeURIComponent(summary)}\`)">
+      <i class="fab fa-whatsapp"></i> Confirm Order
+    </button>
+    <button class="restart-btn" onclick="restartChat()">← New Order</button>
+  `);
+}
+
+function sendToWhatsApp(message) {
+  window.open(`https://wa.me/917817803342?text=${message}`, '_blank');
+}
+
+document.getElementById('userInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') sendMessage();
+});
+</script>
+
+</body>
+</html>
