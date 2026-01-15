@@ -5,11 +5,12 @@
 <title>Manauna Dham Bareilly - Contact, Address & Services</title>
 
 <meta name="description" content="Find Manauna(Manona) Dham darshan and aarti timings, location, photos, live updates, and pilgrim services for devotees of Shri Khatu Shyam Ji.">
+<meta name="keywords" content="manauna dham, manona dham address, manona dham address and phone number, manona dham bareilly, manona dham baba, manona dham aarti, manona dham contact number, manauna dham jal delivery, manona dham jal delivery, manauna dham chamatkar video">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://manaunadham.org.in/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" href="logonobg.png" type="image/png">
+<link rel="icon" href="logonobg.webp" type="image/webp">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1401GVEYWR"></script>
@@ -18,6 +19,49 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-1401GVEYWR');
+</script>
+
+<!-- Structured Data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "Manauna Dham",
+  "alternateName": "Manona Dham",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Manauna Village, Tehsil Aonla",
+    "addressLocality": "Bareilly",
+    "addressRegion": "Uttar Pradesh",
+    "postalCode": "243301",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "28.2711",
+    "longitude": "79.1403"
+  },
+  "url": "https://manaunadham.org.in",
+  "telephone": "+91-78178-03342",
+  "sameAs": [
+    "https://www.instagram.com/manauna.dham.sarkar/",
+    "https://youtube.com/@manonadhamsarkarofficial"
+  ]
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://manaunadham.org.in/"
+  }]
+}
 </script>
 
 <style>
@@ -79,17 +123,14 @@ nav a.underline{
 border-bottom:2px solid #ffd56b;
 }
 
-nav a.live,
-nav a.donate{
+nav a.live{
 padding:6px 14px;
 border-radius:5px;
 display:flex;
 align-items:center;
 height:32px;
+background:#008000;
 }
-
-nav a.live{background:#008000}
-nav a.donate{background:#d10000}
 
 .menu-btn{display:none;font-size:26px;cursor:pointer}
 
@@ -157,7 +198,6 @@ margin:0 auto 20px auto;
 }
 }
 
-
 .aboutbox img{
 width:300px;
 border-radius:10px;
@@ -219,19 +259,103 @@ scroll-snap-type:x mandatory;
 .gallery-row img,
 .gallery-row iframe{
 width:100vw;
-height:65vh;   /* NOT full height */
+height:65vh;
 object-fit:cover;
 flex-shrink:0;
 scroll-snap-align:start;
 border-radius:0;
 }
 
+/* Popup Styles */
+.popup{
+display:none;
+position:fixed;
+bottom:20px;
+right:20px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,.3);
+max-width:280px;
+z-index:1000;
+animation:slideIn .5s ease;
+}
+
+@keyframes slideIn{
+from{transform:translateY(100px);opacity:0}
+to{transform:translateY(0);opacity:1}
+}
+
+.popup-close{
+position:absolute;
+top:8px;
+right:12px;
+font-size:24px;
+cursor:pointer;
+color:#7a0000;
+}
+
+.popup h3{
+color:#7a0000;
+margin-top:0;
+}
+
+.popup a{
+display:inline-block;
+background:#7a0000;
+color:white;
+padding:10px 20px;
+border-radius:5px;
+text-decoration:none;
+margin-top:10px;
+}
+
 footer{
 background:#4d0000;
 color:white;
-text-align:center;
-padding:30px;
+padding:40px 20px;
 margin-top:50px;
+}
+
+.footer-content{
+max-width:1200px;
+margin:0 auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.footer-section h3{
+color:#ffd56b;
+margin-bottom:15px;
+font-size:18px;
+}
+
+.footer-section p,
+.footer-section a{
+color:#fff;
+opacity:.9;
+line-height:1.8;
+text-decoration:none;
+display:block;
+}
+
+.footer-section a:hover{
+opacity:1;
+text-decoration:underline;
+}
+
+.footer-bottom{
+text-align:center;
+margin-top:30px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,.2);
+}
+
+.footer-bottom p{
+font-size:13px;
+opacity:.8;
+margin:5px 0;
 }
 
 @media(max-width:800px){
@@ -241,6 +365,11 @@ nav{display:none}
 .brand-text strong{font-size:16px}
 .brand-text span{font-size:12px}
 .track img{height:260px}
+.popup{
+right:10px;
+bottom:10px;
+max-width:260px;
+}
 }
 </style>
 </head>
@@ -251,7 +380,7 @@ nav{display:none}
 <div class="topbar">
 
 <div class="brand">
-<img src="logonobg.png" alt="Manauna Dham">
+<img src="logonobg.webp" alt="Manauna Dham Logo" loading="eager">
 <div class="brand-text">
 <strong>Manauna(Manona) Dham</strong>
 <span>Latest Information & Services</span>
@@ -287,7 +416,6 @@ nav{display:none}
 
 <a href="contact.html" class="underline">Contact</a>
 <a class="live" href="live.html">LIVE</a>
-<a class="donate" href="donate.html">Seva</a>
 </nav>
 
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
@@ -301,7 +429,6 @@ nav{display:none}
 <a href="vipdarshan.html">VIP Darshan</a>
 <a href="patient.html">Patient Token</a>
 <a href="live.html">Live Darshan</a>
-<a href="donate.html">Seva</a>
 <a href="jal.html">Buy Shyam Jal</a>
 <a href="prasad.html">Buy Prasad</a>
 <a href="contact.html">Contact</a>
@@ -310,24 +437,57 @@ nav{display:none}
 
 <div class="carousel">
 <div class="track">
-<img src="ILoveManaunaDham.webp" alt="Manauna Dham">
-<img src="Omendra3.webp" alt="Mahant Ji">
-<img src="Mandir1.webp" alt="Khatu Shyam Ji">
-<img src="Mandir6.webp" alt="Shyam Ji Mandir">
-<img src="ILoveManaunaDham.webp" alt="I Love Manauna Dham">
-<img src="Omendra3.webp" alt="Baba Manauna Waale">
-<img src="Mandir1.webp" alt="Mandir Khatu Shyam">
-<img src="Mandir6.webp" alt="Mandir">
+<img src="ILoveManaunaDham.webp" alt="Manauna Dham" loading="eager">
+<img src="Omendra3.webp" alt="Mahant Ji" loading="lazy">
+<img src="Mandir1.webp" alt="Khatu Shyam Ji" loading="lazy">
+<img src="Mandir6.webp" alt="Shyam Ji Mandir" loading="lazy">
+<img src="ILoveManaunaDham.webp" alt="I Love Manauna Dham" loading="lazy">
+<img src="Omendra3.webp" alt="Baba Manauna Waale" loading="lazy">
+<img src="Mandir1.webp" alt="Mandir Khatu Shyam" loading="lazy">
+<img src="Mandir6.webp" alt="Mandir" loading="lazy">
 </div>
 </div>
 
+<!-- SERVICES SECTION MOVED TO TOP -->
+<section class="section">
+<h2 style="margin-top:0">Services at Manauna(Manona) Dham</h2>
+
+<p style="margin-top:15px;font-size:15px">
+Need urgent room, food or Shyam Jal?  
+<a href="https://wa.me/917817803342" style="color:#7a0000;font-weight:700">
+Chat on WhatsApp. DON'T CALL ON THIS NUMBER
+</a>
+</p>
+
+<p style="margin-top:25px;font-size:15px;line-height:1.7">
+Bhakts visiting <strong>Manauna Dham (Manona Dham)</strong> can use our platform to book 
+<strong>patient tokens, food, hotels, dharamshala rooms, and local transport.</strong> 
+We help pilgrims coming from anywhere in the world get darshan and stay without standing in long lines.
+</p>
+
+<div class="services">
+<a href="accommodations.html" class="service"><i class="fa fa-hotel"></i><br>Hotel/Dharmshala</a>
+<a href="food.html" class="service"><i class="fa fa-utensils"></i><br>Food</a>
+<a href="jal.html" class="service"><i class="fa fa-tint"></i><br>Shyam Jal</a>
+<a href="transport.html" class="service"><i class="fa fa-bus"></i><br>Transport</a>
+<a href="prasad.html" class="service"><i class="fa fa-hands-praying"></i><br>Prasad</a>
+<a href="patient.html" class="service"><i class="fa fa-ticket"></i><br>Patient Token</a>
+<a href="vipdarshan.html" class="service"><i class="fa fa-star"></i><br>VIP Darshan</a>
+
+
+
+
+</div>
+</section>
+
+<!-- ABOUT SECTION -->
 <section class="section" id="manauna">
 <div class="aboutbox">
-<img src="KhatuShyam.webp" alt=" Khatu Shyam Ji">
+<img src="KhatuShyam.webp" alt="Khatu Shyam Ji" loading="lazy">
 <div class="abouttext">
 <h2>Manauna(Manona) Dham</h2>
 <p>
-Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is one of the most rapidly growing spiritual pilgrimage sites in india. Located near Aonla in Bareilly district, the Dham attracts lakhs of devotees every day who come seeking blessings, peace, and relief from life’s difficulties.
+Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is one of the most rapidly growing spiritual pilgrimage sites in india. Located near Aonla in Bareilly district, the Dham attracts lakhs of devotees every day who come seeking blessings, peace, and relief from life's difficulties.
 </p>
 <p>
 Devotees believe that sincere prayer at Manauna Dham brings divine grace through Shri Khatu Shyam Ji. The temple is especially known for its sacred rituals conducted by it's Chief Priest(Mahant Shri Omendra Chauhan).
@@ -350,36 +510,21 @@ People travel here from across all over India and abroad to participate in darsh
 <p>Best Time: June – December</p>
 <p>Mahant Ji unavailable: Wednesday & Thursday</p>
 </div>
+</section>
 
-<h2 style="margin-top:50px">Services at Manauna(Manona) Dham</h2>
-
-<p style="margin-top:25px;font-size:15px;line-height:1.7">
-Bhakts visiting <strong>Manauna Dham (Manona Dham)</strong> can use our platform to book 
-<strong>patient tokens, food, hotels, dharamshala rooms, and local transport.</strong>. 
-We help pilgrims coming from anywhere in the world get darshan and stay without standing in long lines.
-</p>
-
-<div class="services">
-<a href="accommodations.html" class="service"><i class="fa fa-hotel"></i><br>Hotel/Dharmshala</a>
-<a href="transport.html" class="service"><i class="fa fa-bus"></i><br>Transport</a>
-<a href="patient.html" class="service"><i class="fa fa-ticket"></i><br>Patient Token</a>
-<a href="vipdarshan.html" class="service"><i class="fa fa-star"></i><br>VIP Darshan</a>
-<a href="food.html" class="service"><i class="fa fa-utensils"></i><br>Food</a>
-<a href="jal.html" class="service"><i class="fa fa-tint"></i><br>Shyam Jal</a>
-<a href="prasad.html" class="service"><i class="fa fa-hands-praying"></i><br>Prasad</a>
-</div>
-
-<h2 style="margin-top:50px">Temple Location</h2>
+<section class="section">
+<h2 style="margin-top:0">Temple Location</h2>
 <p>
 Shri Khatu Shyam Mandir, Manauna Village,  
 Tehsil Aonla, Bareilly, Uttar Pradesh – 243301
 </p>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" width="100%" height="400" style="border:0;"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" width="100%" height="400" style="border:0;" loading="lazy"></iframe>
+</section>
 
-<div id="gallery" class="section">
+<section class="section" id="gallery">
 
-<h2 style="margin-top:50px">Manauna Dham Weather (Bareilly Region)</h2>
+<h2 style="margin-top:0">Manauna Dham Weather (Bareilly Region)</h2>
 
 <div class="services" id="weatherCards">
   <!-- Weather cards will be injected here -->
@@ -427,6 +572,7 @@ async function loadManaunaWeather(){
 
 loadManaunaWeather();
 </script>
+
 <h2 style="margin-top:50px">Today Weather</h2>
 
 <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;">
@@ -456,21 +602,20 @@ async function loadWeather(){
 loadWeather();
 </script>
 
-
-<h2>Temple Gallery</h2>
+<h2 style="margin-top:50px">Temple Gallery</h2>
 <div class="gallery-row">
-<img src="EntryGate.webp" alt="Entry Gate of Manauna Mandir/ Manauna">
-<img src="Gathering.webp" alt="Manuana rush">
-<img src="Gathering2.webp" alt="Manauan viral">
-<img src="night.webp" alt="Mandir of Khatu Shyam">
-<img src="KhatuShyam.webp" alt="Khatu Shyam Ji">
-<img src="Mandir5.webp" alt="Manuana Mandir Khatu Shyam Ji">
-<img src="Omendra.webp" alt="Mahant Ji">
-<img src="ILoveManaunaDham.webp" alt="I love Khatu Baba">
-<img src="Mandir1.webp" alt="Haare ka Sahara Baba Shyam Hamara">
-<img src="Mandir6.webp" alt="Mandir">
-<img src="Omendra3.webp" alt="Mahant Ji">
-<img src="Patient1.webp" alt="Chamatkar">
+<img src="EntryGate.webp" alt="Entry Gate of Manauna Mandir/ Manauna" loading="lazy">
+<img src="Gathering.webp" alt="Manuana rush" loading="lazy">
+<img src="Gathering2.webp" alt="Manauan viral" loading="lazy">
+<img src="night.webp" alt="Mandir of Khatu Shyam" loading="lazy">
+<img src="KhatuShyam.webp" alt="Khatu Shyam Ji" loading="lazy">
+<img src="Mandir5.webp" alt="Manuana Mandir Khatu Shyam Ji" loading="lazy">
+<img src="Omendra.webp" alt="Mahant Ji" loading="lazy">
+<img src="ILoveManaunaDham.webp" alt="I love Khatu Baba" loading="lazy">
+<img src="Mandir1.webp" alt="Haare ka Sahara Baba Shyam Hamara" loading="lazy">
+<img src="Mandir6.webp" alt="Mandir" loading="lazy">
+<img src="Omendra3.webp" alt="Mahant Ji" loading="lazy">
+<img src="Patient1.webp" alt="Chamatkar" loading="lazy">
 </div>
 
 <h2 style="margin-top:40px">Videos</h2>
@@ -482,36 +627,109 @@ loadWeather();
 <iframe src="https://www.youtube.com/embed/UqItDGc4qk8" loading="lazy" allowfullscreen></iframe>
 </div>
 
-
 <h2 style="margin-top:40px">Manauna Dham – Our rising Community</h2>
 
 <div class="services">
-<a href="https://www.instagram.com/explore/tags/manonadham/" target="_blank" class="service">
+<a href="https://www.instagram.com/explore/tags/manonadham/" target="_blank" class="service" rel="noopener">
 <i class="fab fa-instagram"></i><br>#manonadham
 </a>
 
-<a href="https://www.instagram.com/explore/tags/manaunadham/" target="_blank" class="service">
+<a href="https://www.instagram.com/explore/tags/manaunadham/" target="_blank" class="service" rel="noopener">
 <i class="fab fa-instagram"></i><br>#manaunadham
 </a>
 
-<a href="https://www.instagram.com/explore/tags/khatushyamji/" target="_blank" class="service">
+<a href="https://www.instagram.com/explore/tags/khatushyamji/" target="_blank" class="service" rel="noopener">
 <i class="fab fa-instagram"></i><br>#khatushyamji
 </a>
 
-<a href="https://www.instagram.com/manauna.dham.sarkar/" target="_blank" class="service">
+<a href="https://www.instagram.com/manauna.dham.sarkar/" target="_blank" class="service" rel="noopener">
 <i class="fab fa-instagram"></i><br>Official Instagram
 </a>
 
-<a href="https://youtube.com/@manonadhamsarkarofficial" target="_blank" class="service">
+<a href="https://youtube.com/@manonadhamsarkarofficial" target="_blank" class="service" rel="noopener">
 <i class="fab fa-youtube"></i><br>Official YouTube
 </a>
 </div>
 
+</section>
+
+<!-- FAQ SECTION -->
+<section class="section">
+<h2>Frequently Asked Questions about Manauna (Manona) Dham</h2>
+
+<p style="margin-top:20px"><strong>Where is Manauna Dham located?</strong><br>
+Manauna Dham is located in Manauna village near Aonla in Bareilly district, Uttar Pradesh.</p>
+
+<p style="margin-top:15px"><strong>What are the darshan timings?</strong><br>
+Darshan is available from 7 AM to 9 PM daily. Aarti is performed at 8 AM and 5 PM.</p>
+
+<p style="margin-top:15px"><strong>How to get a patient token?</strong><br>
+Patient tokens can be given to patients only who are in manauna dham. Rest all should take normal line for abhimantrit jal and darshan.</p>
+
+<p style="margin-top:15px"><strong>Is this the official temple website?</strong><br>
+No. ManaunaDham.org.in is a privately operated pilgrim information and services platform.</p>
+</section>
+
+<!-- POPUPS -->
+<div class="popup" id="popup1">
+<span class="popup-close" onclick="closePopup('popup1')">&times;</span>
+<h3>Looking for Hotel?</h3>
+<p>Book comfortable hotel/dharmshala near Manauna Dham</p>
+<a href="accommodations.html">View Hotels</a>
 </div>
 
+<div class="popup" id="popup2">
+<span class="popup-close" onclick="closePopup('popup2')">&times;</span>
+<h3>Need Food Delivery?</h3>
+<p>Get delicious food delivered</p>
+<a href="food.html">Order Now</a>
+</div>
+
+<div class="popup" id="popup3">
+<span class="popup-close" onclick="closePopup('popup3')">&times;</span>
+<h3>Jal Delivery Available</h3>
+<p>Get abhimantrit Shyam Jal delivered to your location</p>
+<a href="jal.html">Order Jal</a>
+</div>
+
+<!-- FOOTER -->
 <footer>
+<div class="footer-content">
+<div class="footer-section">
+<h3>Manauna Dham</h3>
+<p>Shri Khatu Shyam Mandir</p>
+<p>Manauna Village, Tehsil Aonla</p>
+<p>Bareilly, Uttar Pradesh - 243301</p>
+</div>
+
+<div class="footer-section">
+<h3>Quick Links</h3>
+<a href="index.html">Home</a>
+<a href="accommodations.html">Hotels</a>
+<a href="food.html">Food Services</a>
+<a href="transport.html">Transport</a>
+<a href="contact.html">Contact Us</a>
+</div>
+
+<div class="footer-section">
+<h3>Services</h3>
+<a href="patient.html">Patient Token</a>
+<a href="jal.html">Shyam Jal</a>
+<a href="prasad.html">Prasad</a>
+<a href="live.html">Live Darshan</a>
+</div>
+
+<div class="footer-section">
+<h3>Follow The Official Accounts</h3>
+<a href="https://www.instagram.com/manauna.dham.sarkar/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://youtube.com/@manonadhamsarkarofficial" target="_blank" rel="noopener">YouTube</a>
+</div>
+</div>
+
+<div class="footer-bottom">
 <p>© 2026 ManaunaDham.org.in</p>
-<p style="font-size:13px;opacity:.8">ManaunaDham.org.in is a privately operated pilgrim information and services platform. It is not the official website of the temple.</p>
+<p>ManaunaDham.org.in is a privately operated pilgrim information and services platform. It is not the official website of the temple.</p>
+</div>
 </footer>
 
 <script>
@@ -519,6 +737,26 @@ function toggleMenu(){
 let m=document.getElementById("mobileMenu");
 m.style.display = m.style.display==="flex" ? "none" : "flex";
 }
+
+// Popup system
+const popups = ['popup1', 'popup2', 'popup3'];
+let currentPopup = 0;
+
+function showRandomPopup() {
+  const popup = document.getElementById(popups[currentPopup]);
+  popup.style.display = 'block';
+  currentPopup = (currentPopup + 1) % popups.length;
+}
+
+function closePopup(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+// Show first popup after 10 seconds
+setTimeout(showRandomPopup, 10000);
+
+// Show subsequent popups every 30 seconds
+setInterval(showRandomPopup, 30000);
 </script>
 
 </body>
