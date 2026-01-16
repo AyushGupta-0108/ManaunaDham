@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manauna Dham Shyam Jal Home Delivery | Manona Dham Abhimantrit Jal Online</title>
 <meta name="description" content="Order authentic Shyam Jal from Manauna Dham (Manona Dham) with home delivery across India. Get blessed abhimantrit jal from Khatu Shyam Ji Mandir delivered to your doorstep.">
-<meta name="keywords" content="manauna dham jal delivery, manona dham jal delivery, shyam jal home delivery, manauna dham shyam jal, khatu shyam jal online, abhimantrit jal manauna dham">
+<meta name="keywords" content="manauna dham jal delivery, manona dham jal delivery, shyam jal home delivery, manauna dham shyam jal, khatu shyam jal online, abhimantrit jal manauna dham, manona dham water delivery, manauna dham jal price, buy shyam jal online">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="logonobg.webp" type="image/webp">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -14,8 +14,11 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Manauna Dham Shyam Jal",
-  "description": "Sacred Shyam Jal from Manauna Dham (Manona Dham) - Abhimantrit water blessed by Shri Khatu Shyam Ji",
-  "brand": { "@type": "Brand", "name": "Manauna Dham" },
+  "description": "Sacred Shyam Jal from Manauna Dham (Manona Dham) - Abhimantrit water blessed by Shri Khatu Shyam Ji and Poojya Mahant Omendra Chauhan Ji",
+  "brand": {
+    "@type": "Brand",
+    "name": "Manauna Dham"
+  },
   "offers": {
     "@type": "Offer",
     "availability": "https://schema.org/InStock",
@@ -30,113 +33,497 @@
 "@context":"https://schema.org",
 "@type":"FAQPage",
 "mainEntity":[
-  {
-    "@type":"Question",
-    "name":"Can Shyam Jal be delivered to home from Manauna Dham?",
-    "acceptedAnswer":{"@type":"Answer","text":"Yes. Abhimantrit Shyam Jal from Manauna (Manona) Dham can be couriered to your home anywhere in India."}
-  },
-  {
-    "@type":"Question",
-    "name":"Is this authentic Shyam Jal from Manauna Dham?",
-    "acceptedAnswer":{"@type":"Answer","text":"Yes. Jal is taken only from the single official Shyam Jal counter inside Manauna Dham temple premises."}
-  }
+{
+"@type":"Question",
+"name":"Can Shyam Jal be delivered to home from Manauna Dham?",
+"acceptedAnswer":{"@type":"Answer","text":"Yes. Abhimantrit Shyam Jal from Manauna (Manona) Dham can be couriered to your home anywhere in India."}
+},
+{
+"@type":"Question",
+"name":"Is this authentic Shyam Jal from Manauna Dham?",
+"acceptedAnswer":{"@type":"Answer","text":"Yes. Jal is taken only from the single official Shyam Jal counter inside Manauna Dham temple premises and is Abhimantrit by Mahant Ji."}
+},
+{
+"@type":"Question",
+"name":"How should Shyam Jal be consumed?",
+"acceptedAnswer":{"@type":"Answer","text":"As directed by Mahant Ji: consume one cap daily before 11:55 AM."}
+}
 ]
 }
 </script>
 
+
 <style>
-/* CSS Reset & Variables */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: Segoe UI, Arial, sans-serif; background: #fff6e6; line-height: 1.6; color: #333; }
+/* Global Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* Header & Nav */
-header { background: linear-gradient(135deg, #7a0000 0%, #4d0000 100%); color: white; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,.3); position: sticky; top: 0; z-index: 1000; }
-.topbar { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-.brand { display: flex; align-items: center; gap: 12px; }
-.brand img { height: 48px; width: auto; }
-.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-.brand-text strong { font-size: 18px; }
-.brand-text span { font-size: 13px; opacity: .9; }
+body {
+  font-family: Segoe UI, Arial, sans-serif;
+  background: #fff6e6;
+  line-height: 1.6;
+}
 
-nav { display: flex; align-items: center; gap: 18px; }
-nav a { color: white; text-decoration: none; font-weight: 600; font-size: 15px; transition: color 0.3s; }
-nav a:hover { color: #ffd56b; }
-nav a.live { background: #008000; padding: 6px 14px; border-radius: 5px; }
-nav a.live:hover { background: #006400; color: white; }
+/* --- NEW HEADER STYLES --- */
+header {
+  background: #7a0000;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,.3);
+  position: relative;
+  z-index: 100;
+}
 
-.dropdown { position: relative; }
-.dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #7a0000; min-width: 200px; box-shadow: 0 5px 15px rgba(0,0,0,.4); border-radius: 4px; padding: 5px 0; }
-.dropdown-menu a { display: block; padding: 10px 15px; border-bottom: 1px solid #900; }
-.dropdown:hover .dropdown-menu { display: block; }
-.menu-btn { display: none; font-size: 26px; cursor: pointer; }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-/* Mobile Menu */
-.mobile-menu { display: none; flex-direction: column; background: #7a0000; position: fixed; top: 78px; left: 0; right: 0; z-index: 999; box-shadow: 0 5px 10px rgba(0,0,0,0.2); }
-.mobile-menu a { padding: 15px; color: white; text-decoration: none; border-bottom: 1px solid #900; font-weight: 600; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-/* Hero Section */
-.hero { background: linear-gradient(rgba(122, 0, 0, 0.85), rgba(77, 0, 0, 0.9)), url('shyamjal1.webp'); background-size: cover; background-position: center; color: white; padding: 100px 20px; text-align: center; }
-.hero h2 { font-size: 38px; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,.5); }
-.hero p { font-size: 20px; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.95; }
+.brand img {
+  height: 48px;
+  width: auto;
+}
 
-/* Buttons */
-.cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-.btn-primary, .btn-secondary { cursor: pointer; display: inline-flex; align-items: center; gap: 10px; padding: 15px 35px; border-radius: 50px; font-size: 18px; font-weight: 700; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; border: none; }
-.btn-primary { background: #25D366; color: white; }
-.btn-secondary { background: white; color: #7a0000; border: 2px solid white; }
-.btn-secondary:hover { background: #f0f0f0; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
 
-/* Common Sections */
-.section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-.centered { text-align: center; }
-.section h2 { color: #7a0000; font-size: 32px; text-align: center; margin-bottom: 40px; border-bottom: 3px solid #d4a017; display: inline-block; padding-bottom: 10px; }
+.brand-text strong {
+  font-size: 18px;
+  font-weight: 700;
+}
 
-/* Pricing */
-.pricing-box { background: white; border-radius: 15px; padding: 30px; max-width: 700px; margin: 20px auto; box-shadow: 0 5px 25px rgba(0,0,0,.1); border-top: 5px solid #7a0000; }
-.price-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-.price-table th, .price-table td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
-.price-table th { background: #f8f8f8; color: #7a0000; font-weight: 700; }
-.note { background: #fff3cd; border-left: 4px solid #d4a017; padding: 15px; margin: 20px 0; font-size: 14px; border-radius: 4px; }
+.brand-text span {
+  font-size: 13px;
+  opacity: .9;
+}
 
-/* Features Grid */
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
-.feature-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,.05); text-align: center; transition: transform 0.3s; }
-.feature-card:hover { transform: translateY(-5px); }
-.feature-icon { font-size: 40px; color: #7a0000; margin-bottom: 15px; }
+nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
 
-/* Gallery */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-.gallery img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,.15); transition: transform 0.3s; }
-.gallery img:hover { transform: scale(1.02); }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+}
 
-/* Services Grid */
-.service-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; }
-.service-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: white; padding: 25px; border-radius: 10px; text-decoration: none; color: #7a0000; font-weight: 600; box-shadow: 0 3px 10px rgba(0,0,0,.08); transition: all 0.2s; border: 1px solid #eee; }
-.service-btn:hover { transform: translateY(-3px); border-color: #7a0000; }
-.service-btn i { font-size: 28px; color: #d4a017; }
+nav a.underline {
+  border-bottom: 2px solid #ffd56b;
+}
 
-/* FAQ */
-.faq-item { background: white; padding: 20px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid #7a0000; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.faq-item h4 { color: #7a0000; margin-bottom: 8px; font-size: 18px; }
+nav a.live {
+  padding: 6px 14px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  background: #008000;
+}
 
-/* Popups & Floats */
-.popup { display: none; position: fixed; bottom: 90px; right: 20px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 30px rgba(0,0,0,.3); max-width: 300px; z-index: 1000; border-left: 5px solid #d4a017; animation: slideIn 0.4s ease; }
-@keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.popup-close { position: absolute; top: 5px; right: 10px; font-size: 20px; cursor: pointer; color: #999; }
-.popup h3 { color: #7a0000; margin-bottom: 5px; font-size: 16px; }
-.popup a { display: inline-block; background: #7a0000; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; margin-top: 10px; font-size: 13px; }
+.menu-btn {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
 
-.whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 20px; left: 20px; background: #25D366; color: white; border-radius: 50%; text-align: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,.3); z-index: 2000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.3s; }
-.whatsapp-float:hover { transform: scale(1.1); }
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #7a0000;
+  padding: 10px;
+}
 
-footer { background: #222; color: #ccc; padding: 40px 20px; text-align: center; margin-top: 50px; }
-footer p { font-size: 14px; margin-top: 10px; }
+.mobile-menu a {
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid #aa0000;
+}
 
-@media (max-width: 800px) {
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #7a0000;
+  top: 100%;
+  min-width: 200px;
+  z-index: 99;
+  box-shadow: 0 5px 15px rgba(0,0,0,.4);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid #aa0000;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+@media (max-width: 900px) {
   nav { display: none; }
   .menu-btn { display: block; }
-  .hero h2 { font-size: 28px; }
-  .popup { right: 10px; bottom: 90px; max-width: 280px; }
+  .brand-text strong { font-size: 16px; }
+  .brand-text span { font-size: 12px; }
+  .brand img { height: 42px; }
+}
+
+/* --- PAGE SPECIFIC STYLES --- */
+
+.hero {
+  background: linear-gradient(rgba(122, 0, 0, 0.8), rgba(77, 0, 0, 0.9)), url('shyamjal1.webp');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,.5);
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 35px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: #25D366;
+  color: white;
+}
+
+.btn-secondary {
+  background: white;
+  color: #7a0000;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,.3);
+}
+
+.section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  color: #7a0000;
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 4px solid #d4a017;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 50px;
+  color: #7a0000;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  color: #7a0000;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.pricing-box {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  max-width: 700px;
+  margin: 40px auto;
+  box-shadow: 0 5px 25px rgba(0,0,0,.15);
+}
+
+.pricing-box h3 {
+  color: #7a0000;
+  font-size: 28px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.price-table th, .price-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.price-table th {
+  background: #7a0000;
+  color: white;
+  font-weight: 600;
+}
+
+.price-table tr:last-child td {
+  border-bottom: none;
+  font-weight: 700;
+  font-size: 18px;
+  color: #7a0000;
+}
+
+.note {
+  background: #fff3cd;
+  border-left: 4px solid #d4a017;
+  padding: 15px;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.2);
+}
+
+.services-local {
+  background: #f9f9f9;
+  padding: 40px;
+  border-radius: 15px;
+  margin-top: 40px;
+}
+
+.services-local h3 {
+  color: #7a0000;
+  font-size: 26px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.service-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.service-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #7a0000;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0,0,0,.1);
+  transition: transform 0.2s;
+}
+
+.service-btn:hover {
+  transform: translateY(-3px);
+}
+
+.service-btn i {
+  font-size: 32px;
+}
+
+.faq {
+  margin-top: 60px;
+}
+
+.faq-item {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border-left: 4px solid #d4a017;
+}
+
+.faq-item h4 {
+  color: #7a0000;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 30px rgba(0,0,0,.4);
+  max-width: 320px;
+  z-index: 1000;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #7a0000;
+  font-weight: bold;
+}
+
+.popup h3 {
+  color: #7a0000;
+  margin-bottom: 10px;
+}
+
+.popup a {
+  display: inline-block;
+  background: #7a0000;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  left: 30px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,.3);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 28px;
+  }
+  
+  .hero p {
+    font-size: 16px;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .popup {
+    right: 10px;
+    bottom: 10px;
+    max-width: 280px;
+  }
 }
 </style>
 </head>
@@ -148,77 +535,101 @@ footer p { font-size: 14px; margin-top: 10px; }
     <div class="brand">
       <img src="logonobg.webp" alt="Manauna Dham Logo" loading="eager">
       <div class="brand-text">
-        <strong>Manauna (Manona) Dham</strong>
-        <span>Shyam Jal Delivery</span>
+        <strong>Manauna(Manona) Dham</strong>
+        <span>Latest Information & Services</span>
       </div>
     </div>
 
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html" class="underline">Home</a>
+      
       <div class="dropdown">
-        <a href="#">Services ▾</a>
+        <a href="#" class="underline">Services ▾</a>
         <div class="dropdown-menu">
           <a href="accommodations.html">Hotel/Dharmshala</a>
           <a href="food.html">Food</a>
           <a href="transport.html">Transport</a>
-          <a href="jal.html"><strong>Buy Shyam Jal</strong></a>
+          <a href="patient.html">Patient Token</a>
+          <a href="jal.html">Buy Shyam Jal</a>
           <a href="prasad.html">Buy Prasad</a>
         </div>
       </div>
-      <a href="contact.html">Contact</a>
-      <a class="live" href="live.html"><i class="fas fa-video"></i> LIVE</a>
+
+      <a href="#gallery" class="underline">Gallery</a>
+
+      <div class="dropdown">
+        <a href="#" class="underline">About ▾</a>
+        <div class="dropdown-menu">
+          <a href="khatushyam.html">Shri Khatu Shyam Ji</a>
+          <a href="mahant.html">Mahant Omendra Ji</a>
+          <a href="index.html#manauna">Manauna Dham</a>
+        </div>
+      </div>
+
+      <a href="contact.html" class="underline">Contact</a>
+      <a class="live" href="live.html">LIVE</a>
     </nav>
 
-    <div class="menu-btn" onclick="toggleMenu()">
-      <i class="fas fa-bars"></i>
-    </div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="accommodations.html">Hotel/Dharmshala</a>
+    <a href="food.html">Food</a>
+    <a href="transport.html">Transport</a>
+    <a href="patient.html">Patient Token</a>
+    <a href="live.html">Live Darshan</a>
+    <a href="jal.html">Buy Shyam Jal</a>
+    <a href="prasad.html">Buy Prasad</a>
+    <a href="contact.html">Contact</a>
   </div>
 </header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="accommodations.html">Hotel/Dharmshala</a>
-  <a href="food.html">Food Services</a>
-  <a href="transport.html">Transport</a>
-  <a href="jal.html" style="background:#600;"><strong>Buy Shyam Jal</strong></a>
-  <a href="prasad.html">Buy Prasad</a>
-  <a href="contact.html">Contact Us</a>
-  <a href="live.html">🔴 Live Darshan</a>
-</div>
-
 <section class="hero">
   <h2>🙏 Shyam Jal Delivered to Your Home 🙏</h2>
-  <p>Experience the divine blessings of Shri Khatu Shyam Ji from Manauna Dham, delivered safely anywhere in India.</p>
+  <p>Experience the divine blessings of Shri Khatu Shyam Ji from Manauna Dham (Manona Dham), delivered anywhere in India</p>
   <div class="cta-buttons">
-    <button class="btn-secondary" onclick="startJalOrder()">
-      <i class="fab fa-whatsapp"></i> Order Shyam Jal
-    </button>
+  <button class="btn-secondary" onclick="startJalOrder()">
+    💧 Order Shyam Jal
+  </button>
+</div>
+</section>
+<section class="section">
+  <h2>Manauna (Manona) Dham Shyam Jal Home Delivery</h2>
+  <p>
+    Jo bhakt Manauna Dham aa nahi pa sakte, unke liye 
+    <b>Shyam Jal ghar par courier</b> ki suvidha uplabdh hai. 
+    Yeh jal Manauna Khatu Shyam Ji ki <b>Janmbhoomi</b> se liya gaya, 
+    Mahant Ji dwara <b>Abhimantrit</b> hota hai.
+  </p>
+  <p>
+    Aap jitna chahein utna jal mangwa sakte hain aur roz grahan kar sakte hain. 
+    Isse ghar aur shareer ki <b>negative energies door</b> hoti hain.
+  </p>
+
+  <div style="margin-top:20px;font-weight:600;color:#7a0000">
+    📦 Home delivery available all over India
   </div>
 </section>
 
-<section class="section">
-  <div class="centered">
-    <p style="font-size: 18px; max-width: 800px; margin: 0 auto;">
-      Jo bhakt Manauna Dham aa nahi pa sakte, unke liye <b>Shyam Jal ghar par courier</b> ki suvidha uplabdh hai. Yeh jal Manauna Khatu Shyam Ji ki <b>Janmbhoomi</b> se liya gaya, Mahant Ji dwara <b>Abhimantrit</b> hota hai.
-    </p>
-  </div>
-</section>
-
-<section class="section">
+   <section class="section">
   <div class="centered">
     <h2>Shyam Jal Gallery</h2>
   </div>
-  <div class="gallery">
+  
+  <div class="gallery" id="gallery">
     <img src="images/jal/counter1.webp" alt="Manauna Dham Shyam Jal Counter" loading="lazy">
-    <img src="images/jal/counter2.webp" alt="Manona Dham Abhimantrit Jal Process" loading="lazy">
+    <img src="images/jal/counter2.webp" alt="Manona Dham Abhimantrit Jal" loading="lazy">
     <img src="images/jal/bottle1.webp" alt="Manona Dham Shyam Jal Bottle" loading="lazy">
+    <img src="images/jal/bottle2.webp" alt="Manona Dham Abhimantrit Jal" loading="lazy">
   </div>
-</section>
-
-<section class="section">
+  </section>
+      
+<section class="section" style="background: white;">
   <div class="centered">
-    <h2>Pricing & Logistics</h2>
+    <h2>Manauna Dham Shyam Jal Pricing</h2>
   </div>
+  
   <div class="pricing-box">
     <h3>Sample Invoice Breakdown</h3>
     <table class="price-table">
@@ -230,180 +641,255 @@ footer p { font-size: 14px; margin-top: 10px; }
       </thead>
       <tbody>
         <tr>
-          <td>Shyam Jal (1 Bottle)</td>
+          <td>Shyam Jal (1 bottle)</td>
           <td>₹20.00</td>
         </tr>
         <tr>
-          <td>Packaging Safety</td>
+          <td>Packaging Cost</td>
           <td>₹20.00</td>
         </tr>
         <tr>
-          <td><strong>Sub Total</strong></td>
-          <td><strong>₹40.00</strong></td>
+          <td>Logistics & Handling</td>
+          <td>As per location</td>
         </tr>
         <tr>
-          <td>Shipping (Courier)</td>
-          <td>Variable (As per location)</td>
+          <td>Shipping Charges</td>
+          <td>As per location</td>
+        </tr>
+        <tr>
+          <td><strong>Base Amount</strong></td>
+          <td><strong>₹40 + Shipping</strong></td>
         </tr>
       </tbody>
     </table>
     
     <div class="note">
-      <strong>📌 Note:</strong> Total cost depends on your delivery address and quantity.
+      <strong>📌 Note:</strong> Shipping and logistics charges vary based on your delivery location. Contact us on WhatsApp for exact pricing and delivery time for your area.
     </div>
+    
+    <div class="note">
+  <strong>📌 Note:</strong> 
+  Shyam Jal ka mulya bottle count aur delivery address ke hisaab se hota hai. 
+  Shipping aur packaging charges location par depend karte hain.
+</div>
 
-    <div style="text-align:center;">
-      <button class="btn-primary" onclick="startJalOrder()">
-        <i class="fab fa-whatsapp"></i> Check Price & Order
-      </button>
+<div style="text-align:center;margin-top:20px">
+  <button class="btn-secondary" onclick="startJalOrder()">
+    💧 Check Price & Order
+  </button>
+</div>
+
+</section>
+
+
+<section class="section" style="background: #f9f9f9;">
+  <div class="services-local">
+    <h3>Already Visiting Manauna Dham? Book Other Services</h3>
+    <p style="text-align: center; margin-bottom: 20px;">If you're planning to visit or already at Manauna Dham, we offer additional pilgrim services:</p>
+    
+    <div class="service-buttons">
+      <a href="accommodations.html" class="service-btn">
+        <i class="fa fa-hotel"></i>
+        <span>Hotel/Dharmshala</span>
+      </a>
+      
+      <a href="food.html" class="service-btn">
+        <i class="fa fa-utensils"></i>
+        <span>Food Services</span>
+      </a>
+      
+      <a href="transport.html" class="service-btn">
+        <i class="fa fa-bus"></i>
+        <span>Transport</span>
+      </a>
+      
+      <a href="patient.html" class="service-btn">
+        <i class="fa fa-ticket"></i>
+        <span>Patient Token</span>
+      </a>
+      
+      <a href="vipdarshan.html" class="service-btn">
+        <i class="fa fa-star"></i>
+        <span>VIP Darshan</span>
+      </a>
+      
+      <a href="prasad.html" class="service-btn">
+        <i class="fa fa-hands-praying"></i>
+        <span>Prasad Delivery</span>
+      </a>
     </div>
   </div>
 </section>
-
-<section class="section" style="background: #f9f9f9;">
+<section class="section">
   <div class="centered">
-    <h2>Why Order from Manauna Dham?</h2>
+    <h2>Why Order Shyam Jal from Manauna Dham?</h2>
   </div>
+
   <div class="features">
     <div class="feature-card">
       <div class="feature-icon">💧</div>
       <h3>100% Authentic</h3>
-      <p>Sourced directly from the official Mandir counter.</p>
+      <p>Directly sourced from the single official Shyam Jal counter inside Manauna Dham temple premises.</p>
     </div>
+
     <div class="feature-card">
       <div class="feature-icon">🚚</div>
       <h3>Pan-India Delivery</h3>
-      <p>We deliver to every village and city in India.</p>
+      <p>Shyam Jal home delivery available across all states in India. Select international locations also supported.</p>
     </div>
+
     <div class="feature-card">
       <div class="feature-icon">📦</div>
-      <h3>Safe Packaging</h3>
-      <p>Leak-proof packaging ensures jal reaches safely.</p>
+      <h3>Secure Packaging</h3>
+      <p>Leak-proof, protective packaging to ensure the sacred jal reaches safely without spillage.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Fast Dispatch</h3>
+      <p>Orders are dispatched within 24 hours. Delivery time depends on destination.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🙏</div>
+      <h3>Abhimantrit by Mahant Ji</h3>
+      <p>Every bottle contains jal that is Abhimantrit as per temple tradition.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>Trusted by Devotees</h3>
+      <p>Hundreds of bhakts across India have already received Shyam Jal through our service.</p>
     </div>
   </div>
 </section>
 
 <section class="section faq">
   <div class="centered">
-    <h2>Frequently Asked Questions</h2>
+    <h2>Frequently Asked Questions - Manauna Dham Shyam Jal</h2>
   </div>
   
   <div class="faq-item">
-    <h4>Q: How do I place an order?</h4>
-    <p>A: Click the WhatsApp button, send us your address, and we will tell you the total shipping cost.</p>
+    <h4>Q: What is Manauna Dham Shyam Jal?</h4>
+    <p>A: Shyam Jal is sacred abhimantrit water from Manauna Dham (Manona Dham), blessed by Mahant Omendra Ji. Devotees use it for prayers, rituals, and seeking blessings from Shri Khatu Shyam Ji.</p>
   </div>
   
   <div class="faq-item">
-    <h4>Q: Is cash on delivery available?</h4>
-    <p>A: Currently, we accept UPI/Online payments to ensure contactless delivery.</p>
+    <h4>Q: How is the Shyam Jal packaged for delivery?</h4>
+    <p>A: We use secure, leak-proof packaging to ensure the sacred jal reaches you safely. Each bottle is carefully wrapped and placed in protective packaging material.</p>
   </div>
   
   <div class="faq-item">
-    <h4>Q: How long does delivery take?</h4>
-    <p>A: Usually 5-7 days depending on your state.</p>
+    <h4>Q: How long does delivery take from Manauna Dham?</h4>
+    <p>A: Typically 5-7 days depending on your location. Metro cities receive faster delivery. We dispatch within 24 hours of order confirmation.</p>
+  </div>
+  
+  <div class="faq-item">
+    <h4>Q: Can I order multiple bottles of Shyam Jal?</h4>
+    <p>A: Yes! You can order multiple bottles. Contact us on WhatsApp to discuss bulk orders and special pricing.</p>
+  </div>
+  
+  <div class="faq-item">
+    <h4>Q: Do you deliver Manauna Dham Shyam Jal outside India?</h4>
+    <p>A: Yes, we offer international delivery to select countries. Contact us with your location for shipping details.</p>
+  </div>
+  
+  <div class="faq-item">
+    <h4>Q: How do I place an order for Shyam Jal?</h4>
+    <p>A: Simply click the "Order Now" button or message us on WhatsApp at +91-78178-03342. Provide your delivery address and we'll send you the total amount including shipping.</p>
+  </div>
+  
+  <div class="faq-item">
+    <h4>Q: Is this authentic Shyam Jal from Manauna Dham temple?</h4>
+    <p>A: Yes, absolutely. We source the abhimantrit jal directly from Manauna Dham temple premises. Every bottle contains genuine blessed water.</p>
   </div>
 </section>
 
-<section class="section" style="background: #f4f4f4; border-radius: 15px; margin-bottom: 40px;">
-  <div class="centered">
-    <h3>Visiting Manauna Dham? Book Other Services</h3>
-    <div class="service-buttons">
-      <a href="accommodations.html" class="service-btn">
-        <i class="fa fa-hotel"></i>
-        <span>Book Stay</span>
-      </a>
-      <a href="food.html" class="service-btn">
-        <i class="fa fa-utensils"></i>
-        <span>Food</span>
-      </a>
-      <a href="transport.html" class="service-btn">
-        <i class="fa fa-bus"></i>
-        <span>Transport</span>
-      </a>
-      <a href="prasad.html" class="service-btn">
-        <i class="fa fa-gift"></i>
-        <span>Prasad</span>
-      </a>
-    </div>
-  </div>
+<section class="section"
+  style="background: linear-gradient(135deg, #7a0000 0%, #4d0000 100%);
+         color: white;
+         text-align: center;">
+
+  <h2 style="color:white; border-bottom:4px solid #ffd56b;">
+    Order Your Shyam Jal Today
+  </h2>
+
+  <p style="font-size:18px; margin:30px 0;">
+    Manauna Dham aa pana sambhav nahi? 
+    <br>
+    Ab <b>Abhimantrit Shyam Jal</b> seedha aapke ghar.
+  </p>
+
+  <button
+    class="btn-secondary"
+    onclick="startJalOrder()"
+    style="font-size:20px;padding:18px 45px;">
+    💧 Order Shyam Jal
+  </button>
+
+  <p style="margin-top:20px;font-size:14px;opacity:.9">
+    ✔ Official Mandir Counter se<br>
+    ✔ Mahant Ji dwara Abhimantrit<br>
+    ✔ All-India Courier Available
+  </p>
+
 </section>
 
-<footer>
-  <h3>Manauna (Manona) Dham</h3>
-  <p>Official Service Partner for Devotees</p>
-  <p>&copy; 2024 Manauna Dham Services. All rights reserved.</p>
-  <br>
-  <a href="contact.html" style="color: #bbb;">Contact Us</a> | <a href="privacy.html" style="color: #bbb;">Privacy Policy</a>
-</footer>
 
-<a href="javascript:void(0)" onclick="startJalOrder()" class="whatsapp-float">
-  <i class="fab fa-whatsapp"></i>
-</a>
 
 <div class="popup" id="popup1">
-  <span class="popup-close" onclick="closePopup('popup1')">&times;</span>
+  <span class="popup-close" onclick="closePopup('popup1')">×</span>
   <h3>🏨 Need Accommodation?</h3>
-  <p>Book Dharmshala near Mandir</p>
+  <p>Book hotel or dharmshala near Manauna Dham</p>
   <a href="accommodations.html">Book Now</a>
 </div>
 
 <div class="popup" id="popup2">
-  <span class="popup-close" onclick="closePopup('popup2')">&times;</span>
-  <h3>🍽️ Food Services</h3>
-  <p>Order pure veg meals</p>
-  <a href="food.html">View Menu</a>
+  <span class="popup-close" onclick="closePopup('popup2')">×</span>
+  <h3>🍽️ Food Services Available</h3>
+  <p>Order meals during your visit to Manauna Dham</p>
+  <a href="food.html">Order Food</a>
 </div>
 
+<div class="popup" id="popup3">
+  <span class="popup-close" onclick="closePopup('popup3')">×</span>
+  <h3>🎫 Patient Token Service</h3>
+  <p>Poori jankari lijiye mahant ji ke darshan ki</p>
+  <a href="patient.html">Get Token</a>
+</div>
+
+
 <script>
-// 1. WhatsApp Order Logic (Added Fix)
-function startJalOrder() {
-    // Replace with your actual WhatsApp number
-    const phoneNumber = "917817803342"; 
-    const message = "Jai Shree Shyam. I want to order Manauna Dham Shyam Jal. Please tell me the process.";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-}
-
-// 2. Mobile Menu Toggle
+// Menu Toggle Function (Added for new header)
 function toggleMenu() {
-  const menu = document.getElementById("mobileMenu");
-  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    var menu = document.getElementById('mobileMenu');
+    if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'flex';
+    }
 }
 
-// Close menu when clicking a link
-document.querySelectorAll("#mobileMenu a").forEach(link => {
-  link.addEventListener("click", () => {
-    document.getElementById("mobileMenu").style.display = "none";
-  });
-});
+// Popup system
+const popups = ['popup1', 'popup2', 'popup3'];
+let currentPopup = 0;
 
-// 3. Popup System (Fixed Timing)
-const popups = ['popup1', 'popup2'];
-let currentPopupIndex = 0;
-
-function showNextPopup() {
-    // Hide all popups first
-    popups.forEach(id => document.getElementById(id).style.display = 'none');
-    
-    // Show current popup
-    const popup = document.getElementById(popups[currentPopupIndex]);
-    if(popup) popup.style.display = 'block';
-
-    // Move to next index
-    currentPopupIndex = (currentPopupIndex + 1) % popups.length;
+function showRandomPopup() {
+  const popup = document.getElementById(popups[currentPopup]);
+  popup.style.display = 'block';
+  currentPopup = (currentPopup + 1) % popups.length;
 }
 
 function closePopup(id) {
   document.getElementById(id).style.display = 'none';
 }
 
-// Start popup cycle: Show first after 10s, then cycle every 35s
-setTimeout(() => {
-    showNextPopup();
-    setInterval(showNextPopup, 35000); 
-}, 10000);
+// Show first popup after 15 seconds
+setTimeout(showRandomPopup, 10000);
 
+// Show subsequent popups every 35 seconds
+setInterval(showRandomPopup, 5000);
 </script>
-
+<script src="assets/chatbot.js"></script>
 </body>
 </html>
