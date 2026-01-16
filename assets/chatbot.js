@@ -62,20 +62,49 @@
       cursor: pointer;
       font-size: 18px;
     }
+.manauna-chat-body {
+  padding: 12px;
+  font-size: 14px;
+  overflow-y: auto;
+  max-height: 50vh;
+}
 
-    .manauna-chat-body {
-      padding: 12px;
-      font-size: 14px;
-    }
+    /* MOBILE IMPROVEMENTS */
+@media (max-width: 480px) {
+
+  .manauna-chat-box {
+    width: calc(100vw - 20px);
+    left: 10px;
+    bottom: 70px;
+    max-height: calc(100vh - 90px);
+  }
+
+  .manauna-chat-body {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .chat-option {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
   `;
   document.head.appendChild(style);
 
   const btn = document.createElement("div");
   btn.className = "manauna-chat-btn";
   btn.textContent = "Chat Karein";
-  btn.onclick = () => {
+ btn.onclick = () => {
+  if (box.style.display === "block") {
+    box.style.display = "none";
+    resetChat();
+  } else {
     box.style.display = "block";
-  };
+  }
+};
+
 
   const box = document.createElement("div");
   box.className = "manauna-chat-box";
@@ -157,7 +186,7 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
 
 <b>Isse zyada jaankari available nahi hai.</b><br><br>
 
-<button class="chat-option" onclick="location.reload()">⬅ Back</button>
+<button class="chat-option" onclick="resetChat()">⬅ Back</button>
 `;
   }
 
@@ -173,7 +202,8 @@ Price address ke hisaab se decide hota hai.<br><br>
 Jal Order Page Par Jaayein
 </button>
 
-<button class="chat-option" onclick="location.reload()">⬅ Back</button>
+<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+
 `;
   }
 
@@ -188,8 +218,8 @@ Jal Order Page Par Jaayein
 
 ⚠️ Advance booking possible nahi hai<br>
 ⚠️ Sirf official shop se jal milta hai<br><br>
+<button class="chat-option" onclick="resetChat()">⬅ Back</button>
 
-<button class="chat-option" onclick="location.reload()">⬅ Back</button>
 `;
   }
 
@@ -206,8 +236,8 @@ Website se booking par koi extra charge nahi hota<br><br>
 <button class="chat-option" onclick="window.location.href='accommodations.html'">
 Hotel / Dharamshala Page Par Jaayein
 </button>
+<button class="chat-option" onclick="resetChat()">⬅ Back</button>
 
-<button class="chat-option" onclick="location.reload()">⬅ Back</button>
 `;
   }
 
@@ -225,7 +255,8 @@ Verified restaurants available hain:<br>
 Food Page Par Jaayein
 </button>
 
-<button class="chat-option" onclick="location.reload()">⬅ Back</button>
+<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+
 `;
   }
 
@@ -241,9 +272,30 @@ Rush days par pehle se planning zaroori hoti hai.<br><br>
 Transport Page Par Jaayein
 </button>
 
-<button class="chat-option" onclick="location.reload()">⬅ Back</button>
+<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+
 `;
   }
 };
+function resetChat() {
+  const content = document.getElementById("chatContent");
+  if (!content) return;
+
+  content.innerHTML = `
+🙏 Jai Shree Shyam<br><br>
+Welcome to <b>ManaunaDham.org.in</b><br><br>
+
+❌ Calls supported nahi hain<br><br>
+
+<b>Kripya neeche se option chunein:</b><br><br>
+
+<button class="chat-option" onclick="showInfo(1)">1️⃣ Mahant Ji se Darshan paane ki poori jankari</button>
+<button class="chat-option" onclick="showInfo(2)">2️⃣ Shyam Jal ghar par courier karwana hai</button>
+<button class="chat-option" onclick="showInfo(3)">3️⃣ Manauna Dham aakar Shyam Jal lena – services jankari</button>
+<button class="chat-option" onclick="showInfo(4)">4️⃣ Hotel / Dharamshala – Booking aur jankari</button>
+<button class="chat-option" onclick="showInfo(5)">5️⃣ Restaurant – Khana order aur jankari</button>
+<button class="chat-option" onclick="showInfo(6)">6️⃣ Transport seva</button>
+`;
+}
 
 })();
