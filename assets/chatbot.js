@@ -290,8 +290,10 @@ Food Page Par Jaayein
     box.innerHTML = `
 <b>🚕 Transport Seva</b><br><br>
 
-Local transport aur travel assistance available hai.<br>
-Rush days par pehle se planning zaroori hoti hai.<br><br>
+Local transport aur travel ke liye saadhan available hai.<br>
+Saadhan jaise- Taxi, Bus, Rickshaw- Sab aapke hisab se book ho skta hai.<br><br>
+
+Rate bilkul uchit tay kiye gaye hai bhakto ke liye.<br><br>
 
 <button class="chat-option" onclick="window.location.href='transport.html'">
 Transport Page Par Jaayein
