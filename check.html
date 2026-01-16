@@ -763,12 +763,22 @@ setInterval(showRandomPopup, 30000);
 <div id="manauna-chatbot"></div>
 
 <script>
+  
 console.log("CHATBOT SCRIPT LOADED");
 
 (function () {
   const container = document.getElementById("manauna-chatbot");
 
   container.innerHTML = `
+  setTimeout(() => {
+  document.getElementById("openChat").onclick = () => {
+    document.getElementById("chatBox").style.display = "block";
+  };
+  document.getElementById("closeChat").onclick = () => {
+    document.getElementById("chatBox").style.display = "none";
+  };
+}, 0);
+
     <style>
       .test-chat-btn {
         position: fixed;
@@ -784,9 +794,34 @@ console.log("CHATBOT SCRIPT LOADED");
       }
     </style>
 
-    <div class="test-chat-btn" onclick="alert('Chatbot is working!')">
-      Chat Karein
-    </div>
+    <div class="test-chat-btn" id="openChat">
+  Chat Karein
+</div>
+
+<div id="chatBox" style="
+  display:none;
+  position:fixed;
+  bottom:80px;
+  left:20px;
+  width:320px;
+  max-height:70vh;
+  background:white;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  z-index:999999;
+  overflow:hidden;
+  font-family:Segoe UI,Arial;
+">
+  <div style="background:#7a0000;color:white;padding:12px;font-weight:bold">
+    Manauna Dham Chat
+    <span id="closeChat" style="float:right;cursor:pointer">×</span>
+  </div>
+  <div style="padding:12px;font-size:14px">
+    🙏 Jai Shree Shyam<br><br>
+    Yeh test chatbot hai. Agar yeh khul raha hai, to final chatbot bhi safe hoga.
+  </div>
+</div>
+
   `;
 })();
 </script>
