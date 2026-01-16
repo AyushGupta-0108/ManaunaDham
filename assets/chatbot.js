@@ -326,5 +326,239 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
 <button class="chat-option" onclick="showInfo(6)">6️⃣ Transport seva</button>
 `;
 };
+// ================= FOOD ORDER CHAT FLOW =================
+let foodOrderData = {
+  restaurant: "",
+  name: "",
+  order: "",
+  address: "",
+  phone: ""
+};
+
+window.startFoodOrder = function (restaurantName = "") {
+  const box = document.getElementById("chatContent");
+  if (!box) return;
+
+  foodOrderData = {
+    restaurant: restaurantName,
+    name: "",
+    order: "",
+    address: "",
+    phone: ""
+  };
+
+  box.innerHTML = `
+<b>🍽️ Food Order</b><br><br>
+
+<b>Restaurant Name:</b><br>
+<input type="text" id="fo_restaurant" value="${restaurantName}" style="width:100%;padding:8px"><br><br>
+
+<button class="chat-option" onclick="foodStepName()">Next ➡️</button>
+<button class="chat-option" onclick="resetChat()">🏠 Cancel</button>
+`;
+};
+
+function foodStepName() {
+  const r = document.getElementById("fo_restaurant").value.trim();
+  if (!r) return alert("Restaurant name required");
+
+  foodOrderData.restaurant = r;
+
+  chatContent.innerHTML = `
+<b>👤 Your Name</b><br><br>
+<input type="text" id="fo_name" placeholder="Enter your name" style="width:100%;padding:8px"><br><br>
+
+<button class="chat-option" onclick="foodStepOrder()">Next ➡️</button>
+`;
+}
+
+function foodStepOrder() {
+  const n = document.getElementById("fo_name").value.trim();
+  if (!n) return alert("Name required");
+
+  foodOrderData.name = n;
+
+  chatContent.innerHTML = `
+<b>📝 What do you want to order?</b><br><br>
+<textarea id="fo_order" placeholder="Write full order here" style="width:100%;padding:8px;height:80px"></textarea><br><br>
+
+<button class="chat-option" onclick="foodStepAddress()">Next ➡️</button>
+`;
+}
+
+function foodStepAddress() {
+  const o = document.getElementById("fo_order").value.trim();
+  if (!o) return alert("Order details required");
+
+  foodOrderData.order = o;
+
+  chatContent.innerHTML = `
+<b>📍 Delivery Address</b><br><br>
+<textarea id="fo_address" placeholder="Full address" style="width:100%;padding:8px;height:70px"></textarea><br><br>
+
+<button class="chat-option" onclick="foodStepPhone()">Next ➡️</button>
+`;
+}
+
+function foodStepPhone() {
+  const a = document.getElementById("fo_address").value.trim();
+  if (!a) return alert("Address required");
+
+  foodOrderData.address = a;
+
+  chatContent.innerHTML = `
+<b>📞 Phone Number</b><br><br>
+<input type="tel" id="fo_phone" placeholder="10 digit number" style="width:100%;padding:8px"><br><br>
+
+<button class="chat-option" onclick="foodToWhatsApp()">Proceed to WhatsApp ✅</button>
+`;
+}
+
+function foodToWhatsApp() {
+  const p = document.getElementById("fo_phone").value.trim();
+  if (!p) return alert("Phone number required");
+
+  foodOrderData.phone = p;
+
+  const msg = `
+🍽️ FOOD ORDER REQUEST
+
+Restaurant: ${foodOrderData.restaurant}
+Name: ${foodOrderData.name}
+Phone: ${foodOrderData.phone}
+Address: ${foodOrderData.address}
+
+Order:
+${foodOrderData.order}
+  `.trim();
+
+  const url =
+    "https://wa.me/917817803342?text=" +
+    encodeURIComponent(msg);
+
+  window.location.href = url;
+}
+// ================= HOTEL BOOKING CHAT FLOW =================
+let hotelBookingData = {
+  hotel: "",
+  checkin: "",
+  checkout: "",
+  name: "",
+  phone: "",
+  price: ""
+};
+
+window.startHotelBooking = function (hotelName = "") {
+  const box = document.getElementById("chatContent");
+  if (!box) return;
+
+  hotelBookingData = {
+    hotel: hotelName,
+    checkin: "",
+    checkout: "",
+    name: "",
+    phone: "",
+    price: ""
+  };
+
+  box.innerHTML = `
+<b>🏨 Hotel Booking Request</b><br><br>
+
+<b>Hotel Name:</b><br>
+<input type="text" id="hb_hotel" value="${hotelName}" style="width:100%;padding:8px"><br><br>
+
+<button class="chat-option" onclick="hotelStepDates()">Next ➡️</button>
+<button class="chat-option" onclick="resetChat()">🏠 Cancel</button>
+`;
+};
+
+function hotelStepDates() {
+  const h = document.getElementById("hb_hotel").value.trim();
+  if (!h) return alert("Hotel name required");
+
+  hotelBookingData.hotel = h;
+
+  chatContent.innerHTML = `
+<b>📅 Stay Dates</b><br><br>
+
+Check-in Date:<br>
+<input type="date" id="hb_checkin" style="width:100%;padding:8px"><br><br>
+
+Check-out Date:<br>
+<input type="date" id="hb_checkout" style="width:100%;padding:8px"><br><br>
+
+<button class="chat-option" onclick="hotelStepName()">Next ➡️</button>
+`;
+}
+
+function hotelStepName() {
+  const ci = document.getElementById("hb_checkin").value;
+  const co = document.getElementById("hb_checkout").value;
+  if (!ci || !co) return alert("Both dates required");
+
+  hotelBookingData.checkin = ci;
+  hotelBookingData.checkout = co;
+
+  chatContent.innerHTML = `
+<b>👤 Guest Name</b><br><br>
+<input type="text" id="hb_name" placeholder="Your full name" style="width:100%;padding:8px"><br><br>
+
+<button class="chat-option" onclick="hotelStepPhone()">Next ➡️</button>
+`;
+}
+
+function hotelStepPhone() {
+  const n = document.getElementById("hb_name").value.trim();
+  if (!n) return alert("Name required");
+
+  hotelBookingData.name = n;
+
+  chatContent.innerHTML = `
+<b>📞 Phone Number</b><br><br>
+<input type="tel" id="hb_phone" placeholder="10 digit number" style="width:100%;padding:8px"><br><br>
+
+<button class="chat-option" onclick="hotelStepPrice()">Next ➡️</button>
+`;
+}
+
+function hotelStepPrice() {
+  const p = document.getElementById("hb_phone").value.trim();
+  if (!p) return alert("Phone number required");
+
+  hotelBookingData.phone = p;
+
+  chatContent.innerHTML = `
+<b>💰 Preferred Room Price (per night)</b><br><br>
+<input type="text" id="hb_price" placeholder="e.g. ₹1200 / ₹2400" style="width:100%;padding:8px"><br><br>
+
+<button class="chat-option" onclick="hotelToWhatsApp()">Proceed to WhatsApp ✅</button>
+`;
+}
+
+function hotelToWhatsApp() {
+  const pr = document.getElementById("hb_price").value.trim();
+  if (!pr) return alert("Price preference required");
+
+  hotelBookingData.price = pr;
+
+  const msg = `
+🏨 HOTEL BOOKING REQUEST
+
+Hotel: ${hotelBookingData.hotel}
+Guest Name: ${hotelBookingData.name}
+Phone: ${hotelBookingData.phone}
+
+Check-in: ${hotelBookingData.checkin}
+Check-out: ${hotelBookingData.checkout}
+
+Preferred Price: ${hotelBookingData.price}
+  `.trim();
+
+  const url =
+    "https://wa.me/917817803342?text=" +
+    encodeURIComponent(msg);
+
+  window.location.href = url;
+}
 
 })();
