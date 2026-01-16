@@ -1,135 +1,86 @@
 (function () {
+  if (document.getElementById("manauna-chat-loaded")) return;
 
-  if (window.manaunaChatLoaded) return;
-  window.manaunaChatLoaded = true;
+  const marker = document.createElement("div");
+  marker.id = "manauna-chat-loaded";
+  document.body.appendChild(marker);
 
   const style = document.createElement("style");
   style.innerHTML = `
-  .chat-float{
-    position:fixed;
-    bottom:20px;
-    left:20px;
-    width:60px;
-    height:60px;
-    background:linear-gradient(135deg,#7a0000,#4d0000);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    z-index:99999;
-    box-shadow:0 5px 20px rgba(0,0,0,.4);
-  }
-  .chat-float i{color:white;font-size:26px}
-
-  .chat-box{
-    position:fixed;
-    bottom:90px;
-    left:20px;
-    width:360px;
-    max-height:75vh;
-    background:white;
-    border-radius:15px;
-    display:none;
-    flex-direction:column;
-    box-shadow:0 5px 40px rgba(0,0,0,.4);
-    overflow:hidden;
-    z-index:99999;
-  }
-  .chat-box.active{display:flex}
-
-  .chat-header{
-    background:#7a0000;
-    color:white;
-    padding:14px;
-    font-weight:700;
-    flex-shrink:0;
-  }
-
-  .chat-messages{
-    flex:1;
-    overflow-y:auto;
-    padding:15px;
-    background:#f6f6f6;
-  }
-
-  .chat-input{
-    display:flex;
-    padding:10px;
-    border-top:1px solid #ddd;
-  }
-  .chat-input input{
-    flex:1;
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:20px;
-    outline:none;
-  }
-  .chat-input button{
-    margin-left:8px;
-    background:#7a0000;
-    color:white;
-    border:none;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    cursor:pointer;
-  }
-
-  .bot{background:white;padding:10px;border-radius:10px;margin-bottom:8px;max-width:85%}
-  .user{background:#7a0000;color:white;padding:10px;border-radius:10px;margin-bottom:8px;margin-left:auto;max-width:85%}
-
-  @media(max-width:480px){
-    .chat-box{
-      left:10px;
-      width:calc(100vw - 20px);
-      max-height:70vh;
+    .manauna-chat-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #7a0000;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 999999;
+      font-family: Segoe UI, Arial;
     }
-    .chat-float{left:10px}
-  }
+
+    .manauna-chat-box {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      left: 20px;
+      width: 320px;
+      max-height: 70vh;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+      z-index: 999999;
+      overflow: hidden;
+      font-family: Segoe UI, Arial;
+    }
+
+    .manauna-chat-header {
+      background: #7a0000;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+    }
+
+    .manauna-chat-close {
+      float: right;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .manauna-chat-body {
+      padding: 12px;
+      font-size: 14px;
+    }
   `;
   document.head.appendChild(style);
 
-  const html = `
-  <div class="chat-float" id="chatOpen">
-    <i class="fa fa-comments"></i>
-  </div>
+  const btn = document.createElement("div");
+  btn.className = "manauna-chat-btn";
+  btn.textContent = "Chat Karein";
+  btn.onclick = () => {
+    box.style.display = "block";
+  };
 
-  <div class="chat-box" id="chatBox">
-    <div class="chat-header">Manauna Dham Sahayak</div>
-    <div class="chat-messages" id="chatMsgs">
-      <div class="bot">🙏 Jai Shree Shyam! Aapko kis cheez ki madad chahiye?</div>
-      <div class="bot">Food, Hotel, Shyam Jal, ya Darshan?</div>
+  const box = document.createElement("div");
+  box.className = "manauna-chat-box";
+  box.innerHTML = `
+    <div class="manauna-chat-header">
+      Manauna Dham Chat
+      <span class="manauna-chat-close">×</span>
     </div>
-    <div class="chat-input">
-      <input id="chatInput" placeholder="Type here...">
-      <button id="chatSend">➤</button>
+    <div class="manauna-chat-body">
+      🙏 Jai Shree Shyam<br><br>
+      Yeh final safe chatbot base hai.<br>
+      Ab isme features add kar sakte hain bina risk ke.
     </div>
-  </div>
   `;
-  document.body.insertAdjacentHTML("beforeend", html);
 
-  const open = document.getElementById("chatOpen");
-  const box = document.getElementById("chatBox");
-  const msgs = document.getElementById("chatMsgs");
-  const input = document.getElementById("chatInput");
+  box.querySelector(".manauna-chat-close").onclick = () => {
+    box.style.display = "none";
+  };
 
-  open.onclick = () => box.classList.toggle("active");
-
-  document.getElementById("chatSend").onclick = send;
-  input.onkeypress = e => { if (e.key === "Enter") send(); };
-
-  function send(){
-    const t = input.value.trim();
-    if(!t) return;
-    msgs.innerHTML += `<div class="user">${t}</div>`;
-    input.value = "";
-
-    setTimeout(()=>{
-      msgs.innerHTML += `<div class="bot">Hum WhatsApp par connect kar denge. Kripya neeche click karein.</div>
-      <div class="bot"><a href="https://wa.me/917817803342" target="_blank">📲 WhatsApp Open</a></div>`;
-      msgs.scrollTop = msgs.scrollHeight;
-    },600);
-  }
-
+  document.body.appendChild(btn);
+  document.body.appendChild(box);
 })();
