@@ -159,7 +159,8 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
   document.body.appendChild(btn);
   document.body.appendChild(box);
   window.showInfo = function(option) {
-  const box = document.getElementById("chatContent");
+ const box = document.getElementById("chatContent");
+
 
   // OPTION 1 — DARSHAN / PATIENT TOKEN / MAHANT JI
   if (option === 1) {
@@ -367,7 +368,7 @@ function foodStepName() {
 
   foodOrderData.restaurant = r;
 
-  chatContent.innerHTML = `
+document.getElementById("chatContent").innerHTML = `
 <b>👤 Your Name</b><br><br>
 <input type="text" id="fo_name" placeholder="Enter your name" style="width:100%;padding:8px"><br><br>
 
@@ -381,7 +382,7 @@ function foodStepOrder() {
 
   foodOrderData.name = n;
 
-  chatContent.innerHTML = `
+document.getElementById("chatContent").innerHTML = `
 <b>📝 What do you want to order?</b><br><br>
 <textarea id="fo_order" placeholder="Write full order here" style="width:100%;padding:8px;height:80px"></textarea><br><br>
 
@@ -395,7 +396,7 @@ function foodStepAddress() {
 
   foodOrderData.order = o;
 
-  chatContent.innerHTML = `
+  document.getElementById("chatContent").innerHTML = `
 <b>📍 Delivery Address</b><br><br>
 <textarea id="fo_address" placeholder="Full address" style="width:100%;padding:8px;height:70px"></textarea><br><br>
 
@@ -409,7 +410,7 @@ function foodStepPhone() {
 
   foodOrderData.address = a;
 
-  chatContent.innerHTML = `
+  document.getElementById("chatContent").innerHTML = `
 <b>📞 Phone Number</b><br><br>
 <input type="tel" id="fo_phone" placeholder="10 digit number" style="width:100%;padding:8px"><br><br>
 
