@@ -14,7 +14,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Manauna Dham Shyam Jal",
-  "description": "Sacred Shyam Jal from Manauna Dham (Manona Dham) - Abhimantrit water blessed by Shri Khatu Shyam Ji",
+  "description": "Sacred Shyam Jal from Manauna Dham (Manona Dham) - Abhimantrit water blessed by Shri Khatu Shyam Ji and Poojya Mahant Omendra Chauhan Ji",
   "brand": {
     "@type": "Brand",
     "name": "Manauna Dham"
@@ -27,6 +27,31 @@
   }
 }
 </script>
+
+  <script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+{
+"@type":"Question",
+"name":"Can Shyam Jal be delivered to home from Manauna Dham?",
+"acceptedAnswer":{"@type":"Answer","text":"Yes. Abhimantrit Shyam Jal from Manauna (Manona) Dham can be couriered to your home anywhere in India."}
+},
+{
+"@type":"Question",
+"name":"Is this authentic Shyam Jal from Manauna Dham?",
+"acceptedAnswer":{"@type":"Answer","text":"Yes. Jal is taken only from the single official Shyam Jal counter inside Manauna Dham temple premises and is Abhimantrit by Mahant Ji."}
+},
+{
+"@type":"Question",
+"name":"How should Shyam Jal be consumed?",
+"acceptedAnswer":{"@type":"Answer","text":"As directed by Mahant Ji: consume one cap daily before 11:55 AM."}
+}
+]
+}
+</script>
+
 
 <style>
 * {
@@ -430,9 +455,26 @@ header {
   <h2>🙏 Shyam Jal Delivered to Your Home 🙏</h2>
   <p>Experience the divine blessings of Shri Khatu Shyam Ji from Manauna Dham (Manona Dham), delivered anywhere in India</p>
   <div class="cta-buttons">
-    <a href="https://wa.me/917817803342?text=Hi!%20I%20want%20to%20order%20Shyam%20Jal%20from%20Manauna%20Dham%20for%20home%20delivery" class="btn-primary" target="_blank">
-      <i class="fab fa-whatsapp"></i> Order Shyam Jal Now
-    </a>
+  <button class="btn-secondary" onclick="startJalOrder()">
+    💧 Order Shyam Jal
+  </button>
+</div>
+</section>
+<section class="section">
+  <h2>Manauna (Manona) Dham Shyam Jal Home Delivery</h2>
+  <p>
+    Jo bhakt Manauna Dham aa nahi pa sakte, unke liye
+    <b>Shyam Jal ghar par courier</b> ki suvidha uplabdh hai.
+    Yeh jal Manauna Khatu Shyam Ji ki <b>Janmbhoomi</b> se liya gaya,
+    Mahant Ji dwara <b>Abhimantrit</b> hota hai.
+  </p>
+  <p>
+    Aap jitna chahein utna jal mangwa sakte hain aur roz grahan kar sakte hain.
+    Isse ghar aur shareer ki <b>negative energies door</b> hoti hain.
+  </p>
+
+  <div style="margin-top:20px;font-weight:600;color:#7a0000">
+    📦 Home delivery available all over India
   </div>
 </section>
 
@@ -533,12 +575,18 @@ header {
       <strong>📌 Note:</strong> Shipping and logistics charges vary based on your delivery location. Contact us on WhatsApp for exact pricing and delivery time for your area.
     </div>
     
-    <div style="text-align: center; margin-top: 20px;">
-      <a href="https://wa.me/917817803342?text=Hi!%20I%20want%20to%20know%20the%20delivery%20charges%20for%20Shyam%20Jal%20to%20my%20location" class="btn-primary" target="_blank">
-        <i class="fab fa-whatsapp"></i> Get Exact Price Quote
-      </a>
-    </div>
-  </div>
+    <div class="note">
+  <strong>📌 Note:</strong>
+  Shyam Jal ka mulya bottle count aur delivery address ke hisaab se hota hai.
+  Shipping aur packaging charges location par depend karte hain.
+</div>
+
+<div style="text-align:center;margin-top:20px">
+  <button class="btn-secondary" onclick="startJalOrder()">
+    💧 Check Price & Order
+  </button>
+</div>
+
 </section>
 
 
@@ -622,13 +670,37 @@ header {
   </div>
 </section>
 
-<section class="section" style="background: linear-gradient(135deg, #7a0000 0%, #4d0000 100%); color: white; text-align: center;">
-  <h2 style="color: white; border-bottom: 4px solid #ffd56b;">Order Your Shyam Jal Today</h2>
-  <p style="font-size: 18px; margin: 30px 0;">Can't visit Manauna Dham? We bring the blessings to you.</p>
-  <a href="https://wa.me/917817803342?text=Hi!%20I%20want%20to%20order%20Shyam%20Jal%20from%20Manauna%20Dham" class="btn-primary" target="_blank" style="font-size: 20px; padding: 18px 45px;">
-    <i class="fab fa-whatsapp"></i> Order on WhatsApp Now
-  </a>
+<section class="section"
+  style="background: linear-gradient(135deg, #7a0000 0%, #4d0000 100%);
+         color: white;
+         text-align: center;">
+
+  <h2 style="color:white; border-bottom:4px solid #ffd56b;">
+    Order Your Shyam Jal Today
+  </h2>
+
+  <p style="font-size:18px; margin:30px 0;">
+    Manauna Dham aa pana sambhav nahi?
+    <br>
+    Ab <b>Abhimantrit Shyam Jal</b> seedha aapke ghar.
+  </p>
+
+  <button
+    class="btn-secondary"
+    onclick="startJalOrder()"
+    style="font-size:20px;padding:18px 45px;">
+    💧 Order Shyam Jal
+  </button>
+
+  <p style="margin-top:20px;font-size:14px;opacity:.9">
+    ✔ Official Mandir Counter se<br>
+    ✔ Mahant Ji dwara Abhimantrit<br>
+    ✔ All-India Courier Available
+  </p>
+
 </section>
+
+
 
 <!-- Popups -->
 <div class="popup" id="popup1">
@@ -648,14 +720,10 @@ header {
 <div class="popup" id="popup3">
   <span class="popup-close" onclick="closePopup('popup3')">&times;</span>
   <h3>🎫 Patient Token Service</h3>
-  <p>Skip the queue with patient token</p>
+  <p>Poori jankari lijiye mahant ji ke darshan ki</p>
   <a href="patient.html">Get Token</a>
 </div>
 
-<!-- WhatsApp Float Button -->
-<a href="https://wa.me/917817803342?text=Hi!%20I%20want%20to%20order%20Shyam%20Jal%20from%20Manauna%20Dham" class="whatsapp-float" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
 
 <script>
 // Popup system
@@ -673,10 +741,10 @@ function closePopup(id) {
 }
 
 // Show first popup after 15 seconds
-setTimeout(showRandomPopup, 15000);
+setTimeout(showRandomPopup, 10000);
 
 // Show subsequent popups every 35 seconds
-setInterval(showRandomPopup, 35000);
+setInterval(showRandomPopup, 5000);
 </script>
 
 </body>
