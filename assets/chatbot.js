@@ -100,9 +100,11 @@
   if (box.style.display === "block") {
     box.style.display = "none";
     resetChat();
-  } else {
-    box.style.display = "block";
-  }
+} else {
+  box.style.display = "block";
+  resetChat();
+}
+
 };
 
 
@@ -186,7 +188,9 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
 
 <b>Isse zyada jaankari available nahi hai.</b><br><br>
 
-<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+<hr>
+<button class="chat-option" onclick="resetChat()">🏠 Main Menu</button>
+
 `;
   }
 
@@ -202,7 +206,9 @@ Price address ke hisaab se decide hota hai.<br><br>
 Jal Order Page Par Jaayein
 </button>
 
-<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+<hr>
+<button class="chat-option" onclick="resetChat()">🏠 Main Menu</button>
+
 
 `;
   }
@@ -218,7 +224,9 @@ Jal Order Page Par Jaayein
 
 ⚠️ Advance booking possible nahi hai<br>
 ⚠️ Sirf official shop se jal milta hai<br><br>
-<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+<hr>
+<button class="chat-option" onclick="resetChat()">🏠 Main Menu</button>
+
 
 `;
   }
@@ -236,7 +244,8 @@ Website se booking par koi extra charge nahi hota<br><br>
 <button class="chat-option" onclick="window.location.href='accommodations.html'">
 Hotel / Dharamshala Page Par Jaayein
 </button>
-<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+<hr>
+<button class="chat-option" onclick="resetChat()">🏠 Main Menu</button>
 
 `;
   }
@@ -255,7 +264,9 @@ Verified restaurants available hain:<br>
 Food Page Par Jaayein
 </button>
 
-<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+<hr>
+<button class="chat-option" onclick="resetChat()">🏠 Main Menu</button>
+
 
 `;
   }
@@ -272,12 +283,14 @@ Rush days par pehle se planning zaroori hoti hai.<br><br>
 Transport Page Par Jaayein
 </button>
 
-<button class="chat-option" onclick="resetChat()">⬅ Back</button>
+<hr>
+<button class="chat-option" onclick="resetChat()">🏠 Main Menu</button>
+
 
 `;
   }
 };
-function resetChat() {
+window.resetChat = function () {
   const content = document.getElementById("chatContent");
   if (!content) return;
 
@@ -296,6 +309,6 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
 <button class="chat-option" onclick="showInfo(5)">5️⃣ Restaurant – Khana order aur jankari</button>
 <button class="chat-option" onclick="showInfo(6)">6️⃣ Transport seva</button>
 `;
-}
+};
 
 })();
