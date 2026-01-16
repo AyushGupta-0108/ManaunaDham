@@ -336,6 +336,9 @@ let foodOrderData = {
 };
 
 window.startFoodOrder = function (restaurantName = "") {
+  const chatBox = document.querySelector(".manauna-chat-box");
+if (chatBox) chatBox.style.display = "block";
+  
   const box = document.getElementById("chatContent");
   if (!box) return;
 
