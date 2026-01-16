@@ -361,8 +361,9 @@ if (chatBox) chatBox.style.display = "block";
 <button class="chat-option" onclick="resetChat()">🏠 Cancel</button>
 `;
 };
+  
+window.foodStepName = function () {
 
-function foodStepName() {
   const r = document.getElementById("fo_restaurant").value.trim();
   if (!r) return alert("Restaurant name required");
 
@@ -376,7 +377,8 @@ document.getElementById("chatContent").innerHTML = `
 `;
 }
 
-function foodStepOrder() {
+window.foodStepOrder = function () {
+
   const n = document.getElementById("fo_name").value.trim();
   if (!n) return alert("Name required");
 
@@ -390,7 +392,8 @@ document.getElementById("chatContent").innerHTML = `
 `;
 }
 
-function foodStepAddress() {
+window.foodStepAddress = function () {
+
   const o = document.getElementById("fo_order").value.trim();
   if (!o) return alert("Order details required");
 
@@ -404,7 +407,8 @@ function foodStepAddress() {
 `;
 }
 
-function foodStepPhone() {
+window.foodStepPhone = function () {
+
   const a = document.getElementById("fo_address").value.trim();
   if (!a) return alert("Address required");
 
@@ -418,7 +422,7 @@ function foodStepPhone() {
 `;
 }
 
-function foodToWhatsApp() {
+window.foodToWhatsApp = function () {
   const p = document.getElementById("fo_phone").value.trim();
   if (!p) return alert("Phone number required");
 
@@ -441,7 +445,8 @@ ${foodOrderData.order}
     encodeURIComponent(msg);
 
   window.location.href = url;
-}
+};
+
 // ================= HOTEL BOOKING CHAT FLOW =================
 let hotelBookingData = {
   hotel: "",
@@ -453,6 +458,9 @@ let hotelBookingData = {
 };
 
 window.startHotelBooking = function (hotelName = "") {
+  const chatBox = document.querySelector(".manauna-chat-box");
+if (chatBox) chatBox.style.display = "block";
+
   const box = document.getElementById("chatContent");
   if (!box) return;
 
@@ -476,13 +484,13 @@ window.startHotelBooking = function (hotelName = "") {
 `;
 };
 
-function hotelStepDates() {
+window.hotelStepDates = function () {
   const h = document.getElementById("hb_hotel").value.trim();
   if (!h) return alert("Hotel name required");
 
   hotelBookingData.hotel = h;
 
-  chatContent.innerHTML = `
+  document.getElementById("chatContent").innerHTML = `
 <b>📅 Stay Dates</b><br><br>
 
 Check-in Date:<br>
@@ -495,7 +503,7 @@ Check-out Date:<br>
 `;
 }
 
-function hotelStepName() {
+window.hotelStepName = function () {
   const ci = document.getElementById("hb_checkin").value;
   const co = document.getElementById("hb_checkout").value;
   if (!ci || !co) return alert("Both dates required");
@@ -503,7 +511,8 @@ function hotelStepName() {
   hotelBookingData.checkin = ci;
   hotelBookingData.checkout = co;
 
-  chatContent.innerHTML = `
+ document.getElementById("chatContent").innerHTML = `
+
 <b>👤 Guest Name</b><br><br>
 <input type="text" id="hb_name" placeholder="Your full name" style="width:100%;padding:8px"><br><br>
 
@@ -511,13 +520,14 @@ function hotelStepName() {
 `;
 }
 
-function hotelStepPhone() {
+window.hotelStepPhone = function () {
   const n = document.getElementById("hb_name").value.trim();
   if (!n) return alert("Name required");
 
   hotelBookingData.name = n;
 
-  chatContent.innerHTML = `
+  document.getElementById("chatContent").innerHTML = `
+
 <b>📞 Phone Number</b><br><br>
 <input type="tel" id="hb_phone" placeholder="10 digit number" style="width:100%;padding:8px"><br><br>
 
@@ -525,13 +535,14 @@ function hotelStepPhone() {
 `;
 }
 
-function hotelStepPrice() {
+window.hotelStepPrice = function () {
   const p = document.getElementById("hb_phone").value.trim();
   if (!p) return alert("Phone number required");
 
   hotelBookingData.phone = p;
 
-  chatContent.innerHTML = `
+  document.getElementById("chatContent").innerHTML = `
+
 <b>💰 Preferred Room Price (per night)</b><br><br>
 <input type="text" id="hb_price" placeholder="e.g. ₹1200 / ₹2400" style="width:100%;padding:8px"><br><br>
 
@@ -539,7 +550,7 @@ function hotelStepPrice() {
 `;
 }
 
-function hotelToWhatsApp() {
+window.hotelToWhatsApp = function () {
   const pr = document.getElementById("hb_price").value.trim();
   if (!pr) return alert("Price preference required");
 
@@ -563,6 +574,7 @@ Preferred Price: ${hotelBookingData.price}
     encodeURIComponent(msg);
 
   window.location.href = url;
-}
+};
+
 
 })();
