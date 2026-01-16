@@ -168,21 +168,22 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
 
 <b>1️⃣ Jab PATIENT khud present ho:</b><br>
 • Patient Token Line mein lagna hota hai<br>
-• Token ke baad Mahant Ji ka darshan hota hai<br>
+• Token milne ke baad Mahant Ji ka darshan hota hai<br>
 • Mahant Ji apne haathon se Abhimantrit Shyam Jal dete hain<br>
 • Line comparatively fast hoti hai<br><br>
 
 <b>2️⃣ Jab PATIENT present NA ho:</b><br>
 • Family member Shyam Jal lene aata hai<br>
 • Patient Token nahi milta<br>
-• General Shyam Jal Line follow hoti hai<br>
+• General Shyam Jal Line mai lagna hota hai<br>
 • Line lambi hoti hai<br><br>
 
-⚠️ Shyam Jal sirf mandir premises ke andar ek hi official shop se milta hai<br><br>
+⚠️ Shyam Jal sirf mandir ground ke andar ek hi official shop se milta hai<br><br>
 
 <b>Mahant Ji Availability:</b><br>
 ❌ Wednesday & Thursday nahi baithte<br>
-⚠️ Kabhi-kabhi urgent kaam ki wajah se anya din bhi unavailable ho sakte hain<br><br>
+⚠️ Kabhi-kabhi urgent kaam ki wajah se anya din bhi unavailable ho sakte hain<br>
+JIS DIN MAHANT JI URGENT KAAM SE GAYE HO. USDIN KI JANKARI PHELE SE HAME PATA NHI HOTI.<br><br>
 
 📌 Patient Token ke liye advance booking nahi hoti<br><br>
 
@@ -222,6 +223,13 @@ Jal Order Page Par Jaayein
 • Patient present na ho to General Jal Line<br>
 • General line lambi hoti hai<br><br>
 
+Hamari taraf se aapko bina extra cost ke neechi likhi services milengi:<br>
+• Hotel Booking<br>
+• Khaana Delivery<br>
+• Shyam Jal Delivery<br>
+• Prasad Delivery<br>
+• Saadhan Booking<br><br>
+
 ⚠️ Advance booking possible nahi hai<br>
 ⚠️ Sirf official shop se jal milta hai<br><br>
 <hr>
@@ -237,7 +245,7 @@ Jal Order Page Par Jaayein
 <b>🏨 Hotel / Dharamshala – Booking & Jankari</b><br><br>
 
 ⚠️ January–February mein hotels jaldi full ho jaate hain<br>
-Advance booking strongly recommended<br><br>
+Advance booking karke hi aae(Recommended)<br><br>
 
 Website se booking par koi extra charge nahi hota<br><br>
 
@@ -255,10 +263,16 @@ Hotel / Dharamshala Page Par Jaayein
     box.innerHTML = `
 <b>🍽️ Restaurant – Khana Order & Jankari</b><br><br>
 
-Verified restaurants available hain:<br>
+Verified restaurants available hain jaise:<br>
 • Food Plaza<br>
 • Shiv Pizza Point<br>
 • Kipps Restaurant<br><br>
+
+Aur bhi kai jud rhe hai.<br>
+
+Bhakto ke liye special rate me Cash on delivery khaana available<br>
+
+Khaana Seedhe aapke hotel ya aap mandir area mai aap jha bhi honge vha aa jaega<br><br>
 
 <button class="chat-option" onclick="window.location.href='food.html'">
 Food Page Par Jaayein
