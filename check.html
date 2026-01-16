@@ -759,73 +759,8 @@ setTimeout(showRandomPopup, 10000);
 // Show subsequent popups every 30 seconds
 setInterval(showRandomPopup, 30000);
 </script>
-    <!-- ULTRA SAFE CHATBOT TEST -->
-<style>
-  .chat-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #7a0000;
-    color: white;
-    padding: 14px 20px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 999999;
-  }
-
-  .chat-box {
-    display: none;
-    position: fixed;
-    bottom: 80px;
-    left: 20px;
-    width: 320px;
-    max-height: 70vh;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.3);
-    z-index: 999999;
-    font-family: Segoe UI, Arial;
-    overflow: hidden;
-  }
-
-  .chat-header {
-    background: #7a0000;
-    color: white;
-    padding: 12px;
-    font-weight: bold;
-  }
-
-  .chat-close {
-    float: right;
-    cursor: pointer;
-    font-size: 18px;
-  }
-
-  .chat-body {
-    padding: 12px;
-    font-size: 14px;
-  }
-</style>
-
-<div class="chat-btn" onclick="document.getElementById('chatBox').style.display='block'">
-  Chat Karein
-</div>
-
-<div class="chat-box" id="chatBox">
-  <div class="chat-header">
-    Manauna Dham Chat
-    <span class="chat-close" onclick="document.getElementById('chatBox').style.display='none'">×</span>
-  </div>
-  <div class="chat-body">
-    🙏 Jai Shree Shyam<br><br>
-    Agar yeh box khul raha hai, matlab:
-    <br>✔ HTML works
-    <br>✔ CSS works
-    <br>✔ JavaScript works
-  </div>
-</div>
-<!-- END TEST -->
+  
+<script src="assets/chatbot.js"></script>
 
 </body>
 </html>
