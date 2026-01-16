@@ -442,14 +442,51 @@ header {
 <body>
 
 <header>
-  <div class="header-content">
-    <img src="logonobg.webp" alt="Manauna Dham Logo" class="header-logo" loading="eager">
-    <div class="header-text">
-      <h1>Manauna Dham Shyam Jal Delivery</h1>
-      <p>Abhimantrit jal from Khatu Shyam Ji Mandir</p>
+  <div class="topbar">
+
+    <div class="brand">
+      <img src="logonobg.webp" alt="Manauna Dham Logo" loading="eager">
+      <div class="brand-text">
+        <strong>Manauna (Manona) Dham</strong>
+        <span>Shyam Jal Home Delivery</span>
+      </div>
     </div>
+
+    <nav>
+      <a href="index.html" class="underline">Home</a>
+
+      <div class="dropdown">
+        <a href="#" class="underline">Services ▾</a>
+        <div class="dropdown-menu">
+          <a href="accommodations.html">Hotel/Dharmshala</a>
+          <a href="food.html">Food</a>
+          <a href="transport.html">Transport</a>
+          <a href="patient.html">Patient Token</a>
+          <a href="jal.html"><strong>Buy Shyam Jal</strong></a>
+          <a href="prasad.html">Buy Prasad</a>
+        </div>
+      </div>
+
+      <a href="contact.html" class="underline">Contact</a>
+      <a class="live" href="live.html">LIVE</a>
+    </nav>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="accommodations.html">Hotel/Dharmshala</a>
+    <a href="food.html">Food</a>
+    <a href="transport.html">Transport</a>
+    <a href="patient.html">Patient Token</a>
+    <a href="live.html">Live Darshan</a>
+    <a href="jal.html"><strong>Buy Shyam Jal</strong></a>
+    <a href="prasad.html">Buy Prasad</a>
+    <a href="contact.html">Contact</a>
   </div>
 </header>
+
 
 <section class="hero">
   <h2>🙏 Shyam Jal Delivered to Your Home 🙏</h2>
@@ -461,7 +498,6 @@ header {
 </div>
 </section>
 <section class="section">
-  <h2>Manauna (Manona) Dham Shyam Jal Home Delivery</h2>
   <p>
     Jo bhakt Manauna Dham aa nahi pa sakte, unke liye
     <b>Shyam Jal ghar par courier</b> ki suvidha uplabdh hai.
@@ -472,10 +508,6 @@ header {
     Aap jitna chahein utna jal mangwa sakte hain aur roz grahan kar sakte hain.
     Isse ghar aur shareer ki <b>negative energies door</b> hoti hain.
   </p>
-
-  <div style="margin-top:20px;font-weight:600;color:#7a0000">
-    📦 Home delivery available all over India
-  </div>
 </section>
 
    <section class="section">
@@ -747,5 +779,20 @@ setTimeout(showRandomPopup, 10000);
 setInterval(showRandomPopup, 5000);
 </script>
 <script src="assets/chatbot.js"></script>
+<script>
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  if (!menu) return;
+  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+document.querySelectorAll("#mobileMenu a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("mobileMenu").style.display = "none";
+  });
+});
+</script>
+
+
 </body>
 </html>
