@@ -576,5 +576,126 @@ Preferred Price: ${hotelBookingData.price}
   window.location.href = url;
 };
 
+// ================= SHYAM JAL ORDER CHAT FLOW =================
+let jalOrderData = {
+  name: "",
+  phone: "",
+  address: "",
+  bottles: ""
+};
+
+window.startJalOrder = function () {
+  const chatBox = document.querySelector(".manauna-chat-box");
+  if (chatBox) chatBox.style.display = "block";
+
+  const box = document.getElementById("chatContent");
+  if (!box) return;
+
+  jalOrderData = { name: "", phone: "", address: "", bottles: "" };
+
+  box.innerHTML = `
+<b>💧 Shyam Jal Home Delivery</b><br><br>
+
+<b>📌 Important Information:</b><br>
+• Shyam Jal sirf <b>Mandir area ke ek hi official counter</b> se liya jata hai<br>
+• Jal <b>Mahant Ji dwara Abhimantrit</b> hota hai<br><br>
+
+<b>Mahant Ji ka nirdesh:</b><br>
+“Roz subah <b>11:55 AM se pehle</b> ek dhakkan jal piyen”<br><br>
+
+<b>📖 Mahatva:</b><br>
+Manauna Khatu Shyam Ji ki <b>Janmbhoomi</b> hai.  
+Yahan ka jal shareer aur ghar ki <b>negative urja ko door</b> karta hai.<br><br>
+
+<button class="chat-option" onclick="jalStepName()">Order Continue ➡️</button>
+<button class="chat-option" onclick="resetChat()">🏠 Cancel</button>
+`;
+};
+
+window.jalStepName = function () {
+  document.getElementById("chatContent").innerHTML = `
+<b>👤 Aapka Naam</b><br><br>
+<input type="text" id="jal_name" placeholder="Full Name" style="width:100%;padding:8px"><br><br>
+<button class="chat-option" onclick="jalStepPhone()">Next ➡️</button>
+`;
+};
+
+window.jalStepPhone = function () {
+  const n = document.getElementById("jal_name").value.trim();
+  if (!n) return alert("Naam likhna zaroori hai");
+
+  jalOrderData.name = n;
+
+  document.getElementById("chatContent").innerHTML = `
+<b>📞 Phone Number</b><br><br>
+<input type="tel" id="jal_phone" placeholder="10 digit number" style="width:100%;padding:8px"><br><br>
+<button class="chat-option" onclick="jalStepAddress()">Next ➡️</button>
+`;
+};
+
+window.jalStepAddress = function () {
+  const p = document.getElementById("jal_phone").value.trim();
+  if (!p) return alert("Phone number zaroori hai");
+
+  jalOrderData.phone = p;
+
+  document.getElementById("chatContent").innerHTML = `
+<b>📍 Full Delivery Address</b><br><br>
+<textarea id="jal_address" placeholder="House no, city, state, pincode"
+style="width:100%;padding:8px;height:80px"></textarea><br><br>
+<button class="chat-option" onclick="jalStepBottles()">Next ➡️</button>
+`;
+};
+
+window.jalStepBottles = function () {
+  const a = document.getElementById("jal_address").value.trim();
+  if (!a) return alert("Address zaroori hai");
+
+  jalOrderData.address = a;
+
+  document.getElementById("chatContent").innerHTML = `
+<b>💧 Shyam Jal Bottles (Quantity)</b><br><br>
+<input type="number" id="jal_bottles" placeholder="Jaise: 2 / 5 / 10"
+style="width:100%;padding:8px"><br><br>
+
+<b>💰 Cost Calculation:</b><br>
+• ₹20 × bottles<br>
+• Packaging cost extra<br>
+• Logistics + Handling<br>
+• Shipping address ke hisaab se<br><br>
+
+<button class="chat-option" onclick="jalToWhatsApp()">Submit Order ✅</button>
+`;
+};
+
+window.jalToWhatsApp = function () {
+  const b = document.getElementById("jal_bottles").value.trim();
+  if (!b) return alert("Bottle quantity likhen");
+
+  jalOrderData.bottles = b;
+
+  const msg = `
+💧 SHYAM JAL DELIVERY ORDER
+
+Name: ${jalOrderData.name}
+Phone: ${jalOrderData.phone}
+
+Address:
+${jalOrderData.address}
+
+Bottles: ${jalOrderData.bottles}
+
+Cost:
+₹20 × bottles + packaging + shipping + other
+(Shipping address ke hisaab se)
+
+Source:
+Official Shyam Jal Counter – Manauna Dham
+Abhimantrit by Mahant Ji
+`.trim();
+
+  window.location.href =
+    "https://wa.me/917817803342?text=" + encodeURIComponent(msg);
+};
 
 })();
