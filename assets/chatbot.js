@@ -129,7 +129,7 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
 </button>
 
 <button class="chat-option" onclick="showInfo(2)">
-2️⃣ Shyam Jal ghar par courier karwana hai
+2️⃣ Shyam Jal jaankari
 </button>
 
 <button class="chat-option" onclick="showInfo(3)">
@@ -199,13 +199,13 @@ JIS DIN MAHANT JI URGENT KAAM SE GAYE HO. USDIN KI JANKARI PHELE SE HAME PATA NH
   // OPTION 2 — SHYAM JAL COURIER
   if (option === 2) {
     box.innerHTML = `
-<b>💧 Shyam Jal Courier</b><br><br>
+<b>💧 Shyam Jal Information</b><br><br>
 
-Shyam Jal ghar par courier karwaya ja sakta hai.<br>
-Price address ke hisaab se decide hota hai.<br><br>
+Shyam Jal se judi puri jaankari le skte hai hamse.<br>
+Kaise istemal krna hai aur kab krna hai?<br><br>
 
 <button class="chat-option" onclick="window.location.href='jal.html'">
-Jal Order Page Par Jaayein
+Shyam Jal page pr jayein
 </button>
 
 <hr>
@@ -221,14 +221,13 @@ Jal Order Page Par Jaayein
 <b>💧 Manauna Dham aakar Shyam Jal</b><br><br>
 
 • Patient present ho to Patient Token Line<br>
-• Patient present na ho to General Jal Line<br>
+• Patient present na ho to General Mahant Ji darshan Line<br>
 • General line lambi hoti hai<br><br>
 
 Hamari taraf se aapko bina extra cost ke neechi likhi services milengi:<br>
 • Hotel Booking<br>
 • Khaana Delivery<br>
-• Shyam Jal Delivery<br>
-• Prasad Delivery<br>
+• Shyam Jal ke baare mai puri jaankari
 • Saadhan Booking<br><br>
 
 ⚠️ Advance booking possible nahi hai<br>
