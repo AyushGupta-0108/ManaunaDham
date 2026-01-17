@@ -319,7 +319,7 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
 <b>Kripya neeche se option chunein:</b><br><br>
 
 <button class="chat-option" onclick="showInfo(1)">1️⃣ Mahant Ji se Darshan paane ki poori jankari</button>
-<button class="chat-option" onclick="showInfo(2)">2️⃣ Shyam Jal ghar par courier karwana hai</button>
+<button class="chat-option" onclick="showInfo(2)">2️⃣ Shyam Jal ki puri jaankari</button>
 <button class="chat-option" onclick="showInfo(3)">3️⃣ Manauna Dham aakar Shyam Jal lena – services jankari</button>
 <button class="chat-option" onclick="showInfo(4)">4️⃣ Hotel / Dharamshala – Booking aur jankari</button>
 <button class="chat-option" onclick="showInfo(5)">5️⃣ Restaurant – Khana order aur jankari</button>
