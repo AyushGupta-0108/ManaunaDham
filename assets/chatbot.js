@@ -182,7 +182,7 @@ Welcome to <b>ManaunaDham.org.in</b><br><br>
 ⚠️ Shyam Jal sirf mandir ground ke andar ek hi official shop se milta hai<br><br>
 
 <b>Mahant Ji Availability:</b><br>
-❌ Wednesday & Thursday nahi baithte<br>
+❌ Tuesday & Wednesday nahi baithte<br>
 ⚠️ Kabhi-kabhi urgent kaam ki wajah se anya din bhi unavailable ho sakte hain<br>
 JIS DIN MAHANT JI URGENT KAAM SE GAYE HO. USDIN KI JANKARI PHELE SE HAME PATA NHI HOTI.<br><br>
 
