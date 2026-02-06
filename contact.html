@@ -49,72 +49,675 @@ Manauna Dham hotel booking, Manauna Dham transport services
 </script>
 
 <style>
-body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6}
-header{background:#7a0000;color:white}
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{height:48px}
-.brand-text strong{font-size:18px}
-.brand-text span{font-size:13px;opacity:.9}
-nav{display:flex;gap:18px}
-nav a{color:white;text-decoration:none;font-weight:600}
-.menu-btn{display:none;font-size:26px}
-.mobile-menu{display:none;flex-direction:column;background:#7a0000}
-.mobile-menu a{color:white;padding:12px;border-bottom:1px solid #aa0000;text-decoration:none}
-
-.section{padding:50px 30px}
-.section h2{color:#7a0000;border-bottom:4px solid #d4a017;display:inline-block;padding-bottom:6px}
-
-.card{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 0 15px rgba(0,0,0,.15);
-margin-top:30px;
-max-width:800px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.contact-row{
-display:flex;
-flex-wrap:wrap;
-gap:30px;
-margin-top:20px;
+body {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #fff9f0 0%, #ffe8cc 100%);
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-.contact-box{
-flex:1;
-min-width:250px;
-background:#fff;
-border-left:6px solid #d4a017;
-padding:20px;
-border-radius:8px;
+html {
+  scroll-behavior: smooth;
 }
 
-.contact-box i{
-font-size:28px;
-color:#7a0000;
-margin-bottom:10px;
-display:block;
+/* Header */
+header {
+  background: linear-gradient(135deg, #8b0000 0%, #5a0000 100%);
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  animation: slideDown 0.5s ease;
 }
 
-.map{
-width:100%;
-height:350px;
-border:0;
-margin-top:30px;
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-footer{
-background:#4d0000;
-color:white;
-text-align:center;
-padding:30px;
-margin-top:50px;
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-@media(max-width:800px){
-nav{display:none}
-.menu-btn{display:block;color:white}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.brand:hover {
+  transform: scale(1.05);
+}
+
+.brand img {
+  height: 56px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
+}
+
+.brand img:hover {
+  transform: rotate(5deg);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-text strong {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.brand-text span {
+  font-size: 14px;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 8px 4px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #ffd56b;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.menu-btn:hover {
+  transform: rotate(90deg);
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+}
+
+.mobile-menu.active {
+  max-height: 400px;
+}
+
+.mobile-menu a {
+  padding: 16px 40px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255,255,255,0.1);
+  padding-left: 50px;
+}
+
+/* Section */
+.section {
+  padding: 80px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section h2 {
+  color: #7a0000;
+  font-size: 36px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+  margin-bottom: 40px;
+}
+
+.section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, #d4a017 0%, transparent 100%);
+  border-radius: 2px;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  margin-top: 40px;
+  max-width: 900px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+}
+
+.card p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* Contact Row */
+.contact-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 35px;
+}
+
+.contact-box {
+  background: linear-gradient(135deg, #fff 0%, #fffbf0 100%);
+  border-left: 6px solid #d4a017;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212,160,23,0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.contact-box:hover::before {
+  left: 100%;
+}
+
+.contact-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+.contact-box i {
+  font-size: 36px;
+  color: #d4a017;
+  margin-bottom: 15px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.contact-box:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.contact-box strong {
+  font-size: 18px;
+  color: #7a0000;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Quick Services Section */
+.quick-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.service-card {
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #d4a017, #7a0000);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+}
+
+.service-card i {
+  font-size: 48px;
+  color: #d4a017;
+  margin-bottom: 20px;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover i {
+  transform: scale(1.15) rotate(10deg);
+  color: #7a0000;
+}
+
+.service-card h3 {
+  color: #7a0000;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(122,0,0,0.3);
+}
+
+.service-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122,0,0,0.5);
+}
+
+/* Special Offer Banner */
+.offer-banner {
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 16px;
+  margin-top: 50px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(122,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.offer-banner::before {
+  content: '✨';
+  position: absolute;
+  font-size: 100px;
+  opacity: 0.1;
+  top: -20px;
+  right: -20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.offer-banner h3 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #ffd56b;
+}
+
+.offer-banner p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+.offer-banner .cta-btn {
+  display: inline-block;
+  background: white;
+  color: #7a0000;
+  padding: 14px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+  margin: 5px;
+}
+
+.offer-banner .cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(255,255,255,0.5);
+}
+
+/* Map */
+.map {
+  width: 100%;
+  height: 450px;
+  border: 0;
+  margin-top: 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* Patient Token Section */
+.patient-token-section {
+  background: white;
+  border-left: 6px solid #d4a017;
+  padding: 35px;
+  border-radius: 12px;
+  max-width: 900px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  margin-top: 35px;
+  transition: all 0.3s ease;
+}
+
+.patient-token-section:hover {
+  transform: translateX(5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+}
+
+.patient-token-section ul {
+  margin: 15px 0 0 25px;
+  line-height: 1.8;
+}
+
+.patient-token-section li {
+  margin: 8px 0;
+  color: #444;
+}
+
+.token-btn {
+  display: inline-block;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(122,0,0,0.3);
+}
+
+.token-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(122,0,0,0.5);
+}
+
+/* Stats Section */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 700;
+  color: #7a0000;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 15px;
+  color: #666;
+  font-weight: 600;
+}
+
+/* Floating Action Button */
+.fab-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+}
+
+.fab {
+  background: linear-gradient(135deg, #00a000 0%, #008000 100%);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 20px rgba(0,128,0,0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(0,128,0,0.4);
+  }
+  50% {
+    box-shadow: 0 4px 30px rgba(0,128,0,0.7);
+  }
+}
+
+.fab:hover {
+  transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #4d0000 0%, #2a0000 100%);
+  color: white;
+  padding: 50px 40px 30px;
+  margin-top: 80px;
+  box-shadow: 0 -5px 30px rgba(0,0,0,0.2);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer p {
+  margin: 10px 0;
+  font-size: 15px;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .section {
+    padding: 60px 30px;
+  }
+  
+  .topbar {
+    padding: 16px 30px;
+  }
+}
+
+@media (max-width: 800px) {
+  nav {
+    display: none;
+  }
+  
+  .menu-btn {
+    display: block;
+  }
+  
+  .mobile-menu {
+    display: flex;
+  }
+  
+  .brand img {
+    height: 48px;
+  }
+  
+  .brand-text strong {
+    font-size: 18px;
+  }
+  
+  .brand-text span {
+    font-size: 13px;
+  }
+  
+  .section {
+    padding: 50px 20px;
+  }
+  
+  .section h2 {
+    font-size: 28px;
+  }
+  
+  .card {
+    padding: 30px 20px;
+  }
+  
+  .map {
+    height: 350px;
+  }
+  
+  .quick-services,
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .fab-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .fab {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+  
+  .topbar {
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section h2 {
+    font-size: 24px;
+  }
+  
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-card {
+    padding: 25px;
+  }
+  
+  .offer-banner {
+    padding: 25px 20px;
+  }
+  
+  .offer-banner h3 {
+    font-size: 22px;
+  }
 }
 </style>
 </head>
@@ -123,13 +726,13 @@ nav{display:none}
 
 <header>
 <div class="topbar">
-<div class="brand">
+<a href="index.html" class="brand">
 <img src="logonobg.webp" alt="Manauna Dham Logo" loading="eager">
 <div class="brand-text">
 <strong>Manauna Dham</strong>
 <span>Pilgrim Information & Services</span>
 </div>
-</div>
+</a>
 
 <nav aria-label="Main navigation">
 <a href="index.html">Home</a>
@@ -142,13 +745,36 @@ nav{display:none}
 
 <div class="mobile-menu" id="mobileMenu">
 <a href="index.html">Home</a>
+<a href="accommodations.html">Hotels</a>
+<a href="food.html">Food Services</a>
+<a href="transport.html">Transport</a>
 <a href="contact.html">Contact</a>
 <a href="live.html">Live Darshan</a>
 </div>
 </header>
 
 <section class="section">
-<h2>Manauna(Manona) Dham- Complete Guide</h2>
+<h2>Manauna(Manona) Dham - Complete Guide</h2>
+
+<!-- Stats Section -->
+<div class="stats-section">
+  <div class="stat-card">
+    <span class="stat-number">50K+</span>
+    <span class="stat-label">Daily Visitors</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">100+</span>
+    <span class="stat-label">Hotels Available</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">24/7</span>
+    <span class="stat-label">Support Available</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">1000+</span>
+    <span class="stat-label">Happy Pilgrims</span>
+  </div>
+</div>
 
 <div class="card">
 <p>
@@ -162,7 +788,7 @@ Darshan, patient token, hotel & transport guidance is available via chatbot.
 <div class="contact-box">
 <i class="fa fa-comments"></i>
 <strong>Visitor Help Desk</strong><br>
-Use the <b>“Chat Karein”</b> button for instant guidance.
+Use the <b>"Chat Karein"</b> button for instant guidance.
 </div>
 
 <div class="contact-box">
@@ -177,27 +803,179 @@ Manauna Village, Tehsil Aonla, Bareilly (UP)
 Darshan: 7 AM – 9 PM<br>
 Aarti: 8 AM & 5 PM
 </div>
-  
-<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin"> </iframe>
-
 
 </div>
+
+<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" loading="lazy"></iframe>
+
+</div>
+
+<!-- Special Offer Banner -->
+<div class="offer-banner">
+  <h3>🎉 Plan Your Visit Today!</h3>
+  <p>Book hotels, food, and transport in advance for a hassle-free darshan experience</p>
+  <a href="accommodations.html" class="cta-btn">Browse Hotels</a>
+  <a href="food.html" class="cta-btn">Order Food</a>
+  <a href="transport.html" class="cta-btn">Book Transport</a>
+</div>
+
+<!-- Quick Services -->
+<h2 style="margin-top: 80px;">Our Services for Devotees</h2>
+
+<div class="quick-services">
+  <a href="accommodations.html" class="service-card">
+    <i class="fa fa-hotel"></i>
+    <h3>Hotels & Dharmshala</h3>
+    <p>Comfortable stays near the temple. Budget to luxury options available.</p>
+    <span class="service-btn">Book Now</span>
+  </a>
+
+  <a href="food.html" class="service-card">
+    <i class="fa fa-utensils"></i>
+    <h3>Food Delivery</h3>
+    <p>Delicious satvik meals delivered to your location. Pre-order available.</p>
+    <span class="service-btn">Order Food</span>
+  </a>
+
+  <a href="transport.html" class="service-card">
+    <i class="fa fa-bus"></i>
+    <h3>Transport Services</h3>
+    <p>Taxi, rickshaw, and bus bookings for comfortable travel to the temple.</p>
+    <span class="service-btn">Book Transport</span>
+  </a>
+
+  <a href="jal.html" class="service-card">
+    <i class="fa fa-tint"></i>
+    <h3>Shyam Jal Info</h3>
+    <p>Complete guide on obtaining abhimantrit Shyam Jal from the temple.</p>
+    <span class="service-btn">Learn More</span>
+  </a>
+
+  <a href="live.html" class="service-card">
+    <i class="fa fa-video"></i>
+    <h3>Live Darshan</h3>
+    <p>Watch live darshan streaming from anywhere in the world.</p>
+    <span class="service-btn">Watch Live</span>
+  </a>
+
+  <a href="index.html" class="service-card">
+    <i class="fa fa-home"></i>
+    <h3>Complete Guide</h3>
+    <p>Everything you need to know about visiting Manauna Dham.</p>
+    <span class="service-btn">View Guide</span>
+  </a>
+</div>
+
+</section>
+
+<!-- Patient Token Information Section -->
+<section class="section">
+<h2>Patient Token Jaankari – Manauna Dham</h2>
+
+<div class="patient-token-section">
+<p style="font-size:16px;line-height:1.7;margin-top:0">
+Manauna Dham mein <strong>Patient Token</strong> se sambandhit niyam aur prakriya samay-samay par badal sakti hai. Isliye humne ek alag page par <strong>latest aur verified jaankari</strong> provide ki hai.
+</p>
+
+<p style="font-size:15px;line-height:1.7">
+Yahan aap jaan sakte hain:
+<ul style="margin:10px 0 0 18px;line-height:1.6">
+<li>Patient token kaun le sakta hai</li>
+<li>On-ground process kya hota hai</li>
+<li>Patient ki presence kab zaroori hoti hai</li>
+<li>Important rules aur limitations</li>
+</ul>
+</p>
+
+<p style="font-size:14px;color:#7a0000;margin-top:12px;font-weight:600">
+⚠️ Note: Hum patient token issue nahi karte. Yeh sirf jaankari ke liye hai, jo on-site practices par aadharit hoti hai.
+</p>
+
+<a href="patient.html" class="token-btn">
+Patient Token Jaankari Dekhein
+</a>
 </div>
 </section>
-<!-- Patient Token Information Section --> <section class="section"> <h2>Patient Token Jaankari – Manauna Dham</h2> <div style=" background:#ffffff; border-left:6px solid #d4a017; padding:25px; border-radius:8px; max-width:800px; box-shadow:0 0 12px rgba(0,0,0,.12); margin-top:25px; "> <p style="font-size:16px;line-height:1.7;margin-top:0"> Manauna Dham mein <strong>Patient Token</strong> se sambandhit niyam aur prakriya samay-samay par badal sakti hai. Isliye humne ek alag page par <strong>latest aur verified jaankari</strong> provide ki hai. </p> <p style="font-size:15px;line-height:1.7"> Yahan aap jaan sakte hain: <ul style="margin:10px 0 0 18px;line-height:1.6"> <li>Patient token kaun le sakta hai</li> <li>On-ground process kya hota hai</li> <li>Patient ki presence kab zaroori hoti hai</li> <li>Important rules aur limitations</li> </ul> </p> <p style="font-size:14px;color:#7a0000;margin-top:12px"> ⚠️ Note: Hum patient token issue nahi karte. Yeh sirf jaankari ke liye hai, jo on-site practices par aadharit hoti hai. </p> <a href="patient.html" style=" display:inline-block; margin-top:18px; background:#7a0000; color:white; padding:12px 22px; border-radius:6px; text-decoration:none; font-weight:600; " > Patient Token Jaankari Dekhein </a> </div> </section>
- 
+
+<!-- Why Choose Us Section -->
+<section class="section" style="background: white; border-radius: 20px; padding: 60px 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+<h2>Why Book Through ManaunaDham.org.in?</h2>
+
+<div class="quick-services" style="margin-top: 40px;">
+  <div class="service-card" style="text-align: left;">
+    <i class="fa fa-shield-alt" style="color: #00a000;"></i>
+    <h3>Verified Partners</h3>
+    <p>All hotels, restaurants, and transport providers are verified and trusted.</p>
+  </div>
+
+  <div class="service-card" style="text-align: left;">
+    <i class="fa fa-tags" style="color: #00a000;"></i>
+    <h3>Best Prices</h3>
+    <p>Competitive rates with no hidden charges. Transparent pricing guaranteed.</p>
+  </div>
+
+  <div class="service-card" style="text-align: left;">
+    <i class="fa fa-headset" style="color: #00a000;"></i>
+    <h3>24/7 Support</h3>
+    <p>Round-the-clock assistance through our chatbot and customer service.</p>
+  </div>
+
+  <div class="service-card" style="text-align: left;">
+    <i class="fa fa-clock" style="color: #00a000;"></i>
+    <h3>Easy Booking</h3>
+    <p>Quick and simple booking process. Confirmation within minutes.</p>
+  </div>
+
+  <div class="service-card" style="text-align: left;">
+    <i class="fa fa-map-marked-alt" style="color: #00a000;"></i>
+    <h3>Local Expertise</h3>
+    <p>Updated information from local sources for accurate guidance.</p>
+  </div>
+
+  <div class="service-card" style="text-align: left;">
+    <i class="fa fa-mobile-alt" style="color: #00a000;"></i>
+    <h3>Mobile Friendly</h3>
+    <p>Access all services easily from your mobile device anywhere.</p>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 50px;">
+  <a href="index.html" class="token-btn" style="font-size: 18px; padding: 16px 40px;">
+    Explore All Services
+  </a>
+</div>
+</section>
+
+<!-- Floating Action Button -->
+<div class="fab-container">
+  <a href="index.html" class="fab" title="Go to Homepage">
+    <i class="fa fa-home"></i>
+  </a>
+</div>
+
 <footer>
-<p>© 2026 ManaunaDham.org.in</p>
-<p style="font-size:13px;opacity:.8">
+<div class="footer-content">
+<p style="font-size: 18px; font-weight: 600; margin-bottom: 15px;">© 2026 ManaunaDham.org.in</p>
+<p style="font-size:14px;opacity:.85">
 Privately operated pilgrim information platform.  
 Not the official temple website.
 </p>
+<p style="font-size:13px;opacity:.75;margin-top:15px">
+🙏 Serving devotees with verified hotel, food, and transport booking services
+</p>
+</div>
 </footer>
 
 <script defer>
 function toggleMenu(){
-let m=document.getElementById("mobileMenu");
-m.style.display = m.style.display==="flex" ? "none" : "flex";
+  let m = document.getElementById("mobileMenu");
+  if(m.classList.contains('active')) {
+    m.classList.remove('active');
+    m.style.maxHeight = '0';
+  } else {
+    m.classList.add('active');
+    m.style.maxHeight = '400px';
+  }
 }
 </script>
 
