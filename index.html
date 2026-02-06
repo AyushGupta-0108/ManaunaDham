@@ -47,332 +47,928 @@ gtag('config', 'G-1401GVEYWR');
 </script>
 
 <style>
-body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6}
-
-header{background:#7a0000;color:white}
-
-.topbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px 20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
+body {
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #fff9f0 0%, #ffe8cc 100%);
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-.brand img{
-height:48px;
-width:auto;
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
 }
 
-.brand-text{
-display:flex;
-flex-direction:column;
-line-height:1.1;
+/* Top Disclaimer Banner */
+.disclaimer-banner {
+  background: linear-gradient(135deg, #f7f5f2 0%, #ede8dc 100%);
+  border-bottom: 2px solid #d4a017;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.brand-text strong{
-font-size:18px;
-font-weight:700;
+.disclaimer-banner span {
+  color: #7a0000;
+  font-weight: 700;
 }
 
-.brand-text span{
-font-size:13px;
-opacity:.9;
+.disclaimer-banner a {
+  color: #7a0000;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 6px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
-nav{
-display:flex;
-align-items:center;
-gap:18px;
+.disclaimer-banner a:hover {
+  border-bottom-color: #7a0000;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-font-weight:600;
-font-size:15px;
-padding:6px 0;
-display:flex;
-align-items:center;
+/* Header */
+header {
+  background: linear-gradient(135deg, #8b0000 0%, #5a0000 100%);
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  animation: slideDown 0.5s ease;
 }
 
-nav a.underline{
-border-bottom:2px solid #ffd56b;
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-nav a.live{
-padding:6px 14px;
-border-radius:5px;
-display:flex;
-align-items:center;
-height:32px;
-background:#008000;
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.menu-btn{display:none;font-size:26px;cursor:pointer}
-
-.mobile-menu{
-display:none;
-flex-direction:column;
-background:#7a0000;
-padding:10px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.3s ease;
 }
 
-.mobile-menu a{
-padding:10px;
-color:white;
-text-decoration:none;
-border-bottom:1px solid #aa0000;
+.brand:hover {
+  transform: scale(1.05);
 }
 
-.dropdown{position:relative}
-
-.dropdown-menu{
-display:none;
-position:absolute;
-background:#7a0000;
-top:100%;
-min-width:200px;
-z-index:99;
-box-shadow:0 5px 15px rgba(0,0,0,.4);
+.brand img {
+  height: 56px;
+  width: auto;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
 }
 
-.dropdown-menu a{
-display:block;
-padding:10px;
-border-bottom:1px solid #aa0000;
+.brand img:hover {
+  transform: rotate(5deg);
 }
 
-.dropdown:hover .dropdown-menu{display:block}
-
-.carousel{overflow:hidden;width:100%;background:black}
-.track{display:flex;width:max-content;animation:scroll 18s linear infinite}
-.track img{width:100vw;height:60vh;object-fit:cover}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-.section{padding:50px 30px}
-.section h2{
-color:#7a0000;
-border-bottom:4px solid #d4a017;
-display:inline-block;
-padding-bottom:6px;
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
 }
 
-.aboutbox{
-display:flex;
-flex-wrap:wrap;
-align-items:center;
-gap:40px;
-}
-@media(max-width:800px){
-.aboutbox{
-flex-direction:column;
-text-align:center;
+.brand-text strong {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-.aboutbox img{
-margin:0 auto 20px auto;
-}
-}
-
-.aboutbox img{
-width:300px;
-border-radius:10px;
+.brand-text span {
+  font-size: 14px;
+  opacity: 0.9;
+  font-weight: 300;
 }
 
-.abouttext{flex:1}
-
-.btn{
-background:#7a0000;
-color:white;
-padding:12px 25px;
-border:none;
-border-radius:5px;
-font-size:16px;
-margin:10px 10px 0 0;
-cursor:pointer;
+/* Navigation */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
-.timings{
-background:#fff;
-border-left:8px solid #d4a017;
-padding:30px;
-margin-top:40px;
-box-shadow:0 0 10px rgba(0,0,0,.15);
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 8px 4px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.services{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-margin-top:30px;
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #ffd56b;
+  transition: width 0.3s ease;
 }
 
-.service{
-background:white;
-padding:20px;
-text-align:center;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,.1);
-color:#7a0000;
-font-weight:600;
-text-decoration:none;
+nav a:hover::after,
+nav a.underline::after {
+  width: 100%;
 }
 
-.service i{
-font-size:36px;
-margin-bottom:10px;
+nav a.live {
+  padding: 10px 20px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #00a000 0%, #008000 100%);
+  box-shadow: 0 4px 15px rgba(0,128,0,0.3);
+  animation: pulse 2s infinite;
 }
 
-.gallery-row{
-display:flex;
-overflow-x:auto;
-width:100vw;
-margin-left:calc(-50vw + 50%);
-margin-right:calc(-50vw + 50%);
-scroll-snap-type:x mandatory;
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(0,128,0,0.3);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(0,128,0,0.6);
+  }
+}
+
+nav a.live:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,128,0,0.5);
+}
+
+.menu-btn {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-btn:hover {
+  transform: rotate(90deg);
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+}
+
+.mobile-menu.active {
+  max-height: 600px;
+}
+
+.mobile-menu a {
+  padding: 16px 40px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+  transform: translateX(-100%);
+  animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+
+.mobile-menu a:nth-child(1) { animation-delay: 0.05s; }
+.mobile-menu a:nth-child(2) { animation-delay: 0.1s; }
+.mobile-menu a:nth-child(3) { animation-delay: 0.15s; }
+.mobile-menu a:nth-child(4) { animation-delay: 0.2s; }
+.mobile-menu a:nth-child(5) { animation-delay: 0.25s; }
+.mobile-menu a:nth-child(6) { animation-delay: 0.3s; }
+.mobile-menu a:nth-child(7) { animation-delay: 0.35s; }
+.mobile-menu a:nth-child(8) { animation-delay: 0.4s; }
+
+.mobile-menu a:hover {
+  background: rgba(255,255,255,0.1);
+  padding-left: 50px;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  top: 100%;
+  min-width: 220px;
+  z-index: 99;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  margin-top: 8px;
+  overflow: hidden;
+  animation: dropdownFade 0.3s ease;
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.15);
+  padding-left: 30px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Sevadar Banner */
+.sevadar-banner {
+  background: linear-gradient(135deg, #f7f5f2 0%, #ede8dc 100%);
+  border-bottom: 2px solid #d4a017;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.sevadar-banner strong {
+  color: #7a0000;
+  font-weight: 700;
+}
+
+/* Carousel */
+.carousel {
+  overflow: hidden;
+  width: 100%;
+  background: #000;
+  position: relative;
+  height: 70vh;
+  max-height: 600px;
+}
+
+.carousel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+  height: 100%;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+.track img {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+.track img:hover {
+  filter: brightness(1.1);
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Sections */
+.section {
+  padding: 80px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section h2 {
+  color: #7a0000;
+  font-size: 36px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+  margin-bottom: 40px;
+}
+
+.section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, #d4a017 0%, transparent 100%);
+  border-radius: 2px;
+}
+
+/* About Box */
+.aboutbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 60px;
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aboutbox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+}
+
+.aboutbox img {
+  width: 350px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.aboutbox img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.abouttext {
+  flex: 1;
+  min-width: 300px;
+}
+
+.abouttext p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  color: white;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 10px 10px 0 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(122,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(122,0,0,0.4);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+}
+
+/* Timings Box */
+.timings {
+  background: white;
+  border-left: 6px solid #d4a017;
+  padding: 40px;
+  margin-top: 50px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timings:hover {
+  transform: translateX(5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.timings h2 {
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+.timings p {
+  margin: 12px 0;
+  font-size: 17px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timings p::before {
+  content: '🕉️';
+  font-size: 20px;
+}
+
+/* Services Grid */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service {
+  background: white;
+  padding: 35px 25px;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+  color: #7a0000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212,160,23,0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.service:hover::before {
+  left: 100%;
+}
+
+.service:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+  background: linear-gradient(135deg, #fff 0%, #fffbf0 100%);
+}
+
+.service i {
+  font-size: 42px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+  color: #d4a017;
+}
+
+.service:hover i {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Gallery */
+.gallery-row {
+  display: flex;
+  overflow-x: auto;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #d4a017 #f0f0f0;
+  padding: 20px 0;
+}
+
+.gallery-row::-webkit-scrollbar {
+  height: 10px;
+}
+
+.gallery-row::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.gallery-row::-webkit-scrollbar-thumb {
+  background: #d4a017;
+  border-radius: 5px;
 }
 
 .gallery-row img,
-.gallery-row iframe{
-width:100vw;
-height:65vh;
-object-fit:cover;
-flex-shrink:0;
-scroll-snap-align:start;
-border-radius:0;
+.gallery-row iframe {
+  width: 90vw;
+  max-width: 800px;
+  height: 65vh;
+  object-fit: cover;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  border-radius: 12px;
+  margin: 0 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Popup Styles */
-.popup{
-display:none;
-position:fixed;
-bottom:20px;
-right:20px;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,.3);
-max-width:280px;
-z-index:1000;
-animation:slideIn .5s ease;
+.gallery-row img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
 }
 
-@keyframes slideIn{
-from{transform:translateY(100px);opacity:0}
-to{transform:translateY(0);opacity:1}
+/* Weather Cards */
+#weatherCards .service,
+#openWeather {
+  animation: fadeIn 0.5s ease;
 }
 
-.popup-close{
-position:absolute;
-top:8px;
-right:12px;
-font-size:24px;
-cursor:pointer;
-color:#7a0000;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.popup h3{
-color:#7a0000;
-margin-top:0;
+/* FAQ Section */
+.section p strong {
+  color: #7a0000;
+  font-size: 18px;
 }
 
-.popup a{
-display:inline-block;
-background:#7a0000;
-color:white;
-padding:10px 20px;
-border-radius:5px;
-text-decoration:none;
-margin-top:10px;
+/* Popup */
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  max-width: 320px;
+  z-index: 1000;
+  animation: slideInPopup 0.5s ease;
+  border: 3px solid #d4a017;
 }
 
-footer{
-background:#4d0000;
-color:white;
-padding:40px 20px;
-margin-top:50px;
+@keyframes slideInPopup {
+  from {
+    transform: translateY(100px) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
-.footer-content{
-max-width:1200px;
-margin:0 auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
+.popup-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #7a0000;
+  transition: transform 0.3s ease;
 }
 
-.footer-section h3{
-color:#ffd56b;
-margin-bottom:15px;
-font-size:18px;
+.popup-close:hover {
+  transform: rotate(90deg);
+}
+
+.popup h3 {
+  color: #7a0000;
+  margin-top: 0;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.popup p {
+  margin-bottom: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.popup a {
+  display: inline-block;
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(122,0,0,0.3);
+}
+
+.popup a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122,0,0,0.4);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #4d0000 0%, #2a0000 100%);
+  color: white;
+  padding: 60px 40px 30px;
+  margin-top: 80px;
+  box-shadow: 0 -5px 30px rgba(0,0,0,0.2);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.footer-section h3 {
+  color: #ffd56b;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: #ffd56b;
+  border-radius: 2px;
 }
 
 .footer-section p,
-.footer-section a{
-color:#fff;
-opacity:.9;
-line-height:1.8;
-text-decoration:none;
-display:block;
+.footer-section a {
+  color: #fff;
+  opacity: 0.9;
+  line-height: 2;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
 }
 
-.footer-section a:hover{
-opacity:1;
-text-decoration:underline;
+.footer-section a:hover {
+  opacity: 1;
+  padding-left: 10px;
+  color: #ffd56b;
 }
 
-.footer-bottom{
-text-align:center;
-margin-top:30px;
-padding-top:20px;
-border-top:1px solid rgba(255,255,255,.2);
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.2);
 }
 
-.footer-bottom p{
-font-size:13px;
-opacity:.8;
-margin:5px 0;
+.footer-bottom p {
+  font-size: 14px;
+  opacity: 0.85;
+  margin: 8px 0;
+  line-height: 1.8;
 }
 
-@media(max-width:800px){
-nav{display:none}
-.menu-btn{display:block}
-.brand img{height:42px}
-.brand-text strong{font-size:16px}
-.brand-text span{font-size:12px}
-.track img{height:260px}
-.popup{
-right:10px;
-bottom:10px;
-max-width:260px;
+/* Disclaimer Section */
+#disclaimer-full {
+  background: white;
+  padding: 60px 40px;
+  border-top: 5px solid #d4a017;
+  box-shadow: 0 -5px 30px rgba(0,0,0,0.05);
 }
+
+#disclaimer-full > div {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.disclaimer-content {
+  background: linear-gradient(135deg, #fffbf0 0%, #fff9e6 100%);
+  padding: 35px;
+  border-left: 6px solid #d4a017;
+  margin-top: 30px;
+  border-radius: 12px;
+  line-height: 1.9;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.disclaimer-content p {
+  margin: 20px 0;
+}
+
+.disclaimer-content strong {
+  color: #7a0000;
+  font-size: 17px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .section {
+    padding: 60px 30px;
+  }
+  
+  .topbar {
+    padding: 16px 30px;
+  }
+  
+  .aboutbox {
+    padding: 40px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  nav {
+    display: none;
+  }
+  
+  .menu-btn {
+    display: block;
+  }
+  
+  .mobile-menu {
+    display: flex;
+  }
+  
+  .brand img {
+    height: 48px;
+  }
+  
+  .brand-text strong {
+    font-size: 18px;
+  }
+  
+  .brand-text span {
+    font-size: 13px;
+  }
+  
+  .carousel {
+    height: 50vh;
+  }
+  
+  .track img {
+    height: 50vh;
+  }
+  
+  .section {
+    padding: 50px 20px;
+  }
+  
+  .section h2 {
+    font-size: 28px;
+  }
+  
+  .aboutbox {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  .aboutbox img {
+    margin: 0 auto 20px auto;
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .services {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
+  
+  .timings {
+    padding: 30px 20px;
+  }
+  
+  .popup {
+    right: 15px;
+    bottom: 15px;
+    max-width: 280px;
+    padding: 25px;
+  }
+  
+  footer {
+    padding: 40px 20px 20px;
+  }
+  
+  .footer-content {
+    gap: 35px;
+  }
+  
+  .topbar {
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section h2 {
+    font-size: 24px;
+  }
+  
+  .services {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn {
+    width: 100%;
+    margin: 8px 0;
+  }
+  
+  .aboutbox {
+    padding: 25px 15px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-  <!-- Subtle Disclaimer Banner (Slim / Mobile-friendly) -->
-<div style="
-  background:#f7f5f2;
-  border-bottom:1px solid #e0d8c8;
-  padding:6px 10px;
-  text-align:center;
-  font-size:12px;
-  color:#777;
-  line-height:1.4
-">
-  <span style="color:#7a0000;font-weight:600">ManaunaDham.org.in</span>
+<!-- Subtle Disclaimer Banner -->
+<div class="disclaimer-banner">
+  <span>ManaunaDham.org.in</span>
   is an independent pilgrim services platform. Not affiliated with temple management.
-  <a href="#disclaimer-full" style="color:#7a0000;text-decoration:none;font-weight:500;margin-left:4px">
-    Learn more
-  </a>
+  <a href="#disclaimer-full">Learn more</a>
 </div>
 
 <header>
@@ -429,19 +1025,10 @@ max-width:260px;
 <a href="contact.html">Contact</a>
 </div>
 </header>
-<!-- Sevadar Disclaimer Banner (Slim / Same size as header disclaimer) -->
-<div style="
-  background:#f7f5f2;
-  border-bottom:1px solid #e0d8c8;
-  padding:6px 10px;
-  text-align:center;
-  font-size:12px;
-  color:#555;
-  line-height:1.4
-">
-  <strong style="color:#7a0000">
-    हम मंदिर के सेवादार नहीं हैं।
-  </strong>
+
+<!-- Sevadar Disclaimer Banner -->
+<div class="sevadar-banner">
+  <strong>हम मंदिर के सेवादार नहीं हैं।</strong>
   हम बस भक्तों की मदद करते हैं दर्शन पाने में।
 </div>
 
@@ -458,7 +1045,7 @@ max-width:260px;
 </div>
 </div>
 
-<!-- SERVICES SECTION MOVED TO TOP -->
+<!-- SERVICES SECTION -->
 <section class="section">
 <h2 style="margin-top:0">Explore Manauna(Manona) Dham</h2>
 <div class="services">
@@ -468,7 +1055,7 @@ max-width:260px;
 <a href="transport.html" class="service"><i class="fa fa-bus"></i><br>Transport</a>
 <a href="patient.html" class="service"><i class="fa fa-ticket"></i><br>Patient Token</a>
 </div>
-<p style="margin-top:25px;font-size:15px;line-height:1.7">
+<p style="margin-top:30px;font-size:16px;line-height:1.8;color:#444">
 Bhakts visiting <strong>Manauna Dham (Manona Dham)</strong> can use our platform to book 
 <strong>hotels, food, and local transport.</strong> We also provide the latest 
 <strong>information on how to get patient token, Shyam Jal</strong> and darshan timings to help you 
@@ -510,12 +1097,12 @@ People travel here from across all over India and abroad to participate in darsh
 
 <section class="section">
 <h2 style="margin-top:0">Temple Location</h2>
-<p>
+<p style="font-size:16px;color:#444;margin-bottom:30px">
 Shri Khatu Shyam Mandir, Manauna Village,  
 Tehsil Aonla, Bareilly, Uttar Pradesh – 243301
 </p>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" width="100%" height="400" style="border:0;" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" width="100%" height="450" style="border:0;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.1)" loading="lazy"></iframe>
 </section>
 
 <section class="section" id="gallery">
@@ -553,9 +1140,9 @@ async function loadManaunaWeather(){
       const day = d.toLocaleDateString("en-IN",{weekday:"short"});
       html += `
       <div class="service">
-        <div style="font-size:32px">${icon(codes[i])}</div>
-        <div style="font-weight:700">${day}</div>
-        <div style="font-size:14px;opacity:.85">${maxT[i]}°C / ${minT[i]}°C</div>
+        <div style="font-size:40px">${icon(codes[i])}</div>
+        <div style="font-weight:700;margin-top:10px">${day}</div>
+        <div style="font-size:15px;opacity:.85;margin-top:5px">${maxT[i]}°C / ${minT[i]}°C</div>
       </div>`;
     }
 
@@ -569,13 +1156,13 @@ async function loadManaunaWeather(){
 loadManaunaWeather();
 </script>
 
-<h2 style="margin-top:50px">Today Weather</h2>
+<h2 style="margin-top:60px">Today Weather</h2>
 
-<div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:20px;">
+<div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:30px;">
 
-  <div class="service" style="flex:1;min-width:200px;max-width:300px;text-align:center;">
+  <div class="service" style="flex:1;min-width:200px;max-width:350px;text-align:center;">
     <div id="openWeather" style="padding:20px;"></div>
-    <div style="font-size:14px;opacity:.8;margin-top:10px;">Weather in Bareilly (nearest city to Manauna)</div>
+    <div style="font-size:14px;opacity:.8;margin-top:15px;">Weather in Bareilly (nearest city to Manauna)</div>
   </div>
 
 </div>
@@ -587,9 +1174,9 @@ async function loadWeather(){
     const data = await res.json();
     const w = data.current_weather;
     const html = 
-      "<div style='font-size:24px;font-weight:700;'>"+w.temperature+"°C</div>"
-      +"<div style='font-size:16px;opacity:.9;'>Wind: "+w.windspeed+" km/h</div>"
-      +"<div style='font-size:14px;opacity:.8;'>⚡ "+w.weathercode+"</div>";
+      "<div style='font-size:28px;font-weight:700;'>"+w.temperature+"°C</div>"
+      +"<div style='font-size:17px;opacity:.9;margin-top:8px'>Wind: "+w.windspeed+" km/h</div>"
+      +"<div style='font-size:15px;opacity:.8;margin-top:5px'>⚡ "+w.weathercode+"</div>";
     document.getElementById("openWeather").innerHTML = html;
   } catch(err){
     document.getElementById("openWeather").textContent = "Weather unavailable";
@@ -598,7 +1185,7 @@ async function loadWeather(){
 loadWeather();
 </script>
 
-<h2 style="margin-top:50px">Temple Gallery</h2>
+<h2 style="margin-top:60px">Temple Gallery</h2>
 <div class="gallery-row">
 <img src="EntryGate.webp" alt="Entry Gate of Manauna Mandir/ Manauna" loading="lazy">
 <img src="Gathering.webp" alt="Manuana rush" loading="lazy">
@@ -615,7 +1202,7 @@ loadWeather();
 </div>
 
 
-<h2 style="margin-top:40px">Manauna Dham – Our rising Community</h2>
+<h2 style="margin-top:60px">Manauna Dham – Our rising Community</h2>
 
 <div class="services">
 <a href="https://www.instagram.com/explore/tags/manonadham/" target="_blank" class="service" rel="noopener">
@@ -638,32 +1225,32 @@ loadWeather();
 <section class="section">
 <h2>Frequently Asked Questions about Manauna (Manona) Dham</h2>
 
-<p style="margin-top:20px"><strong>Where is Manauna Dham located?</strong><br>
+<p style="margin-top:30px"><strong>Where is Manauna Dham located?</strong><br>
 Manauna Dham is located in Manauna village near Aonla in Bareilly district, Uttar Pradesh.</p>
 
-<p style="margin-top:15px"><strong>What are the darshan timings?</strong><br>
+<p style="margin-top:20px"><strong>What are the darshan timings?</strong><br>
 Darshan is available from 7 AM to 9 PM daily. Aarti is performed at 8 AM and 5 PM.</p>
 
-<p style="margin-top:15px"><strong>How to get a patient token?</strong><br>
+<p style="margin-top:20px"><strong>How to get a patient token?</strong><br>
 Patient tokens can be given only when patient are present in manauna dham. We do not issue patient tokens. This information is based on prevailing on-site practices and may change.</p>
 
-<p style="margin-top:15px"><strong>Is this the official temple website?</strong><br>
+<p style="margin-top:20px"><strong>Is this the official temple website?</strong><br>
 No. ManaunaDham.org.in is a privately operated pilgrim information and services platform.</p>
 </section>
 
-  <!-- DETAILED DISCLAIMER SECTION -->
-<section class="section" id="disclaimer-full" style="background:#fff;padding:40px 30px;border-top:3px solid #d4a017">
-<div style="max-width:900px;margin:0 auto">
-<h2 style="color:#7a0000;border-bottom:3px solid #d4a017;display:inline-block;padding-bottom:6px">About ManaunaDham.org.in</h2>
+<!-- DETAILED DISCLAIMER SECTION -->
+<section class="section" id="disclaimer-full" style="background:#fff;padding:60px 40px;border-top:5px solid #d4a017">
+<div style="max-width:1000px;margin:0 auto">
+<h2 style="color:#7a0000;font-size:32px">About ManaunaDham.org.in</h2>
 
-<div style="background:#fffbf0;padding:25px;border-left:5px solid #d4a017;margin-top:25px;border-radius:6px;line-height:1.8">
-<p style="margin:0 0 15px 0"><strong style="color:#7a0000">📋 What We Are:</strong><br>
+<div class="disclaimer-content">
+<p style="margin:0 0 20px 0"><strong>📋 What We Are:</strong><br>
 ManaunaDham.org.in is a <strong>privately operated information and services platform</strong> created to help pilgrims visiting Manauna Dham. We provide hotel bookings, food delivery, transport arrangements, and up-to-date information about the temple.</p>
 
-<p style="margin:15px 0"><strong style="color:#7a0000">🏛️ What We Are NOT:</strong><br>
+<p style="margin:20px 0"><strong>🏛️ What We Are NOT:</strong><br>
 We are <strong>NOT the official website</strong> of Shri Khatu Shyam Mandir, Manauna Dham. We are <strong>NOT affiliated with, endorsed by, or managed by</strong> the temple management or any religious authority.</p>
 
-<p style="margin:15px 0"><strong style="color:#7a0000">✅ Our Services:</strong><br>
+<p style="margin:20px 0"><strong>✅ Our Services:</strong><br>
 - Verified hotel/dharamshala booking assistance<br>
 - Food delivery coordination with local restaurants<br>
 - Transport booking (taxi, rickshaw, buses)<br>
@@ -671,15 +1258,17 @@ We are <strong>NOT the official website</strong> of Shri Khatu Shyam Mandir, Man
 - Latest temple timings and information<br>
 - All services are provided by third-party vendors; we act as a booking platform and information center</p>
 
-<p style="margin:15px 0 0 0"><strong style="color:#7a0000">⚖️ Legal Notice:</strong><br>
+<p style="margin:20px 0 0 0"><strong>⚖️ Legal Notice:</strong><br>
 Information provided is collected from public sources and verified to the best of our ability. Temple policies, timings, and availability may change without notice. Users are advised to confirm critical details independently. By using our services, you acknowledge that ManaunaDham.org.in is an independent service provider.</p>
 </div>
-<p style="text-align:center;margin-top:25px;font-size:14px;color:#666;max-width:900px;margin-left:auto;margin-right:auto">
+
+<p style="text-align:center;margin-top:35px;font-size:14px;color:#666;line-height:1.8;max-width:900px;margin-left:auto;margin-right:auto">
 The information provided on this website is for general guidance only. While we strive to keep all details accurate and updated, ManaunaDham.org.in is not responsible for any inconvenience, loss, or issue arising if visitors plan or visit Manauna Dham based on this information and it later differs from on-ground arrangements or temple decisions. For official and final confirmation, please verify directly at the temple premises.
 </p>
 
 </div>
 </section>
+
 <!-- POPUPS -->
 <div class="popup" id="popup1">
 <span class="popup-close" onclick="closePopup('popup1')">&times;</span>
@@ -703,7 +1292,6 @@ The information provided on this website is for general guidance only. While we 
 </div>
 
 <!-- FOOTER -->
-
 <footer>
 <div class="footer-content">
 <div class="footer-section">
@@ -730,7 +1318,7 @@ The information provided on this website is for general guidance only. While we 
 
 <div class="footer-bottom">
 <p>© 2026 ManaunaDham.org.in - Independent Pilgrim Services Platform</p>
-<p style="font-size:12px;opacity:.85;max-width:800px;margin:10px auto">
+<p style="font-size:13px;opacity:.85;max-width:900px;margin:15px auto 0;line-height:1.8">
 <strong>Legal Disclaimer:</strong> ManaunaDham.org.in is a privately operated platform providing booking services and information for pilgrims. We are not the official website of Manauna Dham temple and have no affiliation with temple management or religious authorities. All bookings are subject to vendor availability and terms.
 </p>
 </div>
@@ -738,8 +1326,14 @@ The information provided on this website is for general guidance only. While we 
 
 <script>
 function toggleMenu(){
-let m=document.getElementById("mobileMenu");
-m.style.display = m.style.display==="flex" ? "none" : "flex";
+  let m = document.getElementById("mobileMenu");
+  if(m.classList.contains('active')) {
+    m.classList.remove('active');
+    m.style.maxHeight = '0';
+  } else {
+    m.classList.add('active');
+    m.style.maxHeight = '600px';
+  }
 }
 
 // Popup system
@@ -756,10 +1350,10 @@ function closePopup(id) {
   document.getElementById(id).style.display = 'none';
 }
 
-// Show first popup after 10 seconds
+// Show first popup after 5 seconds
 setTimeout(showRandomPopup, 5000);
 
-// Show subsequent popups every 30 seconds
+// Show subsequent popups every 10 seconds
 setInterval(showRandomPopup, 10000);
 </script>
   
