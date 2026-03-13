@@ -641,7 +641,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 // ══════════════════════════════════════════════
 // CONFIG — Replace YOUR_RAZORPAY_KEY_ID below
 // ══════════════════════════════════════════════
-const RAZORPAY_KEY = 'rzp_live_SQamQ94fT2zfDp';
+const RAZORPAY_KEY = 'rzp_test_SQbmLKwBEzkZ8Z';
 // Example: const RAZORPAY_KEY = 'rzp_live_xxxxxxxxxxxxxxxx';
 
 // ── COUPON CODES ──
@@ -768,7 +768,7 @@ function validate() {
 }
 
 // ── RAZORPAY ──
-function initiatePayment() {
+async function initiatePayment() {
   if (!validate()) return;
 
   const name  = document.getElementById('g-name').value.trim();
@@ -780,24 +780,62 @@ function initiatePayment() {
   localStorage.setItem('hd_inv', invNum);
   const invStr = String(invNum).padStart(5, '0');
 
+  // Disable button and show loading
+  const btn = document.getElementById('pay-btn');
+  btn.disabled = true;
+  document.getElementById('pay-btn-text').textContent = 'Creating order...';
+
+  const notes = {
+    invoice_no:   invStr,
+    room_type:    ROOMS[selRoom].name,
+    checkin:      ci,
+    checkout:     co,
+    nights:       String(nights),
+    total_amount: String(finalTotal),
+    advance_paid: String(advAmt),
+    coupon_used:  activeCoupon || 'None',
+    guest_name:   name,
+    guest_phone:  phone,
+  };
+
+  let orderId;
+  try {
+    // Call Vercel backend to create order securely
+    const resp = await fetch('https://harshdeep-api.vercel.app/api/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: advAmt * 100, notes }),
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json();
+      throw new Error(err.error || 'Server error');
+    }
+
+    const data = await resp.json();
+    orderId = data.orderId;
+
+  } catch (err) {
+    alert('Could not initiate payment: ' + err.message + '\nPlease try again.');
+    btn.disabled = false;
+    document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
+    return;
+  }
+
+  // Re-enable button
+  btn.disabled = false;
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
+
   const options = {
     key: RAZORPAY_KEY,
+    order_id: orderId,           // ← This is what was missing before
     amount: advAmt * 100,
     currency: 'INR',
     name: 'Hotel Harshdeep',
     description: ROOMS[selRoom].name + ' · ' + nights + ' night(s) · ' + fmtDate(ci) + ' – ' + fmtDate(co),
     image: 'logonobg.png',
     prefill: { name: name, contact: '+91' + phone },
-    notes: {
-      invoice_no:   invStr,
-      room_type:    ROOMS[selRoom].name,
-      checkin:      ci,
-      checkout:     co,
-      nights:       nights,
-      total_amount: finalTotal,
-      advance_paid: advAmt,
-      coupon_used:  activeCoupon || 'None',
-    },
+    notes: notes,
     theme: { color: '#7a0000' },
     modal: { backdropclose: false },
     handler: function(resp) {
