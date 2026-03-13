@@ -329,7 +329,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
           <div class="selected-badge">✓ Selected</div>
           <div class="room-name">🛏️ Double Bed-1 Room</div>
           <div class="room-desc">1 Double Bed · Sleeps up to 5</div>
-          <div class="room-price">₹1,500 <span>/ night</span></div>
+          <div class="room-price">₹1,599 <span>/ night</span></div>
           <div class="room-features-mini">
             <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
           </div>
@@ -338,7 +338,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
           <div class="selected-badge">✓ Selected</div>
           <div class="room-name">🛏️🛏️ Double Bed-2 Extended</div>
           <div class="room-desc">2 Double Beds · Sleeps up to 7</div>
-          <div class="room-price">₹2,500 <span>/ night</span></div>
+          <div class="room-price">₹2,599 <span>/ night</span></div>
           <div class="room-features-mini">
             <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
           </div>
@@ -448,7 +448,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
         <div class="rc-body">
           <h3>Double Bed-1 Room</h3>
           <p style="color:var(--text-muted);font-size:13px;">Perfect for small families &amp; couples</p>
-          <p class="rc-price">₹1,500 <small>/night</small></p>
+          <p class="rc-price">₹1,599 <small>/night</small></p>
           <ul>
             <li><i class="fa fa-bed"></i> 1 Double Bed in room</li>
             <li><i class="fa fa-plus"></i> 1 Extra Bed — Free of Cost</li>
@@ -467,7 +467,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
         <div class="rc-body">
           <h3>Double Bed-2 Extended</h3>
           <p style="color:var(--text-muted);font-size:13px;">Ideal for large families &amp; groups</p>
-          <p class="rc-price">₹2,500 <small>/night</small></p>
+          <p class="rc-price">₹2,599 <small>/night</small></p>
           <ul>
             <li><i class="fa fa-bed"></i> 2 Double Beds in room</li>
             <li><i class="fa fa-plus"></i> 1 Extra Bed — Free of Cost</li>
@@ -484,7 +484,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
     <div class="offer-box">
       <h3><i class="fa fa-gift"></i> Special Offer — Extra Bed FREE!</h3>
-      <p style="font-size:14px;margin-top:6px;">Accommodate your whole family. Up to 5 guests in Double Bed-1 (₹1,500) or up to 7 in Double Bed-2 (₹2,500) — extra bed at zero cost.</p>
+      <p style="font-size:14px;margin-top:6px;">Accommodate your whole family. Up to 5 guests in Double Bed-1 (₹1,599) or up to 7 in Double Bed-2 (₹2,599) — extra bed at zero cost.</p>
     </div>
   </div>
 
@@ -679,8 +679,8 @@ const URGENCY_MSG = _config.urgencyMessage;
 
 // ── ROOM PRICES ──
 const ROOMS = {
-  1: { name: 'Double Bed-1 Room',      price: 1500 },
-  2: { name: 'Double Bed-2 Extended',  price: 2500 },
+  1: { name: 'Double Bed-1 Room',      price: 1599 },
+  2: { name: 'Double Bed-2 Extended',  price: 2599 },
 };
 
 // ── STATE ──
@@ -967,7 +967,7 @@ function claimCoupon(code) {
   // Highlight the input briefly
   const inp = document.getElementById('coupon-input');
   inp.style.borderColor = 'var(--gold)';
-  setTimeout(() => inp.style.borderColor = '', 1500);
+  setTimeout(() => inp.style.borderColor = '', 1599);
   // Scroll to summary
   document.getElementById('stay-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
@@ -978,7 +978,7 @@ function showPaymentHelp() {
     `1. Note your UPI/bank transaction ID\n` +
     `2. Take a screenshot of the deduction\n` +
     `3. Razorpay automatically refunds within 5-7 business days\n\n` +
-    `For faster help, email us at:\nsupport@manaunadham.org.in\n\nMention your name, phone, and transaction ID.`;
+    `For faster help, whatsapp us at:\n 7817803342 \n\nMention your name, phone, and transaction ID.`;
   alert(msg);
 }
 
