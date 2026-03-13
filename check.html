@@ -10,6 +10,7 @@
 <link rel="icon" href="logonobg.png" type="image/png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="coupons.js"></script>
 
 <script type="application/ld+json">
 {
@@ -655,12 +656,26 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 const RAZORPAY_KEY = 'YOUR_RAZORPAY_KEY_ID';
 // Example: const RAZORPAY_KEY = 'rzp_live_xxxxxxxxxxxxxxxx';
 
-// ── COUPONS — loaded from coupons.js ──
-// To change coupons, edit coupons.js only — not here
-const HOTEL_KEY   = 'harshdeep';
-const COUPONS     = COUPON_CONFIG[HOTEL_KEY].COUPONS;
-const ACTIVE_CODE = COUPON_CONFIG[HOTEL_KEY].activeCouponCode;
-const URGENCY_MSG = COUPON_CONFIG[HOTEL_KEY].urgencyMessage;
+// ── COUPONS ──
+// Primary: loaded from coupons.js (edit that file to change coupons)
+// Fallback: defined here in case coupons.js fails to load
+const HOTEL_KEY = 'harshdeep';
+
+const FALLBACK_CONFIG = {
+  harshdeep: {
+    urgencyMessage: '🕐 Valid today only!',
+    COUPONS: {
+      'HARSHDEEP100': { type: 'flat',    value: 100, label: '₹100 off', description: 'Special booking discount' },
+      'PILGRIM50':    { type: 'flat',    value: 50,  label: '₹50 off',  description: 'Pilgrim special offer'    },
+      'BABA100':      { type: 'flat',    value: 100, label: '₹100 off', description: 'Shyam Baba blessing deal' },
+      'WELCOME5':     { type: 'percent', value: 5,   label: '5% off',   description: 'First time booker offer'  },
+    }
+  }
+};
+
+const _config   = (typeof COUPON_CONFIG !== 'undefined' ? COUPON_CONFIG : FALLBACK_CONFIG)[HOTEL_KEY];
+const COUPONS   = _config.COUPONS;
+const URGENCY_MSG = _config.urgencyMessage;
 
 // ── ROOM PRICES ──
 const ROOMS = {
