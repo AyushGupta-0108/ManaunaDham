@@ -301,8 +301,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <button class="cta-btn green" onclick="scrollToBooking()">
     <i class="fa fa-calendar-check"></i> Book Your Room
   </button>
-  <a class="cta-btn" href="tel:+917817803342">
-    <i class="fa fa-phone"></i> Call Now
+  <a class="cta-btn outline" id="payment-issue-btn" onclick="showPaymentHelp()" style="cursor:pointer;">
+    <i class="fa fa-exclamation-circle"></i> Payment Issue?
   </a>
   <a class="cta-btn outline" href="https://maps.app.goo.gl/bF7V8LSARG6mNSy97" target="_blank">
     <i class="fa fa-map-marker-alt"></i> Get Directions
@@ -374,6 +374,23 @@ footer p:last-child { font-size: 12px; opacity: .7; }
         <div class="s-row s-total"><span>Total Amount</span><span class="sv" id="s-total">—</span></div>
         <div class="s-row s-advance"><span>💳 Advance to Pay (25%)</span><span class="sv" id="s-advance">—</span></div>
         <div class="s-row" style="font-size:13px;color:var(--text-muted);"><span>Remaining at Hotel</span><span class="sv" id="s-remain">—</span></div>
+      </div>
+
+      <!-- Active Coupon Banner -->
+      <div id="coupon-banner" style="display:none;margin-bottom:16px;">
+        <div style="background:linear-gradient(135deg,#fff8e1,#fff3cd);border:2px dashed var(--gold);border-radius:12px;padding:14px 18px;cursor:pointer;" onclick="claimCoupon()">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:var(--maroon);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">🎁 Exclusive Offer — Tap to Claim</div>
+              <div style="font-size:20px;font-weight:800;color:var(--maroon);letter-spacing:2px;" id="banner-code">—</div>
+              <div style="font-size:13px;color:var(--text-muted);margin-top:2px;" id="banner-desc">—</div>
+            </div>
+            <div style="text-align:right;">
+              <div style="background:var(--maroon);color:white;padding:8px 16px;border-radius:8px;font-weight:700;font-size:13px;">Use This Code →</div>
+              <div style="font-size:11px;color:var(--text-muted);margin-top:4px;" id="banner-urgency">—</div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Step 3 -->
@@ -641,17 +658,15 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 // ══════════════════════════════════════════════
 // CONFIG — Replace YOUR_RAZORPAY_KEY_ID below
 // ══════════════════════════════════════════════
-const RAZORPAY_KEY = 'rzp_live_SQamQ94fT2zfDp';
+const RAZORPAY_KEY = 'YOUR_RAZORPAY_KEY_ID';
 // Example: const RAZORPAY_KEY = 'rzp_live_xxxxxxxxxxxxxxxx';
 
-// ── COUPON CODES ──
-// Add/edit/remove these anytime
-const COUPONS = {
-  'HARSHDEEP100': { type: 'flat',    value: 100, label: '₹100 off' },
-  'PILGRIM50':    { type: 'flat',    value: 50,  label: '₹50 off'  },
-  'BABA100':      { type: 'flat',    value: 100, label: '₹100 off' },
-  'WELCOME5':     { type: 'percent', value: 5,   label: '5% off'   },
-};
+// ── COUPONS — loaded from coupons.js ──
+// To change coupons, edit coupons.js only — not here
+const HOTEL_KEY   = 'harshdeep';
+const COUPONS     = COUPON_CONFIG[HOTEL_KEY].COUPONS;
+const ACTIVE_CODE = COUPON_CONFIG[HOTEL_KEY].activeCouponCode;
+const URGENCY_MSG = COUPON_CONFIG[HOTEL_KEY].urgencyMessage;
 
 // ── ROOM PRICES ──
 const ROOMS = {
@@ -663,7 +678,7 @@ const ROOMS = {
 let selRoom = null, nights = 0, baseTotal = 0, discAmt = 0, finalTotal = 0, advAmt = 0, activeCoupon = null;
 
 // Invoice counter (increments per booking in this browser — Razorpay dashboard is source of truth)
-let invNum = parseInt(localStorage.getItem('hd_inv') || '1239');
+let invNum = parseInt(localStorage.getItem('hd_inv') || '100');
 
 // ── SELECT ROOM ──
 function selectRoom(n) {
@@ -910,11 +925,41 @@ function toggleMenu() {
   m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
 }
 
+// ── COUPON BANNER ──
+function initCouponBanner() {
+  if (!ACTIVE_CODE || !COUPONS[ACTIVE_CODE]) return;
+  const c = COUPONS[ACTIVE_CODE];
+  document.getElementById('banner-code').textContent    = ACTIVE_CODE;
+  document.getElementById('banner-desc').textContent    = c.label + ' — ' + c.description;
+  document.getElementById('banner-urgency').textContent = URGENCY_MSG;
+  document.getElementById('coupon-banner').style.display = 'block';
+}
+
+function claimCoupon() {
+  // Auto-fill and apply the active coupon
+  document.getElementById('coupon-input').value = ACTIVE_CODE;
+  applyCoupon();
+  // Smooth scroll to coupon input
+  document.getElementById('coupon-input').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ── PAYMENT ISSUE HELP ──
+function showPaymentHelp() {
+  const msg = `If your payment was deducted but booking failed:\n\n` +
+    `1. Note your UPI/bank transaction ID\n` +
+    `2. Take a screenshot of the deduction\n` +
+    `3. Razorpay automatically refunds within 5-7 business days\n\n` +
+    `For faster help, email us at:\nsupport@manaunadham.org.in\n\nMention your name, phone, and transaction ID.`;
+  alert(msg);
+}
+
 // Set min dates on load
 window.addEventListener('DOMContentLoaded', () => {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('g-checkin').min = today;
   document.getElementById('g-checkout').min = today;
+  // Init coupon banner
+  initCouponBanner();
 });
 </script>
 </body>
