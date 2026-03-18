@@ -1083,6 +1083,7 @@ async function initiatePayment() {
   btn.disabled = true;
   document.getElementById('pay-btn-text').textContent = 'Creating order...';
   const notes = {
+    hotel_name: 'Hotel Raj Garden', 
     invoice_no: invStr, room_type: ROOMS[selRoom].name,
     checkin: ci, checkout: co, nights: String(nights),
     total_amount: String(finalTotal), advance_paid: String(advAmt),
