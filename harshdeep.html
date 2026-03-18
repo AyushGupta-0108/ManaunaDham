@@ -1245,6 +1245,7 @@ async function initiatePayment() {
   document.getElementById('pay-btn-text').textContent = 'Creating order...';
 
   const notes = {
+    hotel_name: 'Hotel Harshdeep', 
     invoice_no:   invStr,
     room_type:    ROOMS[selRoom].name,
     checkin:      ci,
