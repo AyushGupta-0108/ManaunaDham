@@ -43,6 +43,7 @@
     --text: #2a1a0e;
     --text-muted: #6b5744;
     --white: #ffffff;
+    --green: #1a7a1a;
     --shadow: 0 4px 24px rgba(122,0,0,0.10);
     --shadow-lg: 0 8px 40px rgba(122,0,0,0.15);
     --radius: 14px;
@@ -89,7 +90,7 @@
   .hero {
     background: linear-gradient(135deg, var(--maroon-dark) 0%, var(--maroon) 60%, #a83200 100%);
     color: white;
-    padding: 56px 24px 48px;
+    padding: 48px 24px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -115,16 +116,16 @@
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 5vw, 44px);
+    font-size: clamp(26px, 5vw, 42px);
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
   .hero p {
     font-size: 15px;
     color: rgba(255,255,255,0.78);
     max-width: 500px;
-    margin: 0 auto 28px;
+    margin: 0 auto 24px;
     line-height: 1.7;
   }
   .hero-badges {
@@ -132,6 +133,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    margin-bottom: 24px;
   }
   .hero-badge {
     background: rgba(255,255,255,0.1);
@@ -140,6 +142,27 @@
     padding: 6px 14px;
     font-size: 13px;
     color: rgba(255,255,255,0.9);
+  }
+  /* CTA in hero */
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #25d366;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: pulse 2.5s infinite;
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.5); }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 32px rgba(37,211,102,0.65); }
   }
 
   /* ── DISTANCE STRIP ── */
@@ -161,22 +184,66 @@
   }
   .dist-item i { font-size: 14px; opacity: 0.75; }
 
+  /* ── PRICE HIGHLIGHT STRIP ── */
+  .price-strip {
+    background: var(--maroon-dark);
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    border-bottom: 3px solid var(--gold);
+  }
+  .price-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 24px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    min-width: 160px;
+  }
+  .price-pill:last-child { border-right: none; }
+  .price-pill .route {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .price-pill .amount {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .price-pill .type {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 3px;
+  }
+  @media (max-width: 640px) {
+    .price-strip { gap: 0; }
+    .price-pill { min-width: calc(50% - 1px); padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.10); }
+  }
+
   /* ── MAIN SECTION ── */
   .main { max-width: 960px; margin: 0 auto; padding: 50px 20px 70px; }
 
   .section-label {
     text-align: center;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
   .section-label h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 28px;
+    font-size: 26px;
     color: var(--maroon);
-    margin-bottom: 8px;
+    margin-bottom: 7px;
   }
   .section-label p {
     color: var(--text-muted);
-    font-size: 15px;
+    font-size: 14.5px;
   }
   .gold-rule {
     width: 60px;
@@ -220,16 +287,64 @@
   }
 
   .t-icon {
-    width: 52px;
-    height: 52px;
+    width: 58px;
+    height: 58px;
     background: linear-gradient(135deg, var(--maroon), #c0392b);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
+    flex-shrink: 0;
   }
-  .t-icon i { font-size: 22px; color: white; }
+  .t-icon i { font-size: 24px; color: white; }
+  .t-icon svg { width: 30px; height: 30px; fill: white; }
+
+  /* price tag on card */
+  .card-price-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #fff5e6;
+    border: 1.5px solid var(--gold);
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-bottom: 14px;
+    width: fit-content;
+  }
+  .card-price-tag .price-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .card-price-tag .price-val {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--maroon);
+  }
+
+  /* multi-row price inside card */
+  .price-rows {
+    background: #fffaf2;
+    border: 1px solid #f0ddb0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+  }
+  .price-row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 13px;
+    border-bottom: 1px dashed #f0ddb0;
+    gap: 8px;
+  }
+  .price-row-item:last-child { border-bottom: none; }
+  .price-row-item .lbl { color: var(--text-muted); }
+  .price-row-item .val { font-weight: 700; color: var(--maroon); white-space: nowrap; }
 
   .t-card h3 {
     font-family: 'Playfair Display', serif;
@@ -249,18 +364,104 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    background: var(--maroon);
+    background: #25d366;
     color: white;
-    padding: 10px 18px;
+    padding: 11px 20px;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 13.5px;
+    font-weight: 700;
+    font-size: 14px;
     transition: background 0.2s, transform 0.15s;
     align-self: flex-start;
   }
-  .t-btn:hover { background: var(--maroon-light); transform: translateX(2px); }
-  .t-btn i { font-size: 14px; }
+  .t-btn:hover { background: #1da855; transform: translateX(2px); }
+  .t-btn i { font-size: 16px; }
+
+  /* ── PRICING TABLE ── */
+  .pricing-section {
+    background: white;
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+  .pricing-header {
+    background: linear-gradient(135deg, var(--maroon-dark), var(--maroon));
+    padding: 24px 32px;
+    color: white;
+  }
+  .pricing-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+  .pricing-header p { font-size: 13.5px; color: rgba(255,255,255,0.7); }
+
+  .pricing-body { padding: 0; }
+  .pricing-table { width: 100%; border-collapse: collapse; }
+  .pricing-table th {
+    background: #fdf6ec;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid #f0e6d6;
+  }
+  .pricing-table td {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: var(--text);
+    border-bottom: 1px solid #f8f0e4;
+    vertical-align: middle;
+  }
+  .pricing-table tr:last-child td { border-bottom: none; }
+  .pricing-table tr:hover td { background: #fffaf2; }
+  .pricing-table .route-cell { font-weight: 600; color: var(--maroon); }
+  .pricing-table .route-cell small { display: block; font-weight: 400; color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+  .pricing-table .price-cell {
+    font-weight: 700;
+    color: var(--maroon);
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  .pricing-table .note-cell {
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+  .vehicle-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #fff0f0;
+    color: var(--maroon);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .vehicle-badge.auto {
+    background: #f0fff4;
+    color: #1a7a1a;
+  }
+  .price-note {
+    background: #fff8ee;
+    border-top: 1px solid #f0e6d6;
+    padding: 12px 20px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .price-note i { color: var(--gold); margin-top: 1px; flex-shrink: 0; }
+  @media (max-width: 580px) {
+    .pricing-table th, .pricing-table td { padding: 10px 12px; font-size: 13px; }
+    .pricing-table .price-cell { font-size: 14px; }
+  }
 
   /* ── BOOKING FORM ── */
   .booking-section {
@@ -296,6 +497,7 @@
 
   @media (max-width: 640px) {
     .form-row, .form-row.three { grid-template-columns: 1fr; }
+    .booking-body { padding: 20px; }
   }
 
   .field { display: flex; flex-direction: column; gap: 6px; }
@@ -331,13 +533,11 @@
 
   .transport-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 10px;
     margin-bottom: 20px;
   }
-  .t-option {
-    display: none;
-  }
+  .t-option { display: none; }
   .t-option + label {
     display: flex;
     flex-direction: column;
@@ -361,6 +561,13 @@
     color: var(--maroon);
   }
   .t-option:checked + label i { color: var(--maroon); }
+  .t-option-price {
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-top: -2px;
+  }
+  .t-option:checked + label .t-option-price { color: var(--maroon); }
 
   .options-label {
     font-size: 12.5px;
@@ -389,20 +596,21 @@
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+    background: #25d366;
     color: white;
-    padding: 14px 28px;
+    padding: 15px 28px;
     border-radius: 10px;
     border: none;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.3px;
-    transition: opacity 0.2s, transform 0.15s;
+    transition: background 0.2s, transform 0.15s;
     text-decoration: none;
+    box-shadow: 0 4px 18px rgba(37,211,102,0.35);
   }
-  .submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+  .submit-btn:hover { background: #1da855; transform: translateY(-2px); }
 
   .whatsapp-note {
     font-size: 12.5px;
@@ -449,6 +657,29 @@
   .info-card ul li b { color: var(--text); font-weight: 600; text-align: right; }
   .info-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
 
+  /* ── STICKY BOTTOM CTA on mobile ── */
+  .sticky-cta {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #25d366;
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    z-index: 200;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  }
+  @media (max-width: 640px) {
+    .sticky-cta { display: flex; }
+    body { padding-bottom: 60px; }
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--maroon-dark);
@@ -459,6 +690,9 @@
     line-height: 1.8;
   }
   footer a { color: var(--gold); text-decoration: none; }
+
+  /* rickshaw svg */
+  .rickshaw-svg { width: 32px; height: 32px; }
 </style>
 </head>
 
@@ -503,6 +737,9 @@
     <span class="hero-badge">💬 WhatsApp par Book Karein</span>
     <span class="hero-badge">👨‍👩‍👧 Family ke liye Sahi</span>
   </div>
+  <a href="https://wa.me/917817803342?text=Jai%20Shyam!%20Mujhe%20Manauna%20Dham%20ke%20liye%20transport%20chahiye." class="hero-cta" target="_blank">
+    <i class="fab fa-whatsapp" style="font-size:20px;"></i> Abhi WhatsApp par Book Karein
+  </a>
 </div>
 
 <!-- DISTANCE STRIP -->
@@ -514,17 +751,174 @@
   <span class="dist-item"><i class="fa fa-circle-dot"></i> Bareilly Airport — 53 km</span>
 </div>
 
+<!-- PRICE STRIP -->
+<div class="price-strip">
+  <div class="price-pill">
+    <div class="route">Bareilly → Dham</div>
+    <div class="amount">₹1,599–1,899</div>
+    <div class="type">Sedan · One Way</div>
+  </div>
+  <div class="price-pill">
+    <div class="route">Bareilly ↔ Dham</div>
+    <div class="amount">₹2,599–3,099</div>
+    <div class="type">Sedan · Return Trip</div>
+  </div>
+  <div class="price-pill">
+    <div class="route">Delhi → Dham</div>
+    <div class="amount">₹2,799–3,599</div>
+    <div class="type">Sedan · One Way</div>
+  </div>
+  <div class="price-pill">
+    <div class="route">Aonla → Dham</div>
+    <div class="amount">₹50–150</div>
+    <div class="type">Auto / Rickshaw</div>
+  </div>
+</div>
+
 <div class="main">
 
-  <!-- TRANSPORT OPTIONS -->
+  <!-- TRANSPORT CARDS -->
   <div class="section-label">
-    <h2>Kaise Pahunchein Manauna Dham?</h2>
-    <p>Apni suvidha ke hisaab se transport choose karein</p>
+    <h2>Apna Transport Chunein</h2>
+    <p>Apni jagah aur zaroorat ke hisaab se option select karein</p>
     <div class="gold-rule"></div>
   </div>
 
+  <div class="transport-grid">
+    <div class="t-card">
+      <div class="t-icon"><i class="fa fa-taxi"></i></div>
+      <h3>Taxi / Cab — Bareilly se</h3>
+      <div class="price-rows">
+        <div class="price-row-item">
+          <span class="lbl">🚗 One Way</span>
+          <span class="val">₹1,599 – ₹1,899</span>
+        </div>
+        <div class="price-row-item">
+          <span class="lbl">🔄 Return Trip</span>
+          <span class="val">₹2,599 – ₹3,099</span>
+        </div>
+      </div>
+      <p>Bareilly Junction ya Bareilly Airport se private cab book karein. Bade parivaar aur buzurg bhakton ke liye sabse aaram deh option.</p>
+      <a class="t-btn" href="https://wa.me/917817803342?text=Jai%20Shyam!%20Mujhe%20Bareilly%20se%20Manauna%20Dham%20ke%20liye%20taxi%20chahiye." target="_blank">
+        <i class="fab fa-whatsapp"></i> Taxi Book Karein
+      </a>
+    </div>
 
+    <div class="t-card">
+      <div class="t-icon"><i class="fa fa-car"></i></div>
+      <h3>Taxi / Cab — Delhi se</h3>
+      <div class="price-rows">
+        <div class="price-row-item">
+          <span class="lbl">🚗 One Way (Sedan)</span>
+          <span class="val">₹2,799 – ₹3,599</span>
+        </div>
+        <div class="price-row-item">
+          <span class="lbl">📍 Distance</span>
+          <span class="val">~250–300 km</span>
+        </div>
+      </div>
+      <p>Delhi, Noida ya Ghaziabad se direct cab Manauna Dham tak. Subah niklo, din mein darshan karo — comfortable sedan mein safar karein.</p>
+      <a class="t-btn" href="https://wa.me/917817803342?text=Jai%20Shyam!%20Mujhe%20Delhi%20se%20Manauna%20Dham%20ke%20liye%20taxi%20chahiye." target="_blank">
+        <i class="fab fa-whatsapp"></i> Delhi se Book Karein
+      </a>
+    </div>
 
+    <div class="t-card">
+      <div class="t-icon">
+        <!-- Rickshaw SVG -->
+        <svg class="rickshaw-svg" viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg">
+          <!-- Body -->
+          <rect x="16" y="10" width="28" height="20" rx="4" fill="white" fill-opacity="0.9"/>
+          <!-- Roof -->
+          <rect x="14" y="6" width="32" height="6" rx="3" fill="white" fill-opacity="0.7"/>
+          <!-- Front pole -->
+          <rect x="44" y="14" width="3" height="14" rx="1" fill="white" fill-opacity="0.6"/>
+          <!-- Handle bar -->
+          <rect x="44" y="26" width="8" height="2.5" rx="1.25" fill="white" fill-opacity="0.6"/>
+          <!-- Seat line -->
+          <rect x="19" y="22" width="22" height="2" rx="1" fill="white" fill-opacity="0.35"/>
+          <!-- Passenger -->
+          <circle cx="28" cy="17" r="3" fill="white" fill-opacity="0.5"/>
+          <!-- Chassis bar -->
+          <rect x="10" y="28" width="42" height="2.5" rx="1.25" fill="white" fill-opacity="0.55"/>
+          <!-- Rear wheel -->
+          <circle cx="16" cy="38" r="8" fill="none" stroke="white" stroke-width="2.5" stroke-opacity="0.85"/>
+          <circle cx="16" cy="38" r="2.5" fill="white" fill-opacity="0.7"/>
+          <!-- Front wheel -->
+          <circle cx="50" cy="38" r="6" fill="none" stroke="white" stroke-width="2.5" stroke-opacity="0.85"/>
+          <circle cx="50" cy="38" r="2" fill="white" fill-opacity="0.7"/>
+          <!-- Spokes rear -->
+          <line x1="16" y1="30" x2="16" y2="46" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+          <line x1="8" y1="38" x2="24" y2="38" stroke="white" stroke-width="1" stroke-opacity="0.5"/>
+        </svg>
+      </div>
+      <h3>Auto / Rickshaw — Aonla se</h3>
+      <div class="price-rows">
+        <div class="price-row-item">
+          <span class="lbl">🛺 Auto / Rickshaw</span>
+          <span class="val">₹50 – ₹150</span>
+        </div>
+        <div class="price-row-item">
+          <span class="lbl">📍 Distance from Aonla</span>
+          <span class="val">~2 km</span>
+        </div>
+      </div>
+      <p>Aonla Bus Stand ya Railway Station se Manauna Dham sirf ~2 km door hai. Auto ya rickshaw wahan se aasani se milta hai — sabse sasta option.</p>
+      <a class="t-btn" href="https://wa.me/917817803342?text=Jai%20Shyam!%20Mujhe%20Aonla%20se%20Manauna%20Dham%20ke%20liye%20auto%20chahiye." target="_blank">
+        <i class="fab fa-whatsapp"></i> Auto Book Karein
+      </a>
+    </div>
+  </div>
+
+  <!-- PRICING TABLE -->
+  <div class="pricing-section">
+    <div class="pricing-header">
+      <h2>💰 Kiraaya Table — Poori Jankari</h2>
+      <p>Sabse sahi rate pe transport — koi hidden charge nahi</p>
+    </div>
+    <div class="pricing-body">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Route</th>
+            <th>Vehicle</th>
+            <th>Kiraaya</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="route-cell">Bareilly → Manauna Dham<small>One Way</small></td>
+            <td><span class="vehicle-badge"><i class="fa fa-taxi" style="font-size:11px;"></i> Sedan</span></td>
+            <td class="price-cell">₹1,599 – ₹1,899</td>
+            <td class="note-cell">Station/Airport pickup included</td>
+          </tr>
+          <tr>
+            <td class="route-cell">Bareilly ↔ Manauna Dham<small>Return Trip</small></td>
+            <td><span class="vehicle-badge"><i class="fa fa-taxi" style="font-size:11px;"></i> Sedan</span></td>
+            <td class="price-cell">₹2,599 – ₹3,099</td>
+            <td class="note-cell">Same-day return possible</td>
+          </tr>
+          <tr>
+            <td class="route-cell">Delhi → Manauna Dham<small>One Way · ~250–300 km</small></td>
+            <td><span class="vehicle-badge"><i class="fa fa-car" style="font-size:11px;"></i> Sedan</span></td>
+            <td class="price-cell">₹2,799 – ₹3,599</td>
+            <td class="note-cell">Delhi / Noida / Ghaziabad se</td>
+          </tr>
+          <tr>
+            <td class="route-cell">Aonla → Manauna Dham<small>~2 km</small></td>
+            <td><span class="vehicle-badge auto">🛺 Auto/Rickshaw</span></td>
+            <td class="price-cell">₹50 – ₹150</td>
+            <td class="note-cell">Timing aur availability pe nirbhar</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="price-note">
+        <i class="fa fa-circle-info"></i>
+        <span>Kiraaya approximate hai — timing, traffic, aur season ke hisaab se thoda upar-neeche ho sakta hai. Exact price ke liye WhatsApp par message karein.</span>
+      </div>
+    </div>
+  </div>
 
   <!-- BOOKING FORM -->
   <div class="booking-section" id="booking">
@@ -536,11 +930,29 @@
 
       <span class="options-label">Transport Type Chunein</span>
       <div class="transport-options">
-        <input type="radio" name="transport_type" id="t_taxi" class="t-option" value="Taxi/Cab" checked>
-        <label for="t_taxi"><i class="fa fa-taxi"></i>Taxi / Cab</label>
+        <input type="radio" name="transport_type" id="t_taxi_bareilly" class="t-option" value="Taxi/Cab - Bareilly" checked>
+        <label for="t_taxi_bareilly">
+          <i class="fa fa-taxi"></i>Bareilly se Taxi
+          <span class="t-option-price">₹1,599–1,899</span>
+        </label>
 
-        <input type="radio" name="transport_type" id="t_auto" class="t-option" value="Auto/Rickshaw">
-        <label for="t_auto"><i class="fa fa-motorcycle"></i>Auto</label>
+        <input type="radio" name="transport_type" id="t_taxi_delhi" class="t-option" value="Taxi/Cab - Delhi">
+        <label for="t_taxi_delhi">
+          <i class="fa fa-car"></i>Delhi se Taxi
+          <span class="t-option-price">₹2,799–3,599</span>
+        </label>
+
+        <input type="radio" name="transport_type" id="t_auto" class="t-option" value="Auto/Rickshaw - Aonla">
+        <label for="t_auto">
+          <i class="fa fa-motorcycle"></i>Auto (Aonla)
+          <span class="t-option-price">₹50–150</span>
+        </label>
+
+        <input type="radio" name="transport_type" id="t_other" class="t-option" value="Other Location">
+        <label for="t_other">
+          <i class="fa fa-location-dot"></i>Koi aur jagah
+          <span class="t-option-price">Khi se bhi book kare</span>
+        </label>
       </div>
 
       <div class="divider"></div>
@@ -580,7 +992,7 @@
       <div class="form-row single">
         <div class="field">
           <label>Koi Khaas Zaroorat?</label>
-          <textarea id="notes" placeholder="Jaise: buzurg hain, subah jaldi jaana hai, wheelchair chahiye, etc."></textarea>
+          <textarea id="notes" placeholder="Jaise: buzurg hain, subah jaldi jaana hai, wheelchair chahiye, wapsi bhi chahiye, etc."></textarea>
         </div>
       </div>
 
@@ -588,36 +1000,17 @@
 
       <div class="submit-row">
         <button class="submit-btn" onclick="sendBooking()">
-          <i class="fab fa-whatsapp"></i> WhatsApp par Bhejein
+          <i class="fab fa-whatsapp" style="font-size:20px;"></i> WhatsApp par Bhejein
         </button>
         <div class="whatsapp-note">
           <i class="fab fa-whatsapp"></i> Hum WhatsApp par reply karenge<br>
-          <span style="font-size:11.5px;">Kuch minutes mein confirm · Bilkul free</span>
+          <span style="font-size:11.5px;">Kuch minutes mein confirm · Bilkul free · Koi hidden charge nahi</span>
         </div>
       </div>
 
     </div>
   </div>
-    
-  <div class="transport-grid">
-<div class="t-card">
-      <div class="t-icon"><i class="fa fa-taxi"></i></div>
-      <h3>Taxi / Cab</h3>
-      <p>Bareilly Junction, Bareilly Airport ya aas-paas ke kisi bhi sheher se private cab mil sakti hai. Bade parivaar aur buzurg bhakton ke liye sabse zyada aaram deh option hai yeh.</p>
-      <a class="t-btn" href="https://wa.me/917817803342?text=Jai%20Shyam!%20Mujhe%20Manauna%20Dham%20ke%20liye%20taxi%20chahiye.">
-        <i class="fab fa-whatsapp"></i> Taxi Book Karein
-      </a>
-    </div>
-    <div class="t-card">
-      <div class="t-icon"><i class="fa fa-motorcycle"></i></div>
-      <h3>Auto / Rickshaw</h3>
-      <p>Aonla Bus Stand ya Aonla Railway Station se Manauna Dham sirf ~2 km door hai — wahan se auto ya rickshaw aasani se milta hai. Jaldi aur saste mein pahunch jaayenge.</p>
-      <a class="t-btn" href="https://wa.me/917817803342?text=Jai%20Shyam!%20Mujhe%20Manauna%20Dham%20ke%20liye%20auto%20chahiye.">
-        <i class="fab fa-whatsapp"></i> Auto Book Karein
-      </a>
-    </div>
 
-  </div>
   <!-- INFO CARDS -->
   <div class="section-label">
     <h2>Yatra Ki Poori Jankari</h2>
@@ -638,12 +1031,12 @@
 
     <div class="info-card">
       <h4><i class="fa fa-train" style="color:var(--gold)"></i> Train se Aane Wale Bhakt</h4>
-      <p>Bareilly Junction sabse bada railway station hai. Aonla Railway Station sabse kareeb hai Manauna Dham se. Dono jagah se taxi aur auto mil jaati hai — hum arrange kar sakte hain.</p>
+      <p>Bareilly Junction sabse bada railway station hai. Aonla Railway Station sabse kareeb hai Manauna Dham se (~2 km). Dono jagah se taxi aur auto mil jaati hai — hum arrange kar sakte hain.</p>
     </div>
 
     <div class="info-card">
       <h4><i class="fa fa-plane" style="color:var(--gold)"></i> Flight se Aane Wale Bhakt</h4>
-      <p>Bareilly Airport sabse kareeb hai (53 km). Delhi aur Jaipur se bhi flights milti hain — wahan se cab book karwa sakte hain Manauna Dham tak.</p>
+      <p>Bareilly Airport sabse kareeb hai (53 km). Delhi aur Jaipur se bhi flights milti hain — wahan se cab book karwa sakte hain Manauna Dham tak. Delhi se sedan ₹2,799 se shuru.</p>
     </div>
 
     <div class="info-card">
@@ -653,6 +1046,11 @@
   </div>
 
 </div>
+
+<!-- STICKY MOBILE CTA -->
+<a href="https://wa.me/917817803342?text=Jai%20Shyam!%20Mujhe%20Manauna%20Dham%20ke%20liye%20transport%20chahiye." class="sticky-cta" target="_blank">
+  <i class="fab fa-whatsapp" style="font-size:20px;"></i> Abhi Book Karein · Cab & Auto Available
+</a>
 
 <footer>
   <p>© 2026 | <strong>ManaunaDham.org.in</strong> | All Rights Reserved</p>
@@ -679,12 +1077,18 @@ function sendBooking() {
     return;
   }
 
+  // Generate approx price hint in message
+  let priceHint = "";
+  if (transport.includes("Bareilly")) priceHint = " (Approx ₹1,599–1,899 one way)";
+  else if (transport.includes("Delhi")) priceHint = " (Approx ₹2,799–3,599 one way)";
+  else if (transport.includes("Auto")) priceHint = " (Approx ₹50–150)";
+
   const msg = [
     `🚗 *Transport Request – Manauna Dham*`,
     ``,
     `👤 *Naam:* ${name}`,
     `📞 *Phone:* ${phone}`,
-    `🚌 *Transport Type:* ${transport}`,
+    `🚌 *Transport Type:* ${transport}${priceHint}`,
     `📍 *Pickup Jagah:* ${pickup || "Nahi bataya"}`,
     `📅 *Yatra Ki Tarikh:* ${date || "Nahi bataya"}`,
     `👥 *Bhakton ki Sankhya:* ${passengers || "Nahi bataya"}`,
