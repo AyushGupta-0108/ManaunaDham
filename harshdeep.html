@@ -514,7 +514,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <span class="be-icon">🔒</span>
       <div>
         <div class="be-title">How booking works</div>
-        <div class="be-text">Pay ₹149 platform fee now to confirm your room. The full room price (after coupon) is paid <strong>directly at the hotel</strong> when you arrive. No large advance, no risk.</div>
+        <div class="be-text">Pay ₹149 now to confirm your room. The <strong>remaining balance</strong> (room price minus ₹149) is paid at the hotel on arrival. No large advance, no risk.</div>
       </div>
     </div>
 
@@ -570,7 +570,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <div class="s-row s-disc" id="s-disc-row" style="display:none;"><span>Coupon Discount</span><span class="sv" id="s-disc">—</span></div>
       <div class="s-row s-total"><span>Room Price (pay at hotel)</span><span class="sv" id="s-total">—</span></div>
       <div class="s-row s-advance"><span>💳 Platform Fee (pay now)</span><span class="sv" id="s-advance">₹149</span></div>
-      <div class="s-row s-hotel"><span>🏨 Pay at Hotel on Arrival</span><span class="sv" id="s-remain">—</span></div>
+      <div class="s-row s-hotel"><span>🏨 Remaining at Hotel</span><span class="sv" id="s-remain">—</span></div>
     </div>
 
     <!-- Today's Offers Board -->
@@ -946,7 +946,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <div class="rr"><span class="rl">Room Rate</span><span class="rv" id="r-rate">—</span></div>
       <div class="rr" id="r-disc-row" style="display:none;"><span class="rl" style="color:var(--green);">Coupon Discount</span><span class="rv" style="color:var(--green);" id="r-disc">—</span></div>
       <div class="rr rr-big"><span class="rl">Platform Fee Paid ✓</span><span class="rv" id="r-advance">—</span></div>
-      <div class="rr rr-hotel"><span class="rl">Room Price at Hotel</span><span class="rv" id="r-remain">—</span></div>
+      <div class="rr rr-hotel"><span class="rl">Remaining at Hotel</span><span class="rv" id="r-remain">—</span></div>
       <div class="rr"><span class="rl">Payment ID</span><span class="rv" id="r-pid" style="font-size:11px;word-break:break-all;">—</span></div>
       <div class="rnote">
         <strong>⚠️ Important Information</strong>
@@ -1066,7 +1066,7 @@ function recalc() {
 
   document.getElementById('s-total').textContent   = '₹' + finalTotal.toLocaleString();
   document.getElementById('s-advance').textContent = '₹' + PLATFORM_FEE;
-  document.getElementById('s-remain').textContent  = '₹' + finalTotal.toLocaleString();
+  document.getElementById('s-remain').textContent  = '₹' + (finalTotal - PLATFORM_FEE).toLocaleString();
 
   document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
 }
@@ -1205,7 +1205,7 @@ function showReceipt(d) {
   } else { dr.style.display = 'none'; }
 
   document.getElementById('r-advance').textContent = '₹149';
-  document.getElementById('r-remain').textContent  = '₹' + d.finalTotal.toLocaleString();
+  document.getElementById('r-remain').textContent  = '₹' + (d.finalTotal - 149).toLocaleString();
   document.getElementById('r-pid').textContent     = d.payId;
 
   document.getElementById('receiptOverlay').classList.add('open');
@@ -1230,12 +1230,12 @@ function buildReceiptMsg(d, forHotel) {
 🌙 *Nights:* ${d.nights}
 ━━━━━━━━━━━━━━━━━━━━
 💵 *Room Rate:* ₹${ROOMS[selRoom].price.toLocaleString()} × ${d.nights}${discLine}
-✅ *Platform Fee Paid:* ₹149
-🏦 *Room Price at Hotel:* ₹${d.finalTotal.toLocaleString()}
+✅ *Paid Now (online):* ₹149
+🏦 *Remaining at Hotel:* ₹${(d.finalTotal - 149).toLocaleString()}
 🆔 *Payment ID:* ${d.payId}
 ━━━━━━━━━━━━━━━━━━━━
 ${forHotel
-  ? `🔔 Room price ₹${d.finalTotal.toLocaleString()} to collect at check-in.\n_Via ManaunaDham.org.in_`
+  ? `🔔 ₹149 paid online. Collect ₹${(d.finalTotal - 149).toLocaleString()} at check-in.\n_Via ManaunaDham.org.in_`
   : `⚠️ Show this at check-in.\nCheck-in after 1 PM · Check-out before 11 AM\n_ManaunaDham.org.in_`}`;
 }
 
