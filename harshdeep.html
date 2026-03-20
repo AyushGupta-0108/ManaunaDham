@@ -70,20 +70,6 @@ nav a:hover { border-color: var(--gold-light); }
 .mobile-menu { display: none; flex-direction: column; background: var(--maroon-dark); }
 .mobile-menu a { padding: 12px 20px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
-/* HERO */
-.hero {
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: white; padding: 70px 30px 50px; text-align: center; position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.hero h1 { font-size: 38px; margin-bottom: 12px; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); position: relative; }
-.hero .subtitle { font-size: 16px; opacity: .9; margin-bottom: 24px; position: relative; }
-.hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; }
-.hero-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 20px; font-size: 13px; }
-
 /* CTA BAR */
 .cta-bar { background: white; padding: 18px 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
 .cta-btn { background: var(--maroon); color: white; padding: 13px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: all .2s; border: none; cursor: pointer; }
@@ -101,9 +87,21 @@ nav a:hover { border-color: var(--gold-light); }
 .section h2 { color: var(--maroon); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 6px; margin-bottom: 24px; font-size: 26px; }
 .section-sub { color: var(--text-muted); font-size: 14px; margin-top: -18px; margin-bottom: 20px; }
 
-/* ══════════════════════════════════════
-   BOOKING CHOICE BANNER
-══════════════════════════════════════ */
+/* TRUST BAR (replaces urgency bar) */
+.trust-bar {
+  background: #f0fdf4;
+  border-bottom: 2px solid #81c784;
+  color: #1a5c2a;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  flex-wrap: wrap;
+}
+.trust-bar span { display: flex; align-items: center; gap: 5px; }
+
+/* BOOKING CHOICE BANNER */
 .booking-choice-banner {
   background: white;
   border-radius: 14px;
@@ -147,8 +145,22 @@ nav a:hover { border-color: var(--gold-light); }
 .booking-header h2 { font-size: 28px; margin-bottom: 6px; color: white; border: none; display: block; }
 .booking-header p { opacity: .9; font-size: 15px; }
 .booking-body { padding: 36px 40px; }
-
 .step-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+
+/* How booking works explainer */
+.booking-explainer {
+  background: #f0fdf4;
+  border: 1.5px solid #81c784;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.booking-explainer .be-icon { font-size: 22px; flex-shrink: 0; }
+.booking-explainer .be-title { font-weight: 700; font-size: 14px; color: #1a5c2a; margin-bottom: 4px; }
+.booking-explainer .be-text { font-size: 13px; color: #2d5a1e; line-height: 1.7; }
 
 /* Room Cards in Booking */
 .room-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
@@ -184,6 +196,8 @@ nav a:hover { border-color: var(--gold-light); }
 .s-row.s-advance .sv { color: var(--green); font-size: 19px; }
 .s-row.s-disc { color: var(--green); }
 .s-row.s-disc .sv { color: var(--green); }
+.s-row.s-hotel { font-weight: 700; font-size: 14px; color: var(--maroon); }
+.s-row.s-hotel .sv { color: var(--maroon); }
 
 /* Coupon */
 .coupon-row { display: flex; gap: 10px; margin-bottom: 8px; }
@@ -200,7 +214,7 @@ nav a:hover { border-color: var(--gold-light); }
 .pay-btn:hover { background: var(--maroon-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(122,0,0,0.3); }
 .secure-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-/* Divider with text */
+/* Divider */
 .or-divider {
   display: flex; align-items: center; gap: 14px;
   margin: 20px 0;
@@ -210,9 +224,7 @@ nav a:hover { border-color: var(--gold-light); }
   content: ''; flex: 1; height: 1px; background: var(--border);
 }
 
-/* ══════════════════════════════════════
-   WHATSAPP BOOKING SECTION
-══════════════════════════════════════ */
+/* WHATSAPP BOOKING SECTION */
 #wa-booking-section {
   background: white;
   border-radius: 14px;
@@ -228,7 +240,6 @@ nav a:hover { border-color: var(--gold-light); }
 .wa-booking-header h2 { font-size: 26px; margin-bottom: 6px; }
 .wa-booking-header p { opacity: .9; font-size: 14px; }
 .wa-booking-body { padding: 32px 40px; }
-
 .wa-steps {
   display: flex; gap: 8px; align-items: flex-start;
   background: #f0fdf4; border-radius: 10px; padding: 14px 18px;
@@ -248,8 +259,6 @@ nav a:hover { border-color: var(--gold-light); }
 .wa-room-option .room-price span { font-size: 12px; font-weight: 400; color: var(--text-muted); }
 .wa-sel-badge { display: none; position: absolute; top: 10px; right: 10px; background: var(--wa-green); color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
 .wa-room-option.selected .wa-sel-badge { display: block; }
-
-/* WhatsApp send button */
 .wa-send-btn {
   width: 100%; padding: 18px; background: var(--wa-green); color: white;
   border: none; border-radius: 10px; font-size: 18px; font-weight: 700;
@@ -305,12 +314,10 @@ nav a:hover { border-color: var(--gold-light); }
 .receipt-overlay.open { display: flex; }
 .receipt-box { background: white; border-radius: 16px; width: 100%; max-width: 500px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: slideUp .3s ease; }
 @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
 .rh { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); color: white; padding: 28px; text-align: center; }
 .rh-icon { width: 54px; height: 54px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; }
 .rh h2 { font-size: 22px; margin-bottom: 4px; }
 .rh p { font-size: 13px; opacity: .85; }
-
 .rb { padding: 24px 28px; }
 .rb-logo { text-align: center; margin-bottom: 18px; }
 .rb-logo .hn { font-size: 20px; font-weight: 800; color: var(--maroon); letter-spacing: 1px; }
@@ -319,56 +326,32 @@ nav a:hover { border-color: var(--gold-light); }
 .rr { display: flex; justify-content: space-between; align-items: flex-start; padding: 7px 0; font-size: 14px; }
 .rr .rl { color: var(--text-muted); font-size: 13px; }
 .rr .rv { font-weight: 600; color: var(--text); text-align: right; max-width: 60%; }
-.rr.rr-big { background: #fff8f0; margin: 0 -28px; padding: 12px 28px; }
+.rr.rr-big { background: #f0fdf4; margin: 0 -28px; padding: 12px 28px; }
 .rr.rr-big .rl { font-weight: 700; color: var(--text); font-size: 15px; }
 .rr.rr-big .rv { color: var(--green); font-size: 20px; font-weight: 800; }
-
+.rr.rr-hotel { background: #fff8f0; margin: 0 -28px; padding: 12px 28px; }
+.rr.rr-hotel .rl { font-weight: 700; color: var(--maroon); font-size: 14px; }
+.rr.rr-hotel .rv { color: var(--maroon); font-size: 18px; font-weight: 800; }
 .rnote { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #5a4000; margin-top: 16px; line-height: 1.7; }
 .rnote strong { display: block; margin-bottom: 4px; color: var(--maroon); font-size: 13px; }
-
 .ract { display: flex; gap: 10px; padding: 4px 28px 24px; flex-wrap: wrap; }
 .ract button { flex: 1; min-width: 120px; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .2s; }
 .rbtn-print { background: var(--maroon); color: white; border: none; }
 .rbtn-print:hover { background: var(--maroon-dark); }
 .rbtn-close { background: white; color: var(--text); border: 2px solid var(--border); }
 .rbtn-close:hover { background: #f0f0f0; }
-
-/* WhatsApp share section inside receipt */
-.ract-wa {
-  display: flex; flex-direction: column; gap: 8px;
-  padding: 0 28px 20px;
-}
-.ract-wa-label {
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 1px; color: var(--text-muted); margin-bottom: 2px;
-}
-.rbtn-wa-hotel {
-  width: 100%; padding: 14px; border-radius: 8px; border: none;
-  background: #25D366; color: white;
-  font-weight: 800; font-size: 15px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  transition: background .2s;
-}
-.rbtn-wa-hotel:hover { background: #128C7E; }
+.ract-wa { display: flex; flex-direction: column; gap: 8px; padding: 0 28px 20px; }
+.ract-wa-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 2px; }
 .rbtn-wa-customer {
   width: 100%; padding: 12px; border-radius: 8px;
-  background: white; color: #128C7E;
-  border: 2px solid #25D366;
+  background: #25D366; color: white; border: none;
   font-weight: 700; font-size: 14px; cursor: pointer;
   display: flex; align-items: center; justify-content: center; gap: 8px;
   transition: all .2s;
 }
-.rbtn-wa-customer:hover { background: #f0fdf4; }
-@keyframes pulse-wa {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); box-shadow: 0 0 0 6px rgba(37,211,102,0.25); }
-}
-.wa-auto-note {
-  font-size: 11px; color: var(--text-muted); text-align: center;
-  padding: 0 28px 16px;
-}
+.rbtn-wa-customer:hover { background: #128C7E; }
+.wa-auto-note { font-size: 11px; color: var(--text-muted); text-align: center; padding: 0 28px 16px; }
 
-/* Print */
 @media print {
   body * { visibility: hidden; }
   .receipt-box, .receipt-box * { visibility: visible; }
@@ -380,40 +363,7 @@ footer { background: var(--maroon-dark); color: white; text-align: center; paddi
 footer p { margin-bottom: 6px; font-size: 14px; }
 footer p:last-child { font-size: 12px; opacity: .7; }
 
-/* ── URGENCY BAR ── */
-.urgency-bar {
-  background: linear-gradient(90deg, #b30000, #d32f2f, #b30000);
-  background-size: 200% 100%;
-  animation: urgency-slide 3s linear infinite;
-  color: white;
-  text-align: center;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 700;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  flex-wrap: wrap;
-}
-@keyframes urgency-slide {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-.urgency-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #ffeb3b;
-  animation: urgency-blink 1s ease-in-out infinite;
-  flex-shrink: 0;
-}
-@keyframes urgency-blink {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
-}
-.urgency-tag {
-  background: #ffeb3b; color: #7a0000;
-  padding: 2px 10px; border-radius: 10px;
-  font-size: 12px; font-weight: 800;
-}
-
-/* ── HOTEL TITLE STRIP ── */
+/* HOTEL TITLE STRIP */
 .hotel-strip {
   background: white;
   border-bottom: 2px solid var(--border);
@@ -421,87 +371,32 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 12px;
 }
-.hotel-strip-left h1 {
-  font-size: 22px; font-weight: 800; color: var(--maroon);
-  font-family: Georgia, serif; margin-bottom: 3px;
-}
+.hotel-strip-left h1 { font-size: 22px; font-weight: 800; color: var(--maroon); font-family: Georgia, serif; margin-bottom: 3px; }
 .hotel-strip-left p { font-size: 13px; color: var(--text-muted); }
 .hotel-strip-badges { display: flex; gap: 8px; flex-wrap: wrap; }
-.hs-badge {
-  background: var(--bg); border: 1px solid var(--border);
-  padding: 5px 12px; border-radius: 16px;
-  font-size: 12px; font-weight: 600; color: var(--maroon);
-}
+.hs-badge { background: var(--bg); border: 1px solid var(--border); padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 600; color: var(--maroon); }
 
-/* ── PHOTO HERO (top of page) ── */
-.photo-hero {
-  background: #1a0000;
-  position: relative;
-}
-.photo-hero-grid {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  grid-template-rows: 240px 200px;
-  gap: 3px;
-}
-.photo-hero-grid img {
-  width: 100%; height: 100%; object-fit: cover;
-  cursor: pointer; display: block;
-  transition: opacity .2s;
-}
+/* PHOTO HERO */
+.photo-hero { background: #1a0000; position: relative; }
+.photo-hero-grid { display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: 240px 200px; gap: 3px; }
+.photo-hero-grid img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; display: block; transition: opacity .2s; }
 .photo-hero-grid img:hover { opacity: .88; }
-.photo-hero-grid img:first-child {
-  grid-row: 1 / 3; /* Big featured image spans both rows */
-}
-.photo-hero-cta {
-  position: absolute; bottom: 16px; right: 16px;
-  background: white; color: var(--maroon);
-  padding: 8px 18px; border-radius: 8px;
-  font-size: 13px; font-weight: 700;
-  border: 2px solid var(--maroon);
-  cursor: pointer; transition: all .2s;
-  display: flex; align-items: center; gap: 6px;
-}
+.photo-hero-grid img:first-child { grid-row: 1 / 3; }
+.photo-hero-cta { position: absolute; bottom: 16px; right: 16px; background: white; color: var(--maroon); padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; border: 2px solid var(--maroon); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; }
 .photo-hero-cta:hover { background: var(--maroon); color: white; }
-
-/* Photo count badge */
-.photo-count-badge {
-  position: absolute; bottom: 16px; left: 16px;
-  background: rgba(0,0,0,0.65); color: white;
-  padding: 6px 14px; border-radius: 20px;
-  font-size: 12px; font-weight: 600;
-  display: flex; align-items: center; gap: 6px;
-  backdrop-filter: blur(4px);
-}
+.photo-count-badge { position: absolute; bottom: 16px; left: 16px; background: rgba(0,0,0,0.65); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; backdrop-filter: blur(4px); }
 
 @media(max-width: 768px) {
-  .photo-hero-grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px 160px;
-  }
+  .photo-hero-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 160px; }
   .photo-hero-grid img:first-child { grid-row: 1; }
   .hotel-strip { padding: 14px 16px; }
   .hotel-strip-left h1 { font-size: 18px; }
-}
-
-/* Urgency chip inside booking */
-.urgency-chip-inline {
-  display: flex; align-items: center; gap: 8px;
-  background: #fff3f3; border: 1.5px solid #ff5252;
-  color: #b30000; padding: 10px 16px; border-radius: 10px;
-  font-size: 13px; font-weight: 700;
-  margin-bottom: 20px;
-}
-.urgency-chip-inline .blink-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: #ff5252;
-  animation: urgency-blink 1s ease-in-out infinite; flex-shrink: 0;
 }
 
 /* Responsive */
 @media(max-width: 768px) {
   nav { display: none; }
   .menu-btn { display: block; }
-  .hero h1 { font-size: 26px; }
   .room-selector, .wa-room-selector { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .booking-body, .wa-booking-body { padding: 24px 18px; }
@@ -513,10 +408,11 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   .ract { padding: 4px 20px 20px; }
   .ract-wa { padding: 0 20px 16px; }
   .wa-auto-note { padding: 0 20px 12px; }
-  .rr.rr-big { margin: 0 -20px; padding: 12px 20px; }
+  .rr.rr-big, .rr.rr-hotel { margin: 0 -20px; padding: 12px 20px; }
   .bcb-options { grid-template-columns: 1fr; }
   .bcb-option:first-child { border-right: none; border-bottom: 2px solid var(--border); }
   .room-card-btns { flex-direction: column; }
+  .trust-bar { gap: 10px; font-size: 12px; }
 }
 </style>
 </head>
@@ -529,7 +425,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <img src="logonobg.png" alt="Manauna Dham">
       <div class="brand-text">
         <strong>Manauna Dham</strong>
-        <span>Hotel & Pilgrim Services</span>
+        <span>Hotel &amp; Pilgrim Services</span>
       </div>
     </a>
     <nav>
@@ -548,11 +444,12 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   </div>
 </header>
 
-<!-- URGENCY BAR -->
-<div class="urgency-bar">
-  <span class="urgency-dot"></span>
-  🔥 Only <span class="urgency-tag">2 Rooms</span> available today — <strong>Book fast before they're gone!</strong>
-  <span class="urgency-dot"></span>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span>✓ Verified Hotel</span>
+  <span>🔒 Only ₹149 to secure your room</span>
+  <span>🏨 Full price paid at hotel on arrival</span>
+  <span>⚡ Instant confirmation</span>
 </div>
 
 <!-- HOTEL TITLE STRIP -->
@@ -582,241 +479,231 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   </button>
 </div>
 
-
-  <!-- ══════════════════════════════════════
-       BOOKING CHOICE BANNER
-  ══════════════════════════════════════ -->
-  <div class="booking-choice-banner">
-    <div class="bcb-header">
-      <h3>How would you like to book?</h3>
-      <p>Choose whichever option is more comfortable for you</p>
-    </div>
-    <div class="bcb-options">
-      <a class="bcb-option" href="#booking-section" onclick="scrollToBooking(); return false;">
-        <div class="bcb-icon">💳</div>
-        <h4>Book Online</h4>
-        <p>Fill in your details, get instant confirmation, and pay 25% advance securely via Razorpay (UPI, Cards, Net Banking).</p>
-        <span class="bcb-badge maroon">↓ Scroll to Online Booking</span>
-      </a>
-      <a class="bcb-option" href="#wa-booking-section" onclick="scrollToWA(); return false;">
-        <div class="bcb-icon"><i class="fab fa-whatsapp" style="color:#25D366;"></i></div>
-        <h4>Book via WhatsApp</h4>
-        <p>Not comfortable with online payment? Fill your details below and we'll send your request directly to the hotel via WhatsApp — pay at hotel.</p>
-        <span class="bcb-badge wa">↓ Scroll to WhatsApp Booking</span>
-      </a>
-    </div>
+<!-- BOOKING CHOICE BANNER -->
+<div class="booking-choice-banner">
+  <div class="bcb-header">
+    <h3>How would you like to book?</h3>
+    <p>Choose whichever option is more comfortable for you</p>
   </div>
+  <div class="bcb-options">
+    <a class="bcb-option" href="#booking-section" onclick="scrollToBooking(); return false;">
+      <div class="bcb-icon">💳</div>
+      <h4>Book Online</h4>
+      <p>Pay just ₹149 platform fee to confirm your room. Full room price paid directly at hotel on arrival. Instant digital receipt.</p>
+      <span class="bcb-badge maroon">↓ Scroll to Online Booking</span>
+    </a>
+    <a class="bcb-option" href="#wa-booking-section" onclick="scrollToWA(); return false;">
+      <div class="bcb-icon"><i class="fab fa-whatsapp" style="color:#25D366;"></i></div>
+      <h4>Book via WhatsApp</h4>
+      <p>No online payment at all. Fill your details and we'll send your request directly to the hotel — pay everything at hotel.</p>
+      <span class="bcb-badge wa">↓ Scroll to WhatsApp Booking</span>
+    </a>
+  </div>
+</div>
 
-  <!-- ══════════════════════════════════════
-       ONLINE BOOKING WIDGET
-  ══════════════════════════════════════ -->
-  <div id="booking-section">
-    <div class="booking-header">
-      <h2>💳 Book Online — Instant Confirmation</h2>
-      <p>Pay only 25% advance · Remaining at hotel · Secure Razorpay payment</p>
+<!-- ONLINE BOOKING WIDGET -->
+<div id="booking-section">
+  <div class="booking-header">
+    <h2>💳 Book Online — Instant Confirmation</h2>
+    <p>Pay ₹149 platform fee now · Full room price paid at hotel · Secure Razorpay</p>
+  </div>
+  <div class="booking-body">
+
+    <!-- How booking works -->
+    <div class="booking-explainer">
+      <span class="be-icon">🔒</span>
+      <div>
+        <div class="be-title">How booking works</div>
+        <div class="be-text">Pay ₹149 platform fee now to confirm your room. The full room price (after coupon) is paid <strong>directly at the hotel</strong> when you arrive. No large advance, no risk.</div>
+      </div>
     </div>
-    <div class="booking-body">
 
-      <!-- Urgency reminder -->
-      <div class="urgency-chip-inline">
-        <span class="blink-dot"></span>
-        🔥 Only 2 rooms available today — secure yours now!
-      </div>
-
-      <!-- Step 1 -->
-      <div class="step-label">Step 1 — Choose Your Room</div>
-      <div class="room-selector">
-        <div class="room-option" id="room-opt-1" onclick="selectRoom(1)">
-          <div class="selected-badge">✓ Selected</div>
-          <div class="room-name">🛏️ Double Bed-1 Room</div>
-          <div class="room-desc">1 Double Bed · Sleeps up to 5</div>
-          <div class="room-price">₹1,599 <span>/ night</span></div>
-          <div class="room-features-mini">
-            <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
-          </div>
-        </div>
-        <div class="room-option" id="room-opt-2" onclick="selectRoom(2)">
-          <div class="selected-badge">✓ Selected</div>
-          <div class="room-name">🛏️🛏️ Double Bed-2 Extended</div>
-          <div class="room-desc">2 Double Beds · Sleeps up to 7</div>
-          <div class="room-price">₹2,599 <span>/ night</span></div>
-          <div class="room-features-mini">
-            <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
-          </div>
+    <!-- Step 1 -->
+    <div class="step-label">Step 1 — Choose Your Room</div>
+    <div class="room-selector">
+      <div class="room-option" id="room-opt-1" onclick="selectRoom(1)">
+        <div class="selected-badge">✓ Selected</div>
+        <div class="room-name">🛏️ Double Bed-1 Room</div>
+        <div class="room-desc">1 Double Bed · Sleeps up to 5</div>
+        <div class="room-price">₹1,599 <span>/ night</span></div>
+        <div class="room-features-mini">
+          <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
         </div>
       </div>
-
-      <!-- Step 2 -->
-      <div class="step-label">Step 2 — Guest Details</div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Full Name <span class="req">*</span></label>
-          <input type="text" id="g-name" placeholder="e.g. Namitaben Patel" autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label>Phone Number <span class="req">*</span></label>
-          <input type="tel" id="g-phone" placeholder="10-digit mobile number" maxlength="10" autocomplete="tel">
-        </div>
-        <div class="form-group">
-          <label>Check-in Date <span class="req">*</span></label>
-          <input type="date" id="g-checkin" onchange="onDateChange()">
-        </div>
-        <div class="form-group">
-          <label>Check-out Date <span class="req">*</span></label>
-          <input type="date" id="g-checkout" onchange="calcStay()">
+      <div class="room-option" id="room-opt-2" onclick="selectRoom(2)">
+        <div class="selected-badge">✓ Selected</div>
+        <div class="room-name">🛏️🛏️ Double Bed-2 Extended</div>
+        <div class="room-desc">2 Double Beds · Sleeps up to 7</div>
+        <div class="room-price">₹2,599 <span>/ night</span></div>
+        <div class="room-features-mini">
+          <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
         </div>
       </div>
+    </div>
 
-      <!-- Stay Summary -->
-      <div class="stay-summary" id="stay-summary">
-        <div class="s-row"><span>Room Type</span><span class="sv" id="s-room">—</span></div>
-        <div class="s-row"><span>Duration</span><span class="sv" id="s-nights">—</span></div>
-        <div class="s-row"><span>Room Rate</span><span class="sv" id="s-rate">—</span></div>
-        <div class="s-row s-disc" id="s-disc-row" style="display:none;"><span>Coupon Discount</span><span class="sv" id="s-disc">—</span></div>
-        <div class="s-row s-total"><span>Total Amount</span><span class="sv" id="s-total">—</span></div>
-        <div class="s-row s-advance"><span>💳 Advance to Pay (25%)</span><span class="sv" id="s-advance">—</span></div>
-        <div class="s-row" style="font-size:13px;color:var(--text-muted);"><span>Remaining at Hotel</span><span class="sv" id="s-remain">—</span></div>
+    <!-- Step 2 -->
+    <div class="step-label">Step 2 — Guest Details</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Full Name <span class="req">*</span></label>
+        <input type="text" id="g-name" placeholder="e.g. Ramesh Kumar" autocomplete="name">
       </div>
+      <div class="form-group">
+        <label>Phone Number <span class="req">*</span></label>
+        <input type="tel" id="g-phone" placeholder="10-digit mobile number" maxlength="10" autocomplete="tel">
+      </div>
+      <div class="form-group">
+        <label>Check-in Date <span class="req">*</span></label>
+        <input type="date" id="g-checkin" onchange="onDateChange()">
+      </div>
+      <div class="form-group">
+        <label>Check-out Date <span class="req">*</span></label>
+        <input type="date" id="g-checkout" onchange="calcStay()">
+      </div>
+    </div>
 
-      <!-- Today's Offers Board -->
-      <div id="coupon-banner" style="margin-bottom:20px;">
-        <div style="background:linear-gradient(135deg,#fff8e1,#fffde7);border:2px solid var(--gold);border-radius:14px;overflow:hidden;">
-          <div style="background:var(--maroon);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;">
-            <div style="color:white;font-weight:700;font-size:14px;">🎁 Today's Offers — Click any to apply</div>
-            <div style="color:var(--gold-light);font-size:12px;" id="banner-urgency"></div>
-          </div>
-          <div id="offers-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;"></div>
+    <!-- Stay Summary -->
+    <div class="stay-summary" id="stay-summary">
+      <div class="s-row"><span>Room Type</span><span class="sv" id="s-room">—</span></div>
+      <div class="s-row"><span>Duration</span><span class="sv" id="s-nights">—</span></div>
+      <div class="s-row"><span>Room Rate</span><span class="sv" id="s-rate">—</span></div>
+      <div class="s-row s-disc" id="s-disc-row" style="display:none;"><span>Coupon Discount</span><span class="sv" id="s-disc">—</span></div>
+      <div class="s-row s-total"><span>Room Price (pay at hotel)</span><span class="sv" id="s-total">—</span></div>
+      <div class="s-row s-advance"><span>💳 Platform Fee (pay now)</span><span class="sv" id="s-advance">₹149</span></div>
+      <div class="s-row s-hotel"><span>🏨 Pay at Hotel on Arrival</span><span class="sv" id="s-remain">—</span></div>
+    </div>
+
+    <!-- Today's Offers Board -->
+    <div id="coupon-banner" style="margin-bottom:20px;">
+      <div style="background:linear-gradient(135deg,#fff8e1,#fffde7);border:2px solid var(--gold);border-radius:14px;overflow:hidden;">
+        <div style="background:var(--maroon);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="color:white;font-weight:700;font-size:14px;">🎁 Today's Offers — Click any to apply</div>
+          <div style="color:var(--gold-light);font-size:12px;" id="banner-urgency"></div>
         </div>
+        <div id="offers-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;"></div>
       </div>
+    </div>
 
-      <!-- Step 3 -->
-      <div class="step-label">Step 3 — Coupon Code (Optional)</div>
-      <div class="coupon-row">
-        <input type="text" id="coupon-input" placeholder="Enter coupon code e.g. PILGRIM50" oninput="this.value=this.value.toUpperCase()">
-        <button class="coupon-btn" onclick="applyCoupon()"><i class="fa fa-tag"></i> Apply</button>
-      </div>
-      <div class="coupon-msg" id="coupon-msg"></div>
+    <!-- Step 3 -->
+    <div class="step-label">Step 3 — Coupon Code (Optional)</div>
+    <div class="coupon-row">
+      <input type="text" id="coupon-input" placeholder="Enter coupon code e.g. PILGRIM50" oninput="this.value=this.value.toUpperCase()">
+      <button class="coupon-btn" onclick="applyCoupon()"><i class="fa fa-tag"></i> Apply</button>
+    </div>
+    <div class="coupon-msg" id="coupon-msg"></div>
 
-      <!-- Pay -->
-      <button class="pay-btn" id="pay-btn" onclick="initiatePayment()">
-        <i class="fa fa-lock"></i>
-        <span id="pay-btn-text">Pay Advance & Confirm Booking</span>
+    <!-- Pay -->
+    <button class="pay-btn" id="pay-btn" onclick="initiatePayment()">
+      <i class="fa fa-lock"></i>
+      <span id="pay-btn-text">Pay ₹149 to Confirm Booking</span>
+    </button>
+    <div class="secure-note">
+      <i class="fa fa-shield-alt" style="color:var(--green)"></i>
+      Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
+    </div>
+
+    <div class="or-divider">Prefer no online payment?</div>
+    <div style="text-align:center;">
+      <button onclick="scrollToWA()" style="background:var(--wa-green);color:white;border:none;padding:13px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;" onmouseover="this.style.background='#128C7E'" onmouseout="this.style.background='#25D366'">
+        <i class="fab fa-whatsapp"></i> Book via WhatsApp — Pay Everything at Hotel ↓
       </button>
-      <div class="secure-note">
-        <i class="fa fa-shield-alt" style="color:var(--green)"></i>
-        Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
-      </div>
-
-      <!-- OR Divider pointing to WA -->
-      <div class="or-divider">Not comfortable with online payment?</div>
-      <div style="text-align:center;">
-        <button onclick="scrollToWA()" style="background:var(--wa-green);color:white;border:none;padding:13px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;" onmouseover="this.style.background='#128C7E'" onmouseout="this.style.background='#25D366'">
-          <i class="fab fa-whatsapp"></i> Book via WhatsApp Instead ↓
-        </button>
-      </div>
-
     </div>
+
   </div>
+</div>
 
-  <!-- ══════════════════════════════════════
-       WHATSAPP BOOKING SECTION
-  ══════════════════════════════════════ -->
-  <div id="wa-booking-section">
-    <div class="wa-booking-header">
-      <h2><i class="fab fa-whatsapp"></i> Book via WhatsApp</h2>
-      <p>Fill in your details below — we'll send them straight to the hotel on WhatsApp</p>
-    </div>
-    <div class="wa-booking-body">
-
-      <div class="wa-steps">
-        <div style="font-size:22px; margin-right:4px;">ℹ️</div>
-        <ol>
-          <li><strong>Fill in the form below</strong> (name, phone, room type, dates).</li>
-          <li>Click <strong>"Send Booking Request on WhatsApp"</strong> — WhatsApp will open with your details pre-filled.</li>
-          <li>Just hit <strong>Send</strong> in WhatsApp — the hotel will confirm your booking and guide you on payment.</li>
-        </ol>
-      </div>
-
-      <!-- WhatsApp Room Selector -->
-      <div class="step-label">Step 1 — Choose Your Room</div>
-      <div class="wa-room-selector">
-        <div class="wa-room-option" id="wa-room-opt-1" onclick="selectWARoom(1)">
-          <div class="wa-sel-badge">✓ Selected</div>
-          <div class="room-name">🛏️ Double Bed-1 Room</div>
-          <div class="room-desc">1 Double Bed · Sleeps up to 5</div>
-          <div class="room-price">₹1,599 <span>/ night</span></div>
-          <div class="room-features-mini" style="margin-top:6px;">
-            <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
-          </div>
-        </div>
-        <div class="wa-room-option" id="wa-room-opt-2" onclick="selectWARoom(2)">
-          <div class="wa-sel-badge">✓ Selected</div>
-          <div class="room-name">🛏️🛏️ Double Bed-2 Extended</div>
-          <div class="room-desc">2 Double Beds · Sleeps up to 7</div>
-          <div class="room-price">₹2,599 <span>/ night</span></div>
-          <div class="room-features-mini" style="margin-top:6px;">
-            <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- WhatsApp Guest Details Form -->
-      <div class="step-label">Step 2 — Your Details</div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Full Name <span class="req">*</span></label>
-          <input type="text" id="wa-name" placeholder="e.g. Ramesh Kumar" autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label>Phone Number <span class="req">*</span></label>
-          <input type="tel" id="wa-phone" placeholder="10-digit mobile number" maxlength="10" autocomplete="tel">
-        </div>
-        <div class="form-group">
-          <label>Check-in Date <span class="req">*</span></label>
-          <input type="date" id="wa-checkin" onchange="onWADateChange()">
-        </div>
-        <div class="form-group">
-          <label>Check-out Date <span class="req">*</span></label>
-          <input type="date" id="wa-checkout">
-        </div>
-        <div class="form-group" style="grid-column: 1 / -1;">
-          <label>Number of Guests</label>
-          <select id="wa-guests">
-            <option value="">Select (optional)</option>
-            <option value="1">1 guest</option>
-            <option value="2">2 guests</option>
-            <option value="3">3 guests</option>
-            <option value="4">4 guests</option>
-            <option value="5">5 guests</option>
-            <option value="6">6 guests</option>
-            <option value="7">7 guests</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- WhatsApp Summary -->
-      <div class="stay-summary" id="wa-stay-summary" style="border-color: rgba(37,211,102,0.3); background:#f0fdf4;">
-        <div class="s-row"><span>Room Type</span><span class="sv" id="ws-room">—</span></div>
-        <div class="s-row"><span>Duration</span><span class="sv" id="ws-nights">—</span></div>
-        <div class="s-row s-total"><span>Approx. Total</span><span class="sv" id="ws-total">—</span></div>
-        <div class="s-row" style="font-size:13px; color:var(--wa-dark);"><span>💬 Exact amount confirmed by hotel on WhatsApp</span><span class="sv">✓</span></div>
-      </div>
-
-      <!-- Send Button -->
-      <button class="wa-send-btn" onclick="sendWhatsAppBooking()">
-        <i class="fab fa-whatsapp"></i>
-        <span>Send Booking Request on WhatsApp</span>
-      </button>
-      <div class="wa-note">
-        <i class="fab fa-whatsapp" style="color:var(--wa-green);font-size:14px;"></i>
-        Opens WhatsApp with your details pre-filled · Hotel number: +91 78178 03342
-      </div>
-
-    </div>
+<!-- WHATSAPP BOOKING SECTION -->
+<div id="wa-booking-section">
+  <div class="wa-booking-header">
+    <h2><i class="fab fa-whatsapp"></i> Book via WhatsApp</h2>
+    <p>No online payment needed — fill details and we'll connect you to the hotel directly</p>
   </div>
+  <div class="wa-booking-body">
 
+    <div class="wa-steps">
+      <div style="font-size:22px; margin-right:4px;">ℹ️</div>
+      <ol>
+        <li><strong>Fill in the form below</strong> (name, phone, room type, dates).</li>
+        <li>Click <strong>"Send Booking Request on WhatsApp"</strong> — WhatsApp will open with your details pre-filled.</li>
+        <li>Just hit <strong>Send</strong> in WhatsApp — the hotel will confirm and you pay everything on arrival.</li>
+      </ol>
+    </div>
 
-  <!-- CTA BAR -->
+    <div class="step-label">Step 1 — Choose Your Room</div>
+    <div class="wa-room-selector">
+      <div class="wa-room-option" id="wa-room-opt-1" onclick="selectWARoom(1)">
+        <div class="wa-sel-badge">✓ Selected</div>
+        <div class="room-name">🛏️ Double Bed-1 Room</div>
+        <div class="room-desc">1 Double Bed · Sleeps up to 5</div>
+        <div class="room-price">₹1,599 <span>/ night</span></div>
+        <div class="room-features-mini" style="margin-top:6px;">
+          <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
+        </div>
+      </div>
+      <div class="wa-room-option" id="wa-room-opt-2" onclick="selectWARoom(2)">
+        <div class="wa-sel-badge">✓ Selected</div>
+        <div class="room-name">🛏️🛏️ Double Bed-2 Extended</div>
+        <div class="room-desc">2 Double Beds · Sleeps up to 7</div>
+        <div class="room-price">₹2,599 <span>/ night</span></div>
+        <div class="room-features-mini" style="margin-top:6px;">
+          <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-label">Step 2 — Your Details</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Full Name <span class="req">*</span></label>
+        <input type="text" id="wa-name" placeholder="e.g. Ramesh Kumar" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label>Phone Number <span class="req">*</span></label>
+        <input type="tel" id="wa-phone" placeholder="10-digit mobile number" maxlength="10" autocomplete="tel">
+      </div>
+      <div class="form-group">
+        <label>Check-in Date <span class="req">*</span></label>
+        <input type="date" id="wa-checkin" onchange="onWADateChange()">
+      </div>
+      <div class="form-group">
+        <label>Check-out Date <span class="req">*</span></label>
+        <input type="date" id="wa-checkout">
+      </div>
+      <div class="form-group" style="grid-column: 1 / -1;">
+        <label>Number of Guests</label>
+        <select id="wa-guests">
+          <option value="">Select (optional)</option>
+          <option value="1">1 guest</option>
+          <option value="2">2 guests</option>
+          <option value="3">3 guests</option>
+          <option value="4">4 guests</option>
+          <option value="5">5 guests</option>
+          <option value="6">6 guests</option>
+          <option value="7">7 guests</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="stay-summary" id="wa-stay-summary" style="border-color: rgba(37,211,102,0.3); background:#f0fdf4;">
+      <div class="s-row"><span>Room Type</span><span class="sv" id="ws-room">—</span></div>
+      <div class="s-row"><span>Duration</span><span class="sv" id="ws-nights">—</span></div>
+      <div class="s-row s-total"><span>Approx. Total (pay at hotel)</span><span class="sv" id="ws-total">—</span></div>
+      <div class="s-row" style="font-size:13px; color:var(--wa-dark);"><span>💬 Exact amount confirmed by hotel on WhatsApp</span><span class="sv">✓</span></div>
+    </div>
+
+    <button class="wa-send-btn" onclick="sendWhatsAppBooking()">
+      <i class="fab fa-whatsapp"></i>
+      <span>Send Booking Request on WhatsApp</span>
+    </button>
+    <div class="wa-note">
+      <i class="fab fa-whatsapp" style="color:var(--wa-green);font-size:14px;"></i>
+      Opens WhatsApp with your details pre-filled · Hotel: +91 78178 03342
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA BAR -->
 <div class="cta-bar">
   <a class="cta-btn outline" onclick="showPaymentHelp()" style="cursor:pointer;">
     <i class="fa fa-exclamation-circle"></i> Payment Issue?
@@ -828,10 +715,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 
 <div class="container" style="padding-top:32px;">
 
-
-  <!-- ══════════════════════════════════════
-       ALL PHOTOS (full gallery)
-  ══════════════════════════════════════ -->
+  <!-- ALL PHOTOS -->
   <div class="section" id="all-photos">
     <h2>All Hotel Photos</h2>
     <p class="section-sub">Click any image to enlarge</p>
@@ -879,7 +763,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
           </ul>
           <div class="room-card-btns">
             <button class="cta-btn green" style="width:100%;justify-content:center;font-size:14px;" onclick="selectRoom(1);scrollToBooking()">
-              <i class="fa fa-calendar-check"></i> Book Online
+              <i class="fa fa-calendar-check"></i> Book Online — ₹149 fee
             </button>
             <button class="cta-btn wa" style="width:100%;justify-content:center;font-size:14px;" onclick="selectWARoom(1);scrollToWA()">
               <i class="fab fa-whatsapp"></i> Book via WhatsApp
@@ -903,7 +787,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
           </ul>
           <div class="room-card-btns">
             <button class="cta-btn green" style="width:100%;justify-content:center;font-size:14px;" onclick="selectRoom(2);scrollToBooking()">
-              <i class="fa fa-calendar-check"></i> Book Online
+              <i class="fa fa-calendar-check"></i> Book Online — ₹149 fee
             </button>
             <button class="cta-btn wa" style="width:100%;justify-content:center;font-size:14px;" onclick="selectWARoom(2);scrollToWA()">
               <i class="fab fa-whatsapp"></i> Book via WhatsApp
@@ -914,7 +798,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
     <div class="offer-box">
       <h3><i class="fa fa-gift"></i> Special Offer — Extra Bed FREE!</h3>
-      <p style="font-size:14px;margin-top:6px;">Accommodate your whole family. Up to 5 guests in Double Bed-1 (₹1,599) or up to 7 in Double Bed-2 (₹2,599) — extra bed at zero cost.</p>
+      <p style="font-size:14px;margin-top:6px;">Up to 5 guests in Double Bed-1 (₹1,599/night) or up to 7 in Double Bed-2 (₹2,599/night). Use coupon HARSHDEEP100 to save ₹100. Pay only ₹149 online, rest at hotel.</p>
     </div>
   </div>
 
@@ -939,8 +823,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
         <h3><i class="fa fa-rupee-sign"></i> Pricing</h3>
         <p><strong>Double Bed-1:</strong> ₹1,599 / night</p>
         <p><strong>Double Bed-2:</strong> ₹2,599 / night</p>
-        <p><strong>Advance (online):</strong> 25% at booking</p>
-        <p style="margin-top:6px;font-size:12px;">Remaining paid at hotel</p>
+        <p><strong>Platform fee (online):</strong> ₹149</p>
+        <p style="margin-top:6px;font-size:12px;">Full room price paid at hotel on arrival</p>
       </div>
       <div class="info-card">
         <h3><i class="fa fa-car"></i> Parking</h3>
@@ -1015,10 +899,11 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <!-- BOTTOM CTA -->
   <div class="section" style="background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));color:white;text-align:center;">
     <h2 style="color:white;border-color:var(--gold);">Ready to Book Your Room?</h2>
-    <p style="font-size:16px;opacity:.9;margin-bottom:20px;">Choose how you'd like to book — online or via WhatsApp.</p>
+    <p style="font-size:16px;opacity:.9;margin-bottom:8px;">Pay just ₹149 to confirm. Full room price at hotel.</p>
+    <p style="font-size:14px;opacity:.8;margin-bottom:20px;">Use coupon HARSHDEEP100 for ₹100 off the room price.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
       <button class="cta-btn" style="background:var(--gold);color:var(--maroon-dark);font-size:15px;" onclick="scrollToBooking()">
-        <i class="fa fa-calendar-check"></i> Book Online
+        <i class="fa fa-calendar-check"></i> Book Online — ₹149 fee
       </button>
       <button class="cta-btn wa" style="font-size:15px;" onclick="scrollToWA()">
         <i class="fab fa-whatsapp"></i> Book via WhatsApp
@@ -1039,13 +924,13 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <div class="receipt-box">
     <div class="rh">
       <div class="rh-icon">✅</div>
-      <h2>Booking Confirmed!</h2>
-      <p>Your advance payment has been received</p>
+      <h2>Room Confirmed!</h2>
+      <p>Platform fee received · Pay room price at hotel on arrival</p>
     </div>
     <div class="rb">
       <div class="rb-logo">
         <div class="hn">HOTEL HARSHDEEP</div>
-        <div class="hs">Advance Booking Receipt</div>
+        <div class="hs">Platform Fee Receipt</div>
       </div>
       <hr class="rdiv">
       <div class="rr"><span class="rl">Invoice No.</span><span class="rv" id="r-inv">—</span></div>
@@ -1060,26 +945,26 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <hr class="rdiv">
       <div class="rr"><span class="rl">Room Rate</span><span class="rv" id="r-rate">—</span></div>
       <div class="rr" id="r-disc-row" style="display:none;"><span class="rl" style="color:var(--green);">Coupon Discount</span><span class="rv" style="color:var(--green);" id="r-disc">—</span></div>
-      <div class="rr"><span class="rl">Total Amount</span><span class="rv" id="r-total">—</span></div>
-      <div class="rr rr-big"><span class="rl">Advance Paid (25%)</span><span class="rv" id="r-advance">—</span></div>
-      <div class="rr"><span class="rl">Remaining at Hotel</span><span class="rv" id="r-remain">—</span></div>
+      <div class="rr rr-big"><span class="rl">Platform Fee Paid ✓</span><span class="rv" id="r-advance">—</span></div>
+      <div class="rr rr-hotel"><span class="rl">Room Price at Hotel</span><span class="rv" id="r-remain">—</span></div>
       <div class="rr"><span class="rl">Payment ID</span><span class="rv" id="r-pid" style="font-size:11px;word-break:break-all;">—</span></div>
       <div class="rnote">
         <strong>⚠️ Important Information</strong>
         Check-in: After 1:00 PM &nbsp;·&nbsp; Check-out: Before 11:00 AM<br>
-        Advance booking fee is <strong>non-refundable</strong>.<br>
-        Please show this receipt at the hotel during check-in.<br>
-        ManaunaDham.org.in is an independent booking assistance platform.
+        Platform fee of ₹149 is <strong>non-refundable</strong>.<br>
+        Room price to be paid <strong>at the hotel on arrival</strong>.<br>
+        Show this receipt at check-in for your confirmed booking.<br>
+        ManaunaDham.org.in is an independent booking platform.
       </div>
     </div>
     <div class="ract-wa">
       <div class="ract-wa-label">📲 Save Your Receipt</div>
-      <button class="rbtn-wa-customer" style="background:#25D366;color:white;border:none;font-size:15px;" onclick="shareReceiptToCustomer()">
+      <button class="rbtn-wa-customer" onclick="shareReceiptToCustomer()">
         <i class="fab fa-whatsapp"></i> Send Receipt to My WhatsApp
       </button>
     </div>
     <div class="wa-auto-note">
-      The hotel has been automatically notified of your payment. 🏨✅
+      Hotel has been notified of your confirmed booking. 🏨✅
     </div>
     <div class="ract">
       <button class="rbtn-print" onclick="window.print()"><i class="fa fa-print"></i> Print / Save PDF</button>
@@ -1094,13 +979,12 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 </footer>
 
 <script>
-// ══════════════════════════════════════════════
+// ══════════════════════════════════════
 // CONFIG
-// ══════════════════════════════════════════════
-// Razorpay Key ID is fetched from the backend — never stored in HTML.
-// Anyone pressing F12 / View Source will find no key here.
+// ══════════════════════════════════════
 let RAZORPAY_KEY = null;
-const WA_NUMBER  = '917817803342';   // WhatsApp number with country code, no +
+const WA_NUMBER  = '917817803342';
+const PLATFORM_FEE = 149;
 
 const HOTEL_KEY = 'harshdeep';
 
@@ -1120,21 +1004,18 @@ const _config   = (typeof COUPON_CONFIG !== 'undefined' ? COUPON_CONFIG : FALLBA
 const COUPONS   = _config.COUPONS;
 const URGENCY_MSG = _config.urgencyMessage;
 
-// ── ROOM PRICES ──
 const ROOMS = {
-  1: { name: 'Double Bed-1 Room',      price: 1599 },
-  2: { name: 'Double Bed-2 Extended',  price: 2599 },
+  1: { name: 'Double Bed-1 Room',     price: 1599 },
+  2: { name: 'Double Bed-2 Extended', price: 2599 },
 };
 
-// ── ONLINE BOOKING STATE ──
-let selRoom = null, nights = 0, baseTotal = 0, discAmt = 0, finalTotal = 0, advAmt = 0, activeCoupon = null;
+let selRoom = null, nights = 0, baseTotal = 0, discAmt = 0, finalTotal = 0, activeCoupon = null;
 let invNum = parseInt(localStorage.getItem('hd_inv') || '100');
-
-// ── WHATSAPP BOOKING STATE ──
 let waSelRoom = null, waNights = 0;
+let lastBooking = null;
 
 // ══════════════════════════════════════
-// ONLINE BOOKING FUNCTIONS
+// ONLINE BOOKING
 // ══════════════════════════════════════
 
 function selectRoom(n) {
@@ -1146,8 +1027,8 @@ function selectRoom(n) {
 
 function onDateChange() {
   const ci = document.getElementById('g-checkin').value;
-  const co = document.getElementById('g-checkout').value;
   document.getElementById('g-checkout').min = ci;
+  const co = document.getElementById('g-checkout').value;
   if (co && co <= ci) document.getElementById('g-checkout').value = '';
   calcStay();
 }
@@ -1170,7 +1051,6 @@ function recalc() {
     discAmt = c.type === 'flat' ? c.value : Math.round(baseTotal * c.value / 100);
   }
   finalTotal = Math.max(baseTotal - discAmt, 0);
-  advAmt = Math.round(finalTotal * 0.25);
 
   const summary = document.getElementById('stay-summary');
   summary.classList.add('show');
@@ -1185,10 +1065,10 @@ function recalc() {
   } else { discRow.style.display = 'none'; }
 
   document.getElementById('s-total').textContent   = '₹' + finalTotal.toLocaleString();
-  document.getElementById('s-advance').textContent = '₹' + advAmt.toLocaleString();
-  document.getElementById('s-remain').textContent  = '₹' + (finalTotal - advAmt).toLocaleString();
+  document.getElementById('s-advance').textContent = '₹' + PLATFORM_FEE;
+  document.getElementById('s-remain').textContent  = '₹' + finalTotal.toLocaleString();
 
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
 }
 
 function applyCoupon() {
@@ -1245,14 +1125,14 @@ async function initiatePayment() {
   document.getElementById('pay-btn-text').textContent = 'Creating order...';
 
   const notes = {
-    hotel_name: 'Hotel Harshdeep', 
+    hotel_name:   'Hotel Harshdeep',
     invoice_no:   invStr,
     room_type:    ROOMS[selRoom].name,
     checkin:      ci,
     checkout:     co,
     nights:       String(nights),
-    total_amount: String(finalTotal),
-    advance_paid: String(advAmt),
+    room_price:   String(finalTotal),
+    platform_fee: String(PLATFORM_FEE),
     coupon_used:  activeCoupon || 'None',
     guest_name:   name,
     guest_phone:  phone,
@@ -1263,7 +1143,7 @@ async function initiatePayment() {
     const resp = await fetch('https://harshdeep-api.vercel.app/api/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: advAmt * 100, notes }),
+      body: JSON.stringify({ amount: PLATFORM_FEE * 100, notes }),
     });
     if (!resp.ok) {
       const err = await resp.json();
@@ -1271,31 +1151,31 @@ async function initiatePayment() {
     }
     const data = await resp.json();
     orderId      = data.orderId;
-    RAZORPAY_KEY = data.keyId;  // key travels backend → page → Razorpay, never sits in HTML
+    RAZORPAY_KEY = data.keyId;
   } catch (err) {
     alert('Could not initiate payment: ' + err.message + '\nPlease try again.');
     btn.disabled = false;
-    document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
+    document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
     return;
   }
 
   btn.disabled = false;
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
 
   const options = {
     key: RAZORPAY_KEY,
     order_id: orderId,
-    amount: advAmt * 100,
+    amount: PLATFORM_FEE * 100,
     currency: 'INR',
     name: 'Hotel Harshdeep',
-    description: ROOMS[selRoom].name + ' · ' + nights + ' night(s) · ' + fmtDate(ci) + ' – ' + fmtDate(co),
+    description: 'Room booking · ' + ROOMS[selRoom].name + ' · ' + fmtDate(ci) + ' – ' + fmtDate(co),
     image: 'logonobg.png',
     prefill: { name: name, contact: '+91' + phone },
     notes: notes,
     theme: { color: '#7a0000' },
     modal: { backdropclose: false },
     handler: function(resp) {
-      showReceipt({ invStr, name, phone, ci, co, nights, baseTotal, discAmt, finalTotal, advAmt, payId: resp.razorpay_payment_id });
+      showReceipt({ invStr, name, phone, ci, co, nights, baseTotal, discAmt, finalTotal, payId: resp.razorpay_payment_id });
     }
   };
 
@@ -1306,13 +1186,8 @@ async function initiatePayment() {
   rzp.open();
 }
 
-// Stores last successful booking for WhatsApp sharing
-let lastBooking = null;
-
 function showReceipt(d) {
-  lastBooking = d;  // save for WA share functions
-
-  const rem = d.finalTotal - d.advAmt;
+  lastBooking = d;
   document.getElementById('r-inv').textContent    = '#' + d.invStr;
   document.getElementById('r-date').textContent   = new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'});
   document.getElementById('r-name').textContent   = d.name;
@@ -1329,20 +1204,17 @@ function showReceipt(d) {
     document.getElementById('r-disc').textContent = '−₹' + d.discAmt.toLocaleString();
   } else { dr.style.display = 'none'; }
 
-  document.getElementById('r-total').textContent   = '₹' + d.finalTotal.toLocaleString();
-  document.getElementById('r-advance').textContent = '₹' + d.advAmt.toLocaleString();
-  document.getElementById('r-remain').textContent  = '₹' + rem.toLocaleString();
+  document.getElementById('r-advance').textContent = '₹149';
+  document.getElementById('r-remain').textContent  = '₹' + d.finalTotal.toLocaleString();
   document.getElementById('r-pid').textContent     = d.payId;
 
   document.getElementById('receiptOverlay').classList.add('open');
 }
 
-// ── Build receipt message (shared by both share functions) ──
 function buildReceiptMsg(d, forHotel) {
-  const rem = d.finalTotal - d.advAmt;
   const discLine = d.discAmt > 0 ? `\n🏷️ *Coupon Discount:* −₹${d.discAmt.toLocaleString()}` : '';
   const header = forHotel
-    ? `🏨 *NEW BOOKING ALERT — Hotel Harshdeep*\n💰 Advance Paid: ₹${d.advAmt.toLocaleString()} ✅`
+    ? `🏨 *NEW BOOKING — Hotel Harshdeep*\n✅ Platform Fee ₹149 confirmed`
     : `🧾 *Your Booking Receipt — Hotel Harshdeep*`;
   return `${header}
 
@@ -1358,34 +1230,34 @@ function buildReceiptMsg(d, forHotel) {
 🌙 *Nights:* ${d.nights}
 ━━━━━━━━━━━━━━━━━━━━
 💵 *Room Rate:* ₹${ROOMS[selRoom].price.toLocaleString()} × ${d.nights}${discLine}
-💰 *Total:* ₹${d.finalTotal.toLocaleString()}
-✅ *Advance Paid:* ₹${d.advAmt.toLocaleString()}
-🏦 *Remaining at Hotel:* ₹${rem.toLocaleString()}
+✅ *Platform Fee Paid:* ₹149
+🏦 *Room Price at Hotel:* ₹${d.finalTotal.toLocaleString()}
 🆔 *Payment ID:* ${d.payId}
 ━━━━━━━━━━━━━━━━━━━━
-${forHotel ? '⚠️ Please keep the room ready.\n_Via ManaunaDham.org.in_' : '⚠️ Show this at check-in.\nCheck-in after 1 PM · Check-out before 11 AM\n_ManaunaDham.org.in_'}`;
+${forHotel
+  ? `🔔 Room price ₹${d.finalTotal.toLocaleString()} to collect at check-in.\n_Via ManaunaDham.org.in_`
+  : `⚠️ Show this at check-in.\nCheck-in after 1 PM · Check-out before 11 AM\n_ManaunaDham.org.in_`}`;
 }
 
 function shareReceiptToCustomer() {
   if (!lastBooking) return;
   const msg = buildReceiptMsg(lastBooking, false);
-  const phone = '91' + lastBooking.phone;
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open('https://wa.me/91' + lastBooking.phone + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
 function closeReceipt() {
   document.getElementById('receiptOverlay').classList.remove('open');
   ['g-name','g-phone','g-checkin','g-checkout','coupon-input'].forEach(id => document.getElementById(id).value = '');
-  selRoom = null; nights = 0; finalTotal = 0; advAmt = 0; discAmt = 0; activeCoupon = null;
+  selRoom = null; nights = 0; finalTotal = 0; discAmt = 0; activeCoupon = null;
   lastBooking = null;
   document.querySelectorAll('.room-option').forEach(el => el.classList.remove('selected'));
   document.getElementById('stay-summary').classList.remove('show');
   document.getElementById('coupon-msg').className = 'coupon-msg';
-  document.getElementById('pay-btn-text').textContent = 'Pay Advance & Confirm Booking';
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
 }
 
 // ══════════════════════════════════════
-// WHATSAPP BOOKING FUNCTIONS
+// WHATSAPP BOOKING
 // ══════════════════════════════════════
 
 function selectWARoom(n) {
@@ -1409,7 +1281,6 @@ function calcWAStay() {
   if (!ci || !co || !waSelRoom) return;
   waNights = Math.round((new Date(co) - new Date(ci)) / 86400000);
   if (waNights <= 0) { waNights = 0; return; }
-
   const total = ROOMS[waSelRoom].price * waNights;
   const summary = document.getElementById('wa-stay-summary');
   summary.classList.add('show');
@@ -1436,21 +1307,16 @@ function validateWA() {
 }
 
 function sendWhatsAppBooking() {
-  // Re-calc nights in case user changed dates without triggering event
   const ci = document.getElementById('wa-checkin').value;
   const co = document.getElementById('wa-checkout').value;
-  if (ci && co) {
-    waNights = Math.round((new Date(co) - new Date(ci)) / 86400000);
-  }
-
+  if (ci && co) waNights = Math.round((new Date(co) - new Date(ci)) / 86400000);
   if (!validateWA()) return;
 
-  const name    = document.getElementById('wa-name').value.trim();
-  const phone   = document.getElementById('wa-phone').value.trim();
-  const guests  = document.getElementById('wa-guests').value;
-  const total   = waSelRoom ? ROOMS[waSelRoom].price * waNights : 0;
-
-  const guestsLine = guests ? `👥 *Guests:* ${guests}` : '';
+  const name   = document.getElementById('wa-name').value.trim();
+  const phone  = document.getElementById('wa-phone').value.trim();
+  const guests = document.getElementById('wa-guests').value;
+  const total  = waSelRoom ? ROOMS[waSelRoom].price * waNights : 0;
+  const guestsLine = guests ? '\n👥 *Guests:* ' + guests : '';
 
   const msg =
 `🏨 *Booking Request — Hotel Harshdeep, Aonla*
@@ -1460,54 +1326,40 @@ function sendWhatsAppBooking() {
 🛏️ *Room:* ${ROOMS[waSelRoom].name}
 📅 *Check-in:* ${fmtDate(ci)}
 📅 *Check-out:* ${fmtDate(co)}
-🌙 *Nights:* ${waNights}
-${guestsLine}
-💰 *Approx. Total:* ₹${total.toLocaleString()}
+🌙 *Nights:* ${waNights}${guestsLine}
+💰 *Total (pay at hotel):* ₹${total.toLocaleString()}
 
-Please confirm availability and guide me on payment. 🙏
+Please confirm availability. 🙏
 _Sent via ManaunaDham.org.in_`;
 
-  const encoded = encodeURIComponent(msg);
-  const waURL = `https://wa.me/${WA_NUMBER}?text=${encoded}`;
-  window.open(waURL, '_blank');
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
 // ══════════════════════════════════════
-// SHARED HELPERS
+// HELPERS
 // ══════════════════════════════════════
 
 function fmtDate(str) {
   if (!str) return '—';
   return new Date(str).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
 }
-
 function scrollToBooking() {
   document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
 function scrollToWA() {
   document.getElementById('wa-booking-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
 function openModal(img) {
   document.getElementById('imgModal').classList.add('open');
   document.getElementById('modalImg').src = img.src;
 }
-
 function closeModal() { document.getElementById('imgModal').classList.remove('open'); }
-
 function toggleMenu() {
   const m = document.getElementById('mobileMenu');
   m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
 }
-
 function showPaymentHelp() {
-  const msg = `If your payment was deducted but booking failed:\n\n` +
-    `1. Note your UPI/bank transaction ID\n` +
-    `2. Take a screenshot of the deduction\n` +
-    `3. Razorpay automatically refunds within 5-7 business days\n\n` +
-    `For faster help, WhatsApp us at:\n +91 7817803342\n\nMention your name, phone, and transaction ID.`;
-  alert(msg);
+  alert('If your payment was deducted but booking failed:\n\n1. Note your UPI/bank transaction ID\n2. Take a screenshot of the deduction\n3. Razorpay automatically refunds within 5-7 business days\n\nFor faster help, WhatsApp us at:\n +91 7817803342\n\nMention your name, phone, and transaction ID.');
 }
 
 // ── OFFERS BOARD ──
@@ -1517,12 +1369,11 @@ function initCouponBanner() {
   document.getElementById('banner-urgency').textContent = URGENCY_MSG;
   Object.entries(COUPONS).forEach(([code, c]) => {
     const card = document.createElement('div');
-    card.style.cssText = `background:white;border:2px dashed var(--gold);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;`;
-    card.innerHTML = `
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">${c.description}</div>
-      <div style="font-size:16px;font-weight:800;color:var(--maroon);letter-spacing:1px;margin-bottom:6px;">${code}</div>
-      <div style="background:var(--maroon);color:white;text-align:center;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;">${c.label} ✂️</div>
-    `;
+    card.style.cssText = 'background:white;border:2px dashed var(--gold);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;';
+    card.innerHTML =
+      '<div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">' + c.description + '</div>' +
+      '<div style="font-size:16px;font-weight:800;color:var(--maroon);letter-spacing:1px;margin-bottom:6px;">' + code + '</div>' +
+      '<div style="background:var(--maroon);color:white;text-align:center;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;">' + c.label + ' ✂️</div>';
     card.onmouseenter = () => card.style.background = '#fff3e0';
     card.onmouseleave = () => card.style.background = 'white';
     card.onclick = () => claimCoupon(code);
@@ -1535,7 +1386,7 @@ function claimCoupon(code) {
   applyCoupon();
   const inp = document.getElementById('coupon-input');
   inp.style.borderColor = 'var(--gold)';
-  setTimeout(() => inp.style.borderColor = '', 1599);
+  setTimeout(() => inp.style.borderColor = '', 1600);
   document.getElementById('stay-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
@@ -1546,8 +1397,6 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById(id).min = today;
   });
   initCouponBanner();
-
-  // Auto-select WA room if URL has hash from room card buttons
   document.getElementById('wa-checkout').addEventListener('change', calcWAStay);
 });
 </script>
