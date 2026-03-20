@@ -404,6 +404,45 @@ nav a.live:hover {
   animation: fadeInUp 0.6s ease;
 }
 
+  
+/* Stats Section */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 700;
+  color: #7a0000;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 15px;
+  color: #666;
+  font-weight: 600;
+}
+
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1120,13 +1159,9 @@ Tehsil Aonla, Bareilly, Uttar Pradesh – 243301
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" width="100%" height="450" style="border:0;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.1)" loading="lazy"></iframe>
 </section>
-<iframe
-  src="https://www.railyatri.in/train-between-stations/widget?from=DLI&to=AWL"
-  width="100%"
-  height="400"
-  frameborder="0"
-  style="border-radius:12px;"
-></iframe>
+<a href="https://railyatri.in/train-between-stations?from=DLI&to=AWL" target="_blank" class="btn">
+  Check Trains to Manauna
+</a>
 <section class="section" id="gallery">
 
 <h2 style="margin-top:0">Manauna Dham Weather (Bareilly Region)</h2>
