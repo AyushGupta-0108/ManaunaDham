@@ -69,19 +69,19 @@ nav a:hover { border-color: var(--gold-light); }
 .mobile-menu { display: none; flex-direction: column; background: var(--maroon-dark); }
 .mobile-menu a { padding: 12px 20px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
 
-/* URGENCY BAR */
-.urgency-bar {
-  background: linear-gradient(90deg, #b30000, #d32f2f, #b30000);
-  background-size: 200% 100%;
-  animation: urgency-slide 3s linear infinite;
-  color: white; text-align: center; padding: 10px 20px;
-  font-size: 14px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+/* TRUST BAR */
+.trust-bar {
+  background: #f0fdf4;
+  border-bottom: 2px solid #81c784;
+  color: #1a5c2a;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  flex-wrap: wrap;
 }
-@keyframes urgency-slide { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-.urgency-dot { width: 8px; height: 8px; border-radius: 50%; background: #ffeb3b; animation: urgency-blink 1s ease-in-out infinite; flex-shrink: 0; }
-@keyframes urgency-blink { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
-.urgency-tag { background: #ffeb3b; color: #7a0000; padding: 2px 10px; border-radius: 10px; font-size: 12px; font-weight: 800; }
+.trust-bar span { display: flex; align-items: center; gap: 5px; }
 
 /* HOTEL TITLE STRIP */
 .hotel-strip { background: white; border-bottom: 2px solid var(--border); padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
@@ -124,7 +124,22 @@ nav a:hover { border-color: var(--gold-light); }
 .booking-body { padding: 36px 40px; }
 .step-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
 
-/* Room Cards in Booking */
+/* How booking works explainer */
+.booking-explainer {
+  background: #f0fdf4;
+  border: 1.5px solid #81c784;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.booking-explainer .be-icon { font-size: 22px; flex-shrink: 0; }
+.booking-explainer .be-title { font-weight: 700; font-size: 14px; color: #1a5c2a; margin-bottom: 4px; }
+.booking-explainer .be-text { font-size: 13px; color: #2d5a1e; line-height: 1.7; }
+
+/* Room Cards */
 .room-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
 .room-option { border: 2px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all .2s; position: relative; }
 .room-option:hover { border-color: var(--maroon-light); background: #fff9f0; }
@@ -153,10 +168,13 @@ nav a:hover { border-color: var(--gold-light); }
 .s-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; color: var(--text-muted); }
 .s-row .sv { font-weight: 600; color: var(--text); }
 .s-row.s-total { border-top: 2px solid var(--border); margin-top: 8px; padding-top: 12px; font-weight: 700; font-size: 15px; color: var(--text); }
+.s-row.s-total .sv { color: var(--text); }
 .s-row.s-advance { font-weight: 800; font-size: 17px; color: var(--green); padding-top: 8px; }
 .s-row.s-advance .sv { color: var(--green); font-size: 19px; }
 .s-row.s-disc { color: var(--green); }
 .s-row.s-disc .sv { color: var(--green); }
+.s-row.s-hotel { font-weight: 700; font-size: 14px; color: var(--maroon); }
+.s-row.s-hotel .sv { color: var(--maroon); }
 
 /* Coupon */
 .coupon-row { display: flex; gap: 10px; margin-bottom: 8px; }
@@ -225,8 +243,6 @@ nav a:hover { border-color: var(--gold-light); }
 .room-card li:last-child { border: none; }
 .room-card li i { color: var(--maroon); width: 16px; }
 .room-card-btns { display: flex; gap: 8px; flex-direction: column; }
-
-/* Deluxe badge */
 .deluxe-badge { display: inline-block; background: linear-gradient(135deg, var(--gold), #b8860b); color: white; padding: 3px 12px; border-radius: 10px; font-size: 11px; font-weight: 800; letter-spacing: .5px; margin-bottom: 8px; }
 
 /* Info */
@@ -255,10 +271,6 @@ nav a:hover { border-color: var(--gold-light); }
 /* Offer Box */
 .offer-box { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border: 2px solid #81c784; border-radius: 12px; padding: 20px 24px; margin-top: 20px; }
 .offer-box h3 { color: var(--green); margin-bottom: 6px; }
-
-/* Urgency chip */
-.urgency-chip-inline { display: flex; align-items: center; gap: 8px; background: #fff3f3; border: 1.5px solid #ff5252; color: #b30000; padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 700; margin-bottom: 20px; }
-.urgency-chip-inline .blink-dot { width: 8px; height: 8px; border-radius: 50%; background: #ff5252; animation: urgency-blink 1s ease-in-out infinite; flex-shrink: 0; }
 
 /* CTA BAR */
 .cta-bar { background: white; padding: 18px 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
@@ -294,9 +306,12 @@ nav a:hover { border-color: var(--gold-light); }
 .rr { display: flex; justify-content: space-between; align-items: flex-start; padding: 7px 0; font-size: 14px; }
 .rr .rl { color: var(--text-muted); font-size: 13px; }
 .rr .rv { font-weight: 600; color: var(--text); text-align: right; max-width: 60%; }
-.rr.rr-big { background: #fff8f0; margin: 0 -28px; padding: 12px 28px; }
+.rr.rr-big { background: #f0fdf4; margin: 0 -28px; padding: 12px 28px; }
 .rr.rr-big .rl { font-weight: 700; color: var(--text); font-size: 15px; }
 .rr.rr-big .rv { color: var(--green); font-size: 20px; font-weight: 800; }
+.rr.rr-hotel { background: #fff8f0; margin: 0 -28px; padding: 12px 28px; }
+.rr.rr-hotel .rl { font-weight: 700; color: var(--maroon); font-size: 14px; }
+.rr.rr-hotel .rv { color: var(--maroon); font-size: 18px; font-weight: 800; }
 .rnote { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #5a4000; margin-top: 16px; line-height: 1.7; }
 .rnote strong { display: block; margin-bottom: 4px; color: var(--maroon); font-size: 13px; }
 .ract { display: flex; gap: 10px; padding: 4px 28px 24px; flex-wrap: wrap; }
@@ -307,8 +322,8 @@ nav a:hover { border-color: var(--gold-light); }
 .rbtn-close:hover { background: #f0f0f0; }
 .ract-wa { display: flex; flex-direction: column; gap: 8px; padding: 0 28px 20px; }
 .ract-wa-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 2px; }
-.rbtn-wa-customer { width: 100%; padding: 12px; border-radius: 8px; background: white; color: #128C7E; border: 2px solid #25D366; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s; }
-.rbtn-wa-customer:hover { background: #f0fdf4; }
+.rbtn-wa-customer { width: 100%; padding: 12px; border-radius: 8px; background: #25D366; color: white; border: none; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s; }
+.rbtn-wa-customer:hover { background: #128C7E; }
 .wa-auto-note { font-size: 11px; color: var(--text-muted); text-align: center; padding: 0 28px 16px; }
 
 @media print {
@@ -336,7 +351,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   .ract { padding: 4px 20px 20px; }
   .ract-wa { padding: 0 20px 16px; }
   .wa-auto-note { padding: 0 20px 12px; }
-  .rr.rr-big { margin: 0 -20px; padding: 12px 20px; }
+  .rr.rr-big, .rr.rr-hotel { margin: 0 -20px; padding: 12px 20px; }
   .bcb-options { grid-template-columns: 1fr; }
   .bcb-option:first-child { border-right: none; border-bottom: 2px solid var(--border); }
   .room-card-btns { flex-direction: column; }
@@ -344,8 +359,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   .photo-hero-grid img:first-child { grid-row: 1; }
   .hotel-strip { padding: 14px 16px; }
   .hotel-strip-left h1 { font-size: 18px; }
-  .restaurant-body { padding: 24px 18px; }
-  .restaurant-header { padding: 24px 18px; }
+  .restaurant-body, .restaurant-header { padding: 24px 18px; }
+  .trust-bar { gap: 10px; font-size: 12px; }
 }
 </style>
 </head>
@@ -358,7 +373,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <img src="logonobg.png" alt="Manauna Dham">
       <div class="brand-text">
         <strong>Manauna Dham</strong>
-        <span>Hotel & Pilgrim Services</span>
+        <span>Hotel &amp; Pilgrim Services</span>
       </div>
     </a>
     <nav>
@@ -377,11 +392,12 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   </div>
 </header>
 
-<!-- URGENCY BAR -->
-<div class="urgency-bar">
-  <span class="urgency-dot"></span>
-  🔥 Only <span class="urgency-tag">3 Rooms</span> available today — <strong>Book fast before they're gone!</strong>
-  <span class="urgency-dot"></span>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span>✓ Verified Hotel</span>
+  <span>🔒 Only ₹149 to secure your room</span>
+  <span>🏨 Full price paid at hotel on arrival</span>
+  <span>⚡ Instant confirmation</span>
 </div>
 
 <!-- HOTEL TITLE STRIP -->
@@ -401,7 +417,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 
 <!-- PHOTO HERO -->
 <div class="photo-hero">
-  <div class="photo-hero-grid" id="photoHeroGrid">
+  <div class="photo-hero-grid">
     <img src="images/hotels/RG/exterior.webp"   alt="Hotel Raj Garden Exterior"   onclick="openModal(this)" loading="eager">
     <img src="images/hotels/RG/deluxe1.jpg"     alt="Deluxe Room Raj Garden"      onclick="openModal(this)" loading="eager">
     <img src="images/hotels/RG/standard1.jpg"   alt="Standard Room Raj Garden"    onclick="openModal(this)" loading="lazy">
@@ -422,13 +438,13 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     <a class="bcb-option" href="#booking-section" onclick="scrollToBooking(); return false;">
       <div class="bcb-icon">💳</div>
       <h4>Book Online</h4>
-      <p>Fill in your details, get instant confirmation, and pay 25% advance securely via Razorpay (UPI, Cards, Net Banking).</p>
+      <p>Pay just ₹149 platform fee to confirm your room. Full room price paid directly at hotel on arrival. Instant digital receipt.</p>
       <span class="bcb-badge maroon">↓ Scroll to Online Booking</span>
     </a>
     <a class="bcb-option" href="#wa-booking-section" onclick="scrollToWA(); return false;">
       <div class="bcb-icon"><i class="fab fa-whatsapp" style="color:#25D366;"></i></div>
       <h4>Book via WhatsApp</h4>
-      <p>Not comfortable with online payment? Fill your details and we'll send your request to the hotel on WhatsApp — pay at hotel.</p>
+      <p>No online payment at all. Fill your details and we'll connect you to the hotel — pay everything at hotel.</p>
       <span class="bcb-badge wa">↓ Scroll to WhatsApp Booking</span>
     </a>
   </div>
@@ -438,13 +454,17 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 <div id="booking-section">
   <div class="booking-header">
     <h2>💳 Book Online — Instant Confirmation</h2>
-    <p>Pay only 25% advance · Remaining at hotel · Secure Razorpay payment</p>
+    <p>Pay ₹149 platform fee now · Full room price at hotel · Secure Razorpay</p>
   </div>
   <div class="booking-body">
 
-    <div class="urgency-chip-inline">
-      <span class="blink-dot"></span>
-      🔥 Only 3 rooms available today — secure yours now!
+    <!-- How booking works -->
+    <div class="booking-explainer">
+      <span class="be-icon">🔒</span>
+      <div>
+        <div class="be-title">How booking works</div>
+        <div class="be-text">Pay ₹149 platform fee now to confirm your room. The full room price (after coupon) is paid <strong>directly at the hotel</strong> when you arrive. No large advance, no risk.</div>
+      </div>
     </div>
 
     <!-- Step 1 -->
@@ -497,9 +517,9 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <div class="s-row"><span>Duration</span><span class="sv" id="s-nights">—</span></div>
       <div class="s-row"><span>Room Rate</span><span class="sv" id="s-rate">—</span></div>
       <div class="s-row s-disc" id="s-disc-row" style="display:none;"><span>Coupon Discount</span><span class="sv" id="s-disc">—</span></div>
-      <div class="s-row s-total"><span>Total Amount</span><span class="sv" id="s-total">—</span></div>
-      <div class="s-row s-advance"><span>💳 Advance to Pay (25%)</span><span class="sv" id="s-advance">—</span></div>
-      <div class="s-row" style="font-size:13px;color:var(--text-muted);"><span>Remaining at Hotel</span><span class="sv" id="s-remain">—</span></div>
+      <div class="s-row s-total"><span>Room Price (pay at hotel)</span><span class="sv" id="s-total">—</span></div>
+      <div class="s-row s-advance"><span>💳 Platform Fee (pay now)</span><span class="sv" id="s-advance">₹149</span></div>
+      <div class="s-row s-hotel"><span>🏨 Pay at Hotel on Arrival</span><span class="sv" id="s-remain">—</span></div>
     </div>
 
     <!-- Today's Offers Board -->
@@ -524,17 +544,17 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     <!-- Pay -->
     <button class="pay-btn" id="pay-btn" onclick="initiatePayment()">
       <i class="fa fa-lock"></i>
-      <span id="pay-btn-text">Pay Advance & Confirm Booking</span>
+      <span id="pay-btn-text">Pay ₹149 to Confirm Booking</span>
     </button>
     <div class="secure-note">
       <i class="fa fa-shield-alt" style="color:var(--green)"></i>
       Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
     </div>
 
-    <div class="or-divider">Not comfortable with online payment?</div>
+    <div class="or-divider">Prefer no online payment?</div>
     <div style="text-align:center;">
       <button onclick="scrollToWA()" style="background:var(--wa-green);color:white;border:none;padding:13px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;" onmouseover="this.style.background='#128C7E'" onmouseout="this.style.background='#25D366'">
-        <i class="fab fa-whatsapp"></i> Book via WhatsApp Instead ↓
+        <i class="fab fa-whatsapp"></i> Book via WhatsApp — Pay Everything at Hotel ↓
       </button>
     </div>
   </div>
@@ -544,7 +564,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 <div id="wa-booking-section">
   <div class="wa-booking-header">
     <h2><i class="fab fa-whatsapp"></i> Book via WhatsApp</h2>
-    <p>Fill in your details below — we'll send them straight to the hotel on WhatsApp</p>
+    <p>No online payment needed — fill details and we'll connect you to the hotel directly</p>
   </div>
   <div class="wa-booking-body">
     <div class="wa-steps">
@@ -552,7 +572,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <ol>
         <li><strong>Fill in the form below</strong> (name, phone, room type, dates).</li>
         <li>Click <strong>"Send Booking Request on WhatsApp"</strong> — WhatsApp will open with your details pre-filled.</li>
-        <li>Just hit <strong>Send</strong> in WhatsApp — the hotel will confirm your booking and guide you on payment.</li>
+        <li>Just hit <strong>Send</strong> — the hotel will confirm and you pay everything on arrival.</li>
       </ol>
     </div>
 
@@ -609,11 +629,10 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       </div>
     </div>
 
-    <!-- WA Summary -->
     <div class="stay-summary" id="wa-stay-summary" style="border-color: rgba(37,211,102,0.3); background:#f0fdf4;">
       <div class="s-row"><span>Room Type</span><span class="sv" id="ws-room">—</span></div>
       <div class="s-row"><span>Duration</span><span class="sv" id="ws-nights">—</span></div>
-      <div class="s-row s-total"><span>Approx. Total</span><span class="sv" id="ws-total">—</span></div>
+      <div class="s-row s-total"><span>Approx. Total (pay at hotel)</span><span class="sv" id="ws-total">—</span></div>
       <div class="s-row" style="font-size:13px; color:var(--wa-dark);"><span>💬 Exact amount confirmed by hotel on WhatsApp</span><span class="sv">✓</span></div>
     </div>
 
@@ -623,7 +642,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </button>
     <div class="wa-note">
       <i class="fab fa-whatsapp" style="color:var(--wa-green);font-size:14px;"></i>
-      Opens WhatsApp with your details pre-filled · Hotel number: +91 78178 03342
+      Opens WhatsApp with your details pre-filled · Hotel: +91 78178 03342
     </div>
   </div>
 </div>
@@ -698,7 +717,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
           </ul>
           <div class="room-card-btns">
             <button class="cta-btn green" style="width:100%;justify-content:center;font-size:14px;" onclick="selectRoom(1);scrollToBooking()">
-              <i class="fa fa-calendar-check"></i> Book Online
+              <i class="fa fa-calendar-check"></i> Book Online — ₹149 fee
             </button>
             <button class="cta-btn wa" style="width:100%;justify-content:center;font-size:14px;" onclick="selectWARoom(1);scrollToWA()">
               <i class="fab fa-whatsapp"></i> Book via WhatsApp
@@ -724,11 +743,11 @@ footer p:last-child { font-size: 12px; opacity: .7; }
             <li><i class="fa fa-shower"></i> Attached Bathroom with Geyser</li>
             <li><i class="fa fa-wifi"></i> Free WiFi</li>
             <li><i class="fa fa-tv" style="color:#a07800;"></i> <strong style="color:#a07800;">Television (TV)</strong> — Deluxe only</li>
-            <li><i class="fa fa-tree" style="color:#1a7a3a;"></i> <strong style="color:#1a7a3a;">Park View &amp; Balcony Access</strong> — Deluxe only</li>
+            <li><i class="fa fa-tree" style="color:#1a7a3a;"></i> <strong style="color:#1a7a3a;">Park View &amp; Balcony</strong> — Deluxe only</li>
           </ul>
           <div class="room-card-btns">
             <button class="cta-btn green" style="width:100%;justify-content:center;font-size:14px;" onclick="selectRoom(2);scrollToBooking()">
-              <i class="fa fa-calendar-check"></i> Book Online
+              <i class="fa fa-calendar-check"></i> Book Online — ₹149 fee
             </button>
             <button class="cta-btn wa" style="width:100%;justify-content:center;font-size:14px;" onclick="selectWARoom(2);scrollToWA()">
               <i class="fab fa-whatsapp"></i> Book via WhatsApp
@@ -739,7 +758,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
     <div class="offer-box">
       <h3><i class="fa fa-gift"></i> Special Offer — Save ₹200 on Every Room!</h3>
-      <p style="font-size:14px;margin-top:6px;">Use coupon <strong>BABA200</strong> or <strong>MANAUNA200</strong> at checkout to save ₹200. Standard from ₹1,699 &amp; Deluxe from ₹2,099 per night — extra bed always free.</p>
+      <p style="font-size:14px;margin-top:6px;">Use coupon <strong>BABA200</strong> or <strong>MANAUNA200</strong> to save ₹200. Standard from ₹1,699 &amp; Deluxe from ₹2,099 per night. Pay only ₹149 online, rest at hotel.</p>
     </div>
   </div>
 
@@ -752,7 +771,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     <div class="restaurant-body">
       <img src="images/hotels/RG/resteraunt.webp" alt="Raj Garden Restaurant" class="restaurant-img" onclick="openModal(this)">
       <p style="font-size:15px;line-height:1.85;color:var(--text);margin-bottom:16px;">
-        Hotel Raj Garden features its own in-house restaurant, so you can enjoy a hearty meal without stepping out. Whether it's a morning breakfast before heading to Manauna Dham for darshan or a relaxing dinner after a long day, our kitchen has you covered with fresh, home-style Indian food.
+        Hotel Raj Garden features its own in-house restaurant, so you can enjoy a hearty meal without stepping out. Whether it's a morning breakfast before darshan or a relaxing dinner after a long day, fresh home-style Indian food is ready for you.
       </p>
       <div class="restaurant-features">
         <span class="rest-feat"><i class="fa fa-leaf"></i> Vegetarian Menu</span>
@@ -763,7 +782,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
         <span class="rest-feat"><i class="fa fa-coffee"></i> Tea &amp; Snacks</span>
       </div>
       <div style="background:#fff8e1;border-left:4px solid var(--gold);padding:14px 18px;border-radius:8px;font-size:14px;color:#4a3200;margin-top:18px;">
-        <strong>📌 Note:</strong> Restaurant timings and menu are subject to availability. Please check with hotel staff at time of check-in.
+        <strong>📌 Note:</strong> Restaurant timings and menu are subject to availability. Please check with hotel staff at check-in.
       </div>
     </div>
   </div>
@@ -790,7 +809,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
         <p><strong>Standard Room:</strong> ₹1,899 / night</p>
         <p><strong>Deluxe Room:</strong> ₹2,299 / night</p>
         <p><strong>After Coupon:</strong> From ₹1,699 / night</p>
-        <p><strong>Advance (online):</strong> 25% at booking</p>
+        <p><strong>Platform fee (online):</strong> ₹149</p>
+        <p style="margin-top:6px;font-size:12px;">Full room price paid at hotel on arrival</p>
       </div>
       <div class="info-card">
         <h3><i class="fa fa-car"></i> Parking</h3>
@@ -856,10 +876,10 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <div class="section">
     <h2>About Hotel Raj Garden</h2>
     <p style="font-size:16px;line-height:1.9;color:var(--text);margin-bottom:12px;">
-      Hotel Raj Garden is located on Temple Road, just 3–4 km from Manauna Dham (Manona Dham) — making it one of the closest hotels to the Khatu Shyam Ji temple in Aonla. Whether you are visiting for darshan, a festival, or an extended stay, Raj Garden is your ideal pilgrimage base.
+      Hotel Raj Garden is located on Temple Road, just 3–4 km from Manauna Dham (Manona Dham) — making it one of the closest hotels to Khatu Shyam Ji temple in Aonla. Whether you are visiting for darshan, a festival, or an extended stay, Raj Garden is your ideal pilgrim base.
     </p>
     <p style="font-size:16px;line-height:1.9;color:var(--text);">
-      The Deluxe rooms offer a beautiful park view with balcony access — perfect for a peaceful morning before heading to the temple. The in-house restaurant means you never have to worry about finding food nearby.
+      Deluxe rooms offer a beautiful park view with balcony access — perfect for a peaceful morning before heading to the temple. The in-house restaurant means you never have to worry about finding food.
     </p>
     <div class="amenity-grid" style="margin-top:20px;">
       <span class="amenity"><i class="fa fa-wifi"></i> Free WiFi</span>
@@ -873,10 +893,11 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <!-- BOTTOM CTA -->
   <div class="section" style="background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));color:white;text-align:center;">
     <h2 style="color:white;border-color:var(--gold);">Ready to Book Your Room?</h2>
-    <p style="font-size:16px;opacity:.9;margin-bottom:20px;">Use coupon <strong>BABA200</strong> for ₹200 off. Choose how you'd like to book.</p>
+    <p style="font-size:16px;opacity:.9;margin-bottom:8px;">Pay just ₹149 to confirm. Full room price at hotel.</p>
+    <p style="font-size:14px;opacity:.8;margin-bottom:20px;">Use coupon <strong>BABA200</strong> for ₹200 off the room price.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
       <button class="cta-btn" style="background:var(--gold);color:var(--maroon-dark);font-size:15px;" onclick="scrollToBooking()">
-        <i class="fa fa-calendar-check"></i> Book Online
+        <i class="fa fa-calendar-check"></i> Book Online — ₹149 fee
       </button>
       <button class="cta-btn wa" style="font-size:15px;" onclick="scrollToWA()">
         <i class="fab fa-whatsapp"></i> Book via WhatsApp
@@ -897,13 +918,13 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <div class="receipt-box">
     <div class="rh">
       <div class="rh-icon">✅</div>
-      <h2>Booking Confirmed!</h2>
-      <p>Your advance payment has been received</p>
+      <h2>Room Confirmed!</h2>
+      <p>Platform fee received · Pay room price at hotel on arrival</p>
     </div>
     <div class="rb">
       <div class="rb-logo">
         <div class="hn">HOTEL RAJ GARDEN</div>
-        <div class="hs">Advance Booking Receipt</div>
+        <div class="hs">Platform Fee Receipt</div>
       </div>
       <hr class="rdiv">
       <div class="rr"><span class="rl">Invoice No.</span><span class="rv" id="r-inv">—</span></div>
@@ -918,26 +939,26 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <hr class="rdiv">
       <div class="rr"><span class="rl">Room Rate</span><span class="rv" id="r-rate">—</span></div>
       <div class="rr" id="r-disc-row" style="display:none;"><span class="rl" style="color:var(--green);">Coupon Discount</span><span class="rv" style="color:var(--green);" id="r-disc">—</span></div>
-      <div class="rr"><span class="rl">Total Amount</span><span class="rv" id="r-total">—</span></div>
-      <div class="rr rr-big"><span class="rl">Advance Paid (25%)</span><span class="rv" id="r-advance">—</span></div>
-      <div class="rr"><span class="rl">Remaining at Hotel</span><span class="rv" id="r-remain">—</span></div>
+      <div class="rr rr-big"><span class="rl">Platform Fee Paid ✓</span><span class="rv" id="r-advance">—</span></div>
+      <div class="rr rr-hotel"><span class="rl">Room Price at Hotel</span><span class="rv" id="r-remain">—</span></div>
       <div class="rr"><span class="rl">Payment ID</span><span class="rv" id="r-pid" style="font-size:11px;word-break:break-all;">—</span></div>
       <div class="rnote">
         <strong>⚠️ Important Information</strong>
         Check-in: After 1:00 PM &nbsp;·&nbsp; Check-out: Before 11:00 AM<br>
-        Advance booking fee is <strong>non-refundable</strong>.<br>
-        Please show this receipt at the hotel during check-in.<br>
-        ManaunaDham.org.in is an independent booking assistance platform.
+        Platform fee of ₹149 is <strong>non-refundable</strong>.<br>
+        Room price to be paid <strong>at the hotel on arrival</strong>.<br>
+        Show this receipt at check-in for your confirmed booking.<br>
+        ManaunaDham.org.in is an independent booking platform.
       </div>
     </div>
     <div class="ract-wa">
       <div class="ract-wa-label">📲 Save Your Receipt</div>
-      <button class="rbtn-wa-customer" style="background:#25D366;color:white;border:none;font-size:15px;" onclick="shareReceiptToCustomer()">
+      <button class="rbtn-wa-customer" onclick="shareReceiptToCustomer()">
         <i class="fab fa-whatsapp"></i> Send Receipt to My WhatsApp
       </button>
     </div>
     <div class="wa-auto-note">
-      The hotel has been automatically notified of your payment. 🏨✅
+      Hotel has been notified of your confirmed booking. 🏨✅
     </div>
     <div class="ract">
       <button class="rbtn-print" onclick="window.print()"><i class="fa fa-print"></i> Print / Save PDF</button>
@@ -957,9 +978,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 // ══════════════════════════════════════
 let RAZORPAY_KEY = null;
 const WA_NUMBER  = '917817803342';
-
-// NOTE: Update this endpoint when your Raj Garden backend is ready.
-// Pattern: https://rajgarden-api.vercel.app/api/create-order
+const PLATFORM_FEE = 149;
 const API_ENDPOINT = 'https://harshdeep-api.vercel.app/api/create-order';
 
 const ROOMS = {
@@ -967,7 +986,6 @@ const ROOMS = {
   2: { name: 'Deluxe Room',   price: 2299 },
 };
 
-// Hardcoded coupons for Raj Garden
 const COUPONS = {
   'BABA200':    { type: 'flat',    value: 200, label: '₹200 off', description: 'Shyam Baba blessing deal'  },
   'PILGRIM100': { type: 'flat',    value: 100, label: '₹100 off', description: 'Pilgrim special offer'     },
@@ -976,13 +994,15 @@ const COUPONS = {
 };
 const URGENCY_MSG = '🕐 Valid today only!';
 
-// State
-let selRoom = null, nights = 0, baseTotal = 0, discAmt = 0, finalTotal = 0, advAmt = 0, activeCoupon = null;
+let selRoom = null, nights = 0, baseTotal = 0, discAmt = 0, finalTotal = 0, activeCoupon = null;
 let waSelRoom = null, waNights = 0;
 let invNum = parseInt(localStorage.getItem('rg_inv') || '200');
 let lastBooking = null;
 
-// ── ONLINE BOOKING ──
+// ══════════════════════════════════════
+// ONLINE BOOKING
+// ══════════════════════════════════════
+
 function selectRoom(n) {
   selRoom = n;
   document.querySelectorAll('.room-option').forEach(el => el.classList.remove('selected'));
@@ -1016,21 +1036,24 @@ function recalc() {
     discAmt = c.type === 'flat' ? c.value : Math.round(baseTotal * c.value / 100);
   }
   finalTotal = Math.max(baseTotal - discAmt, 0);
-  advAmt = Math.round(finalTotal * 0.25);
+
   const summary = document.getElementById('stay-summary');
   summary.classList.add('show');
   document.getElementById('s-room').textContent    = ROOMS[selRoom].name;
   document.getElementById('s-nights').textContent  = nights + ' night' + (nights > 1 ? 's' : '');
   document.getElementById('s-rate').textContent    = '₹' + ROOMS[selRoom].price.toLocaleString() + ' × ' + nights;
+
   const discRow = document.getElementById('s-disc-row');
   if (discAmt > 0) {
     discRow.style.display = 'flex';
     document.getElementById('s-disc').textContent = '−₹' + discAmt.toLocaleString();
   } else { discRow.style.display = 'none'; }
+
   document.getElementById('s-total').textContent   = '₹' + finalTotal.toLocaleString();
-  document.getElementById('s-advance').textContent = '₹' + advAmt.toLocaleString();
-  document.getElementById('s-remain').textContent  = '₹' + (finalTotal - advAmt).toLocaleString();
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
+  document.getElementById('s-advance').textContent = '₹' + PLATFORM_FEE;
+  document.getElementById('s-remain').textContent  = '₹' + finalTotal.toLocaleString();
+
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
 }
 
 function applyCoupon() {
@@ -1076,25 +1099,35 @@ async function initiatePayment() {
   const phone = document.getElementById('g-phone').value.trim();
   const ci    = document.getElementById('g-checkin').value;
   const co    = document.getElementById('g-checkout').value;
+
   invNum++;
   localStorage.setItem('rg_inv', invNum);
   const invStr = 'RG' + String(invNum).padStart(4, '0');
+
   const btn = document.getElementById('pay-btn');
   btn.disabled = true;
   document.getElementById('pay-btn-text').textContent = 'Creating order...';
+
   const notes = {
-    hotel_name: 'Hotel Raj Garden', 
-    invoice_no: invStr, room_type: ROOMS[selRoom].name,
-    checkin: ci, checkout: co, nights: String(nights),
-    total_amount: String(finalTotal), advance_paid: String(advAmt),
-    coupon_used: activeCoupon || 'None', guest_name: name, guest_phone: phone,
+    hotel_name:   'Hotel Raj Garden',
+    invoice_no:   invStr,
+    room_type:    ROOMS[selRoom].name,
+    checkin:      ci,
+    checkout:     co,
+    nights:       String(nights),
+    room_price:   String(finalTotal),
+    platform_fee: String(PLATFORM_FEE),
+    coupon_used:  activeCoupon || 'None',
+    guest_name:   name,
+    guest_phone:  phone,
   };
+
   let orderId;
   try {
     const resp = await fetch(API_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: advAmt * 100, notes }),
+      body: JSON.stringify({ amount: PLATFORM_FEE * 100, notes }),
     });
     if (!resp.ok) { const err = await resp.json(); throw new Error(err.error || 'Server error'); }
     const data = await resp.json();
@@ -1103,22 +1136,30 @@ async function initiatePayment() {
   } catch (err) {
     alert('Could not initiate payment: ' + err.message + '\nPlease try again or use WhatsApp booking.');
     btn.disabled = false;
-    document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
+    document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
     return;
   }
+
   btn.disabled = false;
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
+
   const options = {
-    key: RAZORPAY_KEY, order_id: orderId, amount: advAmt * 100, currency: 'INR',
+    key: RAZORPAY_KEY,
+    order_id: orderId,
+    amount: PLATFORM_FEE * 100,
+    currency: 'INR',
     name: 'Hotel Raj Garden',
-    description: ROOMS[selRoom].name + ' · ' + nights + ' night(s) · ' + fmtDate(ci) + ' – ' + fmtDate(co),
+    description: 'Room booking · ' + ROOMS[selRoom].name + ' · ' + fmtDate(ci) + ' – ' + fmtDate(co),
     image: 'logonobg.png',
     prefill: { name: name, contact: '+91' + phone },
-    notes: notes, theme: { color: '#7a0000' }, modal: { backdropclose: false },
+    notes: notes,
+    theme: { color: '#7a0000' },
+    modal: { backdropclose: false },
     handler: function(resp) {
-      showReceipt({ invStr, name, phone, ci, co, nights, baseTotal, discAmt, finalTotal, advAmt, payId: resp.razorpay_payment_id });
+      showReceipt({ invStr, name, phone, ci, co, nights, baseTotal, discAmt, finalTotal, payId: resp.razorpay_payment_id });
     }
   };
+
   const rzp = new Razorpay(options);
   rzp.on('payment.failed', function(r) { alert('Payment failed: ' + r.error.description + '\nPlease try again.'); });
   rzp.open();
@@ -1126,7 +1167,6 @@ async function initiatePayment() {
 
 function showReceipt(d) {
   lastBooking = d;
-  const rem = d.finalTotal - d.advAmt;
   document.getElementById('r-inv').textContent    = '#' + d.invStr;
   document.getElementById('r-date').textContent   = new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'});
   document.getElementById('r-name').textContent   = d.name;
@@ -1136,63 +1176,66 @@ function showReceipt(d) {
   document.getElementById('r-room').textContent   = ROOMS[selRoom].name;
   document.getElementById('r-nights').textContent = d.nights + ' night' + (d.nights > 1 ? 's' : '');
   document.getElementById('r-rate').textContent   = '₹' + ROOMS[selRoom].price.toLocaleString() + ' × ' + d.nights;
+
   const dr = document.getElementById('r-disc-row');
   if (d.discAmt > 0) {
     dr.style.display = 'flex';
     document.getElementById('r-disc').textContent = '−₹' + d.discAmt.toLocaleString();
   } else { dr.style.display = 'none'; }
-  document.getElementById('r-total').textContent   = '₹' + d.finalTotal.toLocaleString();
-  document.getElementById('r-advance').textContent = '₹' + d.advAmt.toLocaleString();
-  document.getElementById('r-remain').textContent  = '₹' + rem.toLocaleString();
+
+  document.getElementById('r-advance').textContent = '₹149';
+  document.getElementById('r-remain').textContent  = '₹' + d.finalTotal.toLocaleString();
   document.getElementById('r-pid').textContent     = d.payId;
+
   document.getElementById('receiptOverlay').classList.add('open');
 }
 
 function buildReceiptMsg(d, forHotel) {
-  const rem = d.finalTotal - d.advAmt;
-  const discLine = d.discAmt > 0 ? `\n🏷️ *Coupon Discount:* −₹${d.discAmt.toLocaleString()}` : '';
+  const discLine = d.discAmt > 0 ? '\n🏷️ *Coupon Discount:* −₹' + d.discAmt.toLocaleString() : '';
   const header = forHotel
-    ? `🏨 *NEW BOOKING ALERT — Hotel Raj Garden*\n💰 Advance Paid: ₹${d.advAmt.toLocaleString()} ✅`
-    : `🧾 *Your Booking Receipt — Hotel Raj Garden*`;
-  return `${header}
-
-━━━━━━━━━━━━━━━━━━━━
-📋 *Invoice:* #${d.invStr}
-📅 *Date:* ${new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'})}
-━━━━━━━━━━━━━━━━━━━━
-👤 *Guest:* ${d.name}
-📱 *Phone:* +91 ${d.phone}
-🛏️ *Room:* ${ROOMS[selRoom].name}
-📅 *Check-in:* ${fmtDate(d.ci)}
-📅 *Check-out:* ${fmtDate(d.co)}
-🌙 *Nights:* ${d.nights}
-━━━━━━━━━━━━━━━━━━━━
-💵 *Room Rate:* ₹${ROOMS[selRoom].price.toLocaleString()} × ${d.nights}${discLine}
-💰 *Total:* ₹${d.finalTotal.toLocaleString()}
-✅ *Advance Paid:* ₹${d.advAmt.toLocaleString()}
-🏦 *Remaining at Hotel:* ₹${rem.toLocaleString()}
-🆔 *Payment ID:* ${d.payId}
-━━━━━━━━━━━━━━━━━━━━
-${forHotel ? '⚠️ Please keep the room ready.\n_Via ManaunaDham.org.in_' : '⚠️ Show this at check-in.\nCheck-in after 1 PM · Check-out before 11 AM\n_ManaunaDham.org.in_'}`;
+    ? '🏨 *NEW BOOKING — Hotel Raj Garden*\n✅ Platform Fee ₹149 confirmed'
+    : '🧾 *Your Booking Receipt — Hotel Raj Garden*';
+  return header + '\n\n━━━━━━━━━━━━━━━━━━━━\n' +
+    '📋 *Invoice:* #' + d.invStr + '\n' +
+    '📅 *Date:* ' + new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'}) + '\n' +
+    '━━━━━━━━━━━━━━━━━━━━\n' +
+    '👤 *Guest:* ' + d.name + '\n' +
+    '📱 *Phone:* +91 ' + d.phone + '\n' +
+    '🛏️ *Room:* ' + ROOMS[selRoom].name + '\n' +
+    '📅 *Check-in:* ' + fmtDate(d.ci) + '\n' +
+    '📅 *Check-out:* ' + fmtDate(d.co) + '\n' +
+    '🌙 *Nights:* ' + d.nights + '\n' +
+    '━━━━━━━━━━━━━━━━━━━━\n' +
+    '💵 *Room Rate:* ₹' + ROOMS[selRoom].price.toLocaleString() + ' × ' + d.nights + discLine + '\n' +
+    '✅ *Platform Fee Paid:* ₹149\n' +
+    '🏦 *Room Price at Hotel:* ₹' + d.finalTotal.toLocaleString() + '\n' +
+    '🆔 *Payment ID:* ' + d.payId + '\n' +
+    '━━━━━━━━━━━━━━━━━━━━\n' +
+    (forHotel
+      ? '🔔 Room price ₹' + d.finalTotal.toLocaleString() + ' to collect at check-in.\n_Via ManaunaDham.org.in_'
+      : '⚠️ Show this at check-in.\nCheck-in after 1 PM · Check-out before 11 AM\n_ManaunaDham.org.in_');
 }
 
 function shareReceiptToCustomer() {
   if (!lastBooking) return;
   const msg = buildReceiptMsg(lastBooking, false);
-  window.open(`https://wa.me/91${lastBooking.phone}?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open('https://wa.me/91' + lastBooking.phone + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
 function closeReceipt() {
   document.getElementById('receiptOverlay').classList.remove('open');
   ['g-name','g-phone','g-checkin','g-checkout','coupon-input'].forEach(id => document.getElementById(id).value = '');
-  selRoom = null; nights = 0; finalTotal = 0; advAmt = 0; discAmt = 0; activeCoupon = null; lastBooking = null;
+  selRoom = null; nights = 0; finalTotal = 0; discAmt = 0; activeCoupon = null; lastBooking = null;
   document.querySelectorAll('.room-option').forEach(el => el.classList.remove('selected'));
   document.getElementById('stay-summary').classList.remove('show');
   document.getElementById('coupon-msg').className = 'coupon-msg';
-  document.getElementById('pay-btn-text').textContent = 'Pay Advance & Confirm Booking';
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹149 to Confirm Booking';
 }
 
-// ── WHATSAPP BOOKING ──
+// ══════════════════════════════════════
+// WHATSAPP BOOKING
+// ══════════════════════════════════════
+
 function selectWARoom(n) {
   waSelRoom = n;
   document.querySelectorAll('.wa-room-option').forEach(el => el.classList.remove('selected'));
@@ -1248,7 +1291,7 @@ function sendWhatsAppBooking() {
   const phone  = document.getElementById('wa-phone').value.trim();
   const guests = document.getElementById('wa-guests').value;
   const total  = waSelRoom ? ROOMS[waSelRoom].price * waNights : 0;
-  const guestsLine = guests ? `👥 *Guests:* ${guests}` : '';
+  const guestsLine = guests ? '\n👥 *Guests:* ' + guests : '';
   const msg =
 `🏨 *Booking Request — Hotel Raj Garden, Aonla*
 
@@ -1257,16 +1300,18 @@ function sendWhatsAppBooking() {
 🛏️ *Room:* ${ROOMS[waSelRoom].name}
 📅 *Check-in:* ${fmtDate(ci)}
 📅 *Check-out:* ${fmtDate(co)}
-🌙 *Nights:* ${waNights}
-${guestsLine}
-💰 *Approx. Total:* ₹${total.toLocaleString()}
+🌙 *Nights:* ${waNights}${guestsLine}
+💰 *Total (pay at hotel):* ₹${total.toLocaleString()}
 
-Please confirm availability and guide me on payment. 🙏
+Please confirm availability. 🙏
 _Sent via ManaunaDham.org.in_`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
-// ── HELPERS ──
+// ══════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════
+
 function fmtDate(str) {
   if (!str) return '—';
   return new Date(str).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
@@ -1297,12 +1342,11 @@ function initCouponBanner() {
   document.getElementById('banner-urgency').textContent = URGENCY_MSG;
   Object.entries(COUPONS).forEach(([code, c]) => {
     const card = document.createElement('div');
-    card.style.cssText = `background:white;border:2px dashed var(--gold);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;`;
-    card.innerHTML = `
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">${c.description}</div>
-      <div style="font-size:16px;font-weight:800;color:var(--maroon);letter-spacing:1px;margin-bottom:6px;">${code}</div>
-      <div style="background:var(--maroon);color:white;text-align:center;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;">${c.label} ✂️</div>
-    `;
+    card.style.cssText = 'background:white;border:2px dashed var(--gold);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;';
+    card.innerHTML =
+      '<div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">' + c.description + '</div>' +
+      '<div style="font-size:16px;font-weight:800;color:var(--maroon);letter-spacing:1px;margin-bottom:6px;">' + code + '</div>' +
+      '<div style="background:var(--maroon);color:white;text-align:center;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;">' + c.label + ' ✂️</div>';
     card.onmouseenter = () => card.style.background = '#fff3e0';
     card.onmouseleave = () => card.style.background = 'white';
     card.onclick = () => claimCoupon(code);
