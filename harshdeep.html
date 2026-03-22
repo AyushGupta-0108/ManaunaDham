@@ -353,10 +353,24 @@ nav a:hover { border-color: var(--gold-light); }
 .wa-auto-note { font-size: 11px; color: var(--text-muted); text-align: center; padding: 0 28px 16px; }
 
 @media print {
-  body * { visibility: hidden; }
-  .receipt-box, .receipt-box * { visibility: visible; }
-  .receipt-box { position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 480px; box-shadow: none; }
-  .ract, .ract-wa, .wa-auto-note { display: none; }
+  body > *:not(.receipt-overlay) { display: none !important; }
+  .receipt-overlay {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  .receipt-box {
+    width: 100% !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    position: static !important;
+    border-radius: 0 !important;
+  }
+  .ract, .ract-wa, .wa-auto-note { display: none !important; }
+  @page { margin: 10mm; size: A5 portrait; }
 }
 
 footer { background: var(--maroon-dark); color: white; text-align: center; padding: 30px; margin-top: 40px; }
@@ -1116,8 +1130,7 @@ async function initiatePayment() {
   const co    = document.getElementById('g-checkout').value;
 
   invNum++;
-  localStorage.setItem('hd_inv', invNum);
-  const invStr = String(invNum).padStart(5, '0');
+  let invStr = 'HD' + Date.now().toString().slice(-7); // fallback, overwritten below
 
   const btn = document.getElementById('pay-btn');
   btn.disabled = true;
@@ -1151,6 +1164,7 @@ async function initiatePayment() {
     const data = await resp.json();
     orderId      = data.orderId;
     RAZORPAY_KEY = data.keyId;
+    invStr = 'HD' + orderId.replace('order_', '').slice(-8).toUpperCase();
   } catch (err) {
     alert('Could not initiate payment: ' + err.message + '\nPlease try again.');
     btn.disabled = false;
