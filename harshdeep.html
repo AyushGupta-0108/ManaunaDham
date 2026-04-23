@@ -997,86 +997,146 @@ onclick="showQRPayment()">
 </footer>
 
 <script>
-  async function showQRPayment() {
-    paymentDetected = false;
-  if (!selRoom || nights <= 0) {
-    alert("Please fill booking details first");
-    return;
-  }
+  let qrPollingInterval = null;
+let qrTimerInterval   = null;
+let qrActiveId        = null;
+paymentDetected       = false;
 
-  const name  = document.getElementById('g-name').value;
-  const phone = document.getElementById('g-phone').value;
-
-  const resp = await fetch('https://harshdeep-api.vercel.app/api/create-qr', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-   body: JSON.stringify({
-  amount: advAmt * 100,
-  notes: {
-    hotel_name: "Hotel Harshdeep",
-    guest_name: document.getElementById('g-name').value,
-    guest_phone: document.getElementById('g-phone').value,
-    room_type: ROOMS[selRoom].name,
-    checkin: document.getElementById('g-checkin').value,
-    checkout: document.getElementById('g-checkout').value,
-    nights: String(nights),
-    room_price: String(finalTotal),
-    platform_fee: String(advAmt),
-    coupon_used: activeCoupon || "None",
-    invoice_no: "HD" + Date.now()
-  }
-})
+function setQRState(state) {
+  ['loading','ready','checking','success'].forEach(s => {
+    document.getElementById('qr-state-' + s).style.display = s === state ? 'block' : 'none';
   });
-
-  const data = await resp.json();
-document.getElementById('qr-img').src = data.image_url + "?size=512";
-  document.getElementById('qr-modal').style.display = 'flex';
-
-  setTimeout(() => {
-  startPolling(data.qr_id);
-}, 8000);
+  const labels = { loading: 'Generating QR code', ready: 'Scan & Pay', checking: 'Verifying payment', success: 'Payment received' };
+  document.getElementById('qr-modal-state-label').textContent = labels[state] || '';
 }
 
- let paymentDetected = false;
+async function showQRPayment() {
+  paymentDetected = false;
+  if (!selRoom || nights <= 0) { alert('Please fill in booking details first.'); return; }
+  if (!document.getElementById('g-name').value.trim() || !document.getElementById('g-phone').value.trim()) {
+    alert('Please enter your name and phone number first.'); return;
+  }
+
+  document.getElementById('qr-modal-amount').textContent = '₹' + advAmt.toLocaleString('en-IN');
+  document.getElementById('qr-modal').style.display = 'flex';
+  setQRState('loading');
+
+  const invStr = 'HD' + Date.now().toString().slice(-7);
+  try {
+    const resp = await fetch('https://harshdeep-api.vercel.app/api/create-qr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: advAmt * 100,
+        notes: {
+          hotel_name:   'Hotel Harshdeep',
+          guest_name:   document.getElementById('g-name').value.trim(),
+          guest_phone:  document.getElementById('g-phone').value.trim(),
+          room_type:    ROOMS[selRoom].name,
+          checkin:      document.getElementById('g-checkin').value,
+          checkout:     document.getElementById('g-checkout').value,
+          nights:       String(nights),
+          room_price:   String(finalTotal),
+          platform_fee: String(advAmt),
+          coupon_used:  activeCoupon || 'None',
+          invoice_no:   invStr,
+        }
+      })
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || 'QR creation failed');
+
+    qrActiveId = data.qr_id;
+    document.getElementById('qr-img').src = data.image_url;
+    setQRState('ready');
+    startQRTimer(600);
+    setTimeout(() => startPolling(data.qr_id), 3000); // start polling after 3s, not 8s
+
+  } catch (err) {
+    document.getElementById('qr-modal').style.display = 'none';
+    alert('Could not create QR code: ' + err.message + '\nPlease try the standard payment instead.');
+  }
+}
+
+function startQRTimer(seconds) {
+  clearInterval(qrTimerInterval);
+  let remaining = seconds;
+  const el = document.getElementById('qr-timer');
+  qrTimerInterval = setInterval(() => {
+    remaining--;
+    const m = Math.floor(remaining / 60);
+    const s = remaining % 60;
+    if (el) el.textContent = m + ':' + String(s).padStart(2, '0');
+    if (remaining <= 60 && el) el.style.background = '#fff0f0', el.style.borderColor = '#e88', el.style.color = '#900';
+    if (remaining <= 0) { clearInterval(qrTimerInterval); if (el) el.textContent = 'Expired'; }
+  }, 1000);
+}
 
 function startPolling(qrId) {
-  const interval = setInterval(async () => {
-
+  clearInterval(qrPollingInterval);
+  qrPollingInterval = setInterval(async () => {
     if (paymentDetected) return;
-
     try {
-      const res = await fetch('https://harshdeep-api.vercel.app/api/check-payment?qr_id=' + qrId)
+      const res  = await fetch('https://harshdeep-api.vercel.app/api/check-payment?qr_id=' + qrId);
       const data = await res.json();
-
-      if (data.paid) {
-        paymentDetected = true;
-        clearInterval(interval);
-
-        showReceipt({
-          invStr: data.notes.invoice_no || ("HD" + Date.now()),
-          name: data.notes.guest_name,
-          phone: data.notes.guest_phone,
-          ci: data.notes.checkin,
-          co: data.notes.checkout,
-          nights: parseInt(data.notes.nights),
-          baseTotal: parseInt(data.notes.room_price),
-          discAmt: 0,
-          finalTotal: parseInt(data.notes.room_price),
-          advAmt: parseInt(data.notes.platform_fee),
-          payId: data.payment_id
-        });
-
-        closeQR();
-      }
-
-    } catch (err) {}
-
+      if (data.paid) onQRPaymentSuccess(data);
+    } catch (e) { /* network hiccup — keep polling */ }
   }, 3000);
 }
-function closeQR() {
+
+async function manualCheckPayment() {
+  if (!qrActiveId || paymentDetected) return;
+  clearInterval(qrPollingInterval);
+  setQRState('checking');
+  try {
+    const res  = await fetch('https://harshdeep-api.vercel.app/api/check-payment?qr_id=' + qrActiveId);
+    const data = await res.json();
+    if (data.paid) { onQRPaymentSuccess(data); return; }
+    // Not paid yet — go back to ready state and resume polling
+    setQRState('ready');
+    alert('Payment not detected yet. Please complete the payment in your UPI app and try again.');
+    startPolling(qrActiveId);
+  } catch (e) {
+    setQRState('ready');
+    startPolling(qrActiveId);
+  }
+}
+
+function onQRPaymentSuccess(data) {
+  paymentDetected = true;
+  clearInterval(qrPollingInterval);
+  clearInterval(qrTimerInterval);
+  setQRState('success');
   setTimeout(() => {
     document.getElementById('qr-modal').style.display = 'none';
-  }, 1500);
+    showReceipt({
+      invStr:     data.notes.invoice_no  || ('HD' + Date.now()),
+      name:       data.notes.guest_name,
+      phone:      data.notes.guest_phone,
+      ci:         data.notes.checkin,
+      co:         data.notes.checkout,
+      nights:     parseInt(data.notes.nights),
+      baseTotal:  parseInt(data.notes.room_price),
+      discAmt:    0,
+      finalTotal: parseInt(data.notes.room_price),
+      advAmt:     parseInt(data.notes.platform_fee),
+      payId:      data.payment_id,
+    });
+  }, 1800);
+}
+
+function cancelQR() {
+  clearInterval(qrPollingInterval);
+  clearInterval(qrTimerInterval);
+  qrActiveId = null;
+  paymentDetected = false;
+  document.getElementById('qr-modal').style.display = 'none';
+}
+
+function closeQR() {
+  clearInterval(qrPollingInterval);
+  clearInterval(qrTimerInterval);
+  document.getElementById('qr-modal').style.display = 'none';
 }
 // ══════════════════════════════════════
 // CONFIG
@@ -1498,19 +1558,81 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('wa-checkout').addEventListener('change', calcWAStay);
 });
 </script>
-  <div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;justify-content:center;align-items:center;">
-  <div style="background:white;padding:20px;border-radius:10px;text-align:center;max-width:300px;margin:auto;">
-    <h3>Scan & Pay</h3>
-   <img id="qr-img" style="
-  width: 260px;
-  height: 260px;
-  object-fit: contain;
-  image-rendering: pixelated;
-  border: 8px solid white;
-">
-    <p>Scan using any UPI app</p>
-    <button onclick="closeQR()" style="margin-top:10px;">Cancel</button>
+  <div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;justify-content:center;align-items:center;padding:16px;">
+  <div style="background:white;border-radius:16px;width:100%;max-width:360px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#7a0000,#4d0000);color:white;padding:20px 24px;text-align:center;">
+      <div style="font-size:12px;opacity:.75;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;" id="qr-modal-state-label">Generating QR code</div>
+      <div style="font-size:14px;font-weight:600;margin-bottom:2px;">Hotel Harshdeep</div>
+      <div style="font-size:28px;font-weight:700;color:#f0c040;" id="qr-modal-amount">—</div>
+      <div style="font-size:11px;opacity:.75;margin-top:2px;">15% advance · Room booking</div>
+    </div>
+
+    <!-- State: Loading -->
+    <div id="qr-state-loading" style="padding:40px 24px;text-align:center;">
+      <div style="width:36px;height:36px;border:3px solid #e0c0c0;border-top-color:#7a0000;border-radius:50%;animation:qrSpin .8s linear infinite;margin:0 auto 14px;"></div>
+      <div style="font-size:14px;color:#666;">Creating your payment QR...</div>
+      <div style="height:3px;background:#f0e8d8;border-radius:2px;overflow:hidden;margin-top:16px;">
+        <div style="height:100%;background:#7a0000;border-radius:2px;animation:qrProg 1.4s ease-in-out infinite alternate;"></div>
+      </div>
+    </div>
+
+    <!-- State: QR Ready -->
+    <div id="qr-state-ready" style="display:none;padding:20px 24px;">
+      <!-- Steps -->
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+        <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;">
+          <div style="width:20px;height:20px;border-radius:50%;background:#7a0000;color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
+          <span>Open PhonePe, GPay, Paytm, or any UPI app</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;">
+          <div style="width:20px;height:20px;border-radius:50%;background:#7a0000;color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">2</div>
+          <span>Scan this QR and complete the payment</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;">
+          <div style="width:20px;height:20px;border-radius:50%;background:#7a0000;color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">3</div>
+          <span>Return here — your receipt appears automatically</span>
+        </div>
+      </div>
+      <!-- QR Image -->
+      <div style="background:#f8f4ee;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px;border:1px solid #e8d5b0;">
+        <img id="qr-img" style="width:220px;height:220px;object-fit:contain;image-rendering:pixelated;border:6px solid white;border-radius:4px;display:block;margin:0 auto 10px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#888;">
+          <span>Expires in</span>
+          <span id="qr-timer" style="background:#fff8e1;border:1px solid #e8c50a;color:#7a5c00;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10:00</span>
+        </div>
+        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:10px;">
+          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:2px 8px;font-size:10px;color:#666;font-weight:600;">GPay</span>
+          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:2px 8px;font-size:10px;color:#666;font-weight:600;">PhonePe</span>
+          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:2px 8px;font-size:10px;color:#666;font-weight:600;">Paytm</span>
+          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:2px 8px;font-size:10px;color:#666;font-weight:600;">BHIM</span>
+        </div>
+      </div>
+      <div style="font-size:11px;color:#888;text-align:center;margin-bottom:8px;">Page checks automatically once payment is done</div>
+      <button onclick="manualCheckPayment()" style="width:100%;padding:11px;background:#f0fdf4;border:1.5px solid #81c784;color:#1a5c2a;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px;">✅ I've paid — check now</button>
+      <button onclick="cancelQR()" style="width:100%;padding:10px;background:transparent;border:1px solid #ddd;color:#888;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
+    </div>
+
+    <!-- State: Checking -->
+    <div id="qr-state-checking" style="display:none;padding:36px 24px;text-align:center;">
+      <div style="width:36px;height:36px;border:3px solid #e0c0c0;border-top-color:#7a0000;border-radius:50%;animation:qrSpin .8s linear infinite;margin:0 auto 14px;"></div>
+      <div style="font-size:15px;color:#333;font-weight:600;margin-bottom:6px;">Checking payment...</div>
+      <div style="font-size:13px;color:#888;">This takes a few seconds</div>
+    </div>
+
+    <!-- State: Success -->
+    <div id="qr-state-success" style="display:none;padding:36px 24px;text-align:center;">
+      <div style="width:56px;height:56px;border-radius:50%;background:#e6f4ec;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:26px;">✅</div>
+      <div style="font-size:17px;font-weight:700;color:#1a5c2a;margin-bottom:6px;">Payment confirmed!</div>
+      <div style="font-size:13px;color:#888;">Generating your receipt...</div>
+    </div>
+
   </div>
 </div>
+<style>
+  @keyframes qrSpin { to { transform: rotate(360deg); } }
+  @keyframes qrProg { from { width: 20%; } to { width: 85%; } }
+</style>
 </body>
 </html>
