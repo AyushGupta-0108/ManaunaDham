@@ -87,7 +87,7 @@ nav a:hover { border-color: var(--gold-light); }
 .section h2 { color: var(--maroon); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 6px; margin-bottom: 24px; font-size: 26px; }
 .section-sub { color: var(--text-muted); font-size: 14px; margin-top: -18px; margin-bottom: 20px; }
 
-/* TRUST BAR (replaces urgency bar) */
+/* TRUST BAR */
 .trust-bar {
   background: #f0fdf4;
   border-bottom: 2px solid #81c784;
@@ -523,7 +523,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   </div>
   <div class="booking-body">
 
-    <!-- How booking works -->
     <div class="booking-explainer">
       <span class="be-icon">🔒</span>
       <div>
@@ -532,7 +531,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       </div>
     </div>
 
-    <!-- Step 1 -->
     <div class="step-label">Step 1 — Choose Your Room</div>
     <div class="room-selector">
       <div class="room-option" id="room-opt-1" onclick="selectRoom(1)">
@@ -555,7 +553,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       </div>
     </div>
 
-    <!-- Step 2 -->
     <div class="step-label">Step 2 — Guest Details</div>
     <div class="form-grid">
       <div class="form-group">
@@ -576,7 +573,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       </div>
     </div>
 
-    <!-- Stay Summary -->
     <div class="stay-summary" id="stay-summary">
       <div class="s-row"><span>Room Type</span><span class="sv" id="s-room">—</span></div>
       <div class="s-row"><span>Duration</span><span class="sv" id="s-nights">—</span></div>
@@ -587,7 +583,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <div class="s-row s-hotel"><span>🏨 Remaining at Hotel</span><span class="sv" id="s-remain">—</span></div>
     </div>
 
-    <!-- Today's Offers Board -->
     <div id="coupon-banner" style="margin-bottom:20px;">
       <div style="background:linear-gradient(135deg,#fff8e1,#fffde7);border:2px solid var(--gold);border-radius:14px;overflow:hidden;">
         <div style="background:var(--maroon);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;">
@@ -598,7 +593,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       </div>
     </div>
 
-    <!-- Step 3 -->
     <div class="step-label">Step 3 — Coupon Code (Optional)</div>
     <div class="coupon-row">
       <input type="text" id="coupon-input" placeholder="Enter coupon code e.g. PILGRIM50" oninput="this.value=this.value.toUpperCase()">
@@ -606,32 +600,25 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
     <div class="coupon-msg" id="coupon-msg"></div>
 
-    <!-- Pay -->
-    <!-- PRIMARY: QR Button -->
-<button onclick="showQRPayment()" style="width:100%;padding:18px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,#1a7a3a,#0f5c2a);color:white;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;" id="qr-pay-btn">
-  <span style="font-size:22px;">⬛</span>
-  <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
-    <span id="pay-btn-text" style="font-size:16px;font-weight:700;">Pay via QR Code</span>
-    <span style="font-size:11px;opacity:.85;font-weight:400;">Scan with PhonePe · GPay · Paytm · Any UPI</span>
-  </span>
-  <span style="margin-left:auto;background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;">RECOMMENDED</span>
-</button>
+    <button onclick="showQRPayment()" style="width:100%;padding:18px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,#1a7a3a,#0f5c2a);color:white;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;" id="qr-pay-btn">
+      <span style="font-size:22px;">⬛</span>
+      <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
+        <span id="pay-btn-text" style="font-size:16px;font-weight:700;">Pay via QR Code</span>
+        <span style="font-size:11px;opacity:.85;font-weight:400;">Scan with PhonePe · GPay · Paytm · Any UPI</span>
+      </span>
+      <span style="margin-left:auto;background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;">RECOMMENDED</span>
+    </button>
 
-<div style="display:flex;align-items:center;gap:10px;margin:14px 0;">
-  <div style="flex:1;height:1px;background:var(--border);"></div>
-  <span style="font-size:12px;color:var(--text-muted);font-weight:600;">or pay via Razorpay popup</span>
-  <div style="flex:1;height:1px;background:var(--border);"></div>
-</div>
+    <div style="display:flex;align-items:center;gap:10px;margin:14px 0;">
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+      <span style="font-size:12px;color:var(--text-muted);font-weight:600;">or pay via Razorpay popup</span>
+      <div style="flex:1;height:1px;background:var(--border);"></div>
+    </div>
 
-<!-- SECONDARY: Razorpay popup -->
-<button class="pay-btn" id="pay-btn" onclick="initiatePayment()" style="background:#555;font-size:15px;padding:14px;">
-  <i class="fa fa-lock" style="font-size:13px;"></i>
-  <span style="font-size:14px;">Card / Net Banking / Wallet</span>
-</button>
-<div class="secure-note">
-  <i class="fa fa-shield-alt" style="color:var(--green)"></i>
-  Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
-</div>
+    <button class="pay-btn" id="pay-btn" onclick="initiatePayment()" style="background:#555;font-size:15px;padding:14px;">
+      <i class="fa fa-lock" style="font-size:13px;"></i>
+      <span style="font-size:14px;">Card / Net Banking / Wallet</span>
+    </button>
     <div class="secure-note">
       <i class="fa fa-shield-alt" style="color:var(--green)"></i>
       Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
@@ -750,25 +737,21 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 
 <div class="container" style="padding-top:32px;">
 
-  <!-- ALL PHOTOS -->
   <div class="section" id="all-photos">
     <h2>All Hotel Photos</h2>
     <p class="section-sub">Click any image to enlarge</p>
-
     <div class="room-section-title">🏨 Exterior &amp; Location</div>
     <div class="gallery">
       <img src="images/hotels/harshdeep/harshdeep-exterior.webp" alt="Hotel Harshdeep Exterior" onclick="openModal(this)">
       <img src="images/hotels/harshdeep/harshdeep-road1.webp" alt="Road View" onclick="openModal(this)">
       <img src="images/hotels/harshdeep/harshdeep-road2.webp" alt="Location" onclick="openModal(this)">
     </div>
-
     <div class="room-section-title">🛏️ Double Bed-1 Room</div>
     <div class="gallery">
       <img src="images/hotels/harshdeep/harshdeep-singlebed1.webp" alt="Room" onclick="openModal(this)">
       <img src="images/hotels/harshdeep/harshdeep-singlebed2.webp" alt="Room View 2" onclick="openModal(this)">
       <img src="images/hotels/harshdeep/harshdeep-singlebed-toilet.webp" alt="Bathroom" onclick="openModal(this)">
     </div>
-
     <div class="room-section-title">🛏️🛏️ Double Bed-2 Extended Room</div>
     <div class="gallery">
       <img src="images/hotels/harshdeep/harshdeep-doublebed1.webp" alt="Double Room" onclick="openModal(this)">
@@ -777,7 +760,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
   </div>
 
-  <!-- ROOM TYPES -->
   <div class="section">
     <h2>Room Types &amp; Pricing</h2>
     <p class="section-sub">All rooms include AC, Free WiFi, Geyser &amp; Attached Bathroom</p>
@@ -837,7 +819,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
   </div>
 
-  <!-- HOTEL INFO -->
   <div class="section">
     <h2>Hotel Information</h2>
     <div class="info-grid">
@@ -870,7 +851,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
   </div>
 
-  <!-- AMENITIES -->
   <div class="section">
     <h2>Amenities &amp; Facilities</h2>
     <div class="amenity-grid">
@@ -885,7 +865,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
   </div>
 
-  <!-- NEARBY -->
   <div class="section">
     <h2>Location &amp; Nearby Places</h2>
     <div style="background:var(--bg);padding:20px;border-radius:10px;margin-bottom:20px;">
@@ -913,7 +892,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
   </div>
 
-  <!-- ABOUT -->
   <div class="section">
     <h2>About Hotel Harshdeep</h2>
     <p style="font-size:16px;line-height:1.9;color:var(--text);margin-bottom:12px;">
@@ -931,7 +909,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
   </div>
 
-  <!-- BOTTOM CTA -->
   <div class="section" style="background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));color:white;text-align:center;">
     <h2 style="color:white;border-color:var(--gold);">Ready to Book Your Room?</h2>
     <p style="font-size:16px;opacity:.9;margin-bottom:8px;">Pay just 15% advance to confirm. Rest at hotel.</p>
@@ -1018,7 +995,6 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 let qrTimerInterval   = null;
 let qrActiveId        = null;
 paymentDetected       = false;
-// Put this near the top of your <script>, alongside your other global vars like selRoom, nights etc.
 const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
 function setQRState(state) {
   ['loading','ready','checking','success'].forEach(s => {
@@ -1065,10 +1041,10 @@ async function showQRPayment() {
     if (!resp.ok) throw new Error(data.error || 'QR creation failed');
 
     qrActiveId = data.qr_id;
-  document.getElementById('qr-img').src = data.image_url + '?size=600';
+    document.getElementById('qr-img').src = data.image_url + '?size=600';
     setQRState('ready');
     startQRTimer(600);
-    setTimeout(() => startPolling(data.qr_id), 3000); // start polling after 3s, not 8s
+    setTimeout(() => startPolling(data.qr_id), 3000);
 
   } catch (err) {
     document.getElementById('qr-modal').style.display = 'none';
@@ -1110,7 +1086,6 @@ async function manualCheckPayment() {
     const res  = await fetch('https://harshdeep-api.vercel.app/api/check-payment?qr_id=' + qrActiveId);
     const data = await res.json();
     if (data.paid) { onQRPaymentSuccess(data); return; }
-    // Not paid yet — go back to ready state and resume polling
     setQRState('ready');
     alert('Payment not detected yet. Please complete the payment in your UPI app and try again.');
     startPolling(qrActiveId);
@@ -1156,9 +1131,7 @@ function closeQR() {
   clearInterval(qrTimerInterval);
   document.getElementById('qr-modal').style.display = 'none';
 }
-// ══════════════════════════════════════
-// CONFIG
-// ══════════════════════════════════════
+
 let RAZORPAY_KEY = null;
 const WA_NUMBER  = '917817803342';
 const HOTEL_KEY = 'harshdeep';
@@ -1188,10 +1161,6 @@ let selRoom = null, nights = 0, baseTotal = 0, discAmt = 0, finalTotal = 0, advA
 let invNum = parseInt(localStorage.getItem('hd_inv') || '100');
 let waSelRoom = null, waNights = 0;
 let lastBooking = null;
-
-// ══════════════════════════════════════
-// ONLINE BOOKING
-// ══════════════════════════════════════
 
 function selectRoom(n) {
   selRoom = n;
@@ -1245,10 +1214,11 @@ function recalc() {
   document.getElementById('s-remain').textContent  = '₹' + (finalTotal - advAmt).toLocaleString();
 
   const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
-document.getElementById('pay-btn-text').textContent = isMobile
-  ? 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code'
-  : 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
+  document.getElementById('pay-btn-text').textContent = isMobile
+    ? 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code'
+    : 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
 }
+
 function applyCoupon() {
   const code = document.getElementById('coupon-input').value.trim().toUpperCase();
   if (!code) { showCMsg('Please enter a coupon code.', 'no'); return; }
@@ -1289,7 +1259,6 @@ function validate() {
 async function initiatePayment() {
   if (!validate()) return;
 
-  // On mobile, steer toward QR immediately — avoids the intent failure
   const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
   if (isMobile) {
     const useQR = confirm(
@@ -1303,7 +1272,7 @@ async function initiatePayment() {
   const co    = document.getElementById('g-checkout').value;
 
   invNum++;
-  let invStr = 'HD' + Date.now().toString().slice(-7); // fallback, overwritten below
+  let invStr = 'HD' + Date.now().toString().slice(-7);
 
   const btn = document.getElementById('pay-btn');
   btn.disabled = true;
@@ -1398,31 +1367,26 @@ function showReceipt(d) {
 }
 
 function buildReceiptMsg(d, forHotel) {
-  const discLine = d.discAmt > 0 ? `\n🏷️ *Coupon Discount:* −₹${d.discAmt.toLocaleString()}` : '';
+  const discLine = d.discAmt > 0 ? '\n🏷️ *Coupon Discount:* −₹' + d.discAmt.toLocaleString() : '';
   const header = forHotel
-    ? `🏨 *NEW BOOKING — Hotel Harshdeep*\n✅ 15% Advance Paid: ₹${d.advAmt.toLocaleString()}`
-    : `🧾 *Your Booking Receipt — Hotel Harshdeep*`;
-  return `${header}
-
-━━━━━━━━━━━━━━━━━━━━
-📋 *Invoice:* #${d.invStr}
-📅 *Date:* ${new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'})}
-━━━━━━━━━━━━━━━━━━━━
-👤 *Guest:* ${d.name}
-📱 *Phone:* +91 ${d.phone}
-🛏️ *Room:* ${ROOMS[selRoom].name}
-📅 *Check-in:* ${fmtDate(d.ci)}
-📅 *Check-out:* ${fmtDate(d.co)}
-🌙 *Nights:* ${d.nights}
-━━━━━━━━━━━━━━━━━━━━
-💵 *Room Rate:* ₹${ROOMS[selRoom].price.toLocaleString()} × ${d.nights}${discLine}
-✅ *Paid Now (15% advance):* ₹${d.advAmt.toLocaleString()}
-🏦 *Remaining at Hotel:* ₹${(d.finalTotal - d.advAmt).toLocaleString()}
-🆔 *Payment ID:* ${d.payId}
-━━━━━━━━━━━━━━━━━━━━
-${forHotel
-  ? `🔔 ₹${d.advAmt.toLocaleString()} paid online. Collect ₹${(d.finalTotal - d.advAmt).toLocaleString()} at check-in.\n_Via ManaunaDham.org.in_`
-  : `⚠️ Show this at check-in.\nCheck-in after 1 PM · Check-out before 11 AM\n_ManaunaDham.org.in_`}`;
+    ? '🏨 *NEW BOOKING — Hotel Harshdeep*\n✅ 15% Advance Paid: ₹' + d.advAmt.toLocaleString()
+    : '🧾 *Your Booking Receipt — Hotel Harshdeep*';
+  return header + '\n\n━━━━━━━━━━━━━━━━━━━━\n📋 *Invoice:* #' + d.invStr +
+    '\n📅 *Date:* ' + new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'}) +
+    '\n━━━━━━━━━━━━━━━━━━━━\n👤 *Guest:* ' + d.name +
+    '\n📱 *Phone:* +91 ' + d.phone +
+    '\n🛏️ *Room:* ' + ROOMS[selRoom].name +
+    '\n📅 *Check-in:* ' + fmtDate(d.ci) +
+    '\n📅 *Check-out:* ' + fmtDate(d.co) +
+    '\n🌙 *Nights:* ' + d.nights +
+    '\n━━━━━━━━━━━━━━━━━━━━\n💵 *Room Rate:* ₹' + ROOMS[selRoom].price.toLocaleString() + ' × ' + d.nights + discLine +
+    '\n✅ *Paid Now (15% advance):* ₹' + d.advAmt.toLocaleString() +
+    '\n🏦 *Remaining at Hotel:* ₹' + (d.finalTotal - d.advAmt).toLocaleString() +
+    '\n🆔 *Payment ID:* ' + d.payId +
+    '\n━━━━━━━━━━━━━━━━━━━━\n' +
+    (forHotel
+      ? '🔔 ₹' + d.advAmt.toLocaleString() + ' paid online. Collect ₹' + (d.finalTotal - d.advAmt).toLocaleString() + ' at check-in.\n_Via ManaunaDham.org.in_'
+      : '⚠️ Show this at check-in.\nCheck-in after 1 PM · Check-out before 11 AM\n_ManaunaDham.org.in_');
 }
 
 function shareReceiptToCustomer() {
@@ -1441,10 +1405,6 @@ function closeReceipt() {
   document.getElementById('coupon-msg').className = 'coupon-msg';
   document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
 }
-
-// ══════════════════════════════════════
-// WHATSAPP BOOKING
-// ══════════════════════════════════════
 
 function selectWARoom(n) {
   waSelRoom = n;
@@ -1504,26 +1464,17 @@ function sendWhatsAppBooking() {
   const total  = waSelRoom ? ROOMS[waSelRoom].price * waNights : 0;
   const guestsLine = guests ? '\n👥 *Guests:* ' + guests : '';
 
-  const msg =
-`🏨 *Booking Request — Hotel Harshdeep, Aonla*
-
-👤 *Name:* ${name}
-📱 *Phone:* +91 ${phone}
-🛏️ *Room:* ${ROOMS[waSelRoom].name}
-📅 *Check-in:* ${fmtDate(ci)}
-📅 *Check-out:* ${fmtDate(co)}
-🌙 *Nights:* ${waNights}${guestsLine}
-💰 *Total (pay at hotel):* ₹${total.toLocaleString()}
-
-Please confirm availability. 🙏
-_Sent via ManaunaDham.org.in_`;
+  const msg = '🏨 *Booking Request — Hotel Harshdeep, Aonla*\n\n👤 *Name:* ' + name +
+    '\n📱 *Phone:* +91 ' + phone +
+    '\n🛏️ *Room:* ' + ROOMS[waSelRoom].name +
+    '\n📅 *Check-in:* ' + fmtDate(ci) +
+    '\n📅 *Check-out:* ' + fmtDate(co) +
+    '\n🌙 *Nights:* ' + waNights + guestsLine +
+    '\n💰 *Total (pay at hotel):* ₹' + total.toLocaleString() +
+    '\n\nPlease confirm availability. 🙏\n_Sent via ManaunaDham.org.in_';
 
   window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
-
-// ══════════════════════════════════════
-// HELPERS
-// ══════════════════════════════════════
 
 function fmtDate(str) {
   if (!str) return '—';
@@ -1548,7 +1499,6 @@ function showPaymentHelp() {
   alert('If your payment was deducted but booking failed:\n\n1. Note your UPI/bank transaction ID\n2. Take a screenshot of the deduction\n3. Razorpay automatically refunds within 5-7 business days\n\nFor faster help, WhatsApp us at:\n +91 7817803342\n\nMention your name, phone, and transaction ID.');
 }
 
-// ── OFFERS BOARD ──
 function initCouponBanner() {
   const grid = document.getElementById('offers-grid');
   if (!grid) return;
@@ -1576,7 +1526,6 @@ function claimCoupon(code) {
   document.getElementById('stay-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-// ── INIT ──
 window.addEventListener('DOMContentLoaded', () => {
   const today = new Date().toISOString().split('T')[0];
   ['g-checkin', 'g-checkout', 'wa-checkin', 'wa-checkout'].forEach(id => {
@@ -1586,11 +1535,13 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('wa-checkout').addEventListener('change', calcWAStay);
 });
 </script>
-  <div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;justify-content:center;align-items:center;padding:16px;">
-  <div style="background:white;border-radius:16px;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.4);display:flex;flex-direction:column;max-height:92vh;">
 
-    <!-- Header -->
-    <div style="background:linear-gradient(135deg,#7a0000,#4d0000);color:white;padding:20px 24px;text-align:center;">
+<!-- QR MODAL -->
+<div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;justify-content:center;align-items:center;padding:16px;">
+  <div style="background:white;border-radius:16px;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.4);display:flex;flex-direction:column;max-height:92vh;overflow-y:auto;">
+
+    <!-- Header (sticky at top) -->
+    <div style="background:linear-gradient(135deg,#7a0000,#4d0000);color:white;padding:20px 24px;text-align:center;position:sticky;top:0;z-index:1;border-radius:16px 16px 0 0;">
       <div style="font-size:12px;opacity:.75;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;" id="qr-modal-state-label">Generating QR code</div>
       <div style="font-size:14px;font-weight:600;margin-bottom:2px;">Hotel Harshdeep</div>
       <div style="font-size:28px;font-weight:700;color:#f0c040;" id="qr-modal-amount">—</div>
@@ -1607,7 +1558,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
 
     <!-- State: QR Ready -->
-  <div id="qr-state-ready" style="display:none;padding:20px 24px;overflow-y:auto;flex:1;">
+    <div id="qr-state-ready" style="display:none;padding:20px 24px;">
       <!-- Steps -->
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
         <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;">
@@ -1623,13 +1574,12 @@ window.addEventListener('DOMContentLoaded', () => {
           <span>Return here — your receipt appears automatically</span>
         </div>
       </div>
-      <!-- QR Image -->
-    <!-- QR Image -->
+      <!-- QR Image — no crop, full image shown -->
       <div style="background:#f8f4ee;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px;border:1px solid #e8d5b0;">
-        <div style="width:100%;overflow:hidden;border-radius:8px;border:6px solid white;background:white;height:260px;">
-          <img id="qr-img" style="width:100%;display:block;margin-top:-12%;margin-bottom:-28%;">
+        <div style="width:100%;border-radius:8px;border:6px solid white;background:white;">
+          <img id="qr-img" style="width:100%;display:block;">
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#888;">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#888;margin-top:8px;">
           <span>Expires in</span>
           <span id="qr-timer" style="background:#fff8e1;border:1px solid #e8c50a;color:#7a5c00;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10:00</span>
         </div>
@@ -1661,6 +1611,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   </div>
 </div>
+
 <style>
   @keyframes qrSpin { to { transform: rotate(360deg); } }
   @keyframes qrProg { from { width: 20%; } to { width: 85%; } }
