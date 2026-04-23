@@ -1020,8 +1020,7 @@ onclick="showQRPayment()">
   });
 
   const data = await resp.json();
-
-  document.getElementById('qr-img').src = data.image_url;
+document.getElementById('qr-img').src = data.image_url + "?size=512";
   document.getElementById('qr-modal').style.display = 'flex';
 
   startPolling(data.qr_id);
@@ -1472,7 +1471,13 @@ window.addEventListener('DOMContentLoaded', () => {
   <div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:9999;justify-content:center;align-items:center;">
   <div style="background:white;padding:20px;border-radius:10px;text-align:center;max-width:300px;margin:auto;">
     <h3>Scan & Pay</h3>
-    <img id="qr-img" src="" style="width:220px;height:220px;margin:10px 0;">
+   <img id="qr-img" style="
+  width: 260px;
+  height: 260px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  border: 8px solid white;
+">
     <p>Scan using any UPI app</p>
     <button onclick="closeQR()" style="margin-top:10px;">Cancel</button>
   </div>
