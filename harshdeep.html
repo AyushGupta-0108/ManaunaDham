@@ -1009,14 +1009,22 @@ onclick="showQRPayment()">
   const resp = await fetch('https://harshdeep-api.vercel.app/api/create-qr', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      amount: advAmt * 100,
-      notes: {
-        guest_name: name,
-        guest_phone: phone,
-        room_type: ROOMS[selRoom].name
-      }
-    })
+   body: JSON.stringify({
+  amount: advAmt * 100,
+  notes: {
+    hotel_name: "Hotel Harshdeep",
+    guest_name: document.getElementById('g-name').value,
+    guest_phone: document.getElementById('g-phone').value,
+    room_type: ROOMS[selRoom].name,
+    checkin: document.getElementById('g-checkin').value,
+    checkout: document.getElementById('g-checkout').value,
+    nights: String(nights),
+    room_price: String(finalTotal),
+    platform_fee: String(advAmt),
+    coupon_used: activeCoupon || "None",
+    invoice_no: "HD" + Date.now()
+  }
+})
   });
 
   const data = await resp.json();
@@ -1034,9 +1042,23 @@ document.getElementById('qr-img').src = data.image_url + "?size=512";
 
       if (data.paid) {
         clearInterval(interval);
-        alert("Payment successful!");
 
-        closeQR();
+// Create receipt manually (same as checkout)
+showReceipt({
+  invStr: "HD" + Date.now().toString().slice(-7),
+  name: document.getElementById('g-name').value,
+  phone: document.getElementById('g-phone').value,
+  ci: document.getElementById('g-checkin').value,
+  co: document.getElementById('g-checkout').value,
+  nights: nights,
+  baseTotal: baseTotal,
+  discAmt: discAmt,
+  finalTotal: finalTotal,
+  advAmt: advAmt,
+  payId: "QR_PAYMENT"
+});
+
+closeQR();
 
         // OPTIONAL: reload or show success UI
         location.reload();
