@@ -1587,7 +1587,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
   <div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;justify-content:center;align-items:center;padding:16px;">
-  <div style="background:white;border-radius:16px;width:100%;max-width:360px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+  <div style="background:white;border-radius:16px;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.4);display:flex;flex-direction:column;max-height:92vh;">
 
     <!-- Header -->
     <div style="background:linear-gradient(135deg,#7a0000,#4d0000);color:white;padding:20px 24px;text-align:center;">
@@ -1607,7 +1607,7 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
 
     <!-- State: QR Ready -->
-    <div id="qr-state-ready" style="display:none;padding:20px 24px;">
+  <div id="qr-state-ready" style="display:none;padding:20px 24px;overflow-y:auto;flex:1;">
       <!-- Steps -->
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
         <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;">
@@ -1624,10 +1624,11 @@ window.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
       <!-- QR Image -->
-     <div style="background:#f8f4ee;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px;border:1px solid #e8d5b0;">
-  <div style="width:100%;overflow:hidden;border-radius:8px;border:6px solid white;background:white;">
-    <img id="qr-img" style="width:100%;display:block;margin-top:-12%;margin-bottom:-28%;">
-  </div>
+    <!-- QR Image -->
+      <div style="background:#f8f4ee;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px;border:1px solid #e8d5b0;">
+        <div style="width:100%;overflow:hidden;border-radius:8px;border:6px solid white;background:white;height:260px;">
+          <img id="qr-img" style="width:100%;display:block;margin-top:-12%;margin-bottom:-28%;">
+        </div>
         <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#888;">
           <span>Expires in</span>
           <span id="qr-timer" style="background:#fff8e1;border:1px solid #e8c50a;color:#7a5c00;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10:00</span>
