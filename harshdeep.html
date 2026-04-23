@@ -1065,7 +1065,7 @@ async function showQRPayment() {
     if (!resp.ok) throw new Error(data.error || 'QR creation failed');
 
     qrActiveId = data.qr_id;
-    document.getElementById('qr-img').src = data.image_url;
+  document.getElementById('qr-img').src = data.image_url + '?size=600';
     setQRState('ready');
     startQRTimer(600);
     setTimeout(() => startPolling(data.qr_id), 3000); // start polling after 3s, not 8s
@@ -1624,8 +1624,10 @@ window.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
       <!-- QR Image -->
-      <div style="background:#f8f4ee;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px;border:1px solid #e8d5b0;">
-        <img id="qr-img" style="width:220px;height:220px;object-fit:contain;image-rendering:pixelated;border:6px solid white;border-radius:4px;display:block;margin:0 auto 10px;">
+     <div style="background:#f8f4ee;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px;border:1px solid #e8d5b0;">
+  <div style="width:100%;overflow:hidden;border-radius:8px;border:6px solid white;background:white;">
+    <img id="qr-img" style="width:100%;display:block;margin-top:-12%;margin-bottom:-28%;">
+  </div>
         <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#888;">
           <span>Expires in</span>
           <span id="qr-timer" style="background:#fff8e1;border:1px solid #e8c50a;color:#7a5c00;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10:00</span>
