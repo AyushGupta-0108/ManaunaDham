@@ -607,14 +607,31 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     <div class="coupon-msg" id="coupon-msg"></div>
 
     <!-- Pay -->
-    <button class="pay-btn" id="pay-btn" onclick="initiatePayment()">
-      <i class="fa fa-lock"></i>
-      <span id="pay-btn-text">Pay Advance to Confirm Booking</span>
-    </button>
-    <button style="margin-top:10px;width:100%;padding:14px;background:#333;color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;"
-onclick="showQRPayment()">
-📱 Having trouble? Pay via QR
+    <!-- PRIMARY: QR Button -->
+<button onclick="showQRPayment()" style="width:100%;padding:18px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,#1a7a3a,#0f5c2a);color:white;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;" id="qr-pay-btn">
+  <span style="font-size:22px;">⬛</span>
+  <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
+    <span id="pay-btn-text" style="font-size:16px;font-weight:700;">Pay via QR Code</span>
+    <span style="font-size:11px;opacity:.85;font-weight:400;">Scan with PhonePe · GPay · Paytm · Any UPI</span>
+  </span>
+  <span style="margin-left:auto;background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;">RECOMMENDED</span>
 </button>
+
+<div style="display:flex;align-items:center;gap:10px;margin:14px 0;">
+  <div style="flex:1;height:1px;background:var(--border);"></div>
+  <span style="font-size:12px;color:var(--text-muted);font-weight:600;">or pay via Razorpay popup</span>
+  <div style="flex:1;height:1px;background:var(--border);"></div>
+</div>
+
+<!-- SECONDARY: Razorpay popup -->
+<button class="pay-btn" id="pay-btn" onclick="initiatePayment()" style="background:#555;font-size:15px;padding:14px;">
+  <i class="fa fa-lock" style="font-size:13px;"></i>
+  <span style="font-size:14px;">Card / Net Banking / Wallet</span>
+</button>
+<div class="secure-note">
+  <i class="fa fa-shield-alt" style="color:var(--green)"></i>
+  Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
+</div>
     <div class="secure-note">
       <i class="fa fa-shield-alt" style="color:var(--green)"></i>
       Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
@@ -1001,7 +1018,8 @@ onclick="showQRPayment()">
 let qrTimerInterval   = null;
 let qrActiveId        = null;
 paymentDetected       = false;
-
+// Put this near the top of your <script>, alongside your other global vars like selRoom, nights etc.
+const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
 function setQRState(state) {
   ['loading','ready','checking','success'].forEach(s => {
     document.getElementById('qr-state-' + s).style.display = s === state ? 'block' : 'none';
@@ -1226,8 +1244,10 @@ function recalc() {
   document.getElementById('s-advance').textContent = '₹' + advAmt.toLocaleString();
   document.getElementById('s-remain').textContent  = '₹' + (finalTotal - advAmt).toLocaleString();
 
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
-}
+  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+document.getElementById('pay-btn-text').textContent = isMobile
+  ? 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code'
+  : 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
 
 function applyCoupon() {
   const code = document.getElementById('coupon-input').value.trim().toUpperCase();
@@ -1269,6 +1289,14 @@ function validate() {
 async function initiatePayment() {
   if (!validate()) return;
 
+  // On mobile, steer toward QR immediately — avoids the intent failure
+  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+  if (isMobile) {
+    const useQR = confirm(
+      'For the smoothest payment experience on mobile, we recommend scanning a QR code.\n\nTap OK to pay via QR, or Cancel to try the standard payment.'
+    );
+    if (useQR) { showQRPayment(); return; }
+  }
   const name  = document.getElementById('g-name').value.trim();
   const phone = document.getElementById('g-phone').value.trim();
   const ci    = document.getElementById('g-checkin').value;
