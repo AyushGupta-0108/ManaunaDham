@@ -1248,7 +1248,7 @@ function recalc() {
 document.getElementById('pay-btn-text').textContent = isMobile
   ? 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code'
   : 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
-
+}
 function applyCoupon() {
   const code = document.getElementById('coupon-input').value.trim().toUpperCase();
   if (!code) { showCMsg('Please enter a coupon code.', 'no'); return; }
