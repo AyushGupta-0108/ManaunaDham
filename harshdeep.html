@@ -998,6 +998,7 @@ onclick="showQRPayment()">
 
 <script>
   async function showQRPayment() {
+    paymentDetected = false;
   if (!selRoom || nights <= 0) {
     alert("Please fill booking details first");
     return;
@@ -1031,44 +1032,51 @@ onclick="showQRPayment()">
 document.getElementById('qr-img').src = data.image_url + "?size=512";
   document.getElementById('qr-modal').style.display = 'flex';
 
+  setTimeout(() => {
   startPolling(data.qr_id);
+}, 8000);
 }
 
-  function startPolling(qrId) {
+ let paymentDetected = false;
+
+function startPolling(qrId) {
   const interval = setInterval(async () => {
+
+    if (paymentDetected) return;
+
     try {
-      const res = await fetch(`https://harshdeep-api.vercel.app/api/check-payment?qr_id=${qrId}`);
+      const res = await fetch('https://harshdeep-api.vercel.app/api/check-payment?qr_id=' + qrId)
       const data = await res.json();
 
       if (data.paid) {
+        paymentDetected = true;
         clearInterval(interval);
 
-// Create receipt manually (same as checkout)
-showReceipt({
-  invStr: "HD" + Date.now().toString().slice(-7),
-  name: document.getElementById('g-name').value,
-  phone: document.getElementById('g-phone').value,
-  ci: document.getElementById('g-checkin').value,
-  co: document.getElementById('g-checkout').value,
-  nights: nights,
-  baseTotal: baseTotal,
-  discAmt: discAmt,
-  finalTotal: finalTotal,
-  advAmt: advAmt,
-  payId: "QR_PAYMENT"
-});
+        showReceipt({
+          invStr: data.notes.invoice_no || ("HD" + Date.now()),
+          name: data.notes.guest_name,
+          phone: data.notes.guest_phone,
+          ci: data.notes.checkin,
+          co: data.notes.checkout,
+          nights: parseInt(data.notes.nights),
+          baseTotal: parseInt(data.notes.room_price),
+          discAmt: 0,
+          finalTotal: parseInt(data.notes.room_price),
+          advAmt: parseInt(data.notes.platform_fee),
+          payId: data.payment_id
+        });
 
-closeQR();
-
-        // OPTIONAL: reload or show success UI
-        location.reload();
+        closeQR();
       }
+
     } catch (err) {}
+
   }, 3000);
 }
-
 function closeQR() {
-  document.getElementById('qr-modal').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('qr-modal').style.display = 'none';
+  }, 1500);
 }
 // ══════════════════════════════════════
 // CONFIG
