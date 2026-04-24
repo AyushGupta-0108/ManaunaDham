@@ -8,6 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://manaunadham.org.in/rajgarden.html">
 <link rel="icon" href="logonobg.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
@@ -30,6 +33,10 @@
 </script>
 
 <style>
+/* ══ RESET & ROOT ══ */
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
   --maroon: #7a0000;
   --maroon-dark: #4d0000;
@@ -39,268 +46,678 @@
   --green: #1a7a3a;
   --wa-green: #25D366;
   --wa-dark: #128C7E;
-  --bg: #fff6e6;
+  --bg: #fff8f0;
+  --bg2: #fffdf9;
   --white: #ffffff;
-  --text: #2a2a2a;
-  --text-muted: #666;
-  --border: #e8d5b0;
+  --text: #1e1e1e;
+  --text-muted: #6b6b6b;
+  --border: #e8d8b8;
+  --border-soft: #f0e6d0;
   --success: #0a5c2a;
   --success-bg: #e6f4ec;
   --error: #c00;
   --error-bg: #fff0f0;
+  --shadow-sm: 0 2px 12px rgba(122,0,0,0.07);
   --shadow: 0 4px 24px rgba(122,0,0,0.10);
-  --shadow-lg: 0 8px 40px rgba(122,0,0,0.18);
+  --shadow-lg: 0 8px 40px rgba(122,0,0,0.15);
+  --shadow-xl: 0 16px 60px rgba(122,0,0,0.18);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Georgia, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+body {
+  font-family: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-/* HEADER */
-header { background: var(--maroon); color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
-.topbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; }
+/* ══ HEADER ══ */
+header {
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; padding: 13px 28px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
 .brand img { height: 44px; }
-.brand-text strong { font-size: 17px; display: block; }
-.brand-text span { font-size: 12px; opacity: .85; }
-nav { display: flex; gap: 20px; align-items: center; }
-nav a { color: white; text-decoration: none; font-weight: 600; font-size: 14px; padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .2s; }
-nav a:hover { border-color: var(--gold-light); }
-.menu-btn { display: none; font-size: 24px; cursor: pointer; background: none; border: none; color: white; }
+.brand-text strong { font-size: 17px; display: block; font-family: 'Lora', serif; letter-spacing: 0.3px; }
+.brand-text span { font-size: 11.5px; opacity: .8; letter-spacing: 0.5px; }
+nav { display: flex; gap: 6px; align-items: center; }
+nav a {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13.5px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+nav a:hover { background: rgba(255,255,255,0.15); color: white; }
+.menu-btn { display: none; font-size: 22px; cursor: pointer; background: none; border: none; color: white; padding: 4px; }
 .mobile-menu { display: none; flex-direction: column; background: var(--maroon-dark); }
-.mobile-menu a { padding: 12px 20px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
+.mobile-menu a { padding: 13px 22px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 15px; transition: var(--transition); }
+.mobile-menu a:hover { background: rgba(255,255,255,0.07); }
 
-/* TRUST BAR */
+/* ══ TRUST BAR ══ */
 .trust-bar {
-  background: #f0fdf4;
-  border-bottom: 2px solid #81c784;
+  background: linear-gradient(90deg, #f0fdf4, #e8faf0, #f0fdf4);
+  border-bottom: 2px solid #a8d8b8;
   color: #1a5c2a;
   text-align: center;
   padding: 10px 20px;
   font-size: 13px;
-  font-weight: 700;
-  display: flex; align-items: center; justify-content: center; gap: 20px;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center; gap: 24px;
   flex-wrap: wrap;
 }
 .trust-bar span { display: flex; align-items: center; gap: 5px; }
 
-/* HOTEL TITLE STRIP */
-.hotel-strip { background: white; border-bottom: 2px solid var(--border); padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.hotel-strip-left h1 { font-size: 22px; font-weight: 800; color: var(--maroon); font-family: Georgia, serif; margin-bottom: 3px; }
+/* ══ HOTEL TITLE STRIP ══ */
+.hotel-strip {
+  background: white;
+  border-bottom: 2px solid var(--border-soft);
+  padding: 18px 30px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.hotel-strip-left h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--maroon);
+  font-family: 'Lora', serif;
+  margin-bottom: 3px;
+  letter-spacing: -0.3px;
+}
 .hotel-strip-left p { font-size: 13px; color: var(--text-muted); }
 .hotel-strip-badges { display: flex; gap: 8px; flex-wrap: wrap; }
-.hs-badge { background: var(--bg); border: 1px solid var(--border); padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 600; color: var(--maroon); }
+.hs-badge {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  padding: 5px 13px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--maroon);
+  transition: var(--transition);
+}
+.hs-badge:hover { background: #fff0e0; }
 
-/* PHOTO HERO */
-.photo-hero { background: #1a0000; position: relative; }
+/* ══ PHOTO HERO ══ */
+.photo-hero { background: #1a0000; position: relative; overflow: hidden; }
 .photo-hero-grid { display: grid; grid-template-columns: 1.6fr 1fr; grid-template-rows: 240px 200px; gap: 3px; }
-.photo-hero-grid img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; display: block; transition: opacity .2s; }
-.photo-hero-grid img:hover { opacity: .88; }
+.photo-hero-grid img {
+  width: 100%; height: 100%; object-fit: cover; cursor: pointer; display: block;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+.photo-hero-grid img:hover { opacity: .88; transform: scale(1.02); }
 .photo-hero-grid img:first-child { grid-row: 1 / 3; }
-.photo-hero-cta { position: absolute; bottom: 16px; right: 16px; background: white; color: var(--maroon); padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; border: 2px solid var(--maroon); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; }
-.photo-hero-cta:hover { background: var(--maroon); color: white; }
-.photo-count-badge { position: absolute; bottom: 16px; left: 16px; background: rgba(0,0,0,0.65); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; backdrop-filter: blur(4px); }
+.photo-hero-cta {
+  position: absolute; bottom: 16px; right: 16px;
+  background: white; color: var(--maroon);
+  padding: 9px 20px; border-radius: 8px;
+  font-size: 13px; font-weight: 700;
+  border: 2px solid var(--maroon);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex; align-items: center; gap: 6px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.photo-hero-cta:hover { background: var(--maroon); color: white; transform: translateY(-1px); }
+.photo-count-badge {
+  position: absolute; bottom: 16px; left: 16px;
+  background: rgba(0,0,0,0.65);
+  color: white; padding: 7px 16px; border-radius: 24px;
+  font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  backdrop-filter: blur(8px);
+}
 
-/* BOOKING CHOICE BANNER */
-.booking-choice-banner { background: white; border-radius: 14px; box-shadow: var(--shadow); margin-bottom: 28px; overflow: hidden; border: 2px solid var(--border); }
-.bcb-header { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); color: white; padding: 20px 30px; text-align: center; }
-.bcb-header h3 { font-size: 20px; margin-bottom: 4px; }
-.bcb-header p { font-size: 13px; opacity: .85; }
+/* ══ BOOKING CHOICE BANNER ══ */
+.booking-choice-banner {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+  overflow: hidden;
+  border: 1.5px solid var(--border-soft);
+}
+.bcb-header {
+  background: linear-gradient(135deg, var(--maroon) 0%, #6a0000 100%);
+  color: white; padding: 22px 32px; text-align: center;
+}
+.bcb-header h3 { font-size: 19px; margin-bottom: 4px; font-family: 'Lora', serif; }
+.bcb-header p { font-size: 13px; opacity: .82; }
 .bcb-options { display: grid; grid-template-columns: 1fr 1fr; }
-.bcb-option { padding: 28px 24px; text-align: center; cursor: pointer; transition: background .2s; text-decoration: none; display: block; }
-.bcb-option:first-child { border-right: 2px solid var(--border); }
-.bcb-option:hover { background: #faf5ed; }
-.bcb-icon { font-size: 36px; margin-bottom: 10px; }
-.bcb-option h4 { font-size: 16px; font-weight: 700; color: var(--maroon); margin-bottom: 6px; }
-.bcb-option p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-.bcb-badge { display: inline-block; margin-top: 12px; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; color: white; }
+.bcb-option {
+  padding: 28px 26px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: block;
+}
+.bcb-option:first-child { border-right: 1.5px solid var(--border-soft); }
+.bcb-option:hover { background: #fdf8f0; }
+.bcb-icon { font-size: 38px; margin-bottom: 10px; }
+.bcb-option h4 { font-size: 16px; font-weight: 700; color: var(--maroon); margin-bottom: 7px; }
+.bcb-option p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.bcb-badge {
+  display: inline-block; margin-top: 14px;
+  padding: 7px 18px; border-radius: 24px;
+  font-size: 12.5px; font-weight: 700; color: white;
+}
 .bcb-badge.maroon { background: var(--maroon); }
-.bcb-badge.wa { background: var(--wa-green); }
+.bcb-badge.wa { background: var(--wa-dark); }
 
-/* BOOKING WIDGET */
-#booking-section { background: white; border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 28px; }
-.booking-header { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); color: white; padding: 30px 40px; text-align: center; }
-.booking-header h2 { font-size: 28px; margin-bottom: 6px; color: white; border: none; display: block; }
-.booking-header p { opacity: .9; font-size: 15px; }
-.booking-body { padding: 36px 40px; }
-.step-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+/* ══ SECTION WRAPPER ══ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section {
+  background: white;
+  padding: 40px;
+  margin-bottom: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-soft);
+}
+.section h2 {
+  color: var(--maroon);
+  border-bottom: 3px solid var(--gold);
+  display: inline-block;
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+  font-size: 25px;
+  font-family: 'Lora', serif;
+}
+.section-sub { color: var(--text-muted); font-size: 14px; margin-top: -18px; margin-bottom: 20px; }
 
-/* How booking works explainer */
+/* ══ BOOKING WIDGET ══ */
+#booking-section {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1px solid var(--border-soft);
+}
+.booking-header {
+  background: linear-gradient(135deg, var(--maroon) 0%, #600000 100%);
+  color: white; padding: 32px 42px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.booking-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.booking-header h2 { font-size: 26px; margin-bottom: 6px; color: white; font-family: 'Lora', serif; position: relative; }
+.booking-header p { opacity: .88; font-size: 14.5px; position: relative; }
+.booking-body { padding: 36px 42px; }
+
+.step-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.step-label::before {
+  content: attr(data-step);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px;
+  background: var(--maroon); color: white;
+  border-radius: 50%; font-size: 10px; font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Booking explainer */
 .booking-explainer {
-  background: #f0fdf4;
-  border: 1.5px solid #81c784;
+  background: linear-gradient(135deg, #f0fdf4, #e8f8ee);
+  border: 1.5px solid #a8d8b8;
   border-radius: 10px;
   padding: 14px 18px;
-  margin-bottom: 24px;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
+  margin-bottom: 26px;
+  display: flex; gap: 12px; align-items: flex-start;
 }
-.booking-explainer .be-icon { font-size: 22px; flex-shrink: 0; }
+.booking-explainer .be-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
 .booking-explainer .be-title { font-weight: 700; font-size: 14px; color: #1a5c2a; margin-bottom: 4px; }
 .booking-explainer .be-text { font-size: 13px; color: #2d5a1e; line-height: 1.7; }
 
-/* Room Cards */
+/* Room selector */
 .room-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
-.room-option { border: 2px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all .2s; position: relative; }
-.room-option:hover { border-color: var(--maroon-light); background: #fff9f0; }
-.room-option.selected { border-color: var(--maroon); background: #fff3e0; box-shadow: 0 0 0 3px rgba(122,0,0,0.08); }
+.room-option {
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  background: white;
+}
+.room-option:hover { border-color: var(--maroon-light); background: #fff9f5; transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.room-option.selected {
+  border-color: var(--maroon);
+  background: linear-gradient(135deg, #fff8f0, #fff3e6);
+  box-shadow: 0 0 0 3px rgba(122,0,0,0.08), var(--shadow-sm);
+  transform: translateY(-1px);
+}
 .room-option .room-name { font-size: 16px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
-.room-option .room-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+.room-option .room-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
 .room-option .room-price { font-size: 22px; font-weight: 800; color: var(--green); }
 .room-option .room-price span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
-.room-features-mini { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-.rft { background: var(--bg); padding: 3px 8px; border-radius: 10px; font-size: 11px; color: var(--maroon); }
-.selected-badge { display: none; position: absolute; top: 10px; right: 10px; background: var(--maroon); color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+.room-features-mini { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.rft {
+  background: #fff3e8;
+  border: 1px solid #f0d8c0;
+  padding: 3px 9px;
+  border-radius: 10px;
+  font-size: 11px;
+  color: var(--maroon);
+  font-weight: 500;
+}
+.selected-badge {
+  display: none; position: absolute; top: 12px; right: 12px;
+  background: var(--maroon); color: white;
+  padding: 3px 10px; border-radius: 10px;
+  font-size: 11px; font-weight: 700;
+}
 .room-option.selected .selected-badge { display: block; }
 
 /* Form */
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 22px; }
+.form-group { display: flex; flex-direction: column; gap: 7px; }
 .form-group label { font-size: 13px; font-weight: 600; color: var(--text); }
 .form-group label .req { color: var(--error); }
-.form-group input, .form-group select { padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 15px; font-family: inherit; transition: border-color .2s; background: white; color: var(--text); }
-.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--maroon); }
+.form-group input, .form-group select {
+  padding: 12px 15px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-family: 'DM Sans', inherit;
+  transition: var(--transition);
+  background: white;
+  color: var(--text);
+  -webkit-appearance: none;
+}
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--maroon); box-shadow: 0 0 0 3px rgba(122,0,0,0.07); }
 .form-group input.err, .form-group select.err { border-color: var(--error); background: #fff8f8; }
+.form-group input::placeholder { color: #bbb; }
 
 /* Stay Summary */
-.stay-summary { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; display: none; }
-.stay-summary.show { display: block; }
-.s-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; color: var(--text-muted); }
+.stay-summary {
+  background: linear-gradient(135deg, var(--bg), #fff8ed);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+  display: none;
+  transition: var(--transition);
+}
+.stay-summary.show { display: block; animation: fadeSlideIn 0.3s ease; }
+@keyframes fadeSlideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.s-row { display: flex; justify-content: space-between; padding: 7px 0; font-size: 14px; color: var(--text-muted); border-bottom: 1px solid var(--border-soft); }
+.s-row:last-child { border-bottom: none; }
 .s-row .sv { font-weight: 600; color: var(--text); }
-.s-row.s-total { border-top: 2px solid var(--border); margin-top: 8px; padding-top: 12px; font-weight: 700; font-size: 15px; color: var(--text); }
+.s-row.s-total { border-top: 2px solid var(--border); margin-top: 8px; padding-top: 12px; font-weight: 700; font-size: 15px; color: var(--text); border-bottom: none; }
 .s-row.s-total .sv { color: var(--text); }
-.s-row.s-advance { font-weight: 800; font-size: 17px; color: var(--green); padding-top: 8px; }
-.s-row.s-advance .sv { color: var(--green); font-size: 19px; }
+.s-row.s-advance {
+  font-weight: 800; font-size: 16px;
+  color: var(--green); padding-top: 8px;
+  border-bottom: none;
+  background: linear-gradient(135deg, #e8f8ee, #f0fdf4);
+  margin: 8px -22px -4px; padding: 12px 22px 12px;
+  border-radius: 0 0 10px 10px;
+}
+.s-row.s-advance .sv { color: var(--green); font-size: 18px; }
 .s-row.s-disc { color: var(--green); }
 .s-row.s-disc .sv { color: var(--green); }
-.s-row.s-hotel { font-weight: 700; font-size: 14px; color: var(--maroon); }
+.s-row.s-hotel { font-weight: 700; color: var(--maroon); }
 .s-row.s-hotel .sv { color: var(--maroon); }
 
 /* Coupon */
 .coupon-row { display: flex; gap: 10px; margin-bottom: 8px; }
-.coupon-row input { flex: 1; padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit; text-transform: uppercase; letter-spacing: 1px; transition: border-color .2s; }
-.coupon-row input:focus { outline: none; border-color: var(--gold); }
-.coupon-btn { padding: 12px 20px; background: var(--gold); color: var(--maroon-dark); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px; transition: all .2s; }
-.coupon-btn:hover { background: var(--gold-light); }
-.coupon-msg { font-size: 13px; margin-bottom: 16px; padding: 8px 12px; border-radius: 6px; display: none; }
-.coupon-msg.ok { display: block; background: var(--success-bg); color: var(--success); }
-.coupon-msg.no { display: block; background: var(--error-bg); color: var(--error); }
+.coupon-row input {
+  flex: 1; padding: 12px 15px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px; font-family: 'DM Sans', inherit;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  transition: var(--transition);
+  font-weight: 600;
+}
+.coupon-row input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,160,23,0.1); }
+.coupon-btn {
+  padding: 12px 22px;
+  background: var(--gold);
+  color: var(--maroon-dark);
+  border: none; border-radius: var(--radius-sm);
+  font-weight: 700; cursor: pointer; font-size: 14px;
+  transition: var(--transition);
+  display: flex; align-items: center; gap: 6px;
+}
+.coupon-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+.coupon-msg { font-size: 13px; margin-bottom: 16px; padding: 10px 14px; border-radius: var(--radius-sm); display: none; font-weight: 500; }
+.coupon-msg.ok { display: block; background: var(--success-bg); color: var(--success); border: 1px solid #a8d8b8; }
+.coupon-msg.no { display: block; background: var(--error-bg); color: var(--error); border: 1px solid #f0b8b8; }
 
-/* Pay Button */
-.pay-btn { width: 100%; padding: 18px; background: var(--maroon); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-.pay-btn:hover { background: var(--maroon-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(122,0,0,0.3); }
-.secure-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
-.or-divider { display: flex; align-items: center; gap: 14px; margin: 20px 0; color: var(--text-muted); font-size: 13px; font-weight: 600; }
+/* Pay Buttons */
+.pay-btn {
+  width: 100%; padding: 17px;
+  background: #555; color: white;
+  border: none; border-radius: 10px;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.pay-btn:hover { background: #444; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+.secure-note {
+  text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.or-divider {
+  display: flex; align-items: center; gap: 14px;
+  margin: 20px 0; color: var(--text-muted); font-size: 13px; font-weight: 600;
+}
 .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* WhatsApp Booking */
-#wa-booking-section { background: white; border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 28px; border: 2px solid rgba(37,211,102,0.3); }
-.wa-booking-header { background: linear-gradient(135deg, #1a9e50, var(--wa-dark)); color: white; padding: 28px 40px; text-align: center; }
-.wa-booking-header h2 { font-size: 26px; margin-bottom: 6px; }
-.wa-booking-header p { opacity: .9; font-size: 14px; }
-.wa-booking-body { padding: 32px 40px; }
-.wa-steps { display: flex; gap: 8px; align-items: flex-start; background: #f0fdf4; border-radius: 10px; padding: 14px 18px; margin-bottom: 24px; border: 1px solid rgba(37,211,102,0.25); }
-.wa-steps ol { padding-left: 18px; }
-.wa-steps li { font-size: 13px; color: #2d6a4f; margin-bottom: 4px; line-height: 1.5; }
+/* ══ WA HELP SECTION ══ */
+#wa-booking-section {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1.5px solid rgba(37,211,102,0.2);
+}
+.wa-booking-header {
+  background: linear-gradient(135deg, #1a6b40, #0f4f2e);
+  color: white; padding: 28px 42px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.wa-booking-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.wa-booking-header h2 { font-size: 24px; margin-bottom: 6px; font-family: 'Lora', serif; position: relative; }
+.wa-booking-header p { opacity: .88; font-size: 14px; position: relative; }
+
+.wa-fallback-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white; padding: 5px 14px; border-radius: 20px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.5px;
+  margin-bottom: 10px; position: relative;
+}
+
+.wa-booking-body { padding: 32px 42px; }
+.wa-steps {
+  display: flex; gap: 10px; align-items: flex-start;
+  background: linear-gradient(135deg, #f0fdf4, #e8faf0);
+  border-radius: 12px; padding: 16px 20px; margin-bottom: 26px;
+  border: 1.5px solid rgba(37,211,102,0.2);
+}
+.wa-steps ol { padding-left: 20px; }
+.wa-steps li { font-size: 13.5px; color: #1e5c32; margin-bottom: 6px; line-height: 1.55; }
+.wa-steps li:last-child { margin-bottom: 0; }
+.wa-steps li strong { color: #0f4023; }
+
 .wa-room-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-.wa-room-option { border: 2px solid var(--border); border-radius: 12px; padding: 18px; cursor: pointer; transition: all .2s; position: relative; }
-.wa-room-option:hover { border-color: var(--wa-green); background: #f0fdf4; }
-.wa-room-option.selected { border-color: var(--wa-green); background: #e8fdf0; box-shadow: 0 0 0 3px rgba(37,211,102,0.12); }
+.wa-room-option {
+  border: 2px solid var(--border);
+  border-radius: 12px; padding: 20px;
+  cursor: pointer; transition: var(--transition); position: relative;
+}
+.wa-room-option:hover { border-color: var(--wa-green); background: #f0fdf4; transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.wa-room-option.selected {
+  border-color: var(--wa-green);
+  background: linear-gradient(135deg, #e8fdf0, #f0fdf8);
+  box-shadow: 0 0 0 3px rgba(37,211,102,0.1), var(--shadow-sm);
+  transform: translateY(-1px);
+}
 .wa-room-option .room-name { font-size: 15px; font-weight: 700; color: #0a5c2a; margin-bottom: 3px; }
-.wa-room-option .room-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
+.wa-room-option .room-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
 .wa-room-option .room-price { font-size: 20px; font-weight: 800; color: var(--green); }
 .wa-room-option .room-price span { font-size: 12px; font-weight: 400; color: var(--text-muted); }
-.wa-sel-badge { display: none; position: absolute; top: 10px; right: 10px; background: var(--wa-green); color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+.wa-sel-badge {
+  display: none; position: absolute; top: 10px; right: 10px;
+  background: var(--wa-green); color: white;
+  padding: 3px 10px; border-radius: 10px;
+  font-size: 11px; font-weight: 700;
+}
 .wa-room-option.selected .wa-sel-badge { display: block; }
-.wa-send-btn { width: 100%; padding: 18px; background: var(--wa-green); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-.wa-send-btn:hover { background: var(--wa-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
-.wa-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-/* Gallery */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
-.gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform .3s, box-shadow .3s; display: block; }
-.gallery img:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-.room-section-title { color: var(--maroon); font-size: 17px; font-weight: 700; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+.wa-stay-summary {
+  border-color: rgba(37,211,102,0.3) !important;
+  background: linear-gradient(135deg, #f0fdf4, #e8faf0) !important;
+}
+.wa-advance-highlight {
+  background: linear-gradient(135deg, #1a5c2a, #0f4023);
+  color: white;
+  margin: 8px -22px -4px;
+  padding: 12px 22px;
+  border-radius: 0 0 10px 10px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.wa-advance-highlight .wal { font-size: 13px; font-weight: 600; opacity: .9; }
+.wa-advance-highlight .wav { font-size: 20px; font-weight: 800; color: #a8f0c0; }
 
-/* Layout */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section { background: white; padding: 40px; margin-bottom: 28px; border-radius: 14px; box-shadow: var(--shadow); }
-.section h2 { color: var(--maroon); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 6px; margin-bottom: 24px; font-size: 26px; }
-.section-sub { color: var(--text-muted); font-size: 14px; margin-top: -18px; margin-bottom: 20px; }
+.wa-send-btn {
+  width: 100%; padding: 18px;
+  background: linear-gradient(135deg, var(--wa-green), #20b85a);
+  color: white; border: none; border-radius: 12px;
+  font-size: 17px; font-weight: 700;
+  cursor: pointer; transition: var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+}
+.wa-send-btn:hover {
+  background: linear-gradient(135deg, var(--wa-dark), #0a7055);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+}
+.wa-note {
+  text-align: center; font-size: 12.5px; color: var(--text-muted);
+  margin-top: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
 
-/* Room Cards */
+/* ══ GALLERY ══ */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 16px 0; }
+.gallery img {
+  width: 100%; height: 220px; object-fit: cover;
+  border-radius: 10px; cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s ease;
+  display: block; border: 1.5px solid var(--border-soft);
+}
+.gallery img:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+.room-section-title {
+  color: var(--maroon); font-size: 16px; font-weight: 700;
+  margin: 24px 0 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ══ ROOM CARDS ══ */
 .room-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 20px 0; }
-.room-card { background: var(--bg); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.room-card {
+  background: white; border-radius: 14px; overflow: hidden;
+  box-shadow: var(--shadow); border: 1.5px solid var(--border-soft);
+  transition: var(--transition);
+}
+.room-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .room-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-.rc-body { padding: 22px; }
-.rc-body h3 { color: var(--maroon); font-size: 20px; margin-bottom: 4px; }
-.rc-price { font-size: 26px; font-weight: 800; color: var(--green); margin: 12px 0; }
+.rc-body { padding: 24px; }
+.rc-body h3 { color: var(--maroon); font-size: 20px; margin-bottom: 4px; font-family: 'Lora', serif; }
+.rc-price { font-size: 26px; font-weight: 800; color: var(--green); margin: 13px 0; }
 .rc-price small { font-size: 14px; font-weight: 400; color: var(--text-muted); }
 .rc-price .orig { font-size: 16px; color: var(--text-muted); text-decoration: line-through; margin-left: 8px; }
-.rc-offer { font-size: 12px; color: var(--green); font-weight: 700; margin-top: -8px; margin-bottom: 10px; }
+.rc-offer { font-size: 12.5px; color: var(--green); font-weight: 700; margin-top: -8px; margin-bottom: 12px; }
 .room-card ul { list-style: none; margin: 12px 0; }
-.room-card li { padding: 7px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.room-card li {
+  padding: 8px 0; border-bottom: 1px solid var(--border-soft);
+  display: flex; align-items: center; gap: 10px; font-size: 14px;
+}
 .room-card li:last-child { border: none; }
-.room-card li i { color: var(--maroon); width: 16px; }
+.room-card li i { color: var(--maroon); width: 16px; text-align: center; }
 .room-card-btns { display: flex; gap: 8px; flex-direction: column; }
-.deluxe-badge { display: inline-block; background: linear-gradient(135deg, var(--gold), #b8860b); color: white; padding: 3px 12px; border-radius: 10px; font-size: 11px; font-weight: 800; letter-spacing: .5px; margin-bottom: 8px; }
+.deluxe-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), #b8860b);
+  color: white; padding: 3px 13px; border-radius: 10px;
+  font-size: 11px; font-weight: 800; letter-spacing: .5px; margin-bottom: 8px;
+}
 
-/* Info */
+/* ══ INFO CARDS ══ */
 .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 18px 0; }
-.info-card { background: var(--bg); padding: 18px; border-radius: 10px; border-left: 4px solid var(--maroon); }
-.info-card h3 { color: var(--maroon); font-size: 15px; margin-bottom: 8px; }
+.info-card {
+  background: var(--bg);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--maroon);
+  transition: var(--transition);
+}
+.info-card:hover { background: #fff3e6; transform: translateX(2px); }
+.info-card h3 { color: var(--maroon); font-size: 15px; margin-bottom: 9px; font-weight: 700; }
 .info-card p { font-size: 14px; color: var(--text-muted); margin: 3px 0; }
 .info-card p strong { color: var(--text); }
 
-/* Amenities */
+/* ══ AMENITIES ══ */
 .amenity-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
-.amenity { background: var(--maroon); color: white; padding: 9px 16px; border-radius: 24px; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; }
-.amenity.deluxe-only { background: linear-gradient(135deg, #a07800, var(--gold)); color: #2a1500; }
+.amenity {
+  background: var(--maroon); color: white;
+  padding: 9px 17px; border-radius: 24px;
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 13px;
+  transition: var(--transition);
+}
+.amenity:hover { background: var(--maroon-dark); transform: translateY(-1px); }
+.amenity.deluxe-only {
+  background: linear-gradient(135deg, #a07800, var(--gold));
+  color: #2a1500;
+}
 
-/* Restaurant Section */
-.restaurant-section { background: white; border-radius: 14px; box-shadow: var(--shadow); margin-bottom: 28px; overflow: hidden; }
-.restaurant-header { background: linear-gradient(135deg, #2d4a1e, #3d6b28); color: white; padding: 28px 40px; }
-.restaurant-header h2 { color: white; border-color: var(--gold-light); font-size: 26px; display: inline-block; padding-bottom: 6px; border-bottom: 3px solid var(--gold-light); margin-bottom: 8px; }
-.restaurant-header p { opacity: .9; font-size: 14px; }
-.restaurant-body { padding: 32px 40px; }
-.restaurant-img { width: 100%; height: 280px; object-fit: cover; border-radius: 12px; margin-bottom: 24px; cursor: pointer; transition: transform .3s; }
-.restaurant-img:hover { transform: scale(1.01); }
+/* ══ RESTAURANT ══ */
+.restaurant-section {
+  background: white; border-radius: var(--radius);
+  box-shadow: var(--shadow); margin-bottom: 24px;
+  overflow: hidden; border: 1px solid var(--border-soft);
+}
+.restaurant-header { background: linear-gradient(135deg, #2d4a1e, #1e3a12); color: white; padding: 28px 42px; }
+.restaurant-header h2 {
+  color: white; border-color: var(--gold-light);
+  font-size: 25px; display: inline-block;
+  padding-bottom: 6px; border-bottom: 3px solid var(--gold-light);
+  margin-bottom: 8px; font-family: 'Lora', serif;
+}
+.restaurant-header p { opacity: .88; font-size: 14px; }
+.restaurant-body { padding: 34px 42px; }
+.restaurant-img {
+  width: 100%; height: 280px; object-fit: cover;
+  border-radius: 12px; margin-bottom: 26px;
+  cursor: pointer; transition: transform 0.35s ease;
+  border: 1.5px solid var(--border-soft);
+}
+.restaurant-img:hover { transform: scale(1.008); }
 .restaurant-features { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
-.rest-feat { background: #f0f8e8; border: 1px solid #c8e6b0; color: #2d5a1e; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+.rest-feat {
+  background: #f0f8e8; border: 1px solid #c8e6b0;
+  color: #2d5a1e; padding: 8px 16px;
+  border-radius: 20px; font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  transition: var(--transition);
+}
+.rest-feat:hover { background: #e4f2d8; }
 
-/* Offer Box */
-.offer-box { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border: 2px solid #81c784; border-radius: 12px; padding: 20px 24px; margin-top: 20px; }
-.offer-box h3 { color: var(--green); margin-bottom: 6px; }
+/* ══ OFFER BOX ══ */
+.offer-box {
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border: 2px solid #a8d8a0; border-radius: 12px;
+  padding: 22px 26px; margin-top: 22px;
+}
+.offer-box h3 { color: var(--green); margin-bottom: 7px; font-family: 'Lora', serif; }
 
-/* CTA BAR */
-.cta-bar { background: white; padding: 18px 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
-.cta-btn { background: var(--maroon); color: white; padding: 13px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: all .2s; border: none; cursor: pointer; }
-.cta-btn:hover { background: var(--maroon-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(122,0,0,0.3); }
-.cta-btn.outline { background: transparent; color: var(--maroon); border: 2px solid var(--maroon); }
+/* ══ CTA BAR ══ */
+.cta-bar {
+  background: white; padding: 18px 28px;
+  display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.08);
+}
+.cta-btn {
+  background: var(--maroon); color: white;
+  padding: 13px 26px; border-radius: var(--radius-sm);
+  text-decoration: none; font-weight: 700; font-size: 14.5px;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: var(--transition); border: 2px solid transparent; cursor: pointer;
+}
+.cta-btn:hover { background: var(--maroon-dark); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(122,0,0,0.3); }
+.cta-btn.outline { background: transparent; color: var(--maroon); border-color: var(--maroon); }
 .cta-btn.outline:hover { background: var(--maroon); color: white; }
-.cta-btn.green { background: var(--green); }
+.cta-btn.green { background: var(--green); border-color: var(--green); }
 .cta-btn.green:hover { background: #145c2e; }
-.cta-btn.wa { background: var(--wa-green); }
-.cta-btn.wa:hover { background: var(--wa-dark); }
+.cta-btn.wa { background: var(--wa-dark); border-color: var(--wa-dark); }
+.cta-btn.wa:hover { background: #0a6050; }
 
-/* Image Modal */
-.modal { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
-.modal.open { display: flex; }
-.modal img { max-width: 95%; max-height: 92%; object-fit: contain; border-radius: 4px; }
-.modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 42px; cursor: pointer; line-height: 1; }
+/* ══ IMAGE MODAL ══ */
+.modal {
+  display: none; position: fixed; z-index: 9999;
+  inset: 0; background: rgba(0,0,0,0.92);
+  justify-content: center; align-items: center;
+  backdrop-filter: blur(6px);
+}
+.modal.open { display: flex; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.modal img { max-width: 95%; max-height: 92%; object-fit: contain; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.modal-close {
+  position: absolute; top: 18px; right: 28px;
+  color: white; font-size: 40px;
+  cursor: pointer; line-height: 1;
+  transition: var(--transition);
+  opacity: .8;
+}
+.modal-close:hover { opacity: 1; transform: scale(1.1); }
 
-/* Receipt Modal */
-.receipt-overlay { display: none; position: fixed; z-index: 10000; inset: 0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 20px; overflow-y: auto; }
-.receipt-overlay.open { display: flex; }
-.receipt-box { background: white; border-radius: 16px; width: 100%; max-width: 500px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: slideUp .3s ease; }
+/* ══ RECEIPT MODAL ══ */
+.receipt-overlay {
+  display: none; position: fixed; z-index: 10000;
+  inset: 0; background: rgba(0,0,0,0.72);
+  justify-content: center; align-items: center;
+  padding: 20px; overflow-y: auto;
+  backdrop-filter: blur(6px);
+}
+.receipt-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
+.receipt-box {
+  background: white; border-radius: 18px;
+  width: 100%; max-width: 500px; overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+  animation: slideUp .3s cubic-bezier(0.4,0,0.2,1);
+}
 @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.rh { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); color: white; padding: 28px; text-align: center; }
-.rh-icon { width: 54px; height: 54px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; }
-.rh h2 { font-size: 22px; margin-bottom: 4px; }
-.rh p { font-size: 13px; opacity: .85; }
+.rh {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
+  color: white; padding: 28px; text-align: center;
+}
+.rh-icon {
+  width: 56px; height: 56px; background: rgba(255,255,255,0.18);
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; margin: 0 auto 12px; font-size: 26px;
+}
+.rh h2 { font-size: 22px; margin-bottom: 4px; font-family: 'Lora', serif; }
+.rh p { font-size: 13px; opacity: .82; }
 .rb { padding: 24px 28px; }
 .rb-logo { text-align: center; margin-bottom: 18px; }
-.rb-logo .hn { font-size: 20px; font-weight: 800; color: var(--maroon); letter-spacing: 1px; }
+.rb-logo .hn { font-size: 20px; font-weight: 800; color: var(--maroon); letter-spacing: 1px; font-family: 'Lora', serif; }
 .rb-logo .hs { font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
 .rdiv { border: none; border-top: 2px dashed var(--border); margin: 14px 0; }
 .rr { display: flex; justify-content: space-between; align-items: flex-start; padding: 7px 0; font-size: 14px; }
@@ -312,58 +729,65 @@ nav a:hover { border-color: var(--gold-light); }
 .rr.rr-hotel { background: #fff8f0; margin: 0 -28px; padding: 12px 28px; }
 .rr.rr-hotel .rl { font-weight: 700; color: var(--maroon); font-size: 14px; }
 .rr.rr-hotel .rv { color: var(--maroon); font-size: 18px; font-weight: 800; }
-.rnote { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #5a4000; margin-top: 16px; line-height: 1.7; }
+.rnote {
+  background: #fff8e1; border: 1px solid #ffe082;
+  border-radius: 8px; padding: 12px 14px;
+  font-size: 12px; color: #5a4000;
+  margin-top: 16px; line-height: 1.7;
+}
 .rnote strong { display: block; margin-bottom: 4px; color: var(--maroon); font-size: 13px; }
 .ract { display: flex; gap: 10px; padding: 4px 28px 24px; flex-wrap: wrap; }
-.ract button { flex: 1; min-width: 120px; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .2s; }
+.ract button { flex: 1; min-width: 120px; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: var(--transition); }
 .rbtn-print { background: var(--maroon); color: white; border: none; }
 .rbtn-print:hover { background: var(--maroon-dark); }
 .rbtn-close { background: white; color: var(--text); border: 2px solid var(--border); }
 .rbtn-close:hover { background: #f0f0f0; }
 .ract-wa { display: flex; flex-direction: column; gap: 8px; padding: 0 28px 20px; }
 .ract-wa-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 2px; }
-.rbtn-wa-customer { width: 100%; padding: 12px; border-radius: 8px; background: #25D366; color: white; border: none; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s; }
-.rbtn-wa-customer:hover { background: #128C7E; }
+.rbtn-wa-customer {
+  width: 100%; padding: 12px; border-radius: 8px;
+  background: var(--wa-green); color: white;
+  border: none; font-weight: 700; font-size: 14px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: var(--transition);
+}
+.rbtn-wa-customer:hover { background: var(--wa-dark); }
 .wa-auto-note { font-size: 11px; color: var(--text-muted); text-align: center; padding: 0 28px 16px; }
 
-/* QR Animations */
+/* ══ QR MODAL ══ */
 @keyframes qrSpin { to { transform: rotate(360deg); } }
 @keyframes qrProg { from { width: 20%; } to { width: 85%; } }
 
 @media print {
   body > *:not(.receipt-overlay) { display: none !important; }
   .receipt-overlay {
-    position: static !important;
-    background: transparent !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    display: block !important;
+    position: static !important; background: transparent !important;
+    padding: 0 !important; overflow: visible !important; display: block !important;
   }
-  .receipt-box {
-    width: 100% !important;
-    max-width: 480px !important;
-    margin: 0 auto !important;
-    box-shadow: none !important;
-    position: static !important;
-    border-radius: 0 !important;
-  }
+  .receipt-box { width: 100% !important; max-width: 480px !important; margin: 0 auto !important; box-shadow: none !important; position: static !important; border-radius: 0 !important; }
   .ract, .ract-wa, .wa-auto-note { display: none !important; }
   @page { margin: 10mm; size: A5 portrait; }
 }
 
-footer { background: var(--maroon-dark); color: white; text-align: center; padding: 30px; margin-top: 40px; }
+/* ══ FOOTER ══ */
+footer {
+  background: linear-gradient(135deg, var(--maroon-dark) 0%, #3a0000 100%);
+  color: white; text-align: center; padding: 36px; margin-top: 40px;
+}
 footer p { margin-bottom: 6px; font-size: 14px; }
-footer p:last-child { font-size: 12px; opacity: .7; }
+footer p:last-child { font-size: 12px; opacity: .65; }
 
-@media(max-width: 768px) {
+/* ══ RESPONSIVE ══ */
+@media (max-width: 768px) {
   nav { display: none; }
   .menu-btn { display: block; }
+  .topbar { padding: 12px 16px; }
   .room-selector, .wa-room-selector { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
-  .booking-body, .wa-booking-body { padding: 24px 18px; }
-  .booking-header, .wa-booking-header { padding: 24px 18px; }
+  .booking-body, .wa-booking-body { padding: 22px 18px; }
+  .booking-header, .wa-booking-header { padding: 24px 20px; }
   .section { padding: 24px 18px; }
-  .cta-bar { flex-direction: column; padding: 16px; }
+  .cta-bar { flex-direction: column; padding: 14px 16px; }
   .cta-btn { justify-content: center; }
   .rb { padding: 20px; }
   .ract { padding: 4px 20px 20px; }
@@ -371,14 +795,16 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   .wa-auto-note { padding: 0 20px 12px; }
   .rr.rr-big, .rr.rr-hotel { margin: 0 -20px; padding: 12px 20px; }
   .bcb-options { grid-template-columns: 1fr; }
-  .bcb-option:first-child { border-right: none; border-bottom: 2px solid var(--border); }
+  .bcb-option:first-child { border-right: none; border-bottom: 1.5px solid var(--border-soft); }
   .room-card-btns { flex-direction: column; }
-  .photo-hero-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 160px; }
+  .photo-hero-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 190px 150px; }
   .photo-hero-grid img:first-child { grid-row: 1; }
   .hotel-strip { padding: 14px 16px; }
   .hotel-strip-left h1 { font-size: 18px; }
   .restaurant-body, .restaurant-header { padding: 24px 18px; }
   .trust-bar { gap: 10px; font-size: 12px; }
+  .s-row.s-advance { margin: 8px -14px -4px; padding: 12px 14px 12px; }
+  .wa-advance-highlight { margin: 8px -14px -4px; padding: 12px 14px; }
 }
 </style>
 </head>
@@ -398,7 +824,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <a href="index.html">Home</a>
       <a href="accommodations.html">All Hotels</a>
       <a href="#booking-section">Book Online</a>
-      <a href="#wa-booking-section">Book on WhatsApp</a>
+      <a href="#wa-booking-section">Payment Help</a>
     </nav>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
   </div>
@@ -406,7 +832,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     <a href="index.html">Home</a>
     <a href="accommodations.html">All Hotels</a>
     <a href="#booking-section">Book Online</a>
-    <a href="#wa-booking-section">Book on WhatsApp</a>
+    <a href="#wa-booking-section">Payment Help</a>
   </div>
 </header>
 
@@ -438,7 +864,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <div class="photo-hero-grid">
     <img src="images/hotels/RG/exterior.webp"   alt="Hotel Raj Garden Exterior"   onclick="openModal(this)" loading="eager">
     <img src="images/hotels/RG/deluxe1.jpg"     alt="Deluxe Room Raj Garden"      onclick="openModal(this)" loading="eager">
-    <img src="images/hotels/RG/standard1.jpeg"   alt="Standard Room Raj Garden"    onclick="openModal(this)" loading="lazy">
+    <img src="images/hotels/RG/standard1.jpeg"  alt="Standard Room Raj Garden"    onclick="openModal(this)" loading="lazy">
   </div>
   <div class="photo-count-badge"><i class="fa fa-camera"></i> 11 Photos — click to view</div>
   <button class="photo-hero-cta" onclick="document.getElementById('all-photos').scrollIntoView({behavior:'smooth'})">
@@ -450,7 +876,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 <div class="booking-choice-banner">
   <div class="bcb-header">
     <h3>How would you like to book?</h3>
-    <p>Choose whichever option is more comfortable for you</p>
+    <p>Online payment is fast &amp; secure — or get personal assistance if you need help</p>
   </div>
   <div class="bcb-options">
     <a class="bcb-option" href="#booking-section" onclick="scrollToBooking(); return false;">
@@ -460,10 +886,10 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <span class="bcb-badge maroon">↓ Scroll to Online Booking</span>
     </a>
     <a class="bcb-option" href="#wa-booking-section" onclick="scrollToWA(); return false;">
-      <div class="bcb-icon"><i class="fab fa-whatsapp" style="color:#25D366;"></i></div>
-      <h4>Book via WhatsApp</h4>
-      <p>No online payment at all. Fill your details and we'll connect you to the hotel — pay everything at hotel.</p>
-      <span class="bcb-badge wa">↓ Scroll to WhatsApp Booking</span>
+      <div class="bcb-icon">🆘</div>
+      <h4>Facing Payment Issues?</h4>
+      <p>If you're having trouble paying online, our team will personally guide you through the payment step-by-step on WhatsApp.</p>
+      <span class="bcb-badge wa">↓ Get Payment Assistance</span>
     </a>
   </div>
 </div>
@@ -472,7 +898,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 <div id="booking-section">
   <div class="booking-header">
     <h2>💳 Book Online — Instant Confirmation</h2>
-    <p>Pay 15% advance now · Remaining 85% at hotel · Secure Razorpay</p>
+    <p>Pay 15% advance now · Remaining 85% at hotel · Secured by Razorpay</p>
   </div>
   <div class="booking-body">
 
@@ -486,12 +912,12 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
 
     <!-- Step 1 -->
-    <div class="step-label">Step 1 — Choose Your Room</div>
+    <div class="step-label" data-step="1">Choose Your Room</div>
     <div class="room-selector">
       <div class="room-option" id="room-opt-1" onclick="selectRoom(1)">
         <div class="selected-badge">✓ Selected</div>
         <div class="room-name">🛏️ Standard Room</div>
-        <div class="room-desc">1 Double Bed · Sleeps up to 2 adults & 2 children</div>
+        <div class="room-desc">1 Double Bed · Sleeps up to 2 adults &amp; 2 children</div>
         <div class="room-price">₹1,899 <span>/ night</span></div>
         <div class="room-features-mini">
           <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
@@ -500,7 +926,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <div class="room-option" id="room-opt-2" onclick="selectRoom(2)">
         <div class="selected-badge">✓ Selected</div>
         <div class="room-name">🌿 Deluxe Room</div>
-        <div class="room-desc">1 Large Double Bed · Park View · Sleeps up to 2 adult & 2 children</div>
+        <div class="room-desc">1 Large Double Bed · Park View · Sleeps up to 2 adults &amp; 2 children</div>
         <div class="room-price">₹2,299 <span>/ night</span></div>
         <div class="room-features-mini">
           <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">📺 TV</span><span class="rft">🌳 Park View</span><span class="rft">🏡 Balcony</span>
@@ -509,7 +935,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
 
     <!-- Step 2 -->
-    <div class="step-label">Step 2 — Guest Details</div>
+    <div class="step-label" data-step="2">Enter Guest Details</div>
     <div class="form-grid">
       <div class="form-group">
         <label>Full Name <span class="req">*</span></label>
@@ -536,14 +962,14 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <div class="s-row"><span>Room Rate</span><span class="sv" id="s-rate">—</span></div>
       <div class="s-row s-disc" id="s-disc-row" style="display:none;"><span>Coupon Discount</span><span class="sv" id="s-disc">—</span></div>
       <div class="s-row s-total"><span>Room Price (pay at hotel)</span><span class="sv" id="s-total">—</span></div>
+      <div class="s-row s-hotel" style="border-bottom:none;"><span>🏨 Remaining at Hotel</span><span class="sv" id="s-remain">—</span></div>
       <div class="s-row s-advance"><span>💳 Advance — 15% (pay now)</span><span class="sv" id="s-advance">—</span></div>
-      <div class="s-row s-hotel"><span>🏨 Remaining at Hotel</span><span class="sv" id="s-remain">—</span></div>
     </div>
 
     <!-- Today's Offers Board -->
-    <div id="coupon-banner" style="margin-bottom:20px;">
+    <div id="coupon-banner" style="margin-bottom:22px;">
       <div style="background:linear-gradient(135deg,#fff8e1,#fffde7);border:2px solid var(--gold);border-radius:14px;overflow:hidden;">
-        <div style="background:var(--maroon);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="background:var(--maroon);padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
           <div style="color:white;font-weight:700;font-size:14px;">🎁 Today's Offers — Click any to apply</div>
           <div style="color:var(--gold-light);font-size:12px;" id="banner-urgency"></div>
         </div>
@@ -552,7 +978,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
 
     <!-- Step 3 -->
-    <div class="step-label">Step 3 — Coupon Code (Optional)</div>
+    <div class="step-label" data-step="3">Coupon Code (Optional)</div>
     <div class="coupon-row">
       <input type="text" id="coupon-input" placeholder="Enter coupon code e.g. BABA200" oninput="this.value=this.value.toUpperCase()">
       <button class="coupon-btn" onclick="applyCoupon()"><i class="fa fa-tag"></i> Apply</button>
@@ -560,13 +986,15 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     <div class="coupon-msg" id="coupon-msg"></div>
 
     <!-- Primary: QR Pay Button -->
-    <button onclick="showQRPayment()" style="width:100%;padding:18px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,#1a7a3a,#0f5c2a);color:white;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;" id="qr-pay-btn">
+    <button onclick="showQRPayment()" style="width:100%;padding:18px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,#1a7a3a,#0f5c2a);color:white;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(26,122,58,0.3);transition:all 0.25s ease;" id="qr-pay-btn"
+      onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(26,122,58,0.4)'"
+      onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(26,122,58,0.3)'">
       <span style="font-size:22px;">🔥</span>
       <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
         <span id="pay-btn-text" style="font-size:16px;font-weight:700;">Pay via QR Code</span>
         <span style="font-size:11px;opacity:.85;font-weight:400;">Scan with PhonePe · GPay · Paytm · Any UPI</span>
       </span>
-      <span style="margin-left:auto;background:rgba(255,255,255,0.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;">RECOMMENDED</span>
+      <span style="margin-left:auto;background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:0.5px;">RECOMMENDED</span>
     </button>
 
     <!-- Divider -->
@@ -577,7 +1005,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
 
     <!-- Secondary: Razorpay popup -->
-    <button class="pay-btn" id="pay-btn" onclick="initiatePayment()" style="background:#555;font-size:15px;padding:14px;">
+    <button class="pay-btn" id="pay-btn" onclick="initiatePayment()">
       <i class="fa fa-lock" style="font-size:13px;"></i>
       <span style="font-size:14px;">Card / Net Banking / Wallet</span>
     </button>
@@ -586,39 +1014,48 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
     </div>
 
-    <div class="or-divider">Prefer no online payment?</div>
+    <div class="or-divider">Trouble paying online?</div>
     <div style="text-align:center;">
-      <button onclick="scrollToWA()" style="background:var(--wa-green);color:white;border:none;padding:13px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;" onmouseover="this.style.background='#128C7E'" onmouseout="this.style.background='#25D366'">
-        <i class="fab fa-whatsapp"></i> Book via WhatsApp — Pay Everything at Hotel ↓
+      <button onclick="scrollToWA()" style="background:var(--wa-dark);color:white;border:none;padding:13px 30px;border-radius:10px;font-size:14.5px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;box-shadow:0 3px 14px rgba(18,140,126,0.3);"
+        onmouseover="this.style.background='#0a6050';this.style.transform='translateY(-1px)'"
+        onmouseout="this.style.background='#128C7E';this.style.transform=''">
+        <i class="fab fa-whatsapp"></i> Get Payment Assistance via WhatsApp ↓
       </button>
     </div>
   </div>
 </div>
 
-<!-- WHATSAPP BOOKING SECTION -->
+<!-- WHATSAPP PAYMENT ASSISTANCE SECTION -->
 <div id="wa-booking-section">
   <div class="wa-booking-header">
-    <h2><i class="fab fa-whatsapp"></i> Book via WhatsApp</h2>
-    <p>No online payment needed — fill details and we'll connect you to the hotel directly</p>
+    <div class="wa-fallback-badge">🆘 Payment Assistance</div>
+    <h2><i class="fab fa-whatsapp"></i> Having Trouble Paying Online?</h2>
+    <p>Our team will personally guide you through the online payment — step by step, on WhatsApp</p>
   </div>
   <div class="wa-booking-body">
     <div class="wa-steps">
-      <div style="font-size:22px; margin-right:4px;">ℹ️</div>
+      <div style="font-size:22px; margin-right:4px; flex-shrink:0;">💬</div>
       <ol>
-        <li><strong>Fill in the form below</strong> (name, phone, room type, dates).</li>
-        <li>Click <strong>"Send Booking Request on WhatsApp"</strong> — WhatsApp will open with your details pre-filled.</li>
-        <li>Just hit <strong>Send</strong> — the hotel will confirm and you pay everything on arrival.</li>
+        <li><strong>Fill in your booking details below</strong> (name, phone, room type, dates).</li>
+        <li>Click <strong>"Request Help via WhatsApp"</strong> — our team receives your request instantly.</li>
+        <li>We <strong>call or message you back</strong> and walk you through the 15% online payment step by step.</li>
+        <li>Once payment is done, you get an instant receipt and your room is <strong>confirmed</strong>.</li>
       </ol>
     </div>
 
-    <div class="step-label">Step 1 — Choose Your Room</div>
+    <div style="background:#fff8e1;border:1.5px solid #e8c050;border-radius:10px;padding:13px 16px;margin-bottom:22px;font-size:13px;color:#5a4000;display:flex;gap:10px;align-items:flex-start;">
+      <span style="font-size:18px;flex-shrink:0;">⚠️</span>
+      <div><strong style="color:var(--maroon);">Please note:</strong> This WhatsApp form is for guests who face difficulty with online payment. Our team will assist you to pay the 15% advance securely online. <strong>Full payment is still made at the hotel on arrival.</strong></div>
+    </div>
+
+    <div class="step-label" data-step="1">Choose Your Room</div>
     <div class="wa-room-selector">
       <div class="wa-room-option" id="wa-room-opt-1" onclick="selectWARoom(1)">
         <div class="wa-sel-badge">✓ Selected</div>
         <div class="room-name">🛏️ Standard Room</div>
         <div class="room-desc">1 Double Bed · Sleeps up to 4</div>
         <div class="room-price">₹1,899 <span>/ night</span></div>
-        <div class="room-features-mini" style="margin-top:6px;">
+        <div class="room-features-mini" style="margin-top:7px;">
           <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
         </div>
       </div>
@@ -627,13 +1064,13 @@ footer p:last-child { font-size: 12px; opacity: .7; }
         <div class="room-name">🌿 Deluxe Room</div>
         <div class="room-desc">1 Large Double Bed · Park View · Sleeps up to 5</div>
         <div class="room-price">₹2,299 <span>/ night</span></div>
-        <div class="room-features-mini" style="margin-top:6px;">
+        <div class="room-features-mini" style="margin-top:7px;">
           <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">📺 TV</span><span class="rft">🌳 Park View</span>
         </div>
       </div>
     </div>
 
-    <div class="step-label">Step 2 — Your Details</div>
+    <div class="step-label" data-step="2">Your Details</div>
     <div class="form-grid">
       <div class="form-group">
         <label>Full Name <span class="req">*</span></label>
@@ -662,22 +1099,29 @@ footer p:last-child { font-size: 12px; opacity: .7; }
           <option value="5">5 guests</option>
         </select>
       </div>
+      <div class="form-group" style="grid-column: 1 / -1;">
+        <label>What issue are you facing? (optional)</label>
+        <input type="text" id="wa-issue" placeholder="e.g. UPI not working, card declined, QR not loading…">
+      </div>
     </div>
 
-    <div class="stay-summary" id="wa-stay-summary" style="border-color: rgba(37,211,102,0.3); background:#f0fdf4;">
+    <div class="stay-summary wa-stay-summary" id="wa-stay-summary">
       <div class="s-row"><span>Room Type</span><span class="sv" id="ws-room">—</span></div>
       <div class="s-row"><span>Duration</span><span class="sv" id="ws-nights">—</span></div>
-      <div class="s-row s-total"><span>Approx. Total (pay at hotel)</span><span class="sv" id="ws-total">—</span></div>
-      <div class="s-row" style="font-size:13px; color:var(--wa-dark);"><span>💬 Exact amount confirmed by hotel on WhatsApp</span><span class="sv">✓</span></div>
+      <div class="s-row s-total" style="border-bottom:none;"><span>Total Room Price</span><span class="sv" id="ws-total">—</span></div>
+      <div class="wa-advance-highlight">
+        <span class="wal">💳 15% Advance to Pay Online</span>
+        <span class="wav" id="ws-advance">—</span>
+      </div>
     </div>
 
     <button class="wa-send-btn" onclick="sendWhatsAppBooking()">
       <i class="fab fa-whatsapp"></i>
-      <span>Send Booking Request on WhatsApp</span>
+      <span>Request Payment Help via WhatsApp</span>
     </button>
     <div class="wa-note">
       <i class="fab fa-whatsapp" style="color:var(--wa-green);font-size:14px;"></i>
-      Opens WhatsApp with your details pre-filled · Hotel: +91 78178 03342
+      Our team will guide you to complete the online payment · +91 78178 03342
     </div>
   </div>
 </div>
@@ -708,9 +1152,9 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 
     <div class="room-section-title">🛏️ Standard Room</div>
     <div class="gallery">
-      <img src="images/hotels/RG/standard1.jpeg"   alt="Standard Room"                onclick="openModal(this)">
+      <img src="images/hotels/RG/standard1.jpeg"  alt="Standard Room"                onclick="openModal(this)">
       <img src="images/hotels/RG/standard2.jpeg"  alt="Standard Room View 2"         onclick="openModal(this)">
-      <img src="images/hotels/RG/standard3.jpeg"  alt="Standard Room View 2"         onclick="openModal(this)">
+      <img src="images/hotels/RG/standard3.jpeg"  alt="Standard Room View 3"         onclick="openModal(this)">
       <img src="images/hotels/RG/washroom.webp"   alt="Bathroom"                     onclick="openModal(this)">
     </div>
 
@@ -756,7 +1200,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
               <i class="fa fa-calendar-check"></i> Book Online — 15% advance
             </button>
             <button class="cta-btn wa" style="width:100%;justify-content:center;font-size:14px;" onclick="selectWARoom(1);scrollToWA()">
-              <i class="fab fa-whatsapp"></i> Book via WhatsApp
+              <i class="fab fa-whatsapp"></i> Need Help? Get Assisted Booking
             </button>
           </div>
         </div>
@@ -786,7 +1230,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
               <i class="fa fa-calendar-check"></i> Book Online — 15% advance
             </button>
             <button class="cta-btn wa" style="width:100%;justify-content:center;font-size:14px;" onclick="selectWARoom(2);scrollToWA()">
-              <i class="fab fa-whatsapp"></i> Book via WhatsApp
+              <i class="fab fa-whatsapp"></i> Need Help? Get Assisted Booking
             </button>
           </div>
         </div>
@@ -794,7 +1238,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
     <div class="offer-box">
       <h3><i class="fa fa-gift"></i> Special Offer — Save ₹200 on Every Room!</h3>
-      <p style="font-size:14px;margin-top:6px;">Use coupon <strong>BABA200</strong> or <strong>MANAUNA200</strong> to save ₹200. Standard from ₹1,699 &amp; Deluxe from ₹2,099 per night. Pay only 15% advance online, rest at hotel.</p>
+      <p style="font-size:14px;margin-top:6px;">Use coupon <strong>BABA200</strong> or <strong>MANAUNA200</strong> to save ₹200. Standard from ₹1,699 &amp; Deluxe from ₹2,099 per night. Pay only 15% advance online, rest at hotel on arrival.</p>
     </div>
   </div>
 
@@ -806,7 +1250,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
     <div class="restaurant-body">
       <img src="images/hotels/RG/resteraunt.webp" alt="Raj Garden Restaurant" class="restaurant-img" onclick="openModal(this)">
-      <p style="font-size:15px;line-height:1.85;color:var(--text);margin-bottom:16px;">
+      <p style="font-size:15px;line-height:1.9;color:var(--text);margin-bottom:16px;">
         Hotel Raj Garden features its own in-house restaurant, so you can enjoy a hearty meal without stepping out. Whether it's a morning breakfast before darshan or a relaxing dinner after a long day, fresh home-style Indian food is ready for you.
       </p>
       <div class="restaurant-features">
@@ -860,7 +1304,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <!-- AMENITIES -->
   <div class="section">
     <h2>Amenities &amp; Facilities</h2>
-    <div style="font-size:13px;font-weight:600;color:var(--text-muted);margin-bottom:10px;">ALL ROOMS</div>
+    <div style="font-size:12px;font-weight:700;color:var(--text-muted);margin-bottom:10px;letter-spacing:1px;text-transform:uppercase;">All Rooms</div>
     <div class="amenity-grid">
       <span class="amenity"><i class="fa fa-wifi"></i> Free WiFi</span>
       <span class="amenity"><i class="fa fa-parking"></i> Free Parking</span>
@@ -872,7 +1316,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <span class="amenity"><i class="fa fa-shield-alt"></i> 24/7 Security</span>
       <span class="amenity"><i class="fa fa-utensils"></i> In-House Restaurant</span>
     </div>
-    <div style="font-size:13px;font-weight:600;color:#a07800;margin: 18px 0 10px;">✨ DELUXE ROOM EXCLUSIVE</div>
+    <div style="font-size:12px;font-weight:700;color:#a07800;margin:20px 0 10px;letter-spacing:1px;text-transform:uppercase;">✨ Deluxe Room Exclusive</div>
     <div class="amenity-grid">
       <span class="amenity deluxe-only"><i class="fa fa-tv"></i> Television (TV)</span>
       <span class="amenity deluxe-only"><i class="fa fa-tree"></i> Park View</span>
@@ -883,8 +1327,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   <!-- NEARBY -->
   <div class="section">
     <h2>Location &amp; Nearby Places</h2>
-    <div style="background:var(--bg);padding:20px;border-radius:10px;margin-bottom:20px;">
-      <ul style="list-style:none;line-height:2.3;font-size:15px;">
+    <div style="background:var(--bg);padding:22px;border-radius:12px;margin-bottom:22px;border:1.5px solid var(--border-soft);">
+      <ul style="list-style:none;line-height:2.4;font-size:15px;">
         <li>🛕 <strong>Manauna Dham (Khatu Shyam Temple)</strong> — 3–4 km · 10–15 min</li>
         <li>🍽️ <strong>Raj Garden Restaurant</strong> — On premises (in-house)</li>
         <li>🏥 <strong>Aonla Civil Hospital</strong> — 2 km</li>
@@ -917,7 +1361,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     <p style="font-size:16px;line-height:1.9;color:var(--text);">
       Deluxe rooms offer a beautiful park view with balcony access — perfect for a peaceful morning before heading to the temple. The in-house restaurant means you never have to worry about finding food.
     </p>
-    <div class="amenity-grid" style="margin-top:20px;">
+    <div class="amenity-grid" style="margin-top:22px;">
       <span class="amenity"><i class="fa fa-wifi"></i> Free WiFi</span>
       <span class="amenity"><i class="fa fa-parking"></i> Free Parking</span>
       <span class="amenity"><i class="fa fa-shower"></i> Geyser</span>
@@ -927,16 +1371,16 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   </div>
 
   <!-- BOTTOM CTA -->
-  <div class="section" style="background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));color:white;text-align:center;">
+  <div class="section" style="background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));color:white;text-align:center;border:none;">
     <h2 style="color:white;border-color:var(--gold);">Ready to Book Your Room?</h2>
-    <p style="font-size:16px;opacity:.9;margin-bottom:8px;">Pay just 15% advance to confirm. Rest at hotel.</p>
-    <p style="font-size:14px;opacity:.8;margin-bottom:20px;">Use coupon <strong>BABA200</strong> for ₹200 off the room price.</p>
+    <p style="font-size:16px;opacity:.9;margin-bottom:8px;">Pay just 15% advance to confirm. Rest at hotel on arrival.</p>
+    <p style="font-size:14px;opacity:.8;margin-bottom:22px;">Use coupon <strong>BABA200</strong> for ₹200 off the room price.</p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <button class="cta-btn" style="background:var(--gold);color:var(--maroon-dark);font-size:15px;" onclick="scrollToBooking()">
-        <i class="fa fa-calendar-check"></i> Book Online — 15% advance
+      <button class="cta-btn" style="background:var(--gold);color:var(--maroon-dark);font-size:15px;border-color:var(--gold);" onclick="scrollToBooking()">
+        <i class="fa fa-calendar-check"></i> Book Online — 15% Advance
       </button>
       <button class="cta-btn wa" style="font-size:15px;" onclick="scrollToWA()">
-        <i class="fab fa-whatsapp"></i> Book via WhatsApp
+        <i class="fab fa-whatsapp"></i> Payment Trouble? Get Help
       </button>
     </div>
   </div>
@@ -993,9 +1437,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
         <i class="fab fa-whatsapp"></i> Send Receipt to My WhatsApp
       </button>
     </div>
-    <div class="wa-auto-note">
-      Hotel has been notified of your confirmed booking. 🏨✅
-    </div>
+    <div class="wa-auto-note">Hotel has been notified of your confirmed booking. 🏨✅</div>
     <div class="ract">
       <button class="rbtn-print" onclick="window.print()"><i class="fa fa-print"></i> Print / Save PDF</button>
       <button class="rbtn-close" onclick="closeReceipt()">Close</button>
@@ -1004,20 +1446,20 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 </div>
 
 <!-- QR MODAL -->
-<div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;justify-content:center;align-items:center;padding:16px;">
-  <div style="background:white;border-radius:16px;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.4);display:flex;flex-direction:column;max-height:92vh;overflow-y:auto;">
+<div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.78);z-index:9999;justify-content:center;align-items:center;padding:16px;backdrop-filter:blur(6px);">
+  <div style="background:white;border-radius:18px;width:100%;max-width:360px;box-shadow:0 24px 70px rgba(0,0,0,0.45);display:flex;flex-direction:column;max-height:92vh;overflow-y:auto;">
 
     <!-- Header -->
-    <div style="background:linear-gradient(135deg,#7a0000,#4d0000);color:white;padding:20px 24px;text-align:center;position:sticky;top:0;z-index:1;border-radius:16px 16px 0 0;">
-      <div style="font-size:12px;opacity:.75;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;" id="qr-modal-state-label">Generating QR code</div>
+    <div style="background:linear-gradient(135deg,#7a0000,#4d0000);color:white;padding:22px 26px;text-align:center;position:sticky;top:0;z-index:1;border-radius:18px 18px 0 0;">
+      <div style="font-size:11.5px;opacity:.75;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;" id="qr-modal-state-label">Generating QR code</div>
       <div style="font-size:14px;font-weight:600;margin-bottom:2px;">Hotel Raj Garden</div>
-      <div style="font-size:28px;font-weight:700;color:#f0c040;" id="qr-modal-amount">—</div>
-      <div style="font-size:11px;opacity:.75;margin-top:2px;">15% advance · Room booking</div>
+      <div style="font-size:30px;font-weight:800;color:#f0c040;" id="qr-modal-amount">—</div>
+      <div style="font-size:11px;opacity:.72;margin-top:2px;">15% advance · Room booking</div>
     </div>
 
     <!-- State: Loading -->
-    <div id="qr-state-loading" style="padding:40px 24px;text-align:center;">
-      <div style="width:36px;height:36px;border:3px solid #e0c0c0;border-top-color:#7a0000;border-radius:50%;animation:qrSpin .8s linear infinite;margin:0 auto 14px;"></div>
+    <div id="qr-state-loading" style="padding:42px 26px;text-align:center;">
+      <div style="width:38px;height:38px;border:3px solid #e0c0c0;border-top-color:#7a0000;border-radius:50%;animation:qrSpin .8s linear infinite;margin:0 auto 16px;"></div>
       <div style="font-size:14px;color:#666;">Creating your payment QR...</div>
       <div style="height:3px;background:#f0e8d8;border-radius:2px;overflow:hidden;margin-top:16px;">
         <div style="height:100%;background:#7a0000;border-radius:2px;animation:qrProg 1.4s ease-in-out infinite alternate;"></div>
@@ -1025,8 +1467,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
 
     <!-- State: QR Ready -->
-    <div id="qr-state-ready" style="display:none;padding:20px 24px;">
-      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+    <div id="qr-state-ready" style="display:none;padding:22px 26px;">
+      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:18px;">
         <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;">
           <div style="width:20px;height:20px;border-radius:50%;background:#7a0000;color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
           <span>Open PhonePe, GPay, Paytm, or any UPI app</span>
@@ -1040,40 +1482,39 @@ footer p:last-child { font-size: 12px; opacity: .7; }
           <span>Return here — your receipt appears automatically</span>
         </div>
       </div>
-      <div style="background:#f8f4ee;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px;border:1px solid #e8d5b0;">
+      <div style="background:#f8f4ee;border-radius:12px;padding:14px;text-align:center;margin-bottom:12px;border:1.5px solid #e8d5b0;">
         <div style="width:100%;border-radius:8px;border:6px solid white;background:white;">
-          <img id="qr-img" style="width:100%;display:block;">
+          <img id="qr-img" style="width:100%;display:block;border-radius:4px;">
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#888;margin-top:8px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#888;margin-top:10px;">
           <span>Expires in</span>
-          <span id="qr-timer" style="background:#fff8e1;border:1px solid #e8c50a;color:#7a5c00;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;">10:00</span>
+          <span id="qr-timer" style="background:#fff8e1;border:1px solid #e8c50a;color:#7a5c00;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700;">10:00</span>
         </div>
-        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:10px;">
-          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:2px 8px;font-size:10px;color:#666;font-weight:600;">GPay</span>
-          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:2px 8px;font-size:10px;color:#666;font-weight:600;">PhonePe</span>
-          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:2px 8px;font-size:10px;color:#666;font-weight:600;">Paytm</span>
-          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:2px 8px;font-size:10px;color:#666;font-weight:600;">BHIM</span>
+        <div style="display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
+          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:3px 10px;font-size:10px;color:#666;font-weight:600;">GPay</span>
+          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:3px 10px;font-size:10px;color:#666;font-weight:600;">PhonePe</span>
+          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:3px 10px;font-size:10px;color:#666;font-weight:600;">Paytm</span>
+          <span style="background:white;border:1px solid #e0d0b0;border-radius:4px;padding:3px 10px;font-size:10px;color:#666;font-weight:600;">BHIM</span>
         </div>
       </div>
-      <div style="font-size:11px;color:#888;text-align:center;margin-bottom:8px;">Page checks automatically once payment is done</div>
-      <button onclick="manualCheckPayment()" style="width:100%;padding:11px;background:#f0fdf4;border:1.5px solid #81c784;color:#1a5c2a;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px;">✅ I've paid — check now</button>
-      <button onclick="cancelQR()" style="width:100%;padding:10px;background:transparent;border:1px solid #ddd;color:#888;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
+      <div style="font-size:11.5px;color:#888;text-align:center;margin-bottom:10px;">Page checks automatically once payment is done</div>
+      <button onclick="manualCheckPayment()" style="width:100%;padding:12px;background:#f0fdf4;border:1.5px solid #81c784;color:#1a5c2a;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px;transition:all .2s;" onmouseover="this.style.background='#e0f8ec'" onmouseout="this.style.background='#f0fdf4'">✅ I've paid — check now</button>
+      <button onclick="cancelQR()" style="width:100%;padding:10px;background:transparent;border:1px solid #ddd;color:#888;border-radius:8px;font-size:13px;cursor:pointer;transition:all .2s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">Cancel</button>
     </div>
 
     <!-- State: Checking -->
-    <div id="qr-state-checking" style="display:none;padding:36px 24px;text-align:center;">
-      <div style="width:36px;height:36px;border:3px solid #e0c0c0;border-top-color:#7a0000;border-radius:50%;animation:qrSpin .8s linear infinite;margin:0 auto 14px;"></div>
+    <div id="qr-state-checking" style="display:none;padding:38px 26px;text-align:center;">
+      <div style="width:38px;height:38px;border:3px solid #e0c0c0;border-top-color:#7a0000;border-radius:50%;animation:qrSpin .8s linear infinite;margin:0 auto 16px;"></div>
       <div style="font-size:15px;color:#333;font-weight:600;margin-bottom:6px;">Checking payment...</div>
       <div style="font-size:13px;color:#888;">This takes a few seconds</div>
     </div>
 
     <!-- State: Success -->
-    <div id="qr-state-success" style="display:none;padding:36px 24px;text-align:center;">
-      <div style="width:56px;height:56px;border-radius:50%;background:#e6f4ec;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:26px;">✅</div>
-      <div style="font-size:17px;font-weight:700;color:#1a5c2a;margin-bottom:6px;">Payment confirmed!</div>
+    <div id="qr-state-success" style="display:none;padding:38px 26px;text-align:center;">
+      <div style="width:58px;height:58px;border-radius:50%;background:#e6f4ec;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px;box-shadow:0 4px 16px rgba(26,122,58,0.2);">✅</div>
+      <div style="font-size:18px;font-weight:700;color:#1a5c2a;margin-bottom:6px;">Payment confirmed!</div>
       <div style="font-size:13px;color:#888;">Generating your receipt...</div>
     </div>
-
   </div>
 </div>
 
@@ -1260,12 +1701,6 @@ function cancelQR() {
   document.getElementById('qr-modal').style.display = 'none';
 }
 
-function closeQR() {
-  clearInterval(qrPollingInterval);
-  clearInterval(qrTimerInterval);
-  document.getElementById('qr-modal').style.display = 'none';
-}
-
 // ══════════════════════════════════════
 // ONLINE BOOKING
 // ══════════════════════════════════════
@@ -1321,9 +1756,7 @@ function recalc() {
   document.getElementById('s-advance').textContent = '₹' + advAmt.toLocaleString();
   document.getElementById('s-remain').textContent  = '₹' + (finalTotal - advAmt).toLocaleString();
 
-  document.getElementById('pay-btn-text').textContent = isMobile
-    ? 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code'
-    : 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code';
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code';
 }
 
 function applyCoupon() {
@@ -1367,9 +1800,7 @@ async function initiatePayment() {
   if (!validate()) return;
 
   if (isMobile) {
-    const useQR = confirm(
-      'For the smoothest payment experience on mobile, we recommend scanning a QR code.\n\nTap OK to pay via QR, or Cancel to try the standard payment.'
-    );
+    const useQR = confirm('For the smoothest payment on mobile, we recommend scanning a QR code.\n\nTap OK to pay via QR, or Cancel to try standard payment.');
     if (useQR) { showQRPayment(); return; }
   }
 
@@ -1412,7 +1843,7 @@ async function initiatePayment() {
     RAZORPAY_KEY = data.keyId;
     invStr = 'RG' + orderId.replace('order_', '').slice(-8).toUpperCase();
   } catch (err) {
-    alert('Could not initiate payment: ' + err.message + '\nPlease try again or use WhatsApp booking.');
+    alert('Could not initiate payment: ' + err.message + '\nPlease try again or get help via WhatsApp below.');
     btn.disabled = false;
     btn.querySelector('span').textContent = 'Card / Net Banking / Wallet';
     return;
@@ -1439,7 +1870,7 @@ async function initiatePayment() {
   };
 
   const rzp = new Razorpay(options);
-  rzp.on('payment.failed', function(r) { alert('Payment failed: ' + r.error.description + '\nPlease try again.'); });
+  rzp.on('payment.failed', function(r) { alert('Payment failed: ' + r.error.description + '\nPlease try again or get help via WhatsApp below.'); });
   rzp.open();
 }
 
@@ -1511,7 +1942,7 @@ function closeReceipt() {
 }
 
 // ══════════════════════════════════════
-// WHATSAPP BOOKING
+// WHATSAPP PAYMENT ASSISTANCE
 // ══════════════════════════════════════
 
 function selectWARoom(n) {
@@ -1535,12 +1966,14 @@ function calcWAStay() {
   if (!ci || !co || !waSelRoom) return;
   waNights = Math.round((new Date(co) - new Date(ci)) / 86400000);
   if (waNights <= 0) { waNights = 0; return; }
-  const total = ROOMS[waSelRoom].price * waNights;
+  const total   = ROOMS[waSelRoom].price * waNights;
+  const advance = Math.round(total * 0.15);
   const summary = document.getElementById('wa-stay-summary');
   summary.classList.add('show');
-  document.getElementById('ws-room').textContent   = ROOMS[waSelRoom].name;
-  document.getElementById('ws-nights').textContent = waNights + ' night' + (waNights > 1 ? 's' : '');
-  document.getElementById('ws-total').textContent  = '₹' + total.toLocaleString();
+  document.getElementById('ws-room').textContent    = ROOMS[waSelRoom].name;
+  document.getElementById('ws-nights').textContent  = waNights + ' night' + (waNights > 1 ? 's' : '');
+  document.getElementById('ws-total').textContent   = '₹' + total.toLocaleString();
+  document.getElementById('ws-advance').textContent = '₹' + advance.toLocaleString();
 }
 
 function validateWA() {
@@ -1565,13 +1998,21 @@ function sendWhatsAppBooking() {
   const co = document.getElementById('wa-checkout').value;
   if (ci && co) waNights = Math.round((new Date(co) - new Date(ci)) / 86400000);
   if (!validateWA()) return;
-  const name   = document.getElementById('wa-name').value.trim();
-  const phone  = document.getElementById('wa-phone').value.trim();
-  const guests = document.getElementById('wa-guests').value;
-  const total  = waSelRoom ? ROOMS[waSelRoom].price * waNights : 0;
+
+  const name    = document.getElementById('wa-name').value.trim();
+  const phone   = document.getElementById('wa-phone').value.trim();
+  const guests  = document.getElementById('wa-guests').value;
+  const issue   = document.getElementById('wa-issue') ? document.getElementById('wa-issue').value.trim() : '';
+  const total   = waSelRoom ? ROOMS[waSelRoom].price * waNights : 0;
+  const advance = Math.round(total * 0.15);
+
   const guestsLine = guests ? '\n👥 *Guests:* ' + guests : '';
+  const issueLine  = issue  ? '\n⚠️ *Issue faced:* ' + issue : '';
+
   const msg =
-`🏨 *Booking Request — Hotel Raj Garden, Aonla*
+`🆘 *Payment Assistance Request — Hotel Raj Garden*
+
+I need help completing my online payment for a room booking.
 
 👤 *Name:* ${name}
 📱 *Phone:* +91 ${phone}
@@ -1579,10 +2020,12 @@ function sendWhatsAppBooking() {
 📅 *Check-in:* ${fmtDate(ci)}
 📅 *Check-out:* ${fmtDate(co)}
 🌙 *Nights:* ${waNights}${guestsLine}
-💰 *Total (pay at hotel):* ₹${total.toLocaleString()}
+💰 *Total Room Price:* ₹${total.toLocaleString()}
+💳 *15% Advance to Pay:* ₹${advance.toLocaleString()}${issueLine}
 
-Please confirm availability. 🙏
+Please guide me to complete the online payment. 🙏
 _Sent via ManaunaDham.org.in_`;
+
   window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
@@ -1610,7 +2053,7 @@ function toggleMenu() {
   m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
 }
 function showPaymentHelp() {
-  alert('If your payment was deducted but booking failed:\n\n1. Note your UPI/bank transaction ID\n2. Take a screenshot of the deduction\n3. Razorpay automatically refunds within 5-7 business days\n\nFor faster help, WhatsApp us at:\n +91 7817803342\n\nMention your name, phone, and transaction ID.');
+  alert('If your payment was deducted but booking failed:\n\n1. Note your UPI/bank transaction ID\n2. Take a screenshot of the deduction\n3. Razorpay automatically refunds within 5–7 business days\n\nFor faster help, scroll down to the WhatsApp Assistance section and send us your details. We\'ll resolve it immediately.\n\nWhatsApp: +91 7817803342');
 }
 
 // ── OFFERS BOARD ──
@@ -1623,10 +2066,10 @@ function initCouponBanner() {
     card.style.cssText = 'background:white;border:2px dashed var(--gold);border-radius:10px;padding:12px 14px;cursor:pointer;transition:all .2s;';
     card.innerHTML =
       '<div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">' + c.description + '</div>' +
-      '<div style="font-size:16px;font-weight:800;color:var(--maroon);letter-spacing:1px;margin-bottom:6px;">' + code + '</div>' +
+      '<div style="font-size:16px;font-weight:800;color:var(--maroon);letter-spacing:1px;margin-bottom:6px;font-family:\'DM Sans\',sans-serif;">' + code + '</div>' +
       '<div style="background:var(--maroon);color:white;text-align:center;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;">' + c.label + ' ✂️</div>';
-    card.onmouseenter = () => card.style.background = '#fff3e0';
-    card.onmouseleave = () => card.style.background = 'white';
+    card.onmouseenter = () => { card.style.background = '#fff3e0'; card.style.transform = 'translateY(-1px)'; };
+    card.onmouseleave = () => { card.style.background = 'white'; card.style.transform = ''; };
     card.onclick = () => claimCoupon(code);
     grid.appendChild(card);
   });
@@ -1637,7 +2080,8 @@ function claimCoupon(code) {
   applyCoupon();
   const inp = document.getElementById('coupon-input');
   inp.style.borderColor = 'var(--gold)';
-  setTimeout(() => inp.style.borderColor = '', 1800);
+  inp.style.boxShadow = '0 0 0 3px rgba(212,160,23,0.1)';
+  setTimeout(() => { inp.style.borderColor = ''; inp.style.boxShadow = ''; }, 1800);
   document.getElementById('stay-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
