@@ -1030,6 +1030,21 @@ footer p:last-child { font-size: 12px; opacity: .65; }
       </div>
     </div>
 
+    <div id="hotel-notice-box" style="
+  display:none;
+  background: linear-gradient(135deg, #fff8e1, #fffde7);
+  border: 2px solid #d4a017;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  font-size: 13.5px;
+  color: #5a3c00;
+  font-weight: 600;
+">
+  <strong style="color:#7a0000;">📢 Notice from HOTEL:</strong>
+  <div id="hotel-notice-text" style="margin-top:6px;"></div>
+</div>
+
     <!-- Stay Summary -->
     <div class="stay-summary" id="stay-summary">
       <div class="s-row"><span>Room Type</span><span class="sv" id="s-room">—</span></div>
@@ -2316,12 +2331,20 @@ async function loadBlockedDates() {
   try {
     const res = await fetch('https://harshdeep-api.vercel.app/api/blocked-dates?hotel=raj-garden');
 
-    if (!res.ok) {
-      throw new Error("API not reachable");
-    }
+    if (!res.ok) throw new Error("API not reachable");
 
     const data = await res.json();
+
     blockedDates = data.dates || [];
+
+    // 🔹 SHOW NOTICE
+    const noteBox = document.getElementById("hotel-notice-box");
+    const noteText = document.getElementById("hotel-notice-text");
+
+    if (data.note && data.note.trim() !== "") {
+      noteText.innerText = data.note;
+      noteBox.style.display = "block";
+    }
 
     console.log("✅ Blocked dates loaded:", blockedDates);
 
