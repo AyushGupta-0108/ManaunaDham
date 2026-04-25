@@ -49,31 +49,43 @@
   --success-bg: #e6f4ec;
   --error: #c00;
   --error-bg: #fff0f0;
-  --shadow: 0 4px 24px rgba(122,0,0,0.10);
-  --shadow-lg: 0 8px 40px rgba(122,0,0,0.18);
+  --shadow: 0 4px 24px rgba(122,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(122,0,0,0.15);
+  --radius: 14px;
+  --transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body { font-family: 'Segoe UI', Georgia, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
+/* PAGE ENTRY ANIMATION */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+.fade-up { animation: fadeUp 0.5s cubic-bezier(0.4,0,0.2,1) both; }
+.fade-up-1 { animation-delay: 0.05s; }
+.fade-up-2 { animation-delay: 0.1s; }
+.fade-up-3 { animation-delay: 0.18s; }
+
 /* HEADER */
-header { background: var(--maroon); color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+header { background: var(--maroon); color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(0,0,0,0.25); backdrop-filter: blur(8px); }
 .topbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
 .brand img { height: 44px; }
 .brand-text strong { font-size: 17px; display: block; }
 .brand-text span { font-size: 12px; opacity: .85; }
 nav { display: flex; gap: 20px; align-items: center; }
-nav a { color: white; text-decoration: none; font-weight: 600; font-size: 14px; padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .2s; }
-nav a:hover { border-color: var(--gold-light); }
+nav a { color: white; text-decoration: none; font-weight: 600; font-size: 14px; padding: 6px 0; border-bottom: 2px solid transparent; transition: var(--transition); }
+nav a:hover { border-color: var(--gold-light); color: var(--gold-light); }
 .menu-btn { display: none; font-size: 24px; cursor: pointer; background: none; border: none; color: white; }
 .mobile-menu { display: none; flex-direction: column; background: var(--maroon-dark); }
-.mobile-menu a { padding: 12px 20px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
+.mobile-menu a { padding: 12px 20px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; transition: background 0.15s; }
+.mobile-menu a:hover { background: rgba(255,255,255,0.08); }
 
 /* CTA BAR */
-.cta-bar { background: white; padding: 18px 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
-.cta-btn { background: var(--maroon); color: white; padding: 13px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: all .2s; border: none; cursor: pointer; }
-.cta-btn:hover { background: var(--maroon-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(122,0,0,0.3); }
+.cta-bar { background: white; padding: 18px 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
+.cta-btn { background: var(--maroon); color: white; padding: 13px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); border: none; cursor: pointer; letter-spacing: 0.01em; }
+.cta-btn:hover { background: var(--maroon-dark); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(122,0,0,0.28); }
+.cta-btn:active { transform: translateY(0); }
 .cta-btn.outline { background: transparent; color: var(--maroon); border: 2px solid var(--maroon); }
 .cta-btn.outline:hover { background: var(--maroon); color: white; }
 .cta-btn.green { background: var(--green); }
@@ -83,7 +95,8 @@ nav a:hover { border-color: var(--gold-light); }
 
 /* LAYOUT */
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section { background: white; padding: 40px; margin-bottom: 28px; border-radius: 14px; box-shadow: var(--shadow); }
+.section { background: white; padding: 40px; margin-bottom: 28px; border-radius: var(--radius); box-shadow: var(--shadow); transition: box-shadow 0.2s; }
+.section:hover { box-shadow: var(--shadow-lg); }
 .section h2 { color: var(--maroon); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 6px; margin-bottom: 24px; font-size: 26px; }
 .section-sub { color: var(--text-muted); font-size: 14px; margin-top: -18px; margin-bottom: 20px; }
 
@@ -104,12 +117,14 @@ nav a:hover { border-color: var(--gold-light); }
 /* BOOKING CHOICE BANNER */
 .booking-choice-banner {
   background: white;
-  border-radius: 14px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   margin-bottom: 28px;
   overflow: hidden;
   border: 2px solid var(--border);
+  transition: var(--transition);
 }
+.booking-choice-banner:hover { box-shadow: var(--shadow-lg); }
 .bcb-header {
   background: linear-gradient(135deg, var(--maroon), var(--maroon-dark));
   color: white; padding: 20px 30px; text-align: center;
@@ -121,7 +136,7 @@ nav a:hover { border-color: var(--gold-light); }
   padding: 28px 24px;
   text-align: center;
   cursor: pointer;
-  transition: background .2s;
+  transition: var(--transition);
   text-decoration: none;
   display: block;
 }
@@ -137,15 +152,16 @@ nav a:hover { border-color: var(--gold-light); }
   font-size: 13px; font-weight: 700; color: white;
 }
 .bcb-badge.maroon { background: var(--maroon); }
-.bcb-badge.wa { background: var(--wa-green); }
+.bcb-badge.wa { background: #e67e00; }
 
 /* BOOKING WIDGET */
-#booking-section { background: white; border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 28px; }
+#booking-section { background: white; border-radius: var(--radius); box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 28px; }
 .booking-header { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); color: white; padding: 30px 40px; text-align: center; }
 .booking-header h2 { font-size: 28px; margin-bottom: 6px; color: white; border: none; display: block; }
 .booking-header p { opacity: .9; font-size: 15px; }
 .booking-body { padding: 36px 40px; }
-.step-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.step-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.step-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
 /* How booking works explainer */
 .booking-explainer {
@@ -164,15 +180,15 @@ nav a:hover { border-color: var(--gold-light); }
 
 /* Room Cards in Booking */
 .room-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
-.room-option { border: 2px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all .2s; position: relative; }
-.room-option:hover { border-color: var(--maroon-light); background: #fff9f0; }
+.room-option { border: 2px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: var(--transition); position: relative; }
+.room-option:hover { border-color: var(--maroon-light); background: #fff9f0; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(122,0,0,0.1); }
 .room-option.selected { border-color: var(--maroon); background: #fff3e0; box-shadow: 0 0 0 3px rgba(122,0,0,0.08); }
 .room-option .room-name { font-size: 16px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
 .room-option .room-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
 .room-option .room-price { font-size: 22px; font-weight: 800; color: var(--green); }
 .room-option .room-price span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
 .room-features-mini { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-.rft { background: var(--bg); padding: 3px 8px; border-radius: 10px; font-size: 11px; color: var(--maroon); }
+.rft { background: var(--bg); padding: 3px 8px; border-radius: 10px; font-size: 11px; color: var(--maroon); border: 1px solid var(--border); }
 .selected-badge { display: none; position: absolute; top: 10px; right: 10px; background: var(--maroon); color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
 .room-option.selected .selected-badge { display: block; }
 
@@ -181,12 +197,12 @@ nav a:hover { border-color: var(--gold-light); }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 .form-group label { font-size: 13px; font-weight: 600; color: var(--text); }
 .form-group label .req { color: var(--error); }
-.form-group input, .form-group select { padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 15px; font-family: inherit; transition: border-color .2s; background: white; color: var(--text); }
-.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--maroon); }
+.form-group input, .form-group select { padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 15px; font-family: inherit; transition: var(--transition); background: white; color: var(--text); }
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--maroon); box-shadow: 0 0 0 3px rgba(122,0,0,0.08); }
 .form-group input.err, .form-group select.err { border-color: var(--error); background: #fff8f8; }
 
 /* Stay Summary */
-.stay-summary { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; display: none; }
+.stay-summary { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; display: none; animation: fadeUp 0.3s ease; }
 .stay-summary.show { display: block; }
 .s-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; color: var(--text-muted); }
 .s-row .sv { font-weight: 600; color: var(--text); }
@@ -201,17 +217,18 @@ nav a:hover { border-color: var(--gold-light); }
 
 /* Coupon */
 .coupon-row { display: flex; gap: 10px; margin-bottom: 8px; }
-.coupon-row input { flex: 1; padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit; text-transform: uppercase; letter-spacing: 1px; transition: border-color .2s; }
-.coupon-row input:focus { outline: none; border-color: var(--gold); }
-.coupon-btn { padding: 12px 20px; background: var(--gold); color: var(--maroon-dark); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px; transition: all .2s; }
-.coupon-btn:hover { background: var(--gold-light); }
-.coupon-msg { font-size: 13px; margin-bottom: 16px; padding: 8px 12px; border-radius: 6px; display: none; }
+.coupon-row input { flex: 1; padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+.coupon-row input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,160,23,0.1); }
+.coupon-btn { padding: 12px 20px; background: var(--gold); color: var(--maroon-dark); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px; transition: var(--transition); }
+.coupon-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+.coupon-msg { font-size: 13px; margin-bottom: 16px; padding: 8px 12px; border-radius: 6px; display: none; animation: fadeUp 0.25s ease; }
 .coupon-msg.ok { display: block; background: var(--success-bg); color: var(--success); }
 .coupon-msg.no { display: block; background: var(--error-bg); color: var(--error); }
 
 /* Pay Button */
-.pay-btn { width: 100%; padding: 18px; background: var(--maroon); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.pay-btn { width: 100%; padding: 18px; background: var(--maroon); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: 700; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
 .pay-btn:hover { background: var(--maroon-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(122,0,0,0.3); }
+.pay-btn:active { transform: translateY(0); }
 .secure-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
 /* Divider */
@@ -224,60 +241,85 @@ nav a:hover { border-color: var(--gold-light); }
   content: ''; flex: 1; height: 1px; background: var(--border);
 }
 
-/* WHATSAPP BOOKING SECTION */
+/* =====================
+   WHATSAPP — FALLBACK
+   ===================== */
 #wa-booking-section {
   background: white;
-  border-radius: 14px;
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   overflow: hidden;
   margin-bottom: 28px;
-  border: 2px solid rgba(37,211,102,0.3);
+  border: 2px solid #f5d6a0;
 }
 .wa-booking-header {
-  background: linear-gradient(135deg, #1a9e50, var(--wa-dark));
+  background: linear-gradient(135deg, #7a4500, #5c3200);
   color: white; padding: 28px 40px; text-align: center;
 }
-.wa-booking-header h2 { font-size: 26px; margin-bottom: 6px; }
-.wa-booking-header p { opacity: .9; font-size: 14px; }
+.wa-booking-header h2 { font-size: 24px; margin-bottom: 6px; }
+.wa-booking-header p { opacity: .9; font-size: 14px; max-width: 540px; margin: 0 auto; line-height: 1.6; }
+.wa-fallback-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.3);
+  color: white; padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 700;
+  margin-bottom: 12px; letter-spacing: 0.03em;
+}
 .wa-booking-body { padding: 32px 40px; }
+.wa-fallback-notice {
+  background: #fff8e6;
+  border: 2px solid #e8a800;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.wa-fallback-notice .wfn-icon { font-size: 26px; flex-shrink: 0; }
+.wa-fallback-notice .wfn-title { font-weight: 700; font-size: 14px; color: #7a4500; margin-bottom: 6px; }
+.wa-fallback-notice .wfn-text { font-size: 13px; color: #5c3200; line-height: 1.7; }
+.wa-fallback-notice .wfn-text strong { color: #7a0000; }
 .wa-steps {
   display: flex; gap: 8px; align-items: flex-start;
-  background: #f0fdf4; border-radius: 10px; padding: 14px 18px;
-  margin-bottom: 24px; border: 1px solid rgba(37,211,102,0.25);
+  background: #fdf5e6; border-radius: 10px; padding: 14px 18px;
+  margin-bottom: 24px; border: 1px solid #e8d5b0;
 }
 .wa-steps ol { padding-left: 18px; }
-.wa-steps li { font-size: 13px; color: #2d6a4f; margin-bottom: 4px; line-height: 1.5; }
+.wa-steps li { font-size: 13px; color: #5c3200; margin-bottom: 4px; line-height: 1.5; }
 
 /* WhatsApp Room Selector */
 .wa-room-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-.wa-room-option { border: 2px solid var(--border); border-radius: 12px; padding: 18px; cursor: pointer; transition: all .2s; position: relative; }
-.wa-room-option:hover { border-color: var(--wa-green); background: #f0fdf4; }
-.wa-room-option.selected { border-color: var(--wa-green); background: #e8fdf0; box-shadow: 0 0 0 3px rgba(37,211,102,0.12); }
-.wa-room-option .room-name { font-size: 15px; font-weight: 700; color: #0a5c2a; margin-bottom: 3px; }
+.wa-room-option { border: 2px solid var(--border); border-radius: 12px; padding: 18px; cursor: pointer; transition: var(--transition); position: relative; }
+.wa-room-option:hover { border-color: #e8a800; background: #fffbf0; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(200,120,0,0.1); }
+.wa-room-option.selected { border-color: #e8a800; background: #fff8e6; box-shadow: 0 0 0 3px rgba(232,168,0,0.1); }
+.wa-room-option .room-name { font-size: 15px; font-weight: 700; color: #7a4500; margin-bottom: 3px; }
 .wa-room-option .room-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
 .wa-room-option .room-price { font-size: 20px; font-weight: 800; color: var(--green); }
 .wa-room-option .room-price span { font-size: 12px; font-weight: 400; color: var(--text-muted); }
-.wa-sel-badge { display: none; position: absolute; top: 10px; right: 10px; background: var(--wa-green); color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+.wa-sel-badge { display: none; position: absolute; top: 10px; right: 10px; background: #e8a800; color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
 .wa-room-option.selected .wa-sel-badge { display: block; }
 .wa-send-btn {
   width: 100%; padding: 18px; background: var(--wa-green); color: white;
-  border: none; border-radius: 10px; font-size: 18px; font-weight: 700;
-  cursor: pointer; transition: all .2s;
+  border: none; border-radius: 10px; font-size: 17px; font-weight: 700;
+  cursor: pointer; transition: var(--transition);
   display: flex; align-items: center; justify-content: center; gap: 10px;
 }
-.wa-send-btn:hover { background: var(--wa-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+.wa-send-btn:hover { background: var(--wa-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.35); }
+.wa-send-btn:active { transform: translateY(0); }
 .wa-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
 /* Gallery */
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
-.gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform .3s, box-shadow .3s; display: block; }
+.gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: var(--transition); display: block; }
 .gallery img:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 .room-section-title { color: var(--maroon); font-size: 17px; font-weight: 700; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
 
 /* Room Cards */
 .room-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 20px 0; }
-.room-card { background: var(--bg); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
-.room-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.room-card { background: var(--bg); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); transition: var(--transition); }
+.room-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.room-card img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.4s ease; }
+.room-card:hover img { transform: scale(1.04); }
 .rc-body { padding: 22px; }
 .rc-body h3 { color: var(--maroon); font-size: 20px; margin-bottom: 4px; }
 .rc-price { font-size: 26px; font-weight: 800; color: var(--green); margin: 12px 0; }
@@ -290,14 +332,16 @@ nav a:hover { border-color: var(--gold-light); }
 
 /* Info */
 .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 18px 0; }
-.info-card { background: var(--bg); padding: 18px; border-radius: 10px; border-left: 4px solid var(--maroon); }
+.info-card { background: var(--bg); padding: 18px; border-radius: 10px; border-left: 4px solid var(--maroon); transition: var(--transition); }
+.info-card:hover { background: #fff3e0; border-left-color: var(--gold); transform: translateX(2px); }
 .info-card h3 { color: var(--maroon); font-size: 15px; margin-bottom: 8px; }
 .info-card p { font-size: 14px; color: var(--text-muted); margin: 3px 0; }
 .info-card p strong { color: var(--text); }
 
 /* Amenities */
 .amenity-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
-.amenity { background: var(--maroon); color: white; padding: 9px 16px; border-radius: 24px; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; }
+.amenity { background: var(--maroon); color: white; padding: 9px 16px; border-radius: 24px; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; transition: var(--transition); cursor: default; }
+.amenity:hover { background: var(--maroon-dark); transform: translateY(-1px); }
 
 /* Offer Box */
 .offer-box { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border: 2px solid #81c784; border-radius: 12px; padding: 20px 24px; margin-top: 20px; }
@@ -305,9 +349,10 @@ nav a:hover { border-color: var(--gold-light); }
 
 /* Image Modal */
 .modal { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
-.modal.open { display: flex; }
+.modal.open { display: flex; animation: fadeUp 0.2s ease; }
 .modal img { max-width: 95%; max-height: 92%; object-fit: contain; border-radius: 4px; }
-.modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 42px; cursor: pointer; line-height: 1; }
+.modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 42px; cursor: pointer; line-height: 1; transition: color 0.15s; }
+.modal-close:hover { color: var(--gold-light); }
 
 /* Receipt Modal */
 .receipt-overlay { display: none; position: fixed; z-index: 10000; inset: 0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 20px; overflow-y: auto; }
@@ -335,7 +380,7 @@ nav a:hover { border-color: var(--gold-light); }
 .rnote { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #5a4000; margin-top: 16px; line-height: 1.7; }
 .rnote strong { display: block; margin-bottom: 4px; color: var(--maroon); font-size: 13px; }
 .ract { display: flex; gap: 10px; padding: 4px 28px 24px; flex-wrap: wrap; }
-.ract button { flex: 1; min-width: 120px; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .2s; }
+.ract button { flex: 1; min-width: 120px; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: var(--transition); }
 .rbtn-print { background: var(--maroon); color: white; border: none; }
 .rbtn-print:hover { background: var(--maroon-dark); }
 .rbtn-close { background: white; color: var(--text); border: 2px solid var(--border); }
@@ -388,7 +433,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 .hotel-strip-left h1 { font-size: 22px; font-weight: 800; color: var(--maroon); font-family: Georgia, serif; margin-bottom: 3px; }
 .hotel-strip-left p { font-size: 13px; color: var(--text-muted); }
 .hotel-strip-badges { display: flex; gap: 8px; flex-wrap: wrap; }
-.hs-badge { background: var(--bg); border: 1px solid var(--border); padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 600; color: var(--maroon); }
+.hs-badge { background: var(--bg); border: 1px solid var(--border); padding: 5px 12px; border-radius: 16px; font-size: 12px; font-weight: 600; color: var(--maroon); transition: var(--transition); }
+.hs-badge:hover { background: #fff3e0; border-color: var(--maroon); }
 
 /* PHOTO HERO */
 .photo-hero { background: #1a0000; position: relative; }
@@ -396,18 +442,65 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 .photo-hero-grid img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; display: block; transition: opacity .2s; }
 .photo-hero-grid img:hover { opacity: .88; }
 .photo-hero-grid img:first-child { grid-row: 1 / 3; }
-.photo-hero-cta { position: absolute; bottom: 16px; right: 16px; background: white; color: var(--maroon); padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; border: 2px solid var(--maroon); cursor: pointer; transition: all .2s; display: flex; align-items: center; gap: 6px; }
+.photo-hero-cta { position: absolute; bottom: 16px; right: 16px; background: white; color: var(--maroon); padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; border: 2px solid var(--maroon); cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 6px; }
 .photo-hero-cta:hover { background: var(--maroon); color: white; }
 .photo-count-badge { position: absolute; bottom: 16px; left: 16px; background: rgba(0,0,0,0.65); color: white; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 6px; backdrop-filter: blur(4px); }
 
-@media(max-width: 768px) {
-  .photo-hero-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 160px; }
-  .photo-hero-grid img:first-child { grid-row: 1; }
-  .hotel-strip { padding: 14px 16px; }
-  .hotel-strip-left h1 { font-size: 18px; }
+/* ==========================
+   RAZORPAY CONFIRM DIALOG
+   ========================== */
+.rzp-confirm-overlay {
+  display: none; position: fixed; z-index: 10001; inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center; align-items: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
 }
+.rzp-confirm-overlay.open { display: flex; }
+.rzp-confirm-box {
+  background: white; border-radius: 16px; width: 100%; max-width: 380px;
+  overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  animation: slideUp 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+.rzp-confirm-header {
+  background: linear-gradient(135deg, #3a3a3a, #222);
+  color: white; padding: 24px; text-align: center;
+}
+.rzp-confirm-header .rzp-icon { font-size: 32px; margin-bottom: 8px; }
+.rzp-confirm-header h3 { font-size: 18px; margin-bottom: 4px; }
+.rzp-confirm-header p { font-size: 13px; opacity: .8; }
+.rzp-confirm-body { padding: 24px; }
+.rzp-rec-pill {
+  display: flex; align-items: center; gap: 10px;
+  background: #f0fdf4; border: 1.5px solid #81c784;
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 16px;
+}
+.rzp-rec-pill .rp-icon { font-size: 22px; flex-shrink: 0; }
+.rzp-rec-pill .rp-title { font-size: 13px; font-weight: 700; color: #1a5c2a; margin-bottom: 2px; }
+.rzp-rec-pill .rp-text { font-size: 12px; color: #2d5a1e; }
+.rzp-confirm-actions { display: flex; flex-direction: column; gap: 10px; }
+.rzp-btn-qr {
+  width: 100%; padding: 14px; border: none; border-radius: 10px;
+  background: linear-gradient(135deg, #1a7a3a, #0f5c2a);
+  color: white; font-size: 15px; font-weight: 700; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: var(--transition);
+}
+.rzp-btn-qr:hover { background: linear-gradient(135deg, #145c2e, #0a4520); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(26,122,58,0.3); }
+.rzp-btn-continue {
+  width: 100%; padding: 12px; border: 2px solid var(--border); border-radius: 10px;
+  background: white; color: var(--text); font-size: 14px; font-weight: 600; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: var(--transition);
+}
+.rzp-btn-continue:hover { background: #f8f0e0; border-color: var(--maroon); color: var(--maroon); }
+.rzp-btn-cancel {
+  width: 100%; padding: 10px; border: none;
+  background: transparent; color: var(--text-muted); font-size: 13px; cursor: pointer;
+  transition: color 0.15s;
+}
+.rzp-btn-cancel:hover { color: var(--text); }
 
-/* Responsive */
 @media(max-width: 768px) {
   nav { display: none; }
   .menu-btn { display: block; }
@@ -427,6 +520,10 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   .bcb-option:first-child { border-right: none; border-bottom: 2px solid var(--border); }
   .room-card-btns { flex-direction: column; }
   .trust-bar { gap: 10px; font-size: 12px; }
+  .photo-hero-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 160px; }
+  .photo-hero-grid img:first-child { grid-row: 1; }
+  .hotel-strip { padding: 14px 16px; }
+  .hotel-strip-left h1 { font-size: 18px; }
 }
 </style>
 </head>
@@ -446,7 +543,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <a href="index.html">Home</a>
       <a href="accommodations.html">All Hotels</a>
       <a href="#booking-section">Book Online</a>
-      <a href="#wa-booking-section">Book on WhatsApp</a>
+      <a href="#wa-booking-section">Need Help?</a>
     </nav>
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
   </div>
@@ -454,7 +551,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     <a href="index.html">Home</a>
     <a href="accommodations.html">All Hotels</a>
     <a href="#booking-section">Book Online</a>
-    <a href="#wa-booking-section">Book on WhatsApp</a>
+    <a href="#wa-booking-section">Need Help?</a>
   </div>
 </header>
 
@@ -467,7 +564,7 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 </div>
 
 <!-- HOTEL TITLE STRIP -->
-<div class="hotel-strip">
+<div class="hotel-strip fade-up fade-up-1">
   <div class="hotel-strip-left">
     <h1>🏨 Hotel Harshdeep, Aonla</h1>
     <p>Bisauli Bypass Road · Near Naval Cold Store · 3–4 km from Manauna Dham</p>
@@ -494,29 +591,29 @@ footer p:last-child { font-size: 12px; opacity: .7; }
 </div>
 
 <!-- BOOKING CHOICE BANNER -->
-<div class="booking-choice-banner">
+<div class="booking-choice-banner fade-up fade-up-2">
   <div class="bcb-header">
     <h3>How would you like to book?</h3>
-    <p>Choose whichever option is more comfortable for you</p>
+    <p>Online payment is fast & instant — or get personal assistance on WhatsApp if needed</p>
   </div>
   <div class="bcb-options">
     <a class="bcb-option" href="#booking-section" onclick="scrollToBooking(); return false;">
       <div class="bcb-icon">💳</div>
       <h4>Book Online</h4>
-      <p>Pay just 15% advance to confirm your room. Remaining 85% paid directly at hotel on arrival. Instant digital receipt.</p>
-      <span class="bcb-badge maroon">↓ Scroll to Online Booking</span>
+      <p>Pay just 15% advance via UPI QR, Card, or Net Banking. Instant digital receipt. Remaining 85% paid at hotel on arrival.</p>
+      <span class="bcb-badge maroon">✓ Recommended — Instant</span>
     </a>
     <a class="bcb-option" href="#wa-booking-section" onclick="scrollToWA(); return false;">
-      <div class="bcb-icon"><i class="fab fa-whatsapp" style="color:#25D366;"></i></div>
-      <h4>Book via WhatsApp</h4>
-      <p>No online payment at all. Fill your details and we'll send your request directly to the hotel — pay everything at hotel.</p>
-      <span class="bcb-badge wa">↓ Scroll to WhatsApp Booking</span>
+      <div class="bcb-icon">🆘</div>
+      <h4>Need Help Paying?</h4>
+      <p>Facing trouble with online payment? Fill your details and our team will guide you step-by-step via WhatsApp to complete your booking.</p>
+      <span class="bcb-badge wa" style="background:#c47500;">↓ Payment Assistance</span>
     </a>
   </div>
 </div>
 
 <!-- ONLINE BOOKING WIDGET -->
-<div id="booking-section">
+<div id="booking-section" class="fade-up fade-up-3">
   <div class="booking-header">
     <h2>💳 Book Online — Instant Confirmation</h2>
     <p>Pay 15% advance now · Remaining 85% at hotel · Secure Razorpay</p>
@@ -600,7 +697,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
     </div>
     <div class="coupon-msg" id="coupon-msg"></div>
 
-    <button onclick="showQRPayment()" style="width:100%;padding:18px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,#1a7a3a,#0f5c2a);color:white;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;" id="qr-pay-btn">
+    <!-- QR PAY BUTTON -->
+    <button onclick="showQRPayment()" style="width:100%;padding:18px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(135deg,#1a7a3a,#0f5c2a);color:white;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;transition:all 0.22s;box-shadow:0 4px 16px rgba(26,122,58,0.25);" id="qr-pay-btn" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(26,122,58,0.35)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(26,122,58,0.25)'">
       <span style="font-size:22px;">🔥</span>
       <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
         <span id="pay-btn-text" style="font-size:16px;font-weight:700;">Pay via QR Code</span>
@@ -615,39 +713,50 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <div style="flex:1;height:1px;background:var(--border);"></div>
     </div>
 
-    <button class="pay-btn" id="pay-btn" onclick="initiatePayment()" style="background:#555;font-size:15px;padding:14px;">
+    <!-- RAZORPAY POPUP BUTTON — triggers confirmation dialog -->
+    <button class="pay-btn" id="pay-btn" onclick="askRazorpayConfirm()" style="background:#555;font-size:15px;padding:14px;">
       <i class="fa fa-lock" style="font-size:13px;"></i>
-      <span style="font-size:14px;">Direct UPI Apps / Card / Net Banking</span>
+      <span id="rzp-btn-label" style="font-size:14px;">Direct UPI Apps / Card / Net Banking</span>
     </button>
     <div class="secure-note">
       <i class="fa fa-shield-alt" style="color:var(--green)"></i>
       Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
     </div>
 
-    <div class="or-divider">Prefer no online payment?</div>
+    <div class="or-divider">Facing trouble paying online?</div>
     <div style="text-align:center;">
-      <button onclick="scrollToWA()" style="background:var(--wa-green);color:white;border:none;padding:13px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;" onmouseover="this.style.background='#128C7E'" onmouseout="this.style.background='#25D366'">
-        <i class="fab fa-whatsapp"></i> Book via WhatsApp — Pay Everything at Hotel ↓
+      <button onclick="scrollToWA()" style="background:#c47500;color:white;border:none;padding:13px 28px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:var(--transition);" onmouseover="this.style.background='#a06000'" onmouseout="this.style.background='#c47500'">
+        🆘 Get Payment Help via WhatsApp ↓
       </button>
     </div>
 
   </div>
 </div>
 
-<!-- WHATSAPP BOOKING SECTION -->
+<!-- WHATSAPP BOOKING — FALLBACK / ASSISTANCE -->
 <div id="wa-booking-section">
   <div class="wa-booking-header">
-    <h2><i class="fab fa-whatsapp"></i> Book via WhatsApp</h2>
-    <p>No online payment needed — fill details and we'll connect you to the hotel directly</p>
+    <div class="wa-fallback-badge">🆘 Payment Assistance</div>
+    <h2>Trouble Paying Online?</h2>
+    <p>If you're facing any difficulty with the online payment — wrong UPI, error screen, or just unsure — fill in your details below and our team will personally guide you to complete the booking on WhatsApp.</p>
   </div>
   <div class="wa-booking-body">
 
+    <div class="wa-fallback-notice">
+      <div class="wfn-icon">⚠️</div>
+      <div>
+        <div class="wfn-title">This is a payment assistance option, not a free booking</div>
+        <div class="wfn-text">You will still need to pay the <strong>15% advance</strong> to confirm your room — our team will guide you through the payment step-by-step on WhatsApp. If you have no trouble paying, please use the <strong>online booking form above</strong> for instant confirmation.</div>
+      </div>
+    </div>
+
     <div class="wa-steps">
-      <div style="font-size:22px; margin-right:4px;">ℹ️</div>
+      <div style="font-size:22px; margin-right:4px; flex-shrink:0;">ℹ️</div>
       <ol>
-        <li><strong>Fill in the form below</strong> (name, phone, room type, dates).</li>
-        <li>Click <strong>"Send Booking Request on WhatsApp"</strong> — WhatsApp will open with your details pre-filled.</li>
-        <li>Just hit <strong>Send</strong> in WhatsApp — the hotel will confirm and you pay everything on arrival.</li>
+        <li><strong>Fill the form below</strong> with your name, phone, room type, and dates.</li>
+        <li>Click <strong>"Send Request on WhatsApp"</strong> — WhatsApp opens with your details pre-filled.</li>
+        <li>Send the message — our team will <strong>call or WhatsApp you back</strong> and guide you through payment.</li>
+        <li>Once payment is confirmed, you'll receive your booking receipt.</li>
       </ol>
     </div>
 
@@ -706,20 +815,20 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       </div>
     </div>
 
-    <div class="stay-summary" id="wa-stay-summary" style="border-color: rgba(37,211,102,0.3); background:#f0fdf4;">
+    <div class="stay-summary" id="wa-stay-summary" style="border-color: #e8a800; background:#fffbf0;">
       <div class="s-row"><span>Room Type</span><span class="sv" id="ws-room">—</span></div>
       <div class="s-row"><span>Duration</span><span class="sv" id="ws-nights">—</span></div>
       <div class="s-row s-total"><span>Approx. Total (pay at hotel)</span><span class="sv" id="ws-total">—</span></div>
-      <div class="s-row" style="font-size:13px; color:var(--wa-dark);"><span>💬 Exact amount confirmed by hotel on WhatsApp</span><span class="sv">✓</span></div>
+      <div class="s-row" style="font-size:13px; color:#7a4500;"><span>📞 Our team will guide your payment via WhatsApp</span><span class="sv">✓</span></div>
     </div>
 
     <button class="wa-send-btn" onclick="sendWhatsAppBooking()">
       <i class="fab fa-whatsapp"></i>
-      <span>Send Booking Request on WhatsApp</span>
+      <span>Send Payment Help Request on WhatsApp</span>
     </button>
     <div class="wa-note">
       <i class="fab fa-whatsapp" style="color:var(--wa-green);font-size:14px;"></i>
-      Opens WhatsApp with your details pre-filled · Hotel: +91 78178 03342
+      Opens WhatsApp — our team will call or message you back · Hotel: +91 78178 03342
     </div>
 
   </div>
@@ -782,8 +891,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
             <button class="cta-btn green" style="width:100%;justify-content:center;font-size:14px;" onclick="selectRoom(1);scrollToBooking()">
               <i class="fa fa-calendar-check"></i> Book Online — 15% advance
             </button>
-            <button class="cta-btn wa" style="width:100%;justify-content:center;font-size:14px;" onclick="selectWARoom(1);scrollToWA()">
-              <i class="fab fa-whatsapp"></i> Book via WhatsApp
+            <button class="cta-btn" style="width:100%;justify-content:center;font-size:14px;background:#c47500;" onclick="selectWARoom(1);scrollToWA()">
+              🆘 Need Help Paying?
             </button>
           </div>
         </div>
@@ -806,8 +915,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
             <button class="cta-btn green" style="width:100%;justify-content:center;font-size:14px;" onclick="selectRoom(2);scrollToBooking()">
               <i class="fa fa-calendar-check"></i> Book Online — 15% advance
             </button>
-            <button class="cta-btn wa" style="width:100%;justify-content:center;font-size:14px;" onclick="selectWARoom(2);scrollToWA()">
-              <i class="fab fa-whatsapp"></i> Book via WhatsApp
+            <button class="cta-btn" style="width:100%;justify-content:center;font-size:14px;background:#c47500;" onclick="selectWARoom(2);scrollToWA()">
+              🆘 Need Help Paying?
             </button>
           </div>
         </div>
@@ -917,8 +1026,8 @@ footer p:last-child { font-size: 12px; opacity: .7; }
       <button class="cta-btn" style="background:var(--gold);color:var(--maroon-dark);font-size:15px;" onclick="scrollToBooking()">
         <i class="fa fa-calendar-check"></i> Book Online — 15% advance
       </button>
-      <button class="cta-btn wa" style="font-size:15px;" onclick="scrollToWA()">
-        <i class="fab fa-whatsapp"></i> Book via WhatsApp
+      <button class="cta-btn" style="background:#c47500;font-size:15px;" onclick="scrollToWA()">
+        🆘 Need Help Paying?
       </button>
     </div>
   </div>
@@ -985,17 +1094,47 @@ footer p:last-child { font-size: 12px; opacity: .7; }
   </div>
 </div>
 
+<!-- RAZORPAY CONFIRM DIALOG -->
+<div class="rzp-confirm-overlay" id="rzpConfirmOverlay">
+  <div class="rzp-confirm-box">
+    <div class="rzp-confirm-header">
+      <div class="rzp-icon">💡</div>
+      <h3>Smoother Payment Available</h3>
+      <p>QR Code scan works better than the Razorpay popup on most devices</p>
+    </div>
+    <div class="rzp-confirm-body">
+      <div class="rzp-rec-pill">
+        <div class="rp-icon">✅</div>
+        <div>
+          <div class="rp-title">QR Code is recommended</div>
+          <div class="rp-text">Open PhonePe, GPay, or Paytm → Scan QR → Done in seconds. No popups, no redirects.</div>
+        </div>
+      </div>
+      <div class="rzp-confirm-actions">
+        <button class="rzp-btn-qr" onclick="closeRzpConfirm(); showQRPayment();">
+          🔲 Pay via QR Code (Recommended)
+        </button>
+        <button class="rzp-btn-continue" onclick="closeRzpConfirm(); initiatePayment();">
+          <i class="fa fa-lock" style="font-size:12px;"></i> Yes, continue with Razorpay popup
+        </button>
+        <button class="rzp-btn-cancel" onclick="closeRzpConfirm()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <p>© 2026 ManaunaDham.org.in | Hotel Harshdeep, Aonla</p>
   <p>ManaunaDham.org.in is a privately operated pilgrim information and services platform. Not affiliated with any mandir or temple authority.</p>
 </footer>
 
 <script>
-  let qrPollingInterval = null;
+let qrPollingInterval = null;
 let qrTimerInterval   = null;
 let qrActiveId        = null;
-paymentDetected       = false;
+let paymentDetected   = false;
 const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+
 function setQRState(state) {
   ['loading','ready','checking','success'].forEach(s => {
     document.getElementById('qr-state-' + s).style.display = s === state ? 'block' : 'none';
@@ -1074,7 +1213,7 @@ function startPolling(qrId) {
       const res  = await fetch('https://harshdeep-api.vercel.app/api/check-payment?qr_id=' + qrId);
       const data = await res.json();
       if (data.paid) onQRPaymentSuccess(data);
-    } catch (e) { /* network hiccup — keep polling */ }
+    } catch (e) { /* keep polling */ }
   }, 3000);
 }
 
@@ -1130,6 +1269,15 @@ function closeQR() {
   clearInterval(qrPollingInterval);
   clearInterval(qrTimerInterval);
   document.getElementById('qr-modal').style.display = 'none';
+}
+
+/* ---- Razorpay Confirm Dialog ---- */
+function askRazorpayConfirm() {
+  if (!validate()) return;
+  document.getElementById('rzpConfirmOverlay').classList.add('open');
+}
+function closeRzpConfirm() {
+  document.getElementById('rzpConfirmOverlay').classList.remove('open');
 }
 
 let RAZORPAY_KEY = null;
@@ -1213,10 +1361,8 @@ function recalc() {
   document.getElementById('s-advance').textContent = '₹' + advAmt.toLocaleString();
   document.getElementById('s-remain').textContent  = '₹' + (finalTotal - advAmt).toLocaleString();
 
-  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
-  document.getElementById('pay-btn-text').textContent = isMobile
-    ? 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code'
-    : 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
+  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' via QR Code';
+  document.getElementById('rzp-btn-label').textContent = 'Direct UPI Apps / Card / Net Banking (₹' + advAmt.toLocaleString() + ')';
 }
 
 function applyCoupon() {
@@ -1259,13 +1405,6 @@ function validate() {
 async function initiatePayment() {
   if (!validate()) return;
 
-  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
-  if (isMobile) {
-    const useQR = confirm(
-      'For the smoothest payment experience on mobile, we recommend scanning a QR code.\n\nTap OK to pay via QR, or Cancel to try the standard payment.'
-    );
-    if (useQR) { showQRPayment(); return; }
-  }
   const name  = document.getElementById('g-name').value.trim();
   const phone = document.getElementById('g-phone').value.trim();
   const ci    = document.getElementById('g-checkin').value;
@@ -1276,7 +1415,7 @@ async function initiatePayment() {
 
   const btn = document.getElementById('pay-btn');
   btn.disabled = true;
-  document.getElementById('pay-btn-text').textContent = 'Creating order...';
+  document.getElementById('rzp-btn-label').textContent = 'Creating order...';
 
   const notes = {
     hotel_name:   'Hotel Harshdeep',
@@ -1310,12 +1449,12 @@ async function initiatePayment() {
   } catch (err) {
     alert('Could not initiate payment: ' + err.message + '\nPlease try again.');
     btn.disabled = false;
-    document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
+    document.getElementById('rzp-btn-label').textContent = 'Direct UPI Apps / Card / Net Banking (₹' + advAmt.toLocaleString() + ')';
     return;
   }
 
   btn.disabled = false;
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
+  document.getElementById('rzp-btn-label').textContent = 'Direct UPI Apps / Card / Net Banking (₹' + advAmt.toLocaleString() + ')';
 
   const options = {
     key: RAZORPAY_KEY,
@@ -1403,7 +1542,7 @@ function closeReceipt() {
   document.querySelectorAll('.room-option').forEach(el => el.classList.remove('selected'));
   document.getElementById('stay-summary').classList.remove('show');
   document.getElementById('coupon-msg').className = 'coupon-msg';
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' (15%) to Confirm Booking';
+  document.getElementById('rzp-btn-label').textContent = 'Direct UPI Apps / Card / Net Banking';
 }
 
 function selectWARoom(n) {
@@ -1464,14 +1603,14 @@ function sendWhatsAppBooking() {
   const total  = waSelRoom ? ROOMS[waSelRoom].price * waNights : 0;
   const guestsLine = guests ? '\n👥 *Guests:* ' + guests : '';
 
-  const msg = '🏨 *Booking Request — Hotel Harshdeep, Aonla*\n\n👤 *Name:* ' + name +
+  const msg = '🆘 *Payment Help Request — Hotel Harshdeep, Aonla*\n\n👤 *Name:* ' + name +
     '\n📱 *Phone:* +91 ' + phone +
     '\n🛏️ *Room:* ' + ROOMS[waSelRoom].name +
     '\n📅 *Check-in:* ' + fmtDate(ci) +
     '\n📅 *Check-out:* ' + fmtDate(co) +
     '\n🌙 *Nights:* ' + waNights + guestsLine +
-    '\n💰 *Total (pay at hotel):* ₹' + total.toLocaleString() +
-    '\n\nPlease confirm availability. 🙏\n_Sent via ManaunaDham.org.in_';
+    '\n💰 *Approx. Total:* ₹' + total.toLocaleString() +
+    '\n\nI need help completing my online payment. Please guide me. 🙏\n_Sent via ManaunaDham.org.in_';
 
   window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
@@ -1540,7 +1679,7 @@ window.addEventListener('DOMContentLoaded', () => {
 <div id="qr-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;justify-content:center;align-items:center;padding:16px;">
   <div style="background:white;border-radius:16px;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.4);display:flex;flex-direction:column;max-height:92vh;overflow-y:auto;">
 
-    <!-- Header (sticky at top) -->
+    <!-- Header -->
     <div style="background:linear-gradient(135deg,#7a0000,#4d0000);color:white;padding:20px 24px;text-align:center;position:sticky;top:0;z-index:1;border-radius:16px 16px 0 0;">
       <div style="font-size:12px;opacity:.75;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;" id="qr-modal-state-label">Generating QR code</div>
       <div style="font-size:14px;font-weight:600;margin-bottom:2px;">Hotel Harshdeep</div>
@@ -1559,7 +1698,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     <!-- State: QR Ready -->
     <div id="qr-state-ready" style="display:none;padding:20px 24px;">
-      <!-- Steps -->
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
         <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#444;">
           <div style="width:20px;height:20px;border-radius:50%;background:#7a0000;color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">1</div>
@@ -1574,7 +1712,6 @@ window.addEventListener('DOMContentLoaded', () => {
           <span>Return here — your receipt appears automatically</span>
         </div>
       </div>
-      <!-- QR Image — no crop, full image shown -->
       <div style="background:#f8f4ee;border-radius:10px;padding:14px;text-align:center;margin-bottom:12px;border:1px solid #e8d5b0;">
         <div style="width:100%;border-radius:8px;border:6px solid white;background:white;">
           <img id="qr-img" style="width:100%;display:block;">
@@ -1591,8 +1728,8 @@ window.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
       <div style="font-size:11px;color:#888;text-align:center;margin-bottom:8px;">Page checks automatically once payment is done</div>
-      <button onclick="manualCheckPayment()" style="width:100%;padding:11px;background:#f0fdf4;border:1.5px solid #81c784;color:#1a5c2a;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px;">✅ I've paid — check now</button>
-      <button onclick="cancelQR()" style="width:100%;padding:10px;background:transparent;border:1px solid #ddd;color:#888;border-radius:8px;font-size:13px;cursor:pointer;">Cancel</button>
+      <button onclick="manualCheckPayment()" style="width:100%;padding:11px;background:#f0fdf4;border:1.5px solid #81c784;color:#1a5c2a;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:8px;transition:all 0.2s;" onmouseover="this.style.background='#dcf5e7'" onmouseout="this.style.background='#f0fdf4'">✅ I've paid — check now</button>
+      <button onclick="cancelQR()" style="width:100%;padding:10px;background:transparent;border:1px solid #ddd;color:#888;border-radius:8px;font-size:13px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='#bbb';this.style.color='#555'" onmouseout="this.style.borderColor='#ddd';this.style.color='#888'">Cancel</button>
     </div>
 
     <!-- State: Checking -->
