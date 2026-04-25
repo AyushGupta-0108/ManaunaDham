@@ -127,7 +127,7 @@ header {
 main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
 
 /* ── STAT CARDS ── */
-.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 32px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px; }
 .stat-card {
   background: white; border-radius: var(--radius);
   padding: 20px 22px;
@@ -141,6 +141,30 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
 .stat-card .label { font-size: 12px; color: var(--text-muted); font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 8px; }
 .stat-card .value { font-size: 28px; font-weight: 800; color: var(--maroon); font-family: 'Lora', serif; }
 .stat-card .sub   { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+/* ── OWNER NOTE CARD ── */
+.note-card {
+  background: white; border-radius: var(--radius);
+  padding: 24px 28px; margin-bottom: 20px;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+}
+.note-card h2 {
+  font-family: 'Lora', serif; font-size: 17px; color: var(--maroon);
+  margin-bottom: 6px; display: flex; align-items: center; gap: 8px;
+}
+.note-card p { font-size: 12.5px; color: var(--text-muted); margin-bottom: 13px; }
+.note-textarea {
+  width: 100%; padding: 12px 14px;
+  border: 2px solid var(--border); border-radius: 10px;
+  font-size: 14px; font-family: 'DM Sans', sans-serif;
+  resize: vertical; transition: border-color 0.2s; line-height: 1.6;
+  min-height: 70px;
+}
+.note-textarea:focus { outline: none; border-color: var(--maroon); box-shadow: 0 0 0 3px rgba(122,0,0,0.07); }
+.note-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.note-count { font-size: 12px; color: var(--text-muted); }
+.note-hint  { font-size: 11.5px; color: var(--text-muted); }
 
 /* ── LEGEND ── */
 .legend-bar {
@@ -159,7 +183,6 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
 .legend-dot.blocked   { background: #ffe0e0; border: 2px solid var(--red); }
 .legend-dot.today     { background: #fff3cd; border: 2px solid var(--gold); }
 .legend-dot.past      { background: #f0f0f0; border: 2px solid #ccc; }
-.legend-dot.partial   { background: linear-gradient(135deg, #ffe0e0 50%, #e8fdf0 50%); border: 2px solid #ccc; }
 
 /* ── QUICK ACTIONS ── */
 .quick-actions {
@@ -266,7 +289,6 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
   position: absolute; top: 1px; right: 2px;
   font-size: 8px; color: var(--red); opacity: .6;
 }
-.cal-day.selecting { background: #fff3e0 !important; border-color: var(--gold) !important; }
 
 .cal-footer {
   padding: 10px 16px 14px;
@@ -427,6 +449,19 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
     </div>
   </div>
 
+  <!-- OWNER NOTE -->
+  <div class="note-card">
+    <h2><i class="fa fa-sticky-note" style="color:var(--gold);"></i> Owner Note <span style="font-size:11px;font-weight:400;color:var(--text-muted);margin-left:4px;">(shown as a banner to customers on booking page)</span></h2>
+    <p>Type a short notice for guests — e.g. <em>"Ground floor rooms fully booked today"</em> or <em>"Festival period — limited rooms available"</em>. Leave blank to hide it.</p>
+    <textarea class="note-textarea" id="owner-note-input" maxlength="300" rows="2"
+      placeholder="E.g. Ground floor rooms fully booked. Only Deluxe rooms available today."
+      oninput="onNoteInput()"></textarea>
+    <div class="note-footer">
+      <span class="note-count" id="note-char-count">0 / 300 characters</span>
+      <span class="note-hint">📌 Saves when you click <strong>Save Changes</strong></span>
+    </div>
+  </div>
+
   <!-- LEGEND -->
   <div class="legend-bar">
     <div class="legend-item"><div class="legend-dot available"></div> Available (click to block)</div>
@@ -478,9 +513,7 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
   <!-- CALENDARS -->
   <div class="calendars-section">
     <h2><i class="fa fa-calendar-alt" style="font-size:18px;"></i> Click any date to block or unblock</h2>
-    <div class="calendars-grid" id="calendars-grid">
-      <!-- calendars injected by JS -->
-    </div>
+    <div class="calendars-grid" id="calendars-grid"></div>
   </div>
 
   <!-- BLOCKED LIST -->
@@ -506,25 +539,16 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
 <div id="toast-container"></div>
 
 <script>
-// ══════════════════════════════════════════════
-// CONFIG — edit these to match your setup
-// ══════════════════════════════════════════════
 const API_BASE     = 'https://harshdeep-api.vercel.app/api/blocked-dates';
 const HOTEL_ID     = 'raj-garden';
-const ADMIN_PASS   = 'rajgarden2024';   // ← change this to your password
-const MONTHS_AHEAD = 4;                 // how many months to show
+const ADMIN_PASS   = 'rajgarden2024';
+const MONTHS_AHEAD = 4;
 
-// ══════════════════════════════════════════════
-// STATE
-// ══════════════════════════════════════════════
-let blockedDates   = new Set();   // strings: "YYYY-MM-DD"
-let savedDates     = new Set();   // last synced server state
+let blockedDates   = new Set();
+let savedDates     = new Set();
 let hasUnsaved     = false;
-let calendarOffset = 0;           // months offset for calendar nav
 
-// ══════════════════════════════════════════════
-// AUTH
-// ══════════════════════════════════════════════
+// ── AUTH ──────────────────────────────────────────────────────────────────────
 function attemptLogin() {
   const val = document.getElementById('login-input').value;
   if (val === ADMIN_PASS) {
@@ -538,14 +562,9 @@ function attemptLogin() {
   }
 }
 document.getElementById('login-input').addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
-function logout() {
-  sessionStorage.removeItem('rg_admin');
-  location.reload();
-}
+function logout() { sessionStorage.removeItem('rg_admin'); location.reload(); }
 
-// ══════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════
+// ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
   if (sessionStorage.getItem('rg_admin')) {
     document.getElementById('login-screen').style.display = 'none';
@@ -560,9 +579,7 @@ window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('range-end').min   = today;
 });
 
-// ══════════════════════════════════════════════
-// API
-// ══════════════════════════════════════════════
+// ── API ───────────────────────────────────────────────────────────────────────
 function setSyncBadge(state) {
   const b = document.getElementById('sync-badge');
   if (state === 'ok')   { b.className = 'sync-badge ok';   b.innerHTML = '<i class="fa fa-check"></i> Synced'; }
@@ -577,7 +594,10 @@ async function reloadDates() {
     const data = await res.json();
     blockedDates = new Set(data.dates || []);
     savedDates   = new Set(data.dates || []);
-    hasUnsaved   = false;
+    // Load owner note
+    const noteEl = document.getElementById('owner-note-input');
+    if (noteEl) { noteEl.value = data.note || ''; updateNoteCount(); }
+    hasUnsaved = false;
     setSyncBadge('ok');
     renderCalendars();
     renderBlockedList();
@@ -594,13 +614,14 @@ async function saveChanges() {
   setSyncBadge('busy');
   document.getElementById('save-btn').disabled = true;
   try {
+    const note = document.getElementById('owner-note-input')?.value.trim() || '';
     const res = await fetch(API_BASE, {
       method:  'POST',
       headers: {
         'Content-Type':  'application/json',
         'Authorization': `Bearer ${ADMIN_PASS}`,
       },
-      body: JSON.stringify({ hotel: HOTEL_ID, dates: [...blockedDates] }),
+      body: JSON.stringify({ hotel: HOTEL_ID, dates: [...blockedDates], note }),
     });
     if (!res.ok) throw new Error('Save failed');
     savedDates = new Set(blockedDates);
@@ -616,9 +637,15 @@ async function saveChanges() {
   }
 }
 
-// ══════════════════════════════════════════════
-// TOGGLE DATE
-// ══════════════════════════════════════════════
+// ── NOTE HELPERS ──────────────────────────────────────────────────────────────
+function updateNoteCount() {
+  const el    = document.getElementById('owner-note-input');
+  const count = document.getElementById('note-char-count');
+  if (el && count) count.textContent = el.value.length + ' / 300 characters';
+}
+function onNoteInput() { updateNoteCount(); markUnsaved(); }
+
+// ── TOGGLE DATE ───────────────────────────────────────────────────────────────
 function toggleDate(dateStr) {
   if (isPast(dateStr)) return;
   if (blockedDates.has(dateStr)) {
@@ -643,10 +670,8 @@ function markUnsaved() {
 function discardChanges() {
   blockedDates = new Set(savedDates);
   hasUnsaved   = false;
-  updateSaveBar();
-  renderCalendars();
-  renderBlockedList();
-  updateStats();
+  // Also revert note from server
+  reloadDates();
   toast('Changes discarded — reverted to saved state.', 'info');
 }
 
@@ -661,9 +686,7 @@ function clearAllBlocked() {
   toast('All dates cleared — remember to Save!', 'info');
 }
 
-// ══════════════════════════════════════════════
-// RANGE PICKER
-// ══════════════════════════════════════════════
+// ── RANGE PICKER ──────────────────────────────────────────────────────────────
 function showRangePicker() { document.getElementById('range-section').style.display = 'block'; document.getElementById('range-section').scrollIntoView({behavior:'smooth',block:'center'}); }
 function hideRangePicker() { document.getElementById('range-section').style.display = 'none'; }
 
@@ -688,9 +711,7 @@ function applyRange() {
   hideRangePicker();
 }
 
-// ══════════════════════════════════════════════
-// CALENDARS RENDER
-// ══════════════════════════════════════════════
+// ── CALENDARS RENDER ──────────────────────────────────────────────────────────
 function renderCalendars() {
   const grid = document.getElementById('calendars-grid');
   grid.innerHTML = '';
@@ -730,14 +751,12 @@ function buildCalendar(monthDate) {
   const daysGrid = widget.querySelector(`#caldays-${year}-${month}`);
   const firstDay = new Date(year, month, 1).getDay();
 
-  // Empty cells before first day
   for (let i = 0; i < firstDay; i++) {
     const empty = document.createElement('div');
     empty.className = 'cal-day empty';
     daysGrid.appendChild(empty);
   }
 
-  // Days
   const daysInMonth = getDaysInMonth(year, month);
   for (let d = 1; d <= daysInMonth; d++) {
     const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -758,9 +777,7 @@ function buildCalendar(monthDate) {
     dayEl.className = cls;
     dayEl.title = past ? 'Past date' : (blocked ? 'Click to unblock' : 'Click to block (fully booked)');
 
-    if (!past) {
-      dayEl.addEventListener('click', () => toggleDate(dateStr));
-    }
+    if (!past) dayEl.addEventListener('click', () => toggleDate(dateStr));
     daysGrid.appendChild(dayEl);
   }
 
@@ -775,9 +792,7 @@ function getMonthBlockedCount(year, month) {
 }
 function getDaysInMonth(year, month) { return new Date(year, month + 1, 0).getDate(); }
 
-// ══════════════════════════════════════════════
-// BLOCKED LIST
-// ══════════════════════════════════════════════
+// ── BLOCKED LIST ──────────────────────────────────────────────────────────────
 function renderBlockedList() {
   const container = document.getElementById('blocked-list');
   const sorted    = [...blockedDates].filter(d => !isPast(d)).sort();
@@ -800,30 +815,22 @@ function renderBlockedList() {
   `).join('');
 }
 
-// ══════════════════════════════════════════════
-// STATS
-// ══════════════════════════════════════════════
+// ── STATS ─────────────────────────────────────────────────────────────────────
 function updateStats() {
   const today = new Date();
   const end   = new Date(); end.setDate(end.getDate() + 90);
   let blocked = 0;
-  const all   = blockedDates;
-  all.forEach(d => {
+  blockedDates.forEach(d => {
     const dt = new Date(d);
     if (dt >= today && dt <= end) blocked++;
   });
-  document.getElementById('stat-blocked').textContent    = blocked;
-  document.getElementById('stat-available').textContent  = 90 - blocked;
-
-  const upcoming = [...all].filter(d => !isPast(d)).sort();
-  document.getElementById('stat-next').textContent = upcoming.length > 0
-    ? fmtDateShort(upcoming[0])
-    : 'None';
+  document.getElementById('stat-blocked').textContent   = blocked;
+  document.getElementById('stat-available').textContent = 90 - blocked;
+  const upcoming = [...blockedDates].filter(d => !isPast(d)).sort();
+  document.getElementById('stat-next').textContent = upcoming.length > 0 ? fmtDateShort(upcoming[0]) : 'None';
 }
 
-// ══════════════════════════════════════════════
-// SAVE BAR
-// ══════════════════════════════════════════════
+// ── SAVE BAR ──────────────────────────────────────────────────────────────────
 function updateSaveBar() {
   const bar = document.getElementById('save-bar');
   if (hasUnsaved) {
@@ -835,9 +842,7 @@ function updateSaveBar() {
   }
 }
 
-// ══════════════════════════════════════════════
-// HELPERS
-// ══════════════════════════════════════════════
+// ── HELPERS ───────────────────────────────────────────────────────────────────
 function isPast(dateStr) {
   const today = new Date(); today.setHours(0,0,0,0);
   return new Date(dateStr) < today;
@@ -857,7 +862,6 @@ function symmDiff(a, b) {
   b.forEach(v => { if (!a.has(v)) diff.add(v); });
   return diff;
 }
-
 function toast(msg, type = 'info') {
   const c = document.getElementById('toast-container');
   const t = document.createElement('div');
