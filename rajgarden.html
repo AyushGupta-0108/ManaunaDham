@@ -1800,8 +1800,8 @@ async function initiatePayment() {
   if (!validate()) return;
 
   if (isMobile) {
-    const useQR = confirm('For the smoothest payment on mobile, we recommend scanning a QR code.\n\nTap OK to pay via QR, or Cancel to try standard payment.');
-    if (useQR) { showQRPayment(); return; }
+    const continueWithCard = confirm('📱 For a smoother experience on mobile, we recommend using the QR code option instead.\n\nDo you still want to continue with Card / Net Banking?');
+    if (!continueWithCard) return;
   }
 
   const name  = document.getElementById('g-name').value.trim();
