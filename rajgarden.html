@@ -2314,12 +2314,19 @@ let blockedDates = [];
 // Load from backend
 async function loadBlockedDates() {
   try {
-    const res = await fetch('/api/blocked-dates?hotel=raj-garden');
+    const res = await fetch('https://harshdeep-api.vercel.app/api/blocked-dates?hotel=raj-garden');
+
+    if (!res.ok) {
+      throw new Error("API not reachable");
+    }
+
     const data = await res.json();
     blockedDates = data.dates || [];
-    console.log("Blocked dates loaded:", blockedDates);
+
+    console.log("✅ Blocked dates loaded:", blockedDates);
+
   } catch (err) {
-    console.error("Error loading blocked dates", err);
+    console.error("❌ Error loading blocked dates", err);
   }
 }
 
