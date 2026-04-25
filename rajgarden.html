@@ -1710,6 +1710,13 @@ function setQRState(state) {
 }
 
 async function showQRPayment() {
+  if (
+  blockedDates.includes(document.getElementById('g-checkin')?.value) ||
+  blockedDates.includes(document.getElementById('g-checkout')?.value)
+) {
+  alert("❌ Selected dates are blocked");
+  return;
+}
   paymentDetected = false;
   if (!selRoom || nights <= 0) { alert('Please fill in booking details first.'); return; }
   if (!document.getElementById('g-name').value.trim() || !document.getElementById('g-phone').value.trim()) {
@@ -1960,6 +1967,13 @@ function validate() {
 }
 
 async function initiatePayment() {
+  if (
+  blockedDates.includes(document.getElementById('g-checkin')?.value) ||
+  blockedDates.includes(document.getElementById('g-checkout')?.value)
+) {
+  alert("❌ Selected dates are blocked");
+  return;
+}
   if (!validate()) return;
 
   if (isMobile) {
@@ -2294,7 +2308,49 @@ window.addEventListener('DOMContentLoaded', () => {
   // ▼ Fetch blocked dates + owner note from admin API
   fetchBlockedDates();
 });
+  // ===== BLOCKED DATES FIX =====
+let blockedDates = [];
+
+// Load from backend
+async function loadBlockedDates() {
+  try {
+    const res = await fetch('/api/blocked-dates?hotel=raj-garden');
+    const data = await res.json();
+    blockedDates = data.dates || [];
+    console.log("Blocked dates loaded:", blockedDates);
+  } catch (err) {
+    console.error("Error loading blocked dates", err);
+  }
+}
+
+// Attach validation to YOUR inputs
+function attachDateValidation() {
+  const waCheckin = document.getElementById('wa-checkin');
+  const gCheckin  = document.getElementById('g-checkin');
+  const gCheckout = document.getElementById('g-checkout');
+
+  function blockIfNeeded(input) {
+    if (!input) return;
+
+    input.addEventListener('change', () => {
+      if (blockedDates.includes(input.value)) {
+        alert("❌ This date is not available");
+        input.value = "";
+      }
+    });
+  }
+
+  blockIfNeeded(waCheckin);
+  blockIfNeeded(gCheckin);
+  blockIfNeeded(gCheckout);
+}
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', async () => {
+  await loadBlockedDates();
+  attachDateValidation();
+});
 </script>
-<script src="assets/chatbot.js"></script>
+
 </body>
 </html>
