@@ -120,6 +120,47 @@ nav a:hover { background: rgba(255,255,255,0.15); color: white; }
 }
 .trust-bar span { display: flex; align-items: center; gap: 5px; }
 
+/* ══ OWNER NOTE BANNER ══ */
+#owner-note-banner {
+  display: none;
+  background: linear-gradient(90deg, #fff8e1, #fffde7, #fff8e1);
+  border-bottom: 2.5px solid var(--gold);
+  color: #5a3c00;
+  padding: 11px 24px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(212,160,23,0.15);
+}
+#owner-note-banner.show { display: flex; animation: noteSlideIn .35s ease; }
+@keyframes noteSlideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.onb-icon { font-size: 17px; flex-shrink: 0; }
+#owner-note-text { line-height: 1.5; }
+
+/* ══ BLOCKED DATE WARNING ══ */
+.blocked-warning {
+  background: #fff0f0;
+  border: 1.5px solid #e08080;
+  border-radius: 10px;
+  padding: 13px 17px;
+  margin-bottom: 18px;
+  font-size: 13.5px;
+  color: #8a0000;
+  font-weight: 600;
+  display: none;
+  align-items: flex-start;
+  gap: 10px;
+  animation: fadeSlideIn .3s ease;
+}
+.blocked-warning.show { display: flex; }
+.blocked-warning i { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+.blocked-warning .bw-msg { line-height: 1.6; }
+.blocked-warning .bw-dates { font-size: 12px; color: #c00; margin-top: 4px; opacity: .85; }
+
 /* ══ HOTEL TITLE STRIP ══ */
 .hotel-strip {
   background: white;
@@ -777,6 +818,23 @@ footer {
 footer p { margin-bottom: 6px; font-size: 14px; }
 footer p:last-child { font-size: 12px; opacity: .65; }
 
+/* ══ AVAILABILITY LOADING STATE ══ */
+.avail-loading {
+  display: none;
+  font-size: 12px; color: var(--text-muted);
+  align-items: center; gap: 6px;
+  margin-top: 6px;
+}
+.avail-loading.show { display: flex; }
+.avail-spinner {
+  width: 12px; height: 12px;
+  border: 2px solid #e0d0d0;
+  border-top-color: var(--maroon);
+  border-radius: 50%;
+  animation: qrSpin .7s linear infinite;
+  flex-shrink: 0;
+}
+
 /* ══ RESPONSIVE ══ */
 @media (max-width: 768px) {
   nav { display: none; }
@@ -805,6 +863,7 @@ footer p:last-child { font-size: 12px; opacity: .65; }
   .trust-bar { gap: 10px; font-size: 12px; }
   .s-row.s-advance { margin: 8px -14px -4px; padding: 12px 14px 12px; }
   .wa-advance-highlight { margin: 8px -14px -4px; padding: 12px 14px; }
+  #owner-note-banner { font-size: 12.5px; padding: 10px 16px; }
 }
 </style>
 </head>
@@ -842,6 +901,12 @@ footer p:last-child { font-size: 12px; opacity: .65; }
   <span>🔒 Only 15% advance to secure your room</span>
   <span>🏨 Full price paid at hotel on arrival</span>
   <span>⚡ Instant confirmation</span>
+</div>
+
+<!-- ▼▼▼ OWNER NOTE BANNER — shown only when hotel sets a notice ▼▼▼ -->
+<div id="owner-note-banner">
+  <span class="onb-icon">📌</span>
+  <span id="owner-note-text"></span>
 </div>
 
 <!-- HOTEL TITLE STRIP -->
@@ -952,6 +1017,16 @@ footer p:last-child { font-size: 12px; opacity: .65; }
       <div class="form-group">
         <label>Check-out Date <span class="req">*</span></label>
         <input type="date" id="g-checkout" onchange="calcStay()">
+      </div>
+    </div>
+
+    <!-- ▼ BLOCKED DATE WARNING — online booking -->
+    <div class="blocked-warning" id="blocked-warning-online">
+      <i class="fa fa-ban"></i>
+      <div class="bw-msg">
+        <strong>These dates are fully booked.</strong>
+        <div class="bw-dates" id="blocked-warning-dates-online"></div>
+        Please choose different dates to proceed.
       </div>
     </div>
 
@@ -1102,6 +1177,16 @@ footer p:last-child { font-size: 12px; opacity: .65; }
       <div class="form-group" style="grid-column: 1 / -1;">
         <label>What issue are you facing? (optional)</label>
         <input type="text" id="wa-issue" placeholder="e.g. UPI not working, card declined, QR not loading…">
+      </div>
+    </div>
+
+    <!-- ▼ BLOCKED DATE WARNING — WA section -->
+    <div class="blocked-warning" id="blocked-warning-wa">
+      <i class="fa fa-ban"></i>
+      <div class="bw-msg">
+        <strong>These dates are fully booked.</strong>
+        <div class="bw-dates" id="blocked-warning-dates-wa"></div>
+        Please choose different dates to request assistance.
       </div>
     </div>
 
@@ -1531,9 +1616,10 @@ let RAZORPAY_KEY = null;
 const WA_NUMBER  = '917817803342';
 const isMobile   = /Android|iPhone|iPad/i.test(navigator.userAgent);
 
-const API_ENDPOINT     = 'https://harshdeep-api.vercel.app/api/create-order';
-const QR_API_ENDPOINT  = 'https://harshdeep-api.vercel.app/api/create-qr';
-const CHECK_API        = 'https://harshdeep-api.vercel.app/api/check-payment';
+const API_ENDPOINT        = 'https://harshdeep-api.vercel.app/api/create-order';
+const QR_API_ENDPOINT     = 'https://harshdeep-api.vercel.app/api/create-qr';
+const CHECK_API           = 'https://harshdeep-api.vercel.app/api/check-payment';
+const BLOCKED_DATES_API   = 'https://harshdeep-api.vercel.app/api/blocked-dates?hotel=raj-garden';
 
 const ROOMS = {
   1: { name: 'Standard Room', price: 1899 },
@@ -1552,6 +1638,53 @@ let selRoom = null, nights = 0, baseTotal = 0, discAmt = 0, finalTotal = 0, advA
 let waSelRoom = null, waNights = 0;
 let invNum = parseInt(localStorage.getItem('rg_inv') || '200');
 let lastBooking = null;
+
+// ══════════════════════════════════════
+// BLOCKED DATES — fetched from admin API
+// ══════════════════════════════════════
+let blockedDatesSet = new Set();
+
+async function fetchBlockedDates() {
+  try {
+    const res  = await fetch(BLOCKED_DATES_API);
+    const data = await res.json();
+
+    blockedDatesSet = new Set(data.dates || []);
+
+    // Show owner note banner if the hotel has set one
+    const note = (data.note || '').trim();
+    if (note) {
+      document.getElementById('owner-note-text').textContent = note;
+      document.getElementById('owner-note-banner').classList.add('show');
+    } else {
+      document.getElementById('owner-note-banner').classList.remove('show');
+    }
+  } catch (e) {
+    // Silently fail — hotel page still works, just without block info
+    console.warn('Could not load availability data:', e);
+  }
+}
+
+/**
+ * Returns an array of blocked date strings (YYYY-MM-DD) that fall
+ * within [checkin, checkout) — i.e. the nights being booked.
+ */
+function getBlockedDatesInRange(ci, co) {
+  const blocked = [];
+  let d = new Date(ci + 'T00:00:00');
+  const end = new Date(co + 'T00:00:00');
+  while (d < end) {
+    const str = d.toISOString().split('T')[0];
+    if (blockedDatesSet.has(str)) blocked.push(str);
+    d.setDate(d.getDate() + 1);
+  }
+  return blocked;
+}
+
+/** Formats a YYYY-MM-DD string as "12 May" */
+function fmtShort(str) {
+  return new Date(str + 'T00:00:00').toLocaleDateString('en-IN', { day: '2-digit', month: 'short' });
+}
 
 // QR state
 let qrPollingInterval = null;
@@ -1582,6 +1715,14 @@ async function showQRPayment() {
   if (!document.getElementById('g-name').value.trim() || !document.getElementById('g-phone').value.trim()) {
     alert('Please enter your name and phone number first.'); return;
   }
+  // Block if any dates in range are blocked
+  const ci = document.getElementById('g-checkin').value;
+  const co = document.getElementById('g-checkout').value;
+  const bDates = getBlockedDatesInRange(ci, co);
+  if (bDates.length > 0) {
+    alert('Sorry — ' + bDates.map(fmtShort).join(', ') + ' ' + (bDates.length === 1 ? 'is' : 'are') + ' fully booked. Please choose different dates.');
+    return;
+  }
 
   document.getElementById('qr-modal-amount').textContent = '₹' + advAmt.toLocaleString('en-IN');
   document.getElementById('qr-modal').style.display = 'flex';
@@ -1593,8 +1734,8 @@ async function showQRPayment() {
     guest_name:   document.getElementById('g-name').value.trim(),
     guest_phone:  document.getElementById('g-phone').value.trim(),
     room_type:    ROOMS[selRoom].name,
-    checkin:      document.getElementById('g-checkin').value,
-    checkout:     document.getElementById('g-checkout').value,
+    checkin:      ci,
+    checkout:     co,
     nights:       String(nights),
     room_price:   String(finalTotal),
     platform_fee: String(advAmt),
@@ -1726,6 +1867,18 @@ function calcStay() {
   if (!ci || !co) return;
   nights = Math.round((new Date(co) - new Date(ci)) / 86400000);
   if (nights <= 0) { nights = 0; return; }
+
+  // ── Check for blocked dates in the selected range ──
+  const bDates = getBlockedDatesInRange(ci, co);
+  const warningEl   = document.getElementById('blocked-warning-online');
+  const warningDates = document.getElementById('blocked-warning-dates-online');
+  if (bDates.length > 0) {
+    warningDates.textContent = 'Blocked: ' + bDates.map(fmtShort).join(', ');
+    warningEl.classList.add('show');
+  } else {
+    warningEl.classList.remove('show');
+  }
+
   recalc();
 }
 
@@ -1792,6 +1945,16 @@ function validate() {
   if (ph && !/^\d{10}$/.test(ph)) {
     document.getElementById('g-phone').classList.add('err');
     alert('Please enter a valid 10-digit phone number.'); ok = false;
+  }
+  // ── Block payment if any date in range is blocked ──
+  if (ok) {
+    const ci = document.getElementById('g-checkin').value;
+    const co = document.getElementById('g-checkout').value;
+    const bDates = getBlockedDatesInRange(ci, co);
+    if (bDates.length > 0) {
+      alert('Sorry — ' + bDates.map(fmtShort).join(', ') + ' ' + (bDates.length === 1 ? 'is' : 'are') + ' fully booked.\n\nPlease choose different dates to proceed with your booking.');
+      ok = false;
+    }
   }
   return ok;
 }
@@ -1937,6 +2100,7 @@ function closeReceipt() {
   selRoom = null; nights = 0; finalTotal = 0; discAmt = 0; activeCoupon = null; lastBooking = null;
   document.querySelectorAll('.room-option').forEach(el => el.classList.remove('selected'));
   document.getElementById('stay-summary').classList.remove('show');
+  document.getElementById('blocked-warning-online').classList.remove('show');
   document.getElementById('coupon-msg').className = 'coupon-msg';
   document.getElementById('pay-btn-text').textContent = 'Pay via QR Code';
 }
@@ -1966,6 +2130,18 @@ function calcWAStay() {
   if (!ci || !co || !waSelRoom) return;
   waNights = Math.round((new Date(co) - new Date(ci)) / 86400000);
   if (waNights <= 0) { waNights = 0; return; }
+
+  // ── Check for blocked dates in the WA range ──
+  const bDates = getBlockedDatesInRange(ci, co);
+  const warningEl    = document.getElementById('blocked-warning-wa');
+  const warningDates = document.getElementById('blocked-warning-dates-wa');
+  if (bDates.length > 0) {
+    warningDates.textContent = 'Blocked: ' + bDates.map(fmtShort).join(', ');
+    warningEl.classList.add('show');
+  } else {
+    warningEl.classList.remove('show');
+  }
+
   const total   = ROOMS[waSelRoom].price * waNights;
   const advance = Math.round(total * 0.15);
   const summary = document.getElementById('wa-stay-summary');
@@ -1990,6 +2166,21 @@ function validateWA() {
     document.getElementById('wa-phone').classList.add('err');
     alert('Please enter a valid 10-digit phone number.'); ok = false;
   }
+  // ── Warn (but don't fully block) WA requests on blocked dates ──
+  if (ok) {
+    const ci = document.getElementById('wa-checkin').value;
+    const co = document.getElementById('wa-checkout').value;
+    const bDates = getBlockedDatesInRange(ci, co);
+    if (bDates.length > 0) {
+      const proceed = confirm(
+        '⚠️ Heads up — ' + bDates.map(fmtShort).join(', ') + ' ' +
+        (bDates.length === 1 ? 'is' : 'are') + ' marked as fully booked.\n\n' +
+        'You can still send a WhatsApp request and our team will check if any rooms are available.\n\n' +
+        'Tap OK to continue, or Cancel to choose different dates.'
+      );
+      if (!proceed) ok = false;
+    }
+  }
   return ok;
 }
 
@@ -2006,6 +2197,12 @@ function sendWhatsAppBooking() {
   const total   = waSelRoom ? ROOMS[waSelRoom].price * waNights : 0;
   const advance = Math.round(total * 0.15);
 
+  // Note if any dates are blocked so the hotel team sees it in WA
+  const bDates = getBlockedDatesInRange(ci, co);
+  const blockedLine = bDates.length > 0
+    ? '\n⚠️ *Note:* ' + bDates.map(fmtShort).join(', ') + ' marked blocked — guest is requesting help anyway.'
+    : '';
+
   const guestsLine = guests ? '\n👥 *Guests:* ' + guests : '';
   const issueLine  = issue  ? '\n⚠️ *Issue faced:* ' + issue : '';
 
@@ -2021,7 +2218,7 @@ I need help completing my online payment for a room booking.
 📅 *Check-out:* ${fmtDate(co)}
 🌙 *Nights:* ${waNights}${guestsLine}
 💰 *Total Room Price:* ₹${total.toLocaleString()}
-💳 *15% Advance to Pay:* ₹${advance.toLocaleString()}${issueLine}
+💳 *15% Advance to Pay:* ₹${advance.toLocaleString()}${issueLine}${blockedLine}
 
 Please guide me to complete the online payment. 🙏
 _Sent via ManaunaDham.org.in_`;
@@ -2093,6 +2290,9 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   initCouponBanner();
   document.getElementById('wa-checkout').addEventListener('change', calcWAStay);
+
+  // ▼ Fetch blocked dates + owner note from admin API
+  fetchBlockedDates();
 });
 </script>
 <script src="assets/chatbot.js"></script>
