@@ -627,11 +627,20 @@ table.bookings-table tbody tr:last-child td { border-bottom:none; }
       </div>
       <div class="bulk-import-box">
         <h4><i class="fa fa-file-csv" style="color:var(--green);margin-right:6px;"></i> Bulk Import via CSV paste</h4>
-        <p>Paste rows from Excel / Google Sheets. One booking per line, comma-separated:<br>
-          <code style="background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:11px;">InvoiceNo, GuestName, Phone, RoomType, CheckIn(YYYY-MM-DD), CheckOut(YYYY-MM-DD), RoomPrice, AdvancePaid, Coupon, BookingDate(YYYY-MM-DD)</code>
-        </p>
-        <textarea class="bulk-textarea" id="bulk-csv-input"
-          placeholder="RG-001, Ramesh Sharma, 9876543210, Deluxe AC Room, 2025-01-10, 2025-01-12, 4000, 600, , 2025-01-09"
+       <p>Paste one or more bookings directly from your confirmation format — just copy and paste as-is. Separate multiple bookings with a blank line.</p>
+        <textarea class="bulk-textarea" id="bulk-csv-input" style="min-height:160px;"
+          placeholder="Invoice No.	#RG0201
+Guest Name	Umesh Sujan
+Phone	+91 7041148586
+Room Type	Standard Room
+Check-in	02 Apr 2026
+Check-out	05 Apr 2026
+Room Price	₹5,497
+Coupon Used	BABA200
+Advance Paid (15%)	₹825
+Razorpay Payment ID	pay_STkNfTdiRO6FiE
+
+(paste another booking below after a blank line)"
           oninput="previewBulk()"></textarea>
         <div class="bulk-preview" id="bulk-preview"></div>
         <div style="margin-top:10px;display:flex;gap:10px;">
@@ -1196,12 +1205,54 @@ async function submitManualBooking() {
 }
 
 function parseBulkCSV(raw) {
-  return raw.trim().split('\n').map(l => l.trim()).filter(Boolean).map(line => {
-    const [invoiceNo,guestName,guestPhone,roomType,checkin,checkout,
-           roomPrice,advancePaid,coupon,bookingDate] = line.split(',').map(c => c.trim());
+  // Split into blocks separated by blank lines
+  const blocks = raw.trim().split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+
+  return blocks.map(block => {
+    const get = (patterns) => {
+      for (const pat of patterns) {
+        const match = block.match(pat);
+        if (match) return match[1].trim();
+      }
+      return '';
+    };
+
+    const invoiceNo   = get([/Invoice\s*No\.?\s*[:\t]\s*#?([^\n]+)/i]);
+    const guestName   = get([/Guest\s*Name\s*[:\t]\s*([^\n]+)/i]);
+    const rawPhone    = get([/Phone\s*[:\t]\s*([^\n]+)/i]);
+    const guestPhone  = rawPhone.replace(/^\+91\s*/, '').replace(/\D/g, '').slice(-10);
+    const roomType    = get([/Room\s*Type\s*[:\t]\s*([^\n]+)/i]);
+    const checkinRaw  = get([/Check-?in\s*[:\t]\s*([^\n]+)/i]);
+    const checkoutRaw = get([/Check-?out\s*[:\t]\s*([^\n]+)/i]);
+    const coupon      = get([/Coupon\s*(?:Used)?\s*[:\t]\s*([^\n]+)/i]);
+    const paymentId   = get([/Razorpay\s*Payment\s*ID\s*[:\t]\s*([^\n]+)/i,
+                             /Payment\s*ID\s*[:\t]\s*([^\n]+)/i]);
+
+    // Parse ₹ amounts — strip symbols, commas
+    const parseAmt = (str) => parseInt(str.replace(/[₹,\s]/g, '')) || 0;
+    const roomPrice   = parseAmt(get([/Room\s*Price\s*[:\t]\s*([\₹\d,]+)/i]));
+    const advancePaid = parseAmt(get([/Advance\s*Paid[^:\t]*[:\t]\s*([\₹\d,]+)/i]));
+
+    // Parse dates — handles "02 Apr 2026", "2026-04-02", "02/04/2026"
+    const parseDate = (str) => {
+      if (!str) return '';
+      const d = new Date(str);
+      if (!isNaN(d)) return d.toISOString().split('T')[0];
+      // Try DD/MM/YYYY
+      const dmy = str.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
+      if (dmy) return new Date(`${dmy[3]}-${dmy[2].padStart(2,'0')}-${dmy[1].padStart(2,'0')}`).toISOString().split('T')[0];
+      return '';
+    };
+    const checkin  = parseDate(checkinRaw);
+    const checkout = parseDate(checkoutRaw);
+
     if (!checkin || !checkout || !roomPrice) return null;
-    return buildManualBooking(invoiceNo,guestName,guestPhone,roomType,
-      checkin,checkout,roomPrice,advancePaid,coupon,bookingDate,'','bulk-import');
+
+    return buildManualBooking(
+      invoiceNo, guestName, guestPhone, roomType,
+      checkin, checkout, roomPrice, advancePaid,
+      coupon, '', paymentId, 'bulk-import'
+    );
   }).filter(Boolean);
 }
 
