@@ -521,6 +521,11 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
 .bulk-preview { margin-top: 8px; font-size: 12px; color: var(--green); font-weight: 600; min-height: 16px; }
 .bulk-preview.err { color: var(--red); }
 
+@media (max-width: 420px) {
+  .info-cards-row     { grid-template-columns: 1fr; }
+  .section-toggle-row { grid-template-columns: 1fr; }
+}
+
 /* ── DESKTOP OVERRIDES ── */
 @media (min-width: 600px) {
   main { padding: 24px 20px 100px; }
@@ -533,6 +538,106 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
   .range-grid { grid-template-columns: 1fr 1fr auto; align-items: end; }
   #toast-container { left: auto; width: 320px; right: 16px; top: 16px; }
   .quick-actions { flex-wrap: wrap; overflow-x: visible; }
+}
+
+/* ── INFO CARDS ROW (next blocked + current notice) ── */
+.info-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.info-card {
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 12px;
+}
+.info-card-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.info-card.blocked-style { border-left: 4px solid var(--red); }
+.info-card.blocked-style .info-card-icon { background: #fff0f0; }
+.info-card.notice-style  { border-left: 4px solid var(--gold); }
+.info-card.notice-style  .info-card-icon { background: #fff8e1; }
+.info-card-body { min-width: 0; }
+.info-card-label {
+  font-size: 9.5px; font-weight: 800; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--text-muted);
+  margin-bottom: 3px;
+}
+.info-card-value {
+  font-size: 14px; font-weight: 700;
+  color: var(--maroon); font-family: 'Lora', serif;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.info-card.blocked-style .info-card-value { color: var(--red); }
+.info-card-sub {
+  font-size: 11px; color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ── SECTION TOGGLE BUTTONS ── */
+.section-toggle-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.section-toggle-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+.section-toggle-btn:active { transform: scale(0.98); }
+.section-toggle-btn.avail  { border-color: var(--maroon); }
+.section-toggle-btn.avail:hover  { background: #fff5f5; }
+.section-toggle-btn.notice { border-color: var(--gold); }
+.section-toggle-btn.notice:hover { background: #fffbee; }
+.section-toggle-btn.active.avail  { background: var(--maroon); color: white; }
+.section-toggle-btn.active.notice { background: #7a5500; color: white; }
+.stb-left { display: flex; align-items: center; gap: 10px; }
+.stb-icon {
+  width: 34px; height: 34px; flex-shrink: 0;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+}
+.section-toggle-btn.avail  .stb-icon { background: #fff0f0; }
+.section-toggle-btn.notice .stb-icon { background: #fff8e1; }
+.section-toggle-btn.active .stb-icon { background: rgba(255,255,255,0.18); }
+.stb-text { min-width: 0; }
+.stb-title { font-size: 12.5px; font-weight: 700; color: var(--maroon); line-height: 1.2; }
+.stb-sub   { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
+.section-toggle-btn.active .stb-title,
+.section-toggle-btn.active .stb-sub  { color: rgba(255,255,255,0.9); }
+.stb-chevron { font-size: 12px; color: var(--text-muted); transition: transform .22s ease; flex-shrink: 0; }
+.section-toggle-btn.active .stb-chevron { color: rgba(255,255,255,0.7); transform: rotate(180deg); }
+
+/* collapsible panel animation */
+.collapsible-panel {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+  opacity: 0;
+}
+.collapsible-panel.open {
+  max-height: 4000px;
+  opacity: 1;
 }
 
 /* loading shimmer on rh-income-value */
@@ -641,6 +746,164 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
     <div class="lb-meta" id="lb-meta">—</div>
   </div>
 
+  <!-- INFO CARDS ROW: Next Blocked + Current Notice -->
+  <div class="info-cards-row">
+    <div class="info-card blocked-style" id="next-blocked-card">
+      <div class="info-card-icon">🚫</div>
+      <div class="info-card-body">
+        <div class="info-card-label">Next Blocked Date</div>
+        <div class="info-card-value" id="ic-blocked-date">—</div>
+        <div class="info-card-sub"  id="ic-blocked-sub">Loading…</div>
+      </div>
+    </div>
+    <div class="info-card notice-style" id="current-notice-card">
+      <div class="info-card-icon">📢</div>
+      <div class="info-card-body">
+        <div class="info-card-label">Live Guest Notice</div>
+        <div class="info-card-value" id="ic-notice-value">—</div>
+        <div class="info-card-sub"  id="ic-notice-sub">Shown on booking page</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION TOGGLE BUTTONS -->
+  <div class="section-toggle-row">
+    <button class="section-toggle-btn avail" id="avail-toggle-btn" onclick="toggleSection('avail')">
+      <div class="stb-left">
+        <div class="stb-icon">📅</div>
+        <div class="stb-text">
+          <div class="stb-title">Availability Management</div>
+          <div class="stb-sub">Block &amp; unblock dates</div>
+        </div>
+      </div>
+      <i class="fa fa-chevron-down stb-chevron"></i>
+    </button>
+    <button class="section-toggle-btn notice" id="notice-toggle-btn" onclick="toggleSection('notice')">
+      <div class="stb-left">
+        <div class="stb-icon">📝</div>
+        <div class="stb-text">
+          <div class="stb-title">Display Notice for Guests</div>
+          <div class="stb-sub">Edit booking page banner</div>
+        </div>
+      </div>
+      <i class="fa fa-chevron-down stb-chevron"></i>
+    </button>
+  </div>
+
+  <!-- COLLAPSIBLE: AVAILABILITY MANAGEMENT -->
+  <div class="collapsible-panel" id="avail-panel">
+
+  <!-- AVAILABILITY STATS -->
+  <div class="stats" style="margin-top:4px;">
+    <div class="stat-card red">
+      <div class="label">Blocked</div>
+      <div class="value" id="stat-blocked">—</div>
+      <div class="sub">next 30 days</div>
+    </div>
+    <div class="stat-card green">
+      <div class="label">Available</div>
+      <div class="value" id="stat-available">—</div>
+      <div class="sub">next 30 days</div>
+    </div>
+    <div class="stat-card gold">
+      <div class="label">Next Blocked</div>
+      <div class="value" id="stat-next" style="font-size:16px;margin-top:5px;">—</div>
+      <div class="sub">upcoming date</div>
+    </div>
+    <div class="stat-card green">
+      <div class="label">Total Bookings</div>
+      <div class="value" id="stat-total-bookings">—</div>
+      <div class="sub">all time</div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend-bar">
+    <div class="legend-item"><div class="legend-dot available"></div> Available</div>
+    <div class="legend-item"><div class="legend-dot blocked"></div> Fully Booked</div>
+    <div class="legend-item"><div class="legend-dot today"></div> Today</div>
+    <div class="legend-item"><div class="legend-dot past"></div> Past</div>
+  </div>
+
+  <!-- QUICK ACTIONS -->
+  <div class="quick-actions">
+    <button class="qa-btn primary" onclick="saveChanges()" id="save-btn" disabled>
+      <i class="fa fa-save"></i> Save
+    </button>
+    <button class="qa-btn gold" onclick="showRangePicker()">
+      <i class="fa fa-calendar-plus"></i> Block Range
+    </button>
+    <button class="qa-btn outline" onclick="reloadDates()">
+      <i class="fa fa-sync"></i> Refresh
+    </button>
+    <button class="qa-btn danger" onclick="clearAllBlocked()">
+      <i class="fa fa-trash"></i> Clear All
+    </button>
+  </div>
+
+  <!-- RANGE PICKER -->
+  <div class="range-section" id="range-section" style="display:none;">
+    <h2><i class="fa fa-calendar-plus" style="font-size:16px;"></i> Block a Date Range</h2>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Block multiple consecutive dates at once.</p>
+    <div class="range-grid">
+      <div class="range-field">
+        <label>Start Date</label>
+        <input type="date" id="range-start">
+      </div>
+      <div class="range-field">
+        <label>End Date (inclusive)</label>
+        <input type="date" id="range-end">
+      </div>
+      <div>
+        <button class="qa-btn primary" onclick="applyRange()" style="width:100%;">
+          <i class="fa fa-check"></i> Block Range
+        </button>
+      </div>
+    </div>
+    <button class="qa-btn outline" onclick="hideRangePicker()" style="font-size:12px;padding:8px 14px;margin-top:10px;">
+      <i class="fa fa-times"></i> Cancel
+    </button>
+  </div>
+
+  <!-- CALENDARS -->
+  <div class="calendars-section">
+    <div class="section-title"><i class="fa fa-calendar-alt" style="font-size:16px;"></i> Tap a date to block or unblock</div>
+    <div class="calendars-grid" id="calendars-grid"></div>
+  </div>
+
+  <!-- BLOCKED LIST -->
+  <div class="blocked-list-section">
+    <div class="section-title"><i class="fa fa-ban" style="font-size:16px;color:var(--red);"></i> Currently Blocked Dates</div>
+    <div class="blocked-list" id="blocked-list">
+      <div class="blocked-empty"><i class="fa fa-check-circle"></i>All dates available — nothing blocked yet.</div>
+    </div>
+  </div>
+
+  </div><!-- /avail-panel -->
+
+  <!-- COLLAPSIBLE: GUEST NOTICE EDITOR -->
+  <div class="collapsible-panel" id="notice-panel">
+  <div class="note-card" style="margin-top:4px;">
+    <h2><i class="fa fa-sticky-note" style="color:var(--gold);"></i> Guest Notice</h2>
+    <p class="note-sub">Shown as a banner on the booking page. Leave blank to hide.</p>
+    <textarea class="note-textarea" id="owner-note-input" maxlength="300" rows="2"
+      placeholder="E.g. Ground floor rooms fully booked. Only Deluxe rooms available today."
+      oninput="onNoteInput()"></textarea>
+    <div class="note-footer">
+      <span class="note-count" id="note-char-count">0 / 300</span>
+      <span style="font-size:11px;color:var(--text-muted);">Saves with <strong>Save Changes</strong></span>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px;">
+      <button class="qa-btn primary" onclick="saveChanges()" style="font-size:13px;padding:10px 18px;">
+        <i class="fa fa-save"></i> Save Notice
+      </button>
+      <button class="qa-btn outline" onclick="clearNotice()" style="font-size:13px;padding:10px 14px;">
+        <i class="fa fa-times"></i> Clear
+      </button>
+    </div>
+  </div>
+  </div><!-- /notice-panel -->
+
   <!-- ══ DIVIDER: BOOKINGS TABLE ══ -->
   <div class="section-divider">
     <div class="section-divider-line"></div>
@@ -723,111 +986,6 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
     <div class="empty-bookings"><i class="fa fa-hourglass-half"></i><br>Loading booking history…</div>
   </div>
 
-  <!-- ══ DIVIDER: AVAILABILITY MANAGEMENT ══ -->
-  <div class="section-divider">
-    <div class="section-divider-line"></div>
-    <div class="section-divider-label"><i class="fa fa-calendar-alt"></i> Availability Management</div>
-    <div class="section-divider-line"></div>
-  </div>
-
-  <!-- AVAILABILITY STATS -->
-  <div class="stats" style="margin-top:4px;">
-    <div class="stat-card red">
-      <div class="label">Blocked</div>
-      <div class="value" id="stat-blocked">—</div>
-      <div class="sub">next 30 days</div>
-    </div>
-    <div class="stat-card green">
-      <div class="label">Available</div>
-      <div class="value" id="stat-available">—</div>
-      <div class="sub">next 30 days</div>
-    </div>
-    <div class="stat-card gold">
-      <div class="label">Next Blocked</div>
-      <div class="value" id="stat-next" style="font-size:16px;margin-top:5px;">—</div>
-      <div class="sub">upcoming date</div>
-    </div>
-    <div class="stat-card green">
-      <div class="label">Total Bookings</div>
-      <div class="value" id="stat-total-bookings">—</div>
-      <div class="sub">all time</div>
-    </div>
-  </div>
-
-  <!-- OWNER NOTE -->
-  <div class="note-card">
-    <h2><i class="fa fa-sticky-note" style="color:var(--gold);"></i> Guest Notice</h2>
-    <p class="note-sub">Shown as a banner on the booking page. Leave blank to hide.</p>
-    <textarea class="note-textarea" id="owner-note-input" maxlength="300" rows="2"
-      placeholder="E.g. Ground floor rooms fully booked. Only Deluxe rooms available today."
-      oninput="onNoteInput()"></textarea>
-    <div class="note-footer">
-      <span class="note-count" id="note-char-count">0 / 300</span>
-      <span style="font-size:11px;color:var(--text-muted);">Saves with <strong>Save Changes</strong></span>
-    </div>
-  </div>
-
-  <!-- LEGEND -->
-  <div class="legend-bar">
-    <div class="legend-item"><div class="legend-dot available"></div> Available</div>
-    <div class="legend-item"><div class="legend-dot blocked"></div> Fully Booked</div>
-    <div class="legend-item"><div class="legend-dot today"></div> Today</div>
-    <div class="legend-item"><div class="legend-dot past"></div> Past</div>
-  </div>
-
-  <!-- QUICK ACTIONS -->
-  <div class="quick-actions">
-    <button class="qa-btn primary" onclick="saveChanges()" id="save-btn" disabled>
-      <i class="fa fa-save"></i> Save
-    </button>
-    <button class="qa-btn gold" onclick="showRangePicker()">
-      <i class="fa fa-calendar-plus"></i> Block Range
-    </button>
-    <button class="qa-btn outline" onclick="reloadDates()">
-      <i class="fa fa-sync"></i> Refresh
-    </button>
-    <button class="qa-btn danger" onclick="clearAllBlocked()">
-      <i class="fa fa-trash"></i> Clear All
-    </button>
-  </div>
-
-  <!-- RANGE PICKER -->
-  <div class="range-section" id="range-section" style="display:none;">
-    <h2><i class="fa fa-calendar-plus" style="font-size:16px;"></i> Block a Date Range</h2>
-    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Block multiple consecutive dates at once.</p>
-    <div class="range-grid">
-      <div class="range-field">
-        <label>Start Date</label>
-        <input type="date" id="range-start">
-      </div>
-      <div class="range-field">
-        <label>End Date (inclusive)</label>
-        <input type="date" id="range-end">
-      </div>
-      <div>
-        <button class="qa-btn primary" onclick="applyRange()" style="width:100%;">
-          <i class="fa fa-check"></i> Block Range
-        </button>
-      </div>
-    </div>
-    <button class="qa-btn outline" onclick="hideRangePicker()" style="font-size:12px;padding:8px 14px;margin-top:10px;">
-      <i class="fa fa-times"></i> Cancel
-    </button>
-  </div>
-
-  <!-- CALENDARS -->
-  <div class="calendars-section">
-    <div class="section-title"><i class="fa fa-calendar-alt" style="font-size:16px;"></i> Tap a date to block or unblock</div>
-    <div class="calendars-grid" id="calendars-grid"></div>
-  </div>
-
-  <!-- BLOCKED LIST -->
-  <div class="blocked-list-section">
-    <div class="section-title"><i class="fa fa-ban" style="font-size:16px;color:var(--red);"></i> Currently Blocked Dates</div>
-    <div class="blocked-list" id="blocked-list">
-      <div class="blocked-empty"><i class="fa fa-check-circle"></i>All dates available — nothing blocked yet.</div>
-    </div>
-  </div>
 
 </main>
 
@@ -902,7 +1060,7 @@ async function reloadDates() {
     blockedDates = new Set(data.dates || []);
     savedDates   = new Set(data.dates || []);
     const noteEl = document.getElementById('owner-note-input');
-    if (noteEl) { noteEl.value = data.note || ''; updateNoteCount(); }
+    if (noteEl) { noteEl.value = data.note || ''; updateNoteCount(); renderNoticeCard(); }
     hasUnsaved = false;
     setSyncBadge('ok');
     renderCalendars();
@@ -940,13 +1098,63 @@ async function saveChanges() {
   }
 }
 
-// ── NOTE ──────────────────────────────────────────────────────────
+// ── SECTION TOGGLES ──────────────────────────────────────────────
+function toggleSection(which) {
+  const panel = document.getElementById(which + '-panel');
+  const btn   = document.getElementById(which + '-toggle-btn');
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('active', !isOpen);
+}
+
+// ── NEXT BLOCKED INFO CARD ────────────────────────────────────────
+function renderNextBlockedCard() {
+  const upcoming = [...blockedDates].filter(d => !isPast(d)).sort();
+  const valEl = document.getElementById('ic-blocked-date');
+  const subEl = document.getElementById('ic-blocked-sub');
+  if (!upcoming.length) {
+    valEl.textContent = 'None upcoming';
+    valEl.style.color = 'var(--green)';
+    subEl.textContent = 'All future dates are available';
+  } else {
+    const d = upcoming[0];
+    const daysAway = Math.round((new Date(d) - new Date(new Date().toISOString().split('T')[0])) / 86400000);
+    valEl.textContent = fmtDate(d);
+    valEl.style.color = '';
+    subEl.textContent = daysAway === 0 ? 'TODAY · ' + upcoming.length + ' blocked total'
+                      : daysAway === 1 ? 'TOMORROW · ' + upcoming.length + ' blocked total'
+                      : daysAway + ' days away · ' + upcoming.length + ' blocked total';
+  }
+}
+
+// ── CURRENT NOTICE INFO CARD ──────────────────────────────────────
+function renderNoticeCard() {
+  const note   = document.getElementById('owner-note-input')?.value?.trim() || '';
+  const valEl  = document.getElementById('ic-notice-value');
+  const subEl  = document.getElementById('ic-notice-sub');
+  if (!note) {
+    valEl.textContent = 'No notice set';
+    valEl.style.color = 'var(--text-muted)';
+    subEl.textContent = 'Nothing shown to guests';
+  } else {
+    valEl.textContent = note.length > 48 ? note.slice(0, 48) + '…' : note;
+    valEl.style.color = '';
+    subEl.textContent = 'Live on booking page';
+  }
+}
+
+function clearNotice() {
+  const el = document.getElementById('owner-note-input');
+  if (el) { el.value = ''; updateNoteCount(); renderNoticeCard(); markUnsaved(); }
+}
+
+
 function updateNoteCount() {
   const el = document.getElementById('owner-note-input');
   const ct = document.getElementById('note-char-count');
   if (el && ct) ct.textContent = el.value.length + ' / 300';
 }
-function onNoteInput() { updateNoteCount(); markUnsaved(); }
+function onNoteInput() { updateNoteCount(); renderNoticeCard(); markUnsaved(); }
 
 // ── TOGGLE DATE ───────────────────────────────────────────────────
 function toggleDate(dateStr) {
@@ -1102,6 +1310,7 @@ function updateStats() {
   const upcoming = [...blockedDates].filter(d => !isPast(d)).sort();
   document.getElementById('stat-next').textContent = upcoming.length ? fmtDateShort(upcoming[0]) : 'None';
   document.getElementById('stat-total-bookings').textContent = allBookings.length || '—';
+  renderNextBlockedCard();
 }
 
 // ── NEAREST CHECK-IN BANNER ───────────────────────────────────────
