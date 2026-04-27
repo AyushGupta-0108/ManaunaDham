@@ -387,7 +387,49 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
 .save-msg strong { color: var(--maroon); }
 .save-btns { display: flex; gap: 10px; }
 
+/* ── BOOKINGS SECTION ── */
+.bookings-section h2 { font-family:'Lora',serif;font-size:20px;color:var(--maroon);margin-bottom:16px;display:flex;align-items:center;gap:10px; }
+.revenue-cards { display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px; }
+.rev-card { background:white;border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow);border:1px solid var(--border);border-top:3px solid var(--maroon); }
+.rev-card .label { font-size:11px;color:var(--text-muted);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px; }
+.rev-card .value { font-size:22px;font-weight:800;color:var(--maroon);font-family:'Lora',serif; }
+.rev-card .sub   { font-size:11px;color:var(--text-muted);margin-top:3px; }
+.bookings-toolbar { display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px; }
+.search-input { flex:1;min-width:180px;padding:9px 14px;border:2px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;transition:border-color .2s; }
+.search-input:focus { outline:none;border-color:var(--maroon); }
+.filter-select { padding:9px 14px;border:2px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;background:white;cursor:pointer; }
+.bookings-table-wrap { background:white;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow-x:auto;margin-bottom:32px; }
+table.bookings-table { width:100%;border-collapse:collapse;font-size:13.5px; }
+table.bookings-table thead tr { background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));color:white; }
+table.bookings-table th { padding:12px 16px;text-align:left;font-weight:700;font-size:12px;letter-spacing:.5px;white-space:nowrap; }
+table.bookings-table td { padding:11px 16px;border-bottom:1px solid #f0e8d8;vertical-align:middle; }
+table.bookings-table tbody tr:hover { background:#fff8f0; }
+table.bookings-table tbody tr:last-child td { border-bottom:none; }
+.badge-coupon { background:#e8f5e9;color:#1a7a3a;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap; }
+.amount-advance { color:var(--green);font-weight:700; }
+.amount-due     { color:var(--red);font-weight:600;font-size:12px; }
+.empty-bookings { padding:50px;text-align:center;color:var(--text-muted); }
+.empty-bookings i { font-size:36px;display:block;margin-bottom:12px;color:var(--gold); }
+.manual-entry-section { background:white;border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;border:1px solid var(--border);border-left:4px solid var(--gold);margin-bottom:24px;display:none; }
+.manual-entry-section h3 { font-family:'Lora',serif;font-size:17px;color:var(--maroon);margin-bottom:6px;display:flex;align-items:center;gap:8px; }
+.manual-entry-section .subtitle { font-size:12.5px;color:var(--text-muted);margin-bottom:20px; }
+.me-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:18px; }
+.me-field label { font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:.5px;text-transform:uppercase;display:block;margin-bottom:6px; }
+.me-field input,.me-field select { width:100%;padding:10px 13px;border:2px solid var(--border);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;transition:border-color .2s;background:white; }
+.me-field input:focus,.me-field select:focus { outline:none;border-color:var(--maroon);box-shadow:0 0 0 3px rgba(122,0,0,0.07); }
+.me-field input.required-err { border-color:var(--red); }
+.me-actions { display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px; }
+.me-hint { font-size:12px;color:var(--text-muted); }
+.bulk-import-box { background:#fafafa;border:2px dashed var(--border);border-radius:10px;padding:20px;margin-top:20px; }
+.bulk-import-box h4 { font-size:14px;font-weight:700;color:var(--maroon);margin-bottom:6px; }
+.bulk-import-box p { font-size:12px;color:var(--text-muted);margin-bottom:10px;line-height:1.6; }
+.bulk-textarea { width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:9px;font-size:12px;font-family:monospace;resize:vertical;min-height:90px;transition:border-color .2s; }
+.bulk-textarea:focus { outline:none;border-color:var(--maroon); }
+.bulk-preview { margin-top:10px;font-size:12px;color:var(--green);font-weight:600;min-height:18px; }
+.bulk-preview.err { color:var(--red); }
+
 @media (max-width: 600px) {
+
   main { padding: 20px 14px 100px; }
   header { padding: 14px 16px; }
   .range-grid { grid-template-columns: 1fr; }
@@ -484,6 +526,9 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
     <button class="qa-btn gold" onclick="showRangePicker()">
       <i class="fa fa-calendar-plus"></i> Block a Date Range
     </button>
+    <button class="qa-btn outline" onclick="toggleBookingsSection()" id="bookings-toggle-btn">
+      <i class="fa fa-chart-bar"></i> View Booking History
+    </button>
   </div>
 
   <!-- RANGE PICKER (hidden by default) -->
@@ -521,6 +566,95 @@ main { max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px; }
     <h2><i class="fa fa-ban" style="font-size:18px;color:var(--red);"></i> Currently Blocked Dates</h2>
     <div class="blocked-list" id="blocked-list">
       <div class="blocked-empty"><i class="fa fa-check-circle"></i>All dates are available — no dates blocked yet.</div>
+    </div>
+  </div>
+
+<!-- BOOKINGS ANALYTICS -->
+  <div class="bookings-section" id="bookings-section" style="display:none;">
+    <h2><i class="fa fa-chart-bar" style="font-size:18px;color:var(--gold);"></i> Booking History &amp; Revenue</h2>
+
+    <div class="revenue-cards">
+      <div class="rev-card"><div class="label">Total Bookings</div><div class="value" id="rev-total">—</div><div class="sub">all time</div></div>
+      <div class="rev-card"><div class="label">Total Room Revenue</div><div class="value" id="rev-room">—</div><div class="sub">full stay value</div></div>
+      <div class="rev-card"><div class="label">Advance Collected</div><div class="value" id="rev-advance">—</div><div class="sub">via Razorpay</div></div>
+      <div class="rev-card"><div class="label">Due at Hotel</div><div class="value" id="rev-due">—</div><div class="sub">balance pending</div></div>
+      <div class="rev-card"><div class="label">Total Nights</div><div class="value" id="rev-nights">—</div><div class="sub">nights booked</div></div>
+      <div class="rev-card"><div class="label">Avg. Room Value</div><div class="value" id="rev-avg">—</div><div class="sub">per booking</div></div>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+      <button class="qa-btn outline" onclick="toggleManualEntry()" id="manual-entry-toggle-btn" style="font-size:13px;">
+        <i class="fa fa-plus-circle"></i> Add Past Booking Manually
+      </button>
+    </div>
+
+    <div class="manual-entry-section" id="manual-entry-section">
+      <h3><i class="fa fa-pencil-alt" style="color:var(--gold);"></i> Add a Past Booking</h3>
+      <p class="subtitle">Fill in details from your register / WhatsApp / Razorpay dashboard. Fields marked * are required.</p>
+      <div class="me-grid">
+        <div class="me-field"><label>Invoice No. *</label><input type="text" id="me-invoice" placeholder="e.g. RG-001"></div>
+        <div class="me-field"><label>Guest Name *</label><input type="text" id="me-name" placeholder="e.g. Ramesh Sharma"></div>
+        <div class="me-field"><label>Guest Phone</label><input type="tel" id="me-phone" placeholder="9876543210" maxlength="10"></div>
+        <div class="me-field"><label>Room Type *</label>
+          <select id="me-room">
+            <option value="">— Select —</option>
+            <option>Deluxe AC Room</option><option>Super Deluxe AC Room</option>
+            <option>Non-AC Room</option><option>Standard Room</option>
+            <option>Suite</option><option>Other</option>
+          </select>
+        </div>
+        <div class="me-field"><label>Check-in Date *</label><input type="date" id="me-checkin"></div>
+        <div class="me-field"><label>Check-out Date *</label><input type="date" id="me-checkout"></div>
+        <div class="me-field"><label>Room Price (₹) *</label><input type="number" id="me-roomprice" placeholder="e.g. 4000" min="0"></div>
+        <div class="me-field"><label>Advance Paid (₹)</label><input type="number" id="me-advance" placeholder="e.g. 600" min="0"></div>
+        <div class="me-field"><label>Coupon Used</label><input type="text" id="me-coupon" placeholder="Leave blank if none"></div>
+        <div class="me-field"><label>Booking Date *</label><input type="date" id="me-bookingdate"></div>
+        <div class="me-field"><label>Razorpay Payment ID</label><input type="text" id="me-payid" placeholder="pay_XXXX (optional)"></div>
+        <div class="me-field"><label>Source</label>
+          <select id="me-source">
+            <option value="manual">Manual Entry</option>
+            <option value="walk-in">Walk-in</option>
+            <option value="phone">Phone Booking</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="website">Website (missed webhook)</option>
+          </select>
+        </div>
+      </div>
+      <div class="me-actions">
+        <button class="qa-btn primary" onclick="submitManualBooking()"><i class="fa fa-save"></i> Save Booking</button>
+        <button class="qa-btn outline" onclick="clearManualForm()" style="font-size:12px;"><i class="fa fa-undo"></i> Clear</button>
+        <span class="me-hint">Nights are calculated automatically from dates.</span>
+      </div>
+      <div class="bulk-import-box">
+        <h4><i class="fa fa-file-csv" style="color:var(--green);margin-right:6px;"></i> Bulk Import via CSV paste</h4>
+        <p>Paste rows from Excel / Google Sheets. One booking per line, comma-separated:<br>
+          <code style="background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:11px;">InvoiceNo, GuestName, Phone, RoomType, CheckIn(YYYY-MM-DD), CheckOut(YYYY-MM-DD), RoomPrice, AdvancePaid, Coupon, BookingDate(YYYY-MM-DD)</code>
+        </p>
+        <textarea class="bulk-textarea" id="bulk-csv-input"
+          placeholder="RG-001, Ramesh Sharma, 9876543210, Deluxe AC Room, 2025-01-10, 2025-01-12, 4000, 600, , 2025-01-09"
+          oninput="previewBulk()"></textarea>
+        <div class="bulk-preview" id="bulk-preview"></div>
+        <div style="margin-top:10px;display:flex;gap:10px;">
+          <button class="qa-btn primary" onclick="submitBulkBookings()" style="font-size:13px;"><i class="fa fa-upload"></i> Import All Rows</button>
+          <button class="qa-btn outline" onclick="document.getElementById('bulk-csv-input').value='';document.getElementById('bulk-preview').textContent='';" style="font-size:12px;">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bookings-toolbar">
+      <input class="search-input" id="booking-search" type="text" placeholder="🔍  Search by name, phone, invoice…" oninput="renderBookingsTable()">
+      <select class="filter-select" id="booking-filter" onchange="renderBookingsTable()">
+        <option value="all">All time</option>
+        <option value="7">Last 7 days</option>
+        <option value="30">Last 30 days</option>
+        <option value="90">Last 90 days</option>
+      </select>
+      <button class="qa-btn outline" onclick="loadBookings()" style="font-size:12px;padding:9px 16px;"><i class="fa fa-sync"></i> Refresh</button>
+      <button class="qa-btn danger" onclick="clearBookingHistory()" style="font-size:12px;padding:9px 16px;"><i class="fa fa-trash"></i> Clear History</button>
+    </div>
+
+    <div class="bookings-table-wrap" id="bookings-table-wrap">
+      <div class="empty-bookings"><i class="fa fa-hourglass-half"></i><br>Loading booking history…</div>
     </div>
   </div>
 
@@ -874,6 +1008,246 @@ function toast(msg, type = 'info') {
     setTimeout(() => t.remove(), 300);
   }, 3500);
 }
+// ── BOOKINGS ANALYTICS ────────────────────────────────────────────────────────
+const BOOKINGS_API = 'https://harshdeep-api.vercel.app/api/bookings';
+let allBookings = [];
+let bookingsSectionOpen = false;
+
+function toggleBookingsSection() {
+  bookingsSectionOpen = !bookingsSectionOpen;
+  const section = document.getElementById('bookings-section');
+  const btn     = document.getElementById('bookings-toggle-btn');
+  section.style.display = bookingsSectionOpen ? 'block' : 'none';
+  btn.innerHTML = bookingsSectionOpen
+    ? '<i class="fa fa-times"></i> Hide Booking History'
+    : '<i class="fa fa-chart-bar"></i> View Booking History';
+  if (bookingsSectionOpen && allBookings.length === 0) loadBookings();
+}
+
+async function loadBookings() {
+  document.getElementById('bookings-table-wrap').innerHTML =
+    '<div class="empty-bookings"><i class="fa fa-spinner fa-spin"></i><br>Loading…</div>';
+  try {
+    const res  = await fetch(`${BOOKINGS_API}?hotel=${HOTEL_ID}`, {
+      headers: { 'Authorization': `Bearer ${ADMIN_PASS}` },
+    });
+    if (!res.ok) throw new Error('Fetch failed');
+    const data = await res.json();
+    allBookings = data.bookings || [];
+    renderRevenueCards();
+    renderBookingsTable();
+  } catch (e) {
+    document.getElementById('bookings-table-wrap').innerHTML =
+      '<div class="empty-bookings"><i class="fa fa-exclamation-circle" style="color:var(--red)"></i><br>Could not load bookings.</div>';
+  }
+}
+
+function getFilteredBookings() {
+  const q      = (document.getElementById('booking-search')?.value || '').toLowerCase();
+  const days   = parseInt(document.getElementById('booking-filter')?.value) || 0;
+  const cutoff = days ? Date.now() - days * 86400000 : 0;
+  return allBookings.filter(b => {
+    if (cutoff && b.timestamp < cutoff) return false;
+    if (!q) return true;
+    return [b.guestName, b.guestPhone, b.invoiceNo, b.roomType]
+      .some(v => (v || '').toLowerCase().includes(q));
+  });
+}
+
+function renderRevenueCards() {
+  const fmt  = n => '₹' + Math.round(n).toLocaleString('en-IN');
+  const b    = allBookings;
+  const room    = b.reduce((s, x) => s + (x.roomPrice   || 0), 0);
+  const advance = b.reduce((s, x) => s + (x.advancePaid || 0), 0);
+  const nights  = b.reduce((s, x) => s + (x.nights      || 0), 0);
+  document.getElementById('rev-total').textContent   = b.length;
+  document.getElementById('rev-room').textContent    = fmt(room);
+  document.getElementById('rev-advance').textContent = fmt(advance);
+  document.getElementById('rev-due').textContent     = fmt(room - advance);
+  document.getElementById('rev-nights').textContent  = nights;
+  document.getElementById('rev-avg').textContent     = b.length ? fmt(room / b.length) : '—';
+}
+
+function renderBookingsTable() {
+  const wrap = document.getElementById('bookings-table-wrap');
+  const list = getFilteredBookings();
+  if (list.length === 0) {
+    wrap.innerHTML = `<div class="empty-bookings"><i class="fa fa-inbox"></i><br>No bookings found${allBookings.length ? ' matching your filter' : ' yet'}.</div>`;
+    return;
+  }
+  const rows = list.map((b, i) => {
+    const due    = (b.roomPrice || 0) - (b.advancePaid || 0);
+    const date   = b.timestamp
+      ? new Date(b.timestamp).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' }) : '—';
+    const coupon = b.coupon && b.coupon !== 'None'
+      ? `<span class="badge-coupon">🏷️ ${b.coupon}</span>` : '—';
+    const src    = b.source && b.source !== 'website'
+      ? `<br><span style="font-size:10px;color:var(--text-muted);">[${b.source}]</span>` : '';
+    return `<tr>
+      <td style="color:var(--text-muted);font-size:12px;">${i+1}</td>
+      <td style="color:var(--maroon);font-weight:700;">#${b.invoiceNo||'—'}${src}</td>
+      <td>${date}</td>
+      <td><strong>${b.guestName||'—'}</strong><br><span style="font-size:11px;color:var(--text-muted);">+91 ${b.guestPhone||'—'}</span></td>
+      <td>${b.roomType||'—'}</td>
+      <td style="font-size:12px;">${fmtDate(b.checkin)} → ${fmtDate(b.checkout)}<br>
+          <span style="color:var(--text-muted);">${b.nights||'—'} night(s)</span></td>
+      <td>₹${(b.roomPrice||0).toLocaleString('en-IN')}</td>
+      <td class="amount-advance">₹${(b.advancePaid||0).toLocaleString('en-IN')}</td>
+      <td class="amount-due">₹${due.toLocaleString('en-IN')}</td>
+      <td>${coupon}</td>
+    </tr>`;
+  }).join('');
+  wrap.innerHTML = `
+    <table class="bookings-table">
+      <thead><tr>
+        <th>#</th><th>Invoice</th><th>Booked On</th><th>Guest</th>
+        <th>Room</th><th>Dates</th><th>Room Price</th>
+        <th>Advance Paid</th><th>Due at Hotel</th><th>Coupon</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+async function clearBookingHistory() {
+  if (!confirm('Delete ALL booking history? This cannot be undone.')) return;
+  try {
+    const res = await fetch(`${BOOKINGS_API}?hotel=${HOTEL_ID}`, {
+      method: 'DELETE', headers: { 'Authorization': `Bearer ${ADMIN_PASS}` },
+    });
+    if (!res.ok) throw new Error();
+    allBookings = [];
+    renderRevenueCards();
+    renderBookingsTable();
+    toast('Booking history cleared.', 'info');
+  } catch { toast('Failed to clear history.', 'err'); }
+}
+
+// ── MANUAL ENTRY ──────────────────────────────────────────────────────────────
+function toggleManualEntry() {
+  const section = document.getElementById('manual-entry-section');
+  const btn     = document.getElementById('manual-entry-toggle-btn');
+  const open    = section.style.display === 'block';
+  section.style.display = open ? 'none' : 'block';
+  btn.innerHTML = open
+    ? '<i class="fa fa-plus-circle"></i> Add Past Booking Manually'
+    : '<i class="fa fa-times"></i> Close Entry Form';
+  if (!open) document.getElementById('me-bookingdate').value = new Date().toISOString().split('T')[0];
+}
+
+function clearManualForm() {
+  ['me-invoice','me-name','me-phone','me-checkin','me-checkout',
+   'me-roomprice','me-advance','me-coupon','me-payid']
+    .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  document.getElementById('me-room').value         = '';
+  document.getElementById('me-source').value       = 'manual';
+  document.getElementById('me-bookingdate').value  = new Date().toISOString().split('T')[0];
+}
+
+function buildManualBooking(invoiceNo, guestName, guestPhone, roomType,
+                             checkin, checkout, roomPrice, advancePaid,
+                             coupon, bookingDate, paymentId, source) {
+  const nights = Math.max(1, Math.round((new Date(checkout) - new Date(checkin)) / 86400000));
+  return {
+    invoiceNo:   invoiceNo  || 'MANUAL-' + Date.now(),
+    paymentId:   paymentId  || '',
+    guestName:   guestName  || 'Unknown Guest',
+    guestPhone:  guestPhone || '',
+    hotelName:   'Hotel Raj Garden',
+    roomType:    roomType   || 'N/A',
+    checkin, checkout, nights,
+    roomPrice:   parseInt(roomPrice)   || 0,
+    advancePaid: parseInt(advancePaid) || 0,
+    coupon:      coupon || 'None',
+    timestamp:   bookingDate ? new Date(bookingDate).getTime() : Date.now(),
+    source:      source || 'manual',
+    addedBy:     'admin-manual',
+  };
+}
+
+async function submitManualBooking() {
+  const required = {
+    'me-invoice':'Invoice No.','me-name':'Guest Name','me-room':'Room Type',
+    'me-checkin':'Check-in','me-checkout':'Check-out',
+    'me-roomprice':'Room Price','me-bookingdate':'Booking Date',
+  };
+  for (const [id, label] of Object.entries(required)) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) {
+      el.classList.add('required-err');
+      toast(`${label} is required.`, 'err'); return;
+    } else { el.classList.remove('required-err'); }
+  }
+  const booking = buildManualBooking(
+    document.getElementById('me-invoice').value.trim(),
+    document.getElementById('me-name').value.trim(),
+    document.getElementById('me-phone').value.trim(),
+    document.getElementById('me-room').value,
+    document.getElementById('me-checkin').value,
+    document.getElementById('me-checkout').value,
+    document.getElementById('me-roomprice').value,
+    document.getElementById('me-advance').value,
+    document.getElementById('me-coupon').value.trim(),
+    document.getElementById('me-bookingdate').value,
+    document.getElementById('me-payid').value.trim(),
+    document.getElementById('me-source').value,
+  );
+  await pushBookingsToRedis([booking], 'Booking saved successfully!');
+  clearManualForm();
+}
+
+function parseBulkCSV(raw) {
+  return raw.trim().split('\n').map(l => l.trim()).filter(Boolean).map(line => {
+    const [invoiceNo,guestName,guestPhone,roomType,checkin,checkout,
+           roomPrice,advancePaid,coupon,bookingDate] = line.split(',').map(c => c.trim());
+    if (!checkin || !checkout || !roomPrice) return null;
+    return buildManualBooking(invoiceNo,guestName,guestPhone,roomType,
+      checkin,checkout,roomPrice,advancePaid,coupon,bookingDate,'','bulk-import');
+  }).filter(Boolean);
+}
+
+function previewBulk() {
+  const raw     = document.getElementById('bulk-csv-input').value;
+  const preview = document.getElementById('bulk-preview');
+  if (!raw.trim()) { preview.textContent = ''; return; }
+  try {
+    const rows = parseBulkCSV(raw);
+    preview.className   = 'bulk-preview' + (rows.length === 0 ? ' err' : '');
+    preview.textContent = rows.length > 0
+      ? `✅ ${rows.length} booking(s) ready to import`
+      : '❌ Could not parse any rows — check format';
+  } catch {
+    preview.className   = 'bulk-preview err';
+    preview.textContent = '❌ Parse error — check CSV format';
+  }
+}
+
+async function submitBulkBookings() {
+  const raw = document.getElementById('bulk-csv-input').value;
+  if (!raw.trim()) { toast('Paste some CSV rows first.', 'err'); return; }
+  const bookings = parseBulkCSV(raw);
+  if (bookings.length === 0) { toast('No valid rows found.', 'err'); return; }
+  if (!confirm(`Import ${bookings.length} booking(s)?`)) return;
+  await pushBookingsToRedis(bookings, `${bookings.length} booking(s) imported!`);
+  document.getElementById('bulk-csv-input').value = '';
+  document.getElementById('bulk-preview').textContent = '';
+}
+
+async function pushBookingsToRedis(newBookings, successMsg) {
+  try {
+    const merged = [...newBookings, ...allBookings];
+    const res = await fetch(`${BOOKINGS_API}?hotel=${HOTEL_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${ADMIN_PASS}` },
+      body: JSON.stringify({ bookings: merged }),
+    });
+    if (!res.ok) throw new Error();
+    allBookings = merged;
+    renderRevenueCards();
+    renderBookingsTable();
+    toast('✅ ' + successMsg, 'ok');
+  } catch { toast('❌ Failed to save.', 'err'); }
+}
+
 </script>
 </body>
 </html>
