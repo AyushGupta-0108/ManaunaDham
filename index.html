@@ -3,14 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Manauna Dham Bareilly - Latest Information & Services</title>
-
 <meta name="description" content="Find Manauna(Manona) Dham darshan and aarti timings, location, photos, live updates, and pilgrim services for devotees of Shri Khatu Shyam Ji.">
 <meta name="keywords" content="manauna dham, manona dham address, manona dham address and phone number, manona dham bareilly, manona dham, manona dham aarti, ManaunaDham.org.in contact number, manauna dham shyam jal, manona dham shyam jal, manauna dham video">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://manaunadham.org.in/">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6b0000">
 
 <link rel="icon" href="logonobg.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1401GVEYWR"></script>
@@ -21,7 +24,6 @@ gtag('js', new Date());
 gtag('config', 'G-1401GVEYWR');
 </script>
 
-<!-- Structured Data for SEO -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -29,7 +31,7 @@ gtag('config', 'G-1401GVEYWR');
   "name": "ManaunaDham.org.in",
   "description": "Independent pilgrim information and services platform",
   "url": "https://manaunadham.org.in"
-} 
+}
 </script>
 
 <!-- Breadcrumb Schema -->
@@ -46,125 +48,166 @@ gtag('config', 'G-1401GVEYWR');
 }
 </script>
 
+<!-- LocalBusiness Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristAttraction",
+  "name": "Manauna Dham – Shree Khatu Shyam Ji",
+  "description": "One of the most rapidly growing spiritual pilgrimage sites in India, located near Aonla, Bareilly district.",
+  "url": "https://manaunadham.org.in",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Manauna Village, Tehsil Aonla",
+    "addressLocality": "Bareilly",
+    "addressRegion": "Uttar Pradesh",
+    "postalCode": "243301",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "28.2711",
+    "longitude": "79.1403"
+  },
+  "openingHours": "Mo-Su 07:00-21:00"
+}
+</script>
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Where is Manauna Dham located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Manauna Dham is located in Manauna village near Aonla, Bareilly district, Uttar Pradesh – 243301."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the darshan timings at Manauna Dham?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Darshan is available from 7 AM to 9 PM daily. Aarti is performed at 8 AM and 5 PM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to get a patient token at Manauna Dham?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Patient tokens can be given only when patients are present in Manauna Dham. Tokens are not issued remotely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ManaunaDham.org.in the official temple website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. ManaunaDham.org.in is a privately operated pilgrim information and services platform, not affiliated with the temple management."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Manauna Dham Bareilly – Shree Khatu Shyam Ji | Latest Info & Services">
+<meta property="og:description" content="Find darshan timings, location, live updates & book hotels, food, taxis for Manauna Dham pilgrimage. Serving 6 Lakh+ visitors.">
+<meta property="og:url" content="https://manaunadham.org.in/">
+<meta property="og:image" content="https://manaunadham.org.in/ILoveManaunaDham.webp">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Manauna Dham – Shree Khatu Shyam Ji Bareilly">
+<meta name="twitter:description" content="Plan your Manauna Dham darshan – book hotels, food & taxis in one place.">
+<meta name="twitter:image" content="https://manaunadham.org.in/ILoveManaunaDham.webp">
+
 <style>
-* {
+:root {
+  --crimson: #6b0000;
+  --crimson-deep: #430000;
+  --crimson-mid: #8b0000;
+  --gold: #c8960c;
+  --gold-light: #e8b020;
+  --gold-pale: #fdf3d0;
+  --cream: #faf6ef;
+  --cream-dark: #f0e8d8;
+  --text-dark: #1a0a0a;
+  --text-mid: #4a3030;
+  --text-soft: #7a6060;
+  --white: #ffffff;
+  --shadow-warm: rgba(107, 0, 0, 0.15);
+  --shadow-gold: rgba(200, 150, 12, 0.3);
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-  background: linear-gradient(135deg, #fff9f0 0%, #ffe8cc 100%);
-  color: #333;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text-dark);
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-/* Top Disclaimer Banner */
+/* ═══════════════════════════════════════════
+   DISCLAIMER BANNER
+═══════════════════════════════════════════ */
 .disclaimer-banner {
-  background: linear-gradient(135deg, #f7f5f2 0%, #ede8dc 100%);
-  border-bottom: 2px solid #d4a017;
-  padding: 10px 20px;
+  background: var(--crimson-deep);
+  padding: 9px 16px;
   text-align: center;
-  font-size: 13px;
-  color: #555;
-  line-height: 1.6;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.disclaimer-banner span {
-  color: #7a0000;
-  font-weight: 700;
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.2px;
 }
 
 .disclaimer-banner a {
-  color: #7a0000;
+  color: var(--gold-light);
   text-decoration: none;
   font-weight: 600;
-  margin-left: 6px;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
+  margin-left: 4px;
+  border-bottom: 1px solid rgba(232,176,32,0.4);
 }
 
-.disclaimer-banner a:hover {
-  border-bottom-color: #7a0000;
-}
-
-/* Header */
+/* ═══════════════════════════════════════════
+   HEADER / NAV
+═══════════════════════════════════════════ */
 header {
-  background: linear-gradient(135deg, #8b0000 0%, #5a0000 100%);
-  color: white;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  background: var(--crimson);
   position: sticky;
   top: 0;
   z-index: 999;
-  animation: slideDown 0.5s ease;
-}
-.train-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, #d4a017 0%, #b8860b 100%);
-  color: white;
-  padding: 16px 34px;
-  border-radius: 40px;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  box-shadow: 0 6px 20px rgba(212,160,23,0.4);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Shine effect */
-.train-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: left 0.6s ease;
-}
-
-.train-btn:hover::before {
-  left: 100%;
-}
-
-/* Hover effect */
-.train-btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 10px 30px rgba(212,160,23,0.6);
-}
-
-/* Click effect */
-.train-btn:active {
-  transform: scale(0.98);
-}
-
-  
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  box-shadow: 0 2px 20px rgba(0,0,0,0.25);
 }
 
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 40px;
+  padding: 13px 20px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -172,1299 +215,1920 @@ header {
 .brand {
   display: flex;
   align-items: center;
-  gap: 16px;
-  transition: transform 0.3s ease;
+  gap: 12px;
+  text-decoration: none;
 }
 
-.brand:hover {
-  transform: scale(1.05);
-}
-
-.brand img {
-  height: 56px;
-  width: auto;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
-  transition: transform 0.3s ease;
-}
-
-.brand img:hover {
-  transform: rotate(5deg);
-}
-
-.brand-text {
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
   display: flex;
-  flex-direction: column;
-  line-height: 1.2;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--white);
+  border: 2px solid rgba(255,255,255,0.25);
+  flex-shrink: 0;
 }
 
 .brand-text strong {
-  font-size: 22px;
+  display: block;
+  font-family: var(--font-display);
+  font-size: 17px;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  color: var(--white);
+  line-height: 1.2;
 }
 
 .brand-text span {
-  font-size: 14px;
-  opacity: 0.9;
-  font-weight: 300;
+  font-size: 11px;
+  color: var(--gold-light);
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
-/* Navigation */
 nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 24px;
 }
 
 nav a {
-  color: white;
+  color: rgba(255,255,255,0.9);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 8px 4px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+nav a:hover { color: var(--gold-light); }
+
+/* Nav dropdowns */
+.nav-dropdown { position: relative; }
+
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--crimson-deep);
+  border-radius: 10px;
+  min-width: 200px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  overflow: hidden;
+  z-index: 200;
+  animation: dropIn 0.2s ease;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 12px 18px;
+  font-size: 13.5px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+}
+
+.nav-dropdown-menu a:last-child { border-bottom: none; }
+
+.nav-dropdown-menu a:hover {
+  padding-left: 24px;
+  color: var(--gold-light);
+  background: rgba(255,255,255,0.07);
+}
+
+.live-btn {
   display: flex;
   align-items: center;
-  position: relative;
-  transition: all 0.3s ease;
+  gap: 6px;
+  background: #00a000;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  animation: livePulse 2s infinite;
+  box-shadow: 0 0 0 0 rgba(0,160,0,0.5);
 }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: #ffd56b;
-  transition: width 0.3s ease;
+@keyframes livePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,160,0,0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(0,160,0,0); }
 }
 
-nav a:hover::after,
-nav a.underline::after {
-  width: 100%;
+.live-dot {
+  width: 7px; height: 7px;
+  background: #fff;
+  border-radius: 50%;
+  animation: blink 1s infinite;
 }
 
-nav a.live {
-  padding: 10px 20px;
-  border-radius: 25px;
-  background: linear-gradient(135deg, #00a000 0%, #008000 100%);
-  box-shadow: 0 4px 15px rgba(0,128,0,0.3);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 4px 15px rgba(0,128,0,0.3);
-  }
-  50% {
-    box-shadow: 0 4px 25px rgba(0,128,0,0.6);
-  }
-}
-
-nav a.live:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,128,0,0.5);
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 .menu-btn {
   display: none;
-  font-size: 28px;
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  padding: 4px;
+  color: white;
 }
 
-.menu-btn:hover {
-  transform: rotate(90deg);
+.hamburger {
+  width: 24px; height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+.hamburger span {
+  display: block;
+  height: 2.5px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7.75px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7.75px) rotate(-45deg); }
 
 .mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
-  padding: 0;
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.4s ease;
+  background: var(--crimson-deep);
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 
-.mobile-menu.active {
-  max-height: 600px;
-}
+.mobile-menu.open { max-height: 500px; }
 
 .mobile-menu a {
-  padding: 16px 40px;
-  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 24px;
+  color: rgba(255,255,255,0.9);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s ease;
-  transform: translateX(-100%);
-  animation: slideIn 0.3s forwards;
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.2s, padding-left 0.2s;
 }
-
-@keyframes slideIn {
-  to {
-    transform: translateX(0);
-  }
-}
-
-.mobile-menu a:nth-child(1) { animation-delay: 0.05s; }
-.mobile-menu a:nth-child(2) { animation-delay: 0.1s; }
-.mobile-menu a:nth-child(3) { animation-delay: 0.15s; }
-.mobile-menu a:nth-child(4) { animation-delay: 0.2s; }
-.mobile-menu a:nth-child(5) { animation-delay: 0.25s; }
-.mobile-menu a:nth-child(6) { animation-delay: 0.3s; }
-.mobile-menu a:nth-child(7) { animation-delay: 0.35s; }
-.mobile-menu a:nth-child(8) { animation-delay: 0.4s; }
 
 .mobile-menu a:hover {
-  background: rgba(255,255,255,0.1);
-  padding-left: 50px;
+  background: rgba(255,255,255,0.07);
+  padding-left: 32px;
+  color: var(--gold-light);
 }
 
-/* Dropdown */
-.dropdown {
+.mobile-menu a i {
+  width: 20px;
+  color: var(--gold-light);
+  font-size: 14px;
+}
+
+/* ═══════════════════════════════════════════
+   HERO SECTION — Full screen sliding bg + service grid
+═══════════════════════════════════════════ */
+.hero {
   position: relative;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
-  top: 100%;
-  min-width: 220px;
-  z-index: 99;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  border-radius: 8px;
-  margin-top: 8px;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  animation: dropdownFade 0.3s ease;
 }
 
-@keyframes dropdownFade {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 14px 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  transition: all 0.3s ease;
-}
-
-.dropdown-menu a:last-child {
-  border-bottom: none;
-}
-
-.dropdown-menu a:hover {
-  background: rgba(255,255,255,0.15);
-  padding-left: 30px;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-/* Sevadar Banner */
-.sevadar-banner {
-  background: linear-gradient(135deg, #f7f5f2 0%, #ede8dc 100%);
-  border-bottom: 2px solid #d4a017;
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 13px;
-  color: #555;
-  line-height: 1.6;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.sevadar-banner strong {
-  color: #7a0000;
-  font-weight: 700;
-}
-
-/* Carousel */
-.carousel {
-  overflow: hidden;
-  width: 100%;
-  background: #000;
-  position: relative;
-  height: 70vh;
-  max-height: 600px;
-}
-
-.carousel::before {
-  content: '';
+/* Slideshow backgrounds */
+.hero-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%);
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-slide.active { opacity: 1; }
+
+.hero-slide:nth-child(1) { background-image: url('ILoveManaunaDham.webp'); }
+.hero-slide:nth-child(2) { background-image: url('Mandir1.webp'); }
+.hero-slide:nth-child(3) { background-image: url('Mandir6.webp'); }
+.hero-slide:nth-child(4) { background-image: url('Omendra3.webp'); }
+
+/* Multi-layer gradient overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(40,0,0,0.5) 0%,
+      rgba(20,0,0,0.35) 40%,
+      rgba(10,0,0,0.75) 100%
+    );
   z-index: 1;
-  pointer-events: none;
 }
 
-.track {
-  display: flex;
-  width: max-content;
-  animation: scroll 20s linear infinite;
-  height: 100%;
-}
-
-.track:hover {
-  animation-play-state: paused;
-}
-
-.track img {
-  width: 100vw;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.9);
-  transition: filter 0.3s ease;
-}
-
-.track img:hover {
-  filter: brightness(1.1);
-}
-
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* Sections */
-.section {
-  padding: 80px 40px;
-  max-width: 1400px;
-  margin: 0 auto;
-  animation: fadeInUp 0.6s ease;
-}
-
-  
-/* Stats Section */
-.stats-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 25px;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.stat-card {
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-}
-
-.stat-number {
-  font-size: 42px;
-  font-weight: 700;
-  color: #7a0000;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.stat-label {
-  font-size: 15px;
-  color: #666;
-  font-weight: 600;
-}
-
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.section h2 {
-  color: #7a0000;
-  font-size: 36px;
-  font-weight: 700;
+.hero-content {
   position: relative;
-  display: inline-block;
-  padding-bottom: 12px;
-  margin-bottom: 40px;
-}
-
-.section h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60%;
-  height: 4px;
-  background: linear-gradient(90deg, #d4a017 0%, transparent 100%);
-  border-radius: 2px;
-}
-
-/* About Box */
-.aboutbox {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 60px;
-  background: white;
-  padding: 50px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.aboutbox:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.12);
-}
-
-.aboutbox img {
-  width: 350px;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
-}
-
-.aboutbox img:hover {
-  transform: scale(1.05) rotate(2deg);
-}
-
-.abouttext {
+  z-index: 2;
   flex: 1;
-  min-width: 300px;
-}
-
-.abouttext p {
-  margin-bottom: 20px;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #444;
-}
-
-/* Buttons */
-.btn {
-  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
-  color: white;
-  padding: 14px 30px;
-  border: none;
-  border-radius: 30px;
-  font-size: 15px;
-  font-weight: 600;
-  margin: 10px 10px 0 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(122,0,0,0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  transform: translate(-50%, -50%);
-  transition: width 0.5s ease, height 0.5s ease;
-}
-
-.btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(122,0,0,0.4);
-}
-
-.btn:active {
-  transform: translateY(-1px);
-}
-
-/* Timings Box */
-.timings {
-  background: white;
-  border-left: 6px solid #d4a017;
-  padding: 40px;
-  margin-top: 50px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timings:hover {
-  transform: translateX(5px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-}
-
-.timings h2 {
-  margin-bottom: 25px;
-  font-size: 28px;
-}
-
-.timings p {
-  margin: 12px 0;
-  font-size: 17px;
-  color: #333;
   display: flex;
+  flex-direction: column;
+  padding: 0 20px 32px;
+}
+
+/* Badge */
+.hero-badge {
+  display: inline-flex;
   align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 30px;
+  margin-top: 24px;
+  align-self: flex-start;
+  letter-spacing: 0.5px;
+}
+
+.hero-badge-dot {
+  font-size: 16px;
+}
+
+/* Title block */
+.hero-title-block {
+  margin-top: 20px;
+  flex: 1;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 8vw, 52px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.15;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.hero-title .accent {
+  color: var(--gold-light);
+  display: block;
+  font-style: italic;
+}
+
+.hero-subtitle {
+  margin-top: 12px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.7;
+  max-width: 360px;
+  font-weight: 400;
+}
+
+/* Slideshow dots */
+.hero-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.hero-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.hero-dot.active {
+  width: 22px;
+  border-radius: 3px;
+  background: var(--gold-light);
+}
+
+/* Service grid on hero */
+.hero-services {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.timings p::before {
-  content: '🕉️';
-  font-size: 20px;
-}
-
-/* Services Grid */
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.service {
-  background: white;
-  padding: 35px 25px;
-  text-align: center;
-  border-radius: 16px;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-  color: #7a0000;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.service::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212,160,23,0.1), transparent);
-  transition: left 0.5s ease;
-}
-
-.service:hover::before {
-  left: 100%;
-}
-
-.service:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-  background: linear-gradient(135deg, #fff 0%, #fffbf0 100%);
-}
-
-.service i {
-  font-size: 42px;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
-  color: #d4a017;
-}
-
-.service:hover i {
-  transform: scale(1.2) rotate(5deg);
-}
-
-/* Gallery */
-.gallery-row {
+.hero-service-btn {
   display: flex;
-  overflow-x: auto;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: #d4a017 #f0f0f0;
-  padding: 20px 0;
-}
-
-.gallery-row::-webkit-scrollbar {
-  height: 10px;
-}
-
-.gallery-row::-webkit-scrollbar-track {
-  background: #f0f0f0;
-}
-
-.gallery-row::-webkit-scrollbar-thumb {
-  background: #d4a017;
-  border-radius: 5px;
-}
-
-.gallery-row img,
-.gallery-row iframe {
-  width: 90vw;
-  max-width: 800px;
-  height: 65vh;
-  object-fit: cover;
-  flex-shrink: 0;
-  scroll-snap-align: center;
-  border-radius: 12px;
-  margin: 0 10px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-row img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-}
-
-/* Weather Cards */
-#weatherCards .service,
-#openWeather {
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* FAQ Section */
-.section p strong {
-  color: #7a0000;
-  font-size: 18px;
-}
-
-/* Popup */
-.popup {
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-  max-width: 320px;
-  z-index: 1000;
-  animation: slideInPopup 0.5s ease;
-  border: 3px solid #d4a017;
-}
-
-@keyframes slideInPopup {
-  from {
-    transform: translateY(100px) scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
-.popup-close {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  font-size: 28px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(200,150,12,0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,220,80,0.3);
+  border-radius: var(--radius-md);
+  padding: 16px 12px;
+  text-decoration: none;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+  -webkit-user-select: none;
+  user-select: none;
+  text-align: center;
   cursor: pointer;
-  color: #7a0000;
-  transition: transform 0.3s ease;
 }
 
-.popup-close:hover {
-  transform: rotate(90deg);
+.hero-service-btn:active {
+  transform: scale(0.96);
+  background: rgba(200,150,12,1);
 }
 
-.popup h3 {
-  color: #7a0000;
-  margin-top: 0;
+.hero-service-btn i {
   font-size: 22px;
+  color: white;
+}
+
+/* ═══════════════════════════════════════════
+   STATS SECTION — "How big we are"
+═══════════════════════════════════════════ */
+.stats-section {
+  background: var(--cream);
+  padding: 52px 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 800;
+  color: var(--crimson);
+  line-height: 1.2;
+}
+
+.section-header .underline-bar {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+
+.stats-card-wrap {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 40px var(--shadow-warm);
+  overflow: hidden;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.stat-item {
+  padding: 32px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.stat-item:nth-child(1),
+.stat-item:nth-child(2) {
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.stat-item:nth-child(odd) {
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+.stat-icon {
+  font-size: 24px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.stat-number-wrap {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 7vw, 38px);
+  font-weight: 800;
+  color: var(--crimson);
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 1px;
+}
+
+.stat-number-wrap .suffix {
+  font-size: 0.55em;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.stat-label {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES LIST SECTION
+═══════════════════════════════════════════ */
+.services-section {
+  padding: 52px 20px;
+  background: var(--cream-dark);
+}
+
+.services-list {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.service-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: all 0.2s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.service-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+}
+
+.service-icon-box {
+  width: 52px; height: 52px;
+  background: var(--crimson);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.service-icon-box i {
+  font-size: 22px;
+  color: white;
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--crimson);
+  font-family: var(--font-display);
+}
+
+.service-info p {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.service-arrow {
+  color: var(--gold);
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.service-tag {
+  display: inline-block;
+  background: var(--gold-pale);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT SECTION
+═══════════════════════════════════════════ */
+.about-section {
+  padding: 52px 20px;
+  background: var(--cream);
+}
+
+.about-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 40px var(--shadow-warm);
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+
+.about-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+
+.about-body {
+  padding: 28px 24px;
+}
+
+.about-body h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--crimson);
+  margin-bottom: 8px;
+}
+
+.gold-line {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.about-body p {
+  font-size: 14.5px;
+  color: var(--text-mid);
+  line-height: 1.8;
   margin-bottom: 12px;
 }
 
-.popup p {
-  margin-bottom: 16px;
-  color: #555;
-  line-height: 1.6;
+.about-note {
+  font-size: 12px !important;
+  color: var(--text-soft) !important;
+  margin-bottom: 0 !important;
 }
 
-.popup a {
-  display: inline-block;
-  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-  margin-top: 10px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(122,0,0,0.3);
-}
-
-.popup a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(122,0,0,0.4);
-}
-
-/* Footer */
-footer {
-  background: linear-gradient(135deg, #4d0000 0%, #2a0000 100%);
-  color: white;
-  padding: 60px 40px 30px;
-  margin-top: 80px;
-  box-shadow: 0 -5px 30px rgba(0,0,0,0.2);
-}
-
-.footer-content {
-  max-width: 1400px;
-  margin: 0 auto;
+.btn-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 50px;
-  margin-bottom: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.footer-section h3 {
-  color: #ffd56b;
-  margin-bottom: 20px;
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: var(--crimson);
+  color: white;
+  padding: 13px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.btn-primary:active { transform: scale(0.97); background: var(--crimson-deep); }
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: transparent;
+  color: var(--crimson);
+  padding: 13px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--crimson);
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.btn-secondary:active { background: var(--cream); transform: scale(0.97); }
+
+/* Timings card */
+.timings-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 560px;
+  margin: 0 auto;
+  box-shadow: 0 4px 20px var(--shadow-warm);
+  border-left: 5px solid var(--gold);
+}
+
+.timings-card h3 {
+  font-family: var(--font-display);
   font-size: 20px;
+  color: var(--crimson);
+  margin-bottom: 16px;
+}
+
+.timing-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 14px;
+}
+
+.timing-row:last-child { border-bottom: none; }
+
+.timing-icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.timing-label {
+  font-weight: 600;
+  color: var(--text-dark);
+  flex: 1;
+}
+
+.timing-val {
+  color: var(--crimson);
   font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════
+   LOCATION SECTION
+═══════════════════════════════════════════ */
+.location-section {
+  padding: 52px 20px;
+  background: var(--cream-dark);
+}
+
+.location-section .section-header {
+  margin-bottom: 24px;
+}
+
+.location-address {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  max-width: 560px;
+  margin: 0 auto 20px;
+  font-size: 14px;
+  color: var(--text-mid);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.location-address i {
+  color: var(--gold);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.map-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.map-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 280px;
+  border: none;
+}
+
+/* ═══════════════════════════════════════════
+   JOURNEY SECTION
+═══════════════════════════════════════════ */
+.journey-section {
+  padding: 52px 20px;
+  background: var(--crimson);
+  text-align: center;
+}
+
+.journey-section .section-header h2 {
+  color: white;
+}
+
+.journey-section .section-header .underline-bar {
+  background: linear-gradient(90deg, var(--gold-light), var(--gold));
+}
+
+.journey-section p {
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+
+.journey-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.journey-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.journey-btn:active { transform: scale(0.96); }
+
+.journey-btn-train {
+  background: white;
+  color: var(--crimson);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.journey-btn-taxi {
+  background: var(--gold);
+  color: var(--crimson-deep);
+  box-shadow: 0 4px 20px var(--shadow-gold);
+}
+
+.journey-btn i {
+  font-size: 28px;
+}
+
+/* ═══════════════════════════════════════════
+   WEATHER SECTION
+═══════════════════════════════════════════ */
+.weather-section {
+  padding: 52px 20px;
+  background: var(--cream);
+}
+
+.weather-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  margin-top: 24px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weather-scroll::-webkit-scrollbar { display: none; }
+
+.weather-card {
+  flex: 0 0 calc(50% - 6px);
+  scroll-snap-align: start;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.weather-card .w-emoji { font-size: 32px; }
+.weather-card .w-day {
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 8px;
+  color: var(--text-dark);
+}
+.weather-card .w-temp {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+
+.today-weather {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  max-width: 260px;
+  margin: 20px auto 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.today-temp {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--crimson);
+  line-height: 1;
+}
+
+.today-meta {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════
+   GALLERY SECTION
+═══════════════════════════════════════════ */
+.gallery-section {
+  padding: 52px 0;
+  background: var(--cream-dark);
+}
+
+.gallery-section .section-header {
+  padding: 0 20px;
+}
+
+.gallery-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 20px 20px 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.gallery-scroll::-webkit-scrollbar { display: none; }
+
+.gallery-scroll img {
+  width: 75vw;
+  max-width: 320px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* ═══════════════════════════════════════════
+   FAQ SECTION
+═══════════════════════════════════════════ */
+.faq-section {
+  padding: 52px 20px;
+  background: var(--cream);
+}
+
+.faq-list {
+  max-width: 560px;
+  margin: 24px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--crimson);
+  cursor: pointer;
+  gap: 12px;
+  user-select: none;
+}
+
+.faq-q .faq-icon {
+  font-size: 18px;
+  color: var(--gold);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-item.open .faq-a { max-height: 200px; }
+
+.faq-a p {
+  padding: 0 20px 18px;
+  font-size: 13.5px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: 14px;
+}
+
+/* ═══════════════════════════════════════════
+   DISCLAIMER SECTION
+═══════════════════════════════════════════ */
+.disclaimer-section {
+  padding: 52px 20px;
+  background: var(--cream-dark);
+  border-top: 4px solid var(--gold);
+}
+
+.disclaimer-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-width: 560px;
+  margin: 24px auto 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.disclaimer-block {
+  padding: 22px 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.disclaimer-block:last-child { border-bottom: none; }
+
+.disclaimer-block-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.disclaimer-icon {
+  width: 38px; height: 38px;
+  background: var(--gold-pale);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.disclaimer-icon i {
+  color: var(--crimson);
+  font-size: 16px;
+}
+
+.disclaimer-block h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--crimson);
+  font-weight: 700;
+}
+
+.disclaimer-block p {
+  font-size: 13.5px;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  background: var(--crimson-deep);
+  color: white;
+  padding: 44px 20px 24px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 20px;
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--gold-light);
+  margin-bottom: 14px;
   position: relative;
   padding-bottom: 10px;
 }
 
-.footer-section h3::after {
+.footer-col h4::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 50px;
-  height: 3px;
-  background: #ffd56b;
-  border-radius: 2px;
+  width: 32px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
 }
 
-.footer-section p,
-.footer-section a {
-  color: #fff;
-  opacity: 0.9;
-  line-height: 2;
-  text-decoration: none;
+.footer-col p,
+.footer-col a {
   display: block;
-  transition: all 0.3s ease;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  line-height: 2.2;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.footer-section a:hover {
-  opacity: 1;
-  padding-left: 10px;
-  color: #ffd56b;
-}
+.footer-col a:hover { color: var(--gold-light); }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 40px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.12);
 }
 
 .footer-bottom p {
-  font-size: 14px;
-  opacity: 0.85;
-  margin: 8px 0;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
   line-height: 1.8;
 }
 
-/* Disclaimer Section */
-#disclaimer-full {
+.footer-bottom p:first-child {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 8px;
+}
+
+/* ═══════════════════════════════════════════
+   BOTTOM POPUP
+═══════════════════════════════════════════ */
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background: white;
-  padding: 60px 40px;
-  border-top: 5px solid #d4a017;
-  box-shadow: 0 -5px 30px rgba(0,0,0,0.05);
+  padding: 20px 22px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 50px rgba(0,0,0,0.25);
+  width: calc(100% - 40px);
+  max-width: 360px;
+  z-index: 1000;
+  border-top: 4px solid var(--gold);
+  animation: popupIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#disclaimer-full > div {
-  max-width: 1000px;
-  margin: 0 auto;
+@keyframes popupIn {
+  from { transform: translateX(-50%) translateY(120%); opacity: 0; }
+  to { transform: translateX(-50%) translateY(0); opacity: 1; }
 }
 
-.disclaimer-content {
-  background: linear-gradient(135deg, #fffbf0 0%, #fff9e6 100%);
-  padding: 35px;
-  border-left: 6px solid #d4a017;
-  margin-top: 30px;
-  border-radius: 12px;
-  line-height: 1.9;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+.popup-close {
+  position: absolute;
+  top: 10px; right: 14px;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-soft);
+  line-height: 1;
+  transition: transform 0.2s;
 }
 
-.disclaimer-content p {
-  margin: 20px 0;
+.popup-close:hover { transform: rotate(90deg); color: var(--crimson); }
+
+.popup h3 {
+  font-family: var(--font-display);
+  color: var(--crimson);
+  font-size: 18px;
+  margin-bottom: 6px;
 }
 
-.disclaimer-content strong {
-  color: #7a0000;
-  font-size: 17px;
+.popup p {
+  font-size: 13.5px;
+  color: var(--text-soft);
+  margin-bottom: 14px;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .section {
-    padding: 60px 30px;
+.popup a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--crimson);
+  color: white;
+  padding: 11px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px var(--shadow-warm);
+}
+
+/* ═══════════════════════════════════════════
+   DESKTOP OVERRIDES
+═══════════════════════════════════════════ */
+@media (min-width: 640px) {
+  .hero-services { grid-template-columns: repeat(3, 1fr); }
+  .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .stat-item:nth-child(odd) { border-right: 1px solid rgba(0,0,0,0.06); }
+  .stat-item:nth-child(1),
+  .stat-item:nth-child(2),
+  .stat-item:nth-child(3),
+  .stat-item:nth-child(4) { border-bottom: none; }
+  .weather-card { flex: 0 0 calc(20% - 12px); min-width: 120px; }
+}
+
+@media (min-width: 800px) {
+  nav { display: flex; }
+  .menu-btn { display: none; }
+
+  .hero { min-height: 80vh; }
+  .hero-content { max-width: 600px; padding: 0 60px 60px; justify-content: flex-end; }
+  .hero-badge { margin-top: 40px; }
+  .hero-title { font-size: 52px; }
+
+  .stats-card-wrap,
+  .services-list,
+  .about-card,
+  .timings-card,
+  .location-address,
+  .map-wrap,
+  .faq-list,
+  .disclaimer-card,
+  .footer-grid {
+    max-width: 800px;
   }
-  
-  .topbar {
-    padding: 16px 30px;
-  }
-  
-  .aboutbox {
-    padding: 40px;
-    gap: 40px;
+
+  .journey-btns { max-width: 480px; }
+
+  .gallery-scroll img {
+    width: 340px;
+    height: 260px;
   }
 }
 
 @media (max-width: 800px) {
-  nav {
-    display: none;
-  }
-  
-  .menu-btn {
-    display: block;
-  }
-  
-  .mobile-menu {
-    display: flex;
-  }
-  
-  .brand img {
-    height: 48px;
-  }
-  
-  .brand-text strong {
-    font-size: 18px;
-  }
-  
-  .brand-text span {
-    font-size: 13px;
-  }
-  
-  .carousel {
-    height: 50vh;
-  }
-  
-  .track img {
-    height: 50vh;
-  }
-  
-  .section {
-    padding: 50px 20px;
-  }
-  
-  .section h2 {
-    font-size: 28px;
-  }
-  
-  .aboutbox {
-    flex-direction: column;
-    text-align: center;
-    padding: 30px 20px;
-  }
-  
-  .aboutbox img {
-    margin: 0 auto 20px auto;
-    width: 100%;
-    max-width: 350px;
-  }
-  
-  .services {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-  }
-  
-  .timings {
-    padding: 30px 20px;
-  }
-  
-  .popup {
-    right: 15px;
-    bottom: 15px;
-    max-width: 280px;
-    padding: 25px;
-  }
-  
-  footer {
-    padding: 40px 20px 20px;
-  }
-  
-  .footer-content {
-    gap: 35px;
-  }
-  
-  .topbar {
-    padding: 14px 20px;
-  }
+  nav { display: none; }
+  .menu-btn { display: flex; }
 }
 
-@media (max-width: 480px) {
-  .section h2 {
-    font-size: 24px;
-  }
-  
-  .services {
-    grid-template-columns: 1fr;
-  }
-  
-  .btn {
-    width: 100%;
-    margin: 8px 0;
-  }
-  
-  .aboutbox {
-    padding: 25px 15px;
-  }
+/* ═══════════════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
 </style>
 </head>
-
 <body>
 
-<!-- Subtle Disclaimer Banner -->
+<!-- Disclaimer Banner -->
 <div class="disclaimer-banner">
-  <span>ManaunaDham.org.in</span>
-  is an independent pilgrim services platform. Not affiliated with temple management.
+  ManaunaDham.org.in is an independent pilgrim services platform — not affiliated with temple management.
   <a href="#disclaimer-full">Learn more</a>
 </div>
 
+<!-- Header -->
 <header>
-<div class="topbar">
+  <div class="topbar">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">M</div>
+      <div class="brand-text">
+        <strong>Manauna Dham</strong>
+        <span>Latest Information & Services</span>
+      </div>
+    </a>
 
-<div class="brand">
-<img src="logonobg.webp" alt="Manauna Dham Logo" loading="eager">
-<div class="brand-text">
-<strong>Manauna Dham</strong>
-<span>Latest Information & Services</span>
-</div>
-</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <div class="nav-dropdown">
+        <a href="#">Services ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="accommodations.html">Hotel / Dharmshala</a>
+          <a href="food.html">Food Delivery</a>
+          <a href="transport.html">Transport</a>
+          <a href="patient.html">Patient Token</a>
+          <a href="jal.html">Shyam Jal</a>
+        </div>
+      </div>
+      <a href="#gallery">Gallery</a>
+      <div class="nav-dropdown">
+        <a href="#">About ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="khatushyam.html">Shri Khatu Shyam Ji</a>
+          <a href="mahant.html">Mahant Omendra Ji</a>
+          <a href="#manauna">Manauna Dham</a>
+        </div>
+      </div>
+      <a href="contact.html">Contact</a>
+      <a href="live.html" class="live-btn">
+        <span class="live-dot"></span> LIVE
+      </a>
+    </nav>
 
-<nav>
-<a href="index.html" class="underline">Home</a>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </button>
+  </div>
 
-<div class="dropdown">
-<a href="#" class="underline">Services ▾</a>
-<div class="dropdown-menu">
-<a href="accommodations.html">Hotel/Dharmshala</a>
-<a href="food.html">Food</a>
-<a href="transport.html">Transport</a>
-<a href="patient.html">Patient Token</a>
-<a href="jal.html">Shyam Jal</a>
-</div>
-</div>
-
-<a href="#gallery" class="underline">Gallery</a>
-
-<div class="dropdown">
-<a href="#" class="underline">About ▾</a>
-<div class="dropdown-menu">
-<a href="khatushyam.html">Shri Khatu Shyam Ji</a>
-<a href="mahant.html">Mahant Omendra Ji</a>
-<a href="#manauna">Manauna Dham</a>
-</div>
-</div>
-
-<a href="contact.html" class="underline">Contact</a>
-<a class="live" href="live.html">LIVE</a>
-</nav>
-
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-</div>
-
-<div class="mobile-menu" id="mobileMenu">
-<a href="index.html">Home</a>
-<a href="accommodations.html">Hotel/Dharmshala</a>
-<a href="food.html">Food</a>
-<a href="transport.html">Transport</a>
-<a href="patient.html">Patient Token</a>
-<a href="live.html">Live Darshan</a>
-<a href="jal.html">Shyam Jal</a>
-<a href="contact.html">Contact</a>
-</div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html"><i class="fa fa-home"></i> Home</a>
+    <a href="accommodations.html"><i class="fa fa-hotel"></i> Hotel / Dharmshala</a>
+    <a href="food.html"><i class="fa fa-utensils"></i> Food Delivery</a>
+    <a href="transport.html"><i class="fa fa-car"></i> Taxi / Auto</a>
+    <a href="patient.html"><i class="fa fa-ticket"></i> Patient Token</a>
+    <a href="jal.html"><i class="fa fa-tint"></i> Shyam Jal</a>
+    <a href="live.html"><i class="fa fa-circle" style="color:#00c800"></i> Live Darshan</a>
+    <a href="contact.html"><i class="fa fa-phone"></i> Contact</a>
+  </div>
 </header>
 
-<div class="carousel">
-<div class="track">
-<img src="ILoveManaunaDham.webp" alt="Manauna Dham" loading="eager">
-<img src="Omendra3.webp" alt="Mahant Ji" loading="lazy">
-<img src="Mandir1.webp" alt="Khatu Shyam Ji" loading="lazy">
-<img src="Mandir6.webp" alt="Shyam Ji Mandir" loading="lazy">
-<img src="ILoveManaunaDham.webp" alt="I Love Manauna Dham" loading="lazy">
-<img src="Omendra3.webp" alt="Baba Manauna Waale" loading="lazy">
-<img src="Mandir1.webp" alt="Mandir Khatu Shyam" loading="lazy">
-<img src="Mandir6.webp" alt="Mandir" loading="lazy">
-</div>
-</div>
-
-<!-- SERVICES SECTION -->
-<section class="section">
-<h2 style="margin-top:0">How big we are?</h2>
-
-  <div class="stats-section">
-  <div class="stat-card">
-    <span class="stat-number">2 Lakh+</span>
-    <span class="stat-label">Website Views</span>
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-slide active"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
   </div>
-  <div class="stat-card">
-    <span class="stat-number">10+</span>
-    <span class="stat-label">Services Available</span>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot">🙏</span>
+      Jai Shree Shyam
+    </div>
+
+    <div class="hero-title-block">
+      <h1 class="hero-title">
+        Welcome to Shyam Janm Bhoomi
+        <span class="accent">Manauna Dham</span>
+      </h1>
+      <p class="hero-subtitle">Easy booking for hotel, food, taxi & more — all in one place. Plan your darshan with comfort.</p>
+    </div>
+
+    <div class="hero-dots">
+      <button class="hero-dot active" onclick="goSlide(0)"></button>
+      <button class="hero-dot" onclick="goSlide(1)"></button>
+      <button class="hero-dot" onclick="goSlide(2)"></button>
+      <button class="hero-dot" onclick="goSlide(3)"></button>
+    </div>
+
+    <div class="hero-services">
+      <a href="accommodations.html" class="hero-service-btn">
+        <i class="fa fa-hotel"></i>
+        Book Hotel
+      </a>
+      <a href="food.html" class="hero-service-btn">
+        <i class="fa fa-utensils"></i>
+        Order Food
+      </a>
+      <a href="transport.html" class="hero-service-btn">
+        <i class="fa fa-car"></i>
+        Book Taxi
+      </a>
+      <a href="jal.html" class="hero-service-btn">
+        <i class="fa fa-tint"></i>
+        Shyam Jal
+      </a>
+      <a href="patient.html" class="hero-service-btn">
+        <i class="fa fa-heartbeat"></i>
+        Patient Token
+      </a>
+      <a href="live.html" class="hero-service-btn">
+        <i class="fa fa-broadcast-tower"></i>
+        Live Darshan
+      </a>
+    </div>
   </div>
-  <div class="stat-card">
-    <span class="stat-number">24/7</span>
-    <span class="stat-label">Support Available</span>
-  </div>
-  <div class="stat-card">
-    <span class="stat-number">500+</span>
-    <span class="stat-label">Bhakts Helped</span>
-  </div>
-</div>
-</section>
-<section class="section">
-<h2 style="margin-top:0">Services Available</h2>
-<div class="services">
-<a href="accommodations.html" class="service"><i class="fa fa-hotel"></i><br>Hotel / Dharmshala</a>
-<a href="food.html" class="service"><i class="fa fa-utensils"></i><br>Home Delivery of Food</a>
-<a href="transport.html" class="service"><i class="fa fa-bus"></i><br>Taxi / Auto Booking</a>
-<a href="jal.html" class="service"><i class="fa fa-tint"></i><br>Shyam Jal</a>
-<a href="patient.html" class="service"><i class="fa fa-ticket"></i><br>Patient Token</a>
-</div>
 </section>
 
-<!-- ABOUT SECTION -->
-<section class="section" id="manauna">
-<div class="aboutbox">
-<img src="KhatuShyam.webp" alt="Khatu Shyam Ji" loading="lazy">
-<div class="abouttext">
-<h2>Manauna(Manona) Dham</h2>
-<p>
-Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is one of the most rapidly growing spiritual pilgrimage sites in india. Located near Aonla in Bareilly district, the Dham attracts lakhs of devotees every day who come seeking blessings, peace, and relief from life's difficulties.
-</p>
-<p>
-Devotees believe that sincere prayer at Manauna Dham brings divine grace through Shri Khatu Shyam Ji. The temple is especially known for its sacred rituals conducted by it's Chief Priest.
-</p>
-<p>
-People travel here from across all over India and abroad to participate in darshan, aarti, and to seek blessings of Shri Khatu Shyam Ji.
-</p>
-<p style="font-size:14px;opacity:.8">Manauna is the correct spelling. Manona is the common variant.</p>
-<a href="mahant.html"><button class="btn">About Current Chief Priest</button></a>
-<a href="khatushyam.html"><button class="btn">About Shri Khatu Shyam Ji</button></a>
-<a href="live.html"><button class="btn">Live Darshan</button></a>
-<a href="contact.html"><button class="btn">Contact Us</button></a>
-</div>
-</div>
-
-<div class="timings">
-<h2>Mandir Timings</h2>
-<p>Darshan: 7 AM – 9 PM</p>
-<p>Aarti: 8 AM & 5 PM</p>
-<p>Best Time: June – December</p>
-<p>Mahant Ji unavailable: Tuesday & Wednesday(As per Ground Information)</p>
-</div>
-</section>
-
-<section class="section">
-<h2 style="margin-top:0">Temple Location</h2>
-<p style="font-size:16px;color:#444;margin-bottom:30px">
-Shri Khatu Shyam Mandir, Manauna Village,  
-Tehsil Aonla, Bareilly, Uttar Pradesh – 243301
-</p>
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" width="100%" height="450" style="border:0;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.1)" loading="lazy"></iframe>
-</section>
-
-<section class="section">
-<h3 style="margin-bottom:10px;color:#7a0000;">Plan Your Journey</h3>
-<p style="margin-bottom:20px;color:#555;">
-Check available trains from Delhi and nearby cities to reach Manauna Dham easily.
-</p>
-
-
-<a href="https://railyatri.in/train-between-stations?from=DLI&to=AWL" target="_blank" class="train-btn">
-  🚆 Check Trains
-</a>
-
-<a href="transport.html" target="_blank" class="train-btn">
-  🚖 Book Taxi / Auto
-</a>
-</section>
-  
-<section class="section" id="gallery">
-
-<h2 style="margin-top:0">Manauna Dham Weather (Bareilly Region)</h2>
-
-<div class="services" id="weatherCards">
-  <!-- Weather cards will be injected here -->
-</div>
-
-<script>
-async function loadManaunaWeather(){
-  try {
-    const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=28.2711&longitude=79.1403&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Asia/Kolkata");
-    const data = await res.json();
-
-    const days = data.daily.time;
-    const maxT = data.daily.temperature_2m_max;
-    const minT = data.daily.temperature_2m_min;
-    const codes = data.daily.weathercode;
-
-    const icon = (c)=>{
-      if(c===0) return "☀️";
-      if(c<=3) return "🌤️";
-      if(c<=48) return "🌫️";
-      if(c<=67) return "🌧️";
-      if(c<=77) return "🌨️";
-      if(c<=82) return "⛈️";
-      return "🌥️";
-    };
-
-    let html="";
-    for(let i=0;i<5;i++){
-      const d = new Date(days[i]);
-      const day = d.toLocaleDateString("en-IN",{weekday:"short"});
-      html += `
-      <div class="service">
-        <div style="font-size:40px">${icon(codes[i])}</div>
-        <div style="font-weight:700;margin-top:10px">${day}</div>
-        <div style="font-size:15px;opacity:.85;margin-top:5px">${maxT[i]}°C / ${minT[i]}°C</div>
-      </div>`;
-    }
-
-    document.getElementById("weatherCards").innerHTML = html;
-
-  } catch(e){
-    document.getElementById("weatherCards").innerHTML = "<div class='service'>Weather unavailable</div>";
-  }
-}
-
-loadManaunaWeather();
-</script>
-
-<h2 style="margin-top:60px">Today Weather</h2>
-
-<div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:30px;">
-
-  <div class="service" style="flex:1;min-width:200px;max-width:350px;text-align:center;">
-    <div id="openWeather" style="padding:20px;"></div>
-    <div style="font-size:14px;opacity:.8;margin-top:15px;">Weather in Bareilly (nearest city to Manauna)</div>
+<!-- ═══════ STATS ═══════ -->
+<section class="stats-section" id="stats">
+  <div class="section-header reveal">
+    <h2>How Big We Are?</h2>
+    <span class="underline-bar"></span>
   </div>
 
-</div>
-
-<script>
-async function loadWeather(){
-  try {
-    const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=28.2711&longitude=79.1403&current_weather=true");
-    const data = await res.json();
-    const w = data.current_weather;
-    const html = 
-      "<div style='font-size:28px;font-weight:700;'>"+w.temperature+"°C</div>"
-      +"<div style='font-size:17px;opacity:.9;margin-top:8px'>Wind: "+w.windspeed+" km/h</div>"
-      +"<div style='font-size:15px;opacity:.8;margin-top:5px'>⚡ "+w.weathercode+"</div>";
-    document.getElementById("openWeather").innerHTML = html;
-  } catch(err){
-    document.getElementById("openWeather").textContent = "Weather unavailable";
-  }
-}
-loadWeather();
-</script>
-
-<h2 style="margin-top:60px">Temple Gallery</h2>
-<div class="gallery-row">
-<img src="EntryGate.webp" alt="Entry Gate of Manauna Mandir/ Manauna" loading="lazy">
-<img src="Gathering.webp" alt="Manuana rush" loading="lazy">
-<img src="Gathering2.webp" alt="Manauan viral" loading="lazy">
-<img src="night.webp" alt="Mandir of Khatu Shyam" loading="lazy">
-<img src="KhatuShyam.webp" alt="Khatu Shyam Ji" loading="lazy">
-<img src="Mandir5.webp" alt="Manuana Mandir Khatu Shyam Ji" loading="lazy">
-<img src="Omendra.webp" alt="Mahant Ji" loading="lazy">
-<img src="ILoveManaunaDham.webp" alt="I love Khatu Baba" loading="lazy">
-<img src="Mandir1.webp" alt="Haare ka Sahara Baba Shyam Hamara" loading="lazy">
-<img src="Mandir6.webp" alt="Mandir" loading="lazy">
-<img src="Omendra3.webp" alt="Mahant Ji" loading="lazy">
-<img src="Patient1.webp" alt="devotees" loading="lazy">
-</div>
-
-
-<h2 style="margin-top:60px">Manauna Dham – Our rising Community</h2>
-
-<div class="services">
-<a href="https://www.instagram.com/explore/tags/manonadham/" target="_blank" class="service" rel="noopener">
-<i class="fab fa-instagram"></i><br>#manonadham
-</a>
-
-<a href="https://www.instagram.com/explore/tags/manaunadham/" target="_blank" class="service" rel="noopener">
-<i class="fab fa-instagram"></i><br>#manaunadham
-</a>
-
-<a href="https://www.instagram.com/explore/tags/khatushyamji/" target="_blank" class="service" rel="noopener">
-<i class="fab fa-instagram"></i><br>#khatushyamji
-</a>
-  
-</div>
-
+  <div class="stats-card-wrap reveal reveal-delay-1">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-icon"><i class="fa fa-eye"></i></span>
+        <div class="stat-number-wrap">
+          <span class="stat-num" data-target="600000" data-display="6Lakh">0</span>
+          <span class="suffix">+</span>
+        </div>
+        <div class="stat-label">Website Views</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon"><i class="fa fa-star"></i></span>
+        <div class="stat-number-wrap">
+          <span class="stat-num" data-target="10" data-display="10">0</span>
+          <span class="suffix">+</span>
+        </div>
+        <div class="stat-label">Services Available</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon"><i class="fa fa-headset"></i></span>
+        <div class="stat-number-wrap">
+          <span class="stat-num" data-target="24" data-display="24/7" data-special="true">0</span>
+          <span class="suffix">/7</span>
+        </div>
+        <div class="stat-label">Support Available</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-icon"><i class="fa fa-heart"></i></span>
+        <div class="stat-number-wrap">
+          <span class="stat-num" data-target="1000" data-display="1,000">0</span>
+          <span class="suffix">+</span>
+        </div>
+        <div class="stat-label">Bhakts Helped</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FAQ SECTION -->
-<section class="section">
-<h2>Frequently Asked Questions about Manauna (Manona) Dham</h2>
+<!-- ═══════ SERVICES ═══════ -->
+<section class="services-section">
+  <div class="section-header reveal">
+    <h2>Services Available</h2>
+    <span class="underline-bar"></span>
+    <p style="font-size:14px;color:var(--text-soft);margin-top:8px">Tap any service below to book or learn more.</p>
+  </div>
 
-<p style="margin-top:30px"><strong>Where is Manauna Dham located?</strong><br>
-Manauna Dham is located in Manauna village near Aonla in Bareilly district, Uttar Pradesh.</p>
+  <div class="services-list">
+    <a href="accommodations.html" class="service-card reveal">
+      <div class="service-icon-box"><i class="fa fa-hotel"></i></div>
+      <div class="service-info">
+        <h3>Book Hotel / Dharmshala</h3>
+        <p>Comfortable rooms near the temple at fair prices.</p>
+      </div>
+      <i class="fa fa-chevron-right service-arrow"></i>
+    </a>
 
-<p style="margin-top:20px"><strong>What are the darshan timings?</strong><br>
-Darshan is available from 7 AM to 9 PM daily. Aarti is performed at 8 AM and 5 PM.</p>
+    <a href="food.html" class="service-card reveal reveal-delay-1">
+      <div class="service-icon-box"><i class="fa fa-utensils"></i></div>
+      <div class="service-info">
+        <h3>Home Delivery of Food</h3>
+        <p>Get fresh, hot meals delivered to your stay.</p>
+        <span class="service-tag">Popular</span>
+      </div>
+      <i class="fa fa-chevron-right service-arrow"></i>
+    </a>
 
-<p style="margin-top:20px"><strong>How to get a patient token?</strong><br>
-Patient tokens can be given only when patient are present in manauna dham. We do not issue patient tokens. This information is based on prevailing on-site practices and may change.</p>
+    <a href="transport.html" class="service-card reveal reveal-delay-2">
+      <div class="service-icon-box"><i class="fa fa-car"></i></div>
+      <div class="service-info">
+        <h3>Taxi / Auto Booking</h3>
+        <p>Reliable transport at discounted pilgrim rates.</p>
+      </div>
+      <i class="fa fa-chevron-right service-arrow"></i>
+    </a>
 
-<p style="margin-top:20px"><strong>Is this the official temple website?</strong><br>
-No. ManaunaDham.org.in is a privately operated pilgrim information and services platform.</p>
+    <a href="jal.html" class="service-card reveal reveal-delay-3">
+      <div class="service-icon-box"><i class="fa fa-tint"></i></div>
+      <div class="service-info">
+        <h3>Shyam Jal</h3>
+        <p>Sacred water service — information & booking.</p>
+      </div>
+      <i class="fa fa-chevron-right service-arrow"></i>
+    </a>
+
+    <a href="patient.html" class="service-card reveal">
+      <div class="service-icon-box"><i class="fa fa-heartbeat"></i></div>
+      <div class="service-info">
+        <h3>Patient Token</h3>
+        <p>Issued on-site when patients are present at the dham.</p>
+      </div>
+      <i class="fa fa-chevron-right service-arrow"></i>
+    </a>
+
+    <a href="live.html" class="service-card reveal reveal-delay-1">
+      <div class="service-icon-box" style="background:#00a000"><i class="fa fa-broadcast-tower"></i></div>
+      <div class="service-info">
+        <h3>Live Darshan</h3>
+        <p>Watch live aarti and darshan from anywhere.</p>
+        <span class="service-tag" style="background:#e8fce8;color:#007a00">Live Now</span>
+      </div>
+      <i class="fa fa-chevron-right service-arrow"></i>
+    </a>
+  </div>
 </section>
 
-<!-- DETAILED DISCLAIMER SECTION -->
-<section class="section" id="disclaimer-full" style="background:#fff;padding:60px 40px;border-top:5px solid #d4a017">
-<div style="max-width:1000px;margin:0 auto">
-<h2 style="color:#7a0000;font-size:32px">About ManaunaDham.org.in</h2>
+<!-- ═══════ ABOUT ═══════ -->
+<section class="about-section" id="manauna">
+  <div class="section-header reveal">
+    <h2>Manauna (Manona) Dham</h2>
+    <span class="underline-bar"></span>
+  </div>
 
-<div class="disclaimer-content">
-<p style="margin:0 0 20px 0"><strong>📋 What We Are:</strong><br>
-ManaunaDham.org.in is a <strong>privately operated information and services platform</strong> created to help pilgrims visiting Manauna Dham. We provide hotel bookings, food delivery, transport arrangements, and up-to-date information about the temple.</p>
+  <div class="about-card reveal">
+    <img src="KhatuShyam.webp" alt="Khatu Shyam Ji Manauna Dham" class="about-img" loading="lazy">
+    <div class="about-body">
+      <div class="gold-line"></div>
+      <p>Manauna Dham, also known as Shree Khatu Shyam Ji Manauna Dham, is one of the most rapidly growing spiritual pilgrimage sites in India. Located near Aonla in Bareilly district, the Dham attracts lakhs of devotees every day seeking blessings, peace, and relief from life's difficulties.</p>
+      <p>Devotees believe that sincere prayer here brings divine grace through Shri Khatu Shyam Ji. The temple is especially known for its sacred rituals conducted by its Chief Priest.</p>
+      <p class="about-note">✍️ Manauna is the correct spelling — Manona is the common regional variant.</p>
+      <div class="btn-row">
+        <a href="mahant.html" class="btn-primary"><i class="fa fa-user"></i> Chief Priest</a>
+        <a href="khatushyam.html" class="btn-secondary"><i class="fa fa-om"></i> Shyam Ji</a>
+        <a href="live.html" class="btn-primary"><i class="fa fa-broadcast-tower"></i> Live Darshan</a>
+        <a href="contact.html" class="btn-secondary"><i class="fa fa-phone"></i> Contact</a>
+      </div>
+    </div>
+  </div>
 
-<p style="margin:20px 0"><strong>🏛️ What We Are NOT:</strong><br>
-We are <strong>NOT the official website</strong> of Shri Khatu Shyam Mandir, Manauna Dham. We are <strong>NOT affiliated with, endorsed by, or managed by</strong> the temple management or any religious authority.</p>
-
-<p style="margin:20px 0"><strong>✅ Our Services:</strong><br>
-- Verified hotel/dharamshala booking assistance<br>
-- Food delivery coordination with local restaurants<br>
-- Transport booking (taxi, rickshaw, buses)<br>
-- Shyam Jal information<br>
-- Latest temple timings and information<br>
-- All services are provided by third-party vendors; we act as a booking platform and information center</p>
-
-<p style="margin:20px 0 0 0"><strong>⚖️ Legal Notice:</strong><br>
-Information provided is collected from public sources and verified to the best of our ability. Temple policies, timings, and availability may change without notice. Users are advised to confirm critical details independently. By using our services, you acknowledge that ManaunaDham.org.in is an independent service provider.</p>
-</div>
-
-<p style="text-align:center;margin-top:35px;font-size:14px;color:#666;line-height:1.8;max-width:900px;margin-left:auto;margin-right:auto">
-The information provided on this website is for general guidance only. While we strive to keep all details accurate and updated, ManaunaDham.org.in is not responsible for any inconvenience, loss, or issue arising if visitors plan or visit Manauna Dham based on this information and it later differs from on-ground arrangements or temple decisions. For official and final confirmation, please verify directly at the temple premises.
-</p>
-
-</div>
+  <div class="timings-card reveal" style="margin-top:20px">
+    <h3><i class="fa fa-clock" style="color:var(--gold);margin-right:8px"></i>Mandir Timings</h3>
+    <div class="timing-row">
+      <span class="timing-icon">🙏</span>
+      <span class="timing-label">Darshan</span>
+      <span class="timing-val">7 AM – 9 PM</span>
+    </div>
+    <div class="timing-row">
+      <span class="timing-icon">🔔</span>
+      <span class="timing-label">Aarti</span>
+      <span class="timing-val">8 AM & 5 PM</span>
+    </div>
+    <div class="timing-row">
+      <span class="timing-icon">🌿</span>
+      <span class="timing-label">Best Season</span>
+      <span class="timing-val">June – December</span>
+    </div>
+    <div class="timing-row">
+      <span class="timing-icon">⚠️</span>
+      <span class="timing-label">Mahant Ji Unavailable</span>
+      <span class="timing-val">Tue & Wed*</span>
+    </div>
+  </div>
 </section>
 
-<!-- POPUPS -->
+<!-- ═══════ LOCATION ═══════ -->
+<section class="location-section">
+  <div class="section-header reveal">
+    <h2>Temple Location</h2>
+    <span class="underline-bar"></span>
+  </div>
+
+  <div class="location-address reveal">
+    <i class="fa fa-map-marker-alt"></i>
+    <span>Shri Khatu Shyam Mandir, Manauna Village, Tehsil Aonla, Bareilly, UP – 243301</span>
+  </div>
+
+  <div class="map-wrap reveal">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d878.4749208605006!2d79.14032607221374!3d28.2710585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390a9b413b39cef9%3A0x4dbdb472d874534b!2sManauna%20Dham%20Shyam%20Ji%20Mandir!5e0!3m2!1sen!2sin" loading="lazy" title="Manauna Dham Location"></iframe>
+  </div>
+</section>
+
+<!-- ═══════ JOURNEY ═══════ -->
+<section class="journey-section">
+  <div class="section-header reveal">
+    <h2 style="color:white">Plan Your Journey</h2>
+    <span class="underline-bar" style="background:linear-gradient(90deg,var(--gold-light),var(--gold))"></span>
+  </div>
+  <p class="reveal">Check trains from Delhi &amp; nearby cities to reach Manauna Dham easily.</p>
+
+  <div class="journey-btns reveal">
+    <a href="https://railyatri.in/train-between-stations?from=DLI&to=AWL" target="_blank" rel="noopener" class="journey-btn journey-btn-train">
+      <i class="fa fa-train"></i>
+      Check Trains
+    </a>
+    <a href="transport.html" class="journey-btn journey-btn-taxi">
+      <i class="fa fa-car"></i>
+      Book Taxi / Auto
+    </a>
+  </div>
+</section>
+
+<!-- ═══════ WEATHER ═══════ -->
+<section class="weather-section">
+  <div class="section-header reveal">
+    <h2>Manauna Dham Weather</h2>
+    <span class="underline-bar"></span>
+    <p style="font-size:13px;color:var(--text-soft);margin-top:6px">Bareilly region forecast</p>
+  </div>
+
+  <div class="weather-scroll" id="weatherCards">
+    <div class="weather-card" style="opacity:.5"><div class="w-emoji">🌤️</div><div class="w-day">Loading…</div></div>
+  </div>
+
+  <div class="today-weather" id="todayWeather">
+    <div class="today-temp" id="todayTemp">--°</div>
+    <div class="today-meta">Wind: <span id="todayWind">--</span> km/h</div>
+    <div class="today-meta" style="margin-top:4px;font-size:11px">Current weather at Manauna</div>
+  </div>
+</section>
+
+<!-- ═══════ GALLERY ═══════ -->
+<section class="gallery-section" id="gallery">
+  <div class="section-header reveal">
+    <h2>Temple Gallery</h2>
+    <span class="underline-bar"></span>
+  </div>
+
+  <div class="gallery-scroll">
+    <img src="EntryGate.webp" alt="Entry Gate Manauna Dham" loading="lazy">
+    <img src="Gathering.webp" alt="Devotees at Manauna" loading="lazy">
+    <img src="Gathering2.webp" alt="Manauna Dham gathering" loading="lazy">
+    <img src="night.webp" alt="Mandir at night" loading="lazy">
+    <img src="KhatuShyam.webp" alt="Khatu Shyam Ji" loading="lazy">
+    <img src="Mandir5.webp" alt="Manauna Mandir" loading="lazy">
+    <img src="Omendra.webp" alt="Mahant Ji" loading="lazy">
+    <img src="ILoveManaunaDham.webp" alt="I Love Manauna Dham" loading="lazy">
+    <img src="Mandir1.webp" alt="Mandir Khatu Shyam" loading="lazy">
+    <img src="Mandir6.webp" alt="Mandir view" loading="lazy">
+    <img src="Omendra3.webp" alt="Mahant Ji Omendra" loading="lazy">
+    <img src="Patient1.webp" alt="Devotees" loading="lazy">
+  </div>
+</section>
+
+<!-- ═══════ COMMUNITY ═══════ -->
+<section class="services-section" style="padding-top:0;padding-bottom:40px">
+  <div class="section-header reveal" style="margin-bottom:20px">
+    <h2 style="font-size:clamp(20px,5vw,28px)">Manauna Dham – Our Rising Community</h2>
+    <span class="underline-bar"></span>
+  </div>
+  <div class="services-list" style="flex-direction:row;flex-wrap:wrap;gap:12px;justify-content:center">
+    <a href="https://www.instagram.com/explore/tags/manonadham/" target="_blank" rel="noopener" class="service-card reveal" style="flex:1;min-width:140px;max-width:180px;justify-content:center;text-align:center;flex-direction:column;gap:8px;padding:20px 14px">
+      <i class="fab fa-instagram" style="font-size:28px;color:var(--gold)"></i>
+      <span style="font-size:13px;font-weight:700;color:var(--crimson)">#manonadham</span>
+    </a>
+    <a href="https://www.instagram.com/explore/tags/manaunadham/" target="_blank" rel="noopener" class="service-card reveal reveal-delay-1" style="flex:1;min-width:140px;max-width:180px;justify-content:center;text-align:center;flex-direction:column;gap:8px;padding:20px 14px">
+      <i class="fab fa-instagram" style="font-size:28px;color:var(--gold)"></i>
+      <span style="font-size:13px;font-weight:700;color:var(--crimson)">#manaunadham</span>
+    </a>
+    <a href="https://www.instagram.com/explore/tags/khatushyamji/" target="_blank" rel="noopener" class="service-card reveal reveal-delay-2" style="flex:1;min-width:140px;max-width:180px;justify-content:center;text-align:center;flex-direction:column;gap:8px;padding:20px 14px">
+      <i class="fab fa-instagram" style="font-size:28px;color:var(--gold)"></i>
+      <span style="font-size:13px;font-weight:700;color:var(--crimson)">#khatushyamji</span>
+    </a>
+  </div>
+</section>
+
+
+<section class="faq-section">
+  <div class="section-header reveal">
+    <h2>Frequently Asked Questions</h2>
+    <span class="underline-bar"></span>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Where is Manauna Dham located?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-a"><p>Manauna Dham is located in Manauna village near Aonla, Bareilly district, Uttar Pradesh – 243301.</p></div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-1">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What are the darshan timings?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-a"><p>Darshan is available from 7 AM to 9 PM daily. Aarti is performed at 8 AM and 5 PM.</p></div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-2">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How to get a patient token?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-a"><p>Patient tokens can be given only when patients are present in Manauna Dham. We do not issue tokens ourselves — this is based on prevailing on-site practices and may change.</p></div>
+    </div>
+
+    <div class="faq-item reveal reveal-delay-3">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Is this the official temple website?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-a"><p>No. ManaunaDham.org.in is a privately operated pilgrim information and services platform. We are not affiliated with or endorsed by the temple management.</p></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How to reach Manauna Dham from Delhi?
+        <i class="fa fa-plus faq-icon"></i>
+      </div>
+      <div class="faq-a"><p>Take a train from Delhi to Aonla (AWL) station, then auto/taxi to Manauna village (~10 km). You can check trains and book local transport using our services above.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DISCLAIMER ═══════ -->
+<section class="disclaimer-section" id="disclaimer-full">
+  <div class="section-header reveal">
+    <h2>About ManaunaDham.org.in</h2>
+    <span class="underline-bar"></span>
+  </div>
+
+  <div class="disclaimer-card reveal">
+    <div class="disclaimer-block">
+      <div class="disclaimer-block-head">
+        <div class="disclaimer-icon"><i class="fa fa-clipboard-list"></i></div>
+        <h3>What We Are</h3>
+      </div>
+      <p>ManaunaDham.org.in is a <strong>privately operated information and services platform</strong> created to help pilgrims visiting Manauna Dham. We provide hotel bookings, food delivery, transport arrangements, and up-to-date temple information.</p>
+    </div>
+
+    <div class="disclaimer-block">
+      <div class="disclaimer-block-head">
+        <div class="disclaimer-icon"><i class="fa fa-landmark"></i></div>
+        <h3>What We Are NOT</h3>
+      </div>
+      <p>We are <strong>NOT the official website</strong> of Shri Khatu Shyam Mandir, Manauna Dham. We are <strong>NOT affiliated with, endorsed by, or managed by</strong> the temple management or any religious authority.</p>
+    </div>
+
+    <div class="disclaimer-block">
+      <div class="disclaimer-block-head">
+        <div class="disclaimer-icon"><i class="fa fa-balance-scale"></i></div>
+        <h3>Legal Notice</h3>
+      </div>
+      <p>Information is collected from public sources and verified to the best of our ability. Temple policies, timings, and availability may change without notice. Users are advised to confirm critical details independently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Location</h4>
+      <p>Manauna Village, Tehsil Aonla</p>
+      <p>Bareilly, UP – 243301</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="accommodations.html">Hotels</a>
+      <a href="food.html">Food Services</a>
+      <a href="transport.html">Transport</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="patient.html">Patient Token</a>
+      <a href="jal.html">Shyam Jal</a>
+      <a href="live.html">Live Darshan</a>
+      <a href="khatushyam.html">Shri Khatu Shyam Ji</a>
+      <a href="mahant.html">Mahant Omendra Ji</a>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <a href="https://www.instagram.com/explore/tags/manonadham/" target="_blank" rel="noopener">#manonadham</a>
+      <a href="https://www.instagram.com/explore/tags/manaunadham/" target="_blank" rel="noopener">#manaunadham</a>
+      <a href="https://www.instagram.com/explore/tags/khatushyamji/" target="_blank" rel="noopener">#khatushyamji</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ManaunaDham.org.in — Independent Pilgrim Services Platform</p>
+    <p>ManaunaDham.org.in is a privately operated platform. Not the official website of Manauna Dham temple. Not affiliated with temple management or religious authorities.</p>
+  </div>
+</footer>
+
+<!-- Popups -->
 <div class="popup" id="popup1">
-<span class="popup-close" onclick="closePopup('popup1')">&times;</span>
-<h3>Looking for Hotel?</h3>
-<p>Book comfortable hotel / dharmshala near Manauna Dham at discounted price.</p>
-<a href="accommodations.html">View discounts</a>
+  <span class="popup-close" onclick="closePopup('popup1')">&times;</span>
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+    <div style="background:var(--gold-pale);border-radius:10px;padding:8px 12px;font-size:22px">🏨</div>
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2px">Limited Offer</div>
+      <h3 style="margin:0;font-size:17px">Discount Unlocked for You!</h3>
+    </div>
+  </div>
+  <div style="background:linear-gradient(135deg,#fffbf0,#fff3d0);border:1.5px dashed var(--gold);border-radius:10px;padding:12px 14px;margin:10px 0 14px;text-align:center">
+    <div style="font-size:28px;font-weight:800;font-family:var(--font-display);color:var(--crimson)">Up to ₹200 OFF</div>
+    <div style="font-size:12px;color:var(--text-soft);margin-top:2px">on Hotel / Dharmshala booking near Manauna Dham</div>
+  </div>
+  <a href="accommodations.html" style="display:flex;align-items:center;justify-content:center;gap:8px">
+    <i class="fa fa-tag"></i> Check Now →
+  </a>
 </div>
 
 <div class="popup" id="popup2">
-<span class="popup-close" onclick="closePopup('popup2')">&times;</span>
-<h3>Need Home Delivery of Food?</h3>
-<p>Get delicious food delivered</p>
-<a href="food.html">Order Now</a>
+  <span class="popup-close" onclick="closePopup('popup2')">&times;</span>
+  <h3>🍱 Need Food Delivered?</h3>
+  <p>Get delicious hot meals delivered right to your stay.</p>
+  <a href="food.html">Order Now →</a>
 </div>
 
 <div class="popup" id="popup3">
-<span class="popup-close" onclick="closePopup('popup3')">&times;</span>
-<h3>Need Taxi / Auto to visit Dham in Urgent?</h3>
-<p>Book cabs and rickshaws at discounted price.</p>
-<a href="transport.html">View Price</a>
+  <span class="popup-close" onclick="closePopup('popup3')">&times;</span>
+  <h3>🚖 Need Taxi / Auto?</h3>
+  <p>Book cabs and rickshaws at discounted pilgrim rates.</p>
+  <a href="transport.html">View Prices →</a>
 </div>
 
-<!-- FOOTER -->
-<footer>
-<div class="footer-content">
-<div class="footer-section">
-<h3>Manauna Dham (Location)</h3>
-<p>Manauna Village, Tehsil Aonla</p>
-<p>Bareilly, Uttar Pradesh – 243301</p>
-</div>
-<div class="footer-section">
-<h3>Quick Links</h3>
-<a href="index.html">Home</a>
-<a href="accommodations.html">Hotels</a>
-<a href="food.html">Food Services</a>
-<a href="transport.html">Transport</a>
-<a href="contact.html">Contact Us</a>
-</div>
-
-<div class="footer-section">
-<h3>Services</h3>
-<a href="patient.html">Patient Token</a>
-<a href="jal.html">Shyam Jal</a>
-<a href="live.html">Live Darshan</a>
-</div>
-</div>
-
-<div class="footer-bottom">
-<p>© 2026 ManaunaDham.org.in - Independent Pilgrim Services Platform</p>
-<p style="font-size:13px;opacity:.85;max-width:900px;margin:15px auto 0;line-height:1.8">
-<strong>Legal Disclaimer:</strong> ManaunaDham.org.in is a privately operated platform providing booking services and information for pilgrims. We are not the official website of Manauna Dham temple and have no affiliation with temple management or religious authorities. All bookings are subject to vendor availability and terms.
-</p>
-</div>
-</footer>
-
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
-function toggleMenu(){
-  let m = document.getElementById("mobileMenu");
-  if(m.classList.contains('active')) {
-    m.classList.remove('active');
-    m.style.maxHeight = '0';
-  } else {
-    m.classList.add('active');
-    m.style.maxHeight = '600px';
-  }
+/* ── Mobile menu ── */
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const hb = document.getElementById('hamburger');
+  const open = menu.classList.toggle('open');
+  hb.classList.toggle('open', open);
 }
 
-// Popup system
-const popups = ['popup1', 'popup2', 'popup3'];
-let currentPopup = 0;
+/* ── Hero slideshow ── */
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dot');
+let currentSlide = 0, slideTimer;
 
-function showRandomPopup() {
-  const popup = document.getElementById(popups[currentPopup]);
-  popup.style.display = 'block';
-  currentPopup = (currentPopup + 1) % popups.length;
+function goSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+  goSlide((currentSlide + 1) % slides.length);
+}
+
+slideTimer = setInterval(nextSlide, 4500);
+
+/* ── FAQ accordion ── */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── Scroll reveal ── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── Animated counter ── */
+function formatNum(n, target, displayVal) {
+  if (target >= 100000) {
+    const lakhs = n / 100000;
+    return lakhs >= 6 ? '6Lakh' : Math.floor(lakhs * 10) / 10 + 'L';
+  }
+  if (target === 1000) return n >= 1000 ? '1,000' : n.toLocaleString('en-IN');
+  return Math.floor(n).toString();
+}
+
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const isSpecial = el.dataset.special === 'true';
+  const duration = 1800;
+  const start = performance.now();
+
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = ease * target;
+
+    if (isSpecial) {
+      el.textContent = Math.floor(current);
+    } else {
+      el.textContent = formatNum(current, target);
+    }
+
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = el.dataset.display || formatNum(target, target);
+  }
+
+  requestAnimationFrame(step);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-num').forEach(animateCounter);
+      statsObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+
+const statsEl = document.querySelector('.stats-card-wrap');
+if (statsEl) statsObserver.observe(statsEl);
+
+/* ── Weather ── */
+(async function loadWeather() {
+  try {
+    const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=28.2711&longitude=79.1403&daily=temperature_2m_max,temperature_2m_min,weathercode&current_weather=true&timezone=Asia/Kolkata');
+    const data = await res.json();
+    const { time, temperature_2m_max, temperature_2m_min, weathercode } = data.daily;
+    const cw = data.current_weather;
+
+    const icon = c => {
+      if (c === 0) return '☀️';
+      if (c <= 3) return '🌤️';
+      if (c <= 48) return '🌫️';
+      if (c <= 67) return '🌧️';
+      if (c <= 77) return '🌨️';
+      if (c <= 82) return '⛈️';
+      return '🌥️';
+    };
+
+    document.getElementById('weatherCards').innerHTML = time.slice(0,7).map((d, i) => {
+      const day = new Date(d).toLocaleDateString('en-IN', { weekday: 'short' });
+      return `<div class="weather-card">
+        <div class="w-emoji">${icon(weathercode[i])}</div>
+        <div class="w-day">${day}</div>
+        <div class="w-temp">${temperature_2m_max[i]}° / ${temperature_2m_min[i]}°</div>
+      </div>`;
+    }).join('');
+
+    document.getElementById('todayTemp').textContent = cw.temperature + '°C';
+    document.getElementById('todayWind').textContent = cw.windspeed;
+  } catch(e) {
+    document.getElementById('weatherCards').innerHTML = '<div class="weather-card"><div class="w-day">Unavailable</div></div>';
+  }
+})();
+
+/* ── Popup system ── */
+const popups = ['popup1', 'popup2', 'popup3'];
+let popupIdx = 0;
+
+function showPopup() {
+  const el = document.getElementById(popups[popupIdx]);
+  el.style.display = 'block';
+  popupIdx = (popupIdx + 1) % popups.length;
 }
 
 function closePopup(id) {
   document.getElementById(id).style.display = 'none';
 }
 
-// Show first popup after 5 seconds
-setTimeout(showRandomPopup, 5000);
-
-// Show subsequent popups every 10 seconds
-setInterval(showRandomPopup, 10000);
+setTimeout(showPopup, 10000);
+setInterval(showPopup, 25000);
 </script>
-  
-<script src="assets/chatbot.js"></script>
 
+<script src="assets/chatbot.js"></script>
 </body>
 </html>
