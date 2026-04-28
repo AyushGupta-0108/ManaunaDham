@@ -1,995 +1,624 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Hotel Harshdeep Aonla - Budget Hotel Near Manauna Dham | Room Booking, Photos, Rates</title>
-<meta name="description" content="Hotel Harshdeep Aonla - Best budget hotel near Manauna Dham temple. AC rooms with WiFi, geyser, parking. Single bed ₹1,500, Double bed ₹2,500. 3-4 km from Khatu Shyam temple. Book now!">
-<meta name="keywords" content="hotel harshdeep aonla, hotels near manauna dham, budget hotel aonla, hotel near khatu shyam temple, accommodation manauna, bisauli bypass hotel, aonla hotels with parking">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="canonical" href="https://manaunadham.org.in/harshdeep.html">
-<link rel="icon" href="logonobg.png" type="image/png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script src="coupons.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#7a1f1f" />
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Hotel",
-  "name": "Hotel Harshdeep",
-  "description": "Budget hotel near Manauna Dham with clean rooms, WiFi, and parking",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Bisauli Bypass Road, Near Naval Cold Store",
-    "addressLocality": "Aonla",
-    "addressRegion": "Uttar Pradesh",
-    "postalCode": "243301",
-    "addressCountry": "IN"
-  },
-  "priceRange": "₹1500-₹2500"
+<!-- ============ SEO ============ -->
+<title>Manauna Dham — Shree Khatu Shyam Ji | Hotel, Food, Taxi Booking & Live Darshan</title>
+<meta name="description" content="Official information & services portal for Shree Khatu Shyam Ji Manauna Dham, Bareilly. Book hotel/dharmshala, order food, book taxi, get Shyam Jal & live darshan. Up to ₹200 OFF on hotel booking." />
+<meta name="keywords" content="Manauna Dham, Manona Dham, Khatu Shyam Ji Manauna, Khatu Shyam Bareilly, Aonla temple, manauna dham hotel booking, manauna dham taxi, shyam jal, live darshan manauna, khatu shyam darshan timing" />
+<meta name="author" content="Manauna Dham" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://manaunadham.org.in/" />
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Manauna Dham" />
+<meta property="og:title" content="Manauna Dham — Shree Khatu Shyam Ji | Book Hotel, Food, Taxi" />
+<meta property="og:description" content="Plan your darshan with comfort — hotel, food, taxi, Shyam Jal, patient token & live darshan. Up to ₹200 OFF on hotels." />
+<meta property="og:url" content="https://manaunadham.org.in/" />
+<meta property="og:image" content="https://manaunadham.org.in/mandir1.webp" />
+<meta property="og:locale" content="en_IN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Manauna Dham — Shree Khatu Shyam Ji" />
+<meta name="twitter:description" content="Hotel, food, taxi & live darshan booking for Manauna Dham, Bareilly." />
+<meta name="twitter:image" content="https://manaunadham.org.in/mandir1.webp" />
+
+<!-- Favicon (use whatever favicon you already have in repo) -->
+<link rel="icon" type="image/png" href="favicon.png" />
+<link rel="apple-touch-icon" href="favicon.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN (no build needed) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        maroon: { DEFAULT:'#7a1f1f', dark:'#521414', soft:'#963131' },
+        cream:  { DEFAULT:'#fcfbf8', dark:'#f3eee4' },
+        gold:   { DEFAULT:'#d4a23a', soft:'#f0c970', deep:'#b07d20' },
+      },
+      fontFamily: {
+        display: ['"Playfair Display"', 'serif'],
+        sans:    ['Poppins', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        card: '0 6px 24px -10px rgba(122,31,31,.25)',
+        soft: '0 2px 12px -4px rgba(122,31,31,.18)',
+      },
+      keyframes: {
+        fadeUp: { '0%':{opacity:0,transform:'translateY(12px)'}, '100%':{opacity:1,transform:'translateY(0)'} },
+        slideIn:{ '0%':{opacity:0,transform:'translateY(20px) scale(.95)'}, '100%':{opacity:1,transform:'translateY(0) scale(1)'} },
+        ping2:  { '0%,100%':{transform:'scale(1)',opacity:1}, '50%':{transform:'scale(1.15)',opacity:.7} },
+      },
+      animation: {
+        'fade-up': 'fadeUp .6s ease-out both',
+        'slide-in': 'slideIn .4s ease-out both',
+        'pulse-soft':'ping2 2s ease-in-out infinite',
+      }
+    }
+  }
 }
 </script>
 
 <style>
-:root {
-  --maroon: #7a0000;
-  --maroon-dark: #4d0000;
-  --maroon-light: #9a1111;
-  --gold: #d4a017;
-  --gold-light: #f0c040;
-  --green: #1a7a3a;
-  --bg: #fff6e6;
-  --white: #ffffff;
-  --text: #2a2a2a;
-  --text-muted: #666;
-  --border: #e8d5b0;
-  --success: #0a5c2a;
-  --success-bg: #e6f4ec;
-  --error: #c00;
-  --error-bg: #fff0f0;
-  --shadow: 0 4px 24px rgba(122,0,0,0.10);
-  --shadow-lg: 0 8px 40px rgba(122,0,0,0.18);
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Georgia, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-
-/* HEADER */
-header { background: var(--maroon); color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
-.topbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; }
-.brand img { height: 44px; }
-.brand-text strong { font-size: 17px; display: block; }
-.brand-text span { font-size: 12px; opacity: .85; }
-nav { display: flex; gap: 20px; align-items: center; }
-nav a { color: white; text-decoration: none; font-weight: 600; font-size: 14px; padding: 6px 0; border-bottom: 2px solid transparent; transition: border-color .2s; }
-nav a:hover { border-color: var(--gold-light); }
-.menu-btn { display: none; font-size: 24px; cursor: pointer; background: none; border: none; color: white; }
-.mobile-menu { display: none; flex-direction: column; background: var(--maroon-dark); }
-.mobile-menu a { padding: 12px 20px; color: white; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
-
-/* HERO */
-.hero {
-  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  color: white; padding: 70px 30px 50px; text-align: center; position: relative; overflow: hidden;
-}
-.hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.hero h1 { font-size: 38px; margin-bottom: 12px; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); position: relative; }
-.hero .subtitle { font-size: 16px; opacity: .9; margin-bottom: 24px; position: relative; }
-.hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; position: relative; }
-.hero-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 20px; font-size: 13px; }
-
-/* CTA BAR */
-.cta-bar { background: white; padding: 18px 24px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
-.cta-btn { background: var(--maroon); color: white; padding: 13px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: all .2s; border: none; cursor: pointer; }
-.cta-btn:hover { background: var(--maroon-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(122,0,0,0.3); }
-.cta-btn.outline { background: transparent; color: var(--maroon); border: 2px solid var(--maroon); }
-.cta-btn.outline:hover { background: var(--maroon); color: white; }
-.cta-btn.green { background: var(--green); }
-.cta-btn.green:hover { background: #145c2e; }
-
-/* LAYOUT */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.section { background: white; padding: 40px; margin-bottom: 28px; border-radius: 14px; box-shadow: var(--shadow); }
-.section h2 { color: var(--maroon); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 6px; margin-bottom: 24px; font-size: 26px; }
-.section-sub { color: var(--text-muted); font-size: 14px; margin-top: -18px; margin-bottom: 20px; }
-
-/* BOOKING WIDGET */
-#booking-section { background: white; border-radius: 14px; box-shadow: var(--shadow-lg); overflow: hidden; margin-bottom: 28px; }
-.booking-header { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); color: white; padding: 30px 40px; text-align: center; }
-.booking-header h2 { font-size: 28px; margin-bottom: 6px; color: white; border: none; display: block; }
-.booking-header p { opacity: .9; font-size: 15px; }
-.booking-body { padding: 36px 40px; }
-
-.step-label { font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-
-/* Room Cards in Booking */
-.room-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
-.room-option { border: 2px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all .2s; position: relative; }
-.room-option:hover { border-color: var(--maroon-light); background: #fff9f0; }
-.room-option.selected { border-color: var(--maroon); background: #fff3e0; box-shadow: 0 0 0 3px rgba(122,0,0,0.08); }
-.room-option .room-name { font-size: 16px; font-weight: 700; color: var(--maroon); margin-bottom: 3px; }
-.room-option .room-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
-.room-option .room-price { font-size: 22px; font-weight: 800; color: var(--green); }
-.room-option .room-price span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
-.room-features-mini { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-.rft { background: var(--bg); padding: 3px 8px; border-radius: 10px; font-size: 11px; color: var(--maroon); }
-.selected-badge { display: none; position: absolute; top: 10px; right: 10px; background: var(--maroon); color: white; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-.room-option.selected .selected-badge { display: block; }
-
-/* Form */
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 20px; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group label { font-size: 13px; font-weight: 600; color: var(--text); }
-.form-group label .req { color: var(--error); }
-.form-group input { padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 15px; font-family: inherit; transition: border-color .2s; background: white; color: var(--text); }
-.form-group input:focus { outline: none; border-color: var(--maroon); }
-.form-group input.err { border-color: var(--error); background: #fff8f8; }
-
-/* Stay Summary */
-.stay-summary { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; display: none; }
-.stay-summary.show { display: block; }
-.s-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; color: var(--text-muted); }
-.s-row .sv { font-weight: 600; color: var(--text); }
-.s-row.s-total { border-top: 2px solid var(--border); margin-top: 8px; padding-top: 12px; font-weight: 700; font-size: 15px; color: var(--text); }
-.s-row.s-total .sv { color: var(--text); }
-.s-row.s-advance { font-weight: 800; font-size: 17px; color: var(--green); padding-top: 8px; }
-.s-row.s-advance .sv { color: var(--green); font-size: 19px; }
-.s-row.s-disc { color: var(--green); }
-.s-row.s-disc .sv { color: var(--green); }
-
-/* Coupon */
-.coupon-row { display: flex; gap: 10px; margin-bottom: 8px; }
-.coupon-row input { flex: 1; padding: 12px 14px; border: 2px solid var(--border); border-radius: 8px; font-size: 14px; font-family: inherit; text-transform: uppercase; letter-spacing: 1px; transition: border-color .2s; }
-.coupon-row input:focus { outline: none; border-color: var(--gold); }
-.coupon-btn { padding: 12px 20px; background: var(--gold); color: var(--maroon-dark); border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 14px; transition: all .2s; }
-.coupon-btn:hover { background: var(--gold-light); }
-.coupon-msg { font-size: 13px; margin-bottom: 16px; padding: 8px 12px; border-radius: 6px; display: none; }
-.coupon-msg.ok { display: block; background: var(--success-bg); color: var(--success); }
-.coupon-msg.no { display: block; background: var(--error-bg); color: var(--error); }
-
-/* Pay Button */
-.pay-btn { width: 100%; padding: 18px; background: var(--maroon); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: 700; cursor: pointer; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-.pay-btn:hover { background: var(--maroon-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(122,0,0,0.3); }
-.secure-note { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; }
-
-/* Gallery */
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 16px 0; }
-.gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform .3s, box-shadow .3s; display: block; }
-.gallery img:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-.room-section-title { color: var(--maroon); font-size: 17px; font-weight: 700; margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
-
-/* Room Cards */
-.room-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 20px 0; }
-.room-card { background: var(--bg); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
-.room-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-.rc-body { padding: 22px; }
-.rc-body h3 { color: var(--maroon); font-size: 20px; margin-bottom: 4px; }
-.rc-price { font-size: 26px; font-weight: 800; color: var(--green); margin: 12px 0; }
-.rc-price small { font-size: 14px; font-weight: 400; color: var(--text-muted); }
-.room-card ul { list-style: none; margin: 12px 0; }
-.room-card li { padding: 7px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; font-size: 14px; }
-.room-card li:last-child { border: none; }
-.room-card li i { color: var(--maroon); width: 16px; }
-
-/* Info */
-.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 18px 0; }
-.info-card { background: var(--bg); padding: 18px; border-radius: 10px; border-left: 4px solid var(--maroon); }
-.info-card h3 { color: var(--maroon); font-size: 15px; margin-bottom: 8px; }
-.info-card p { font-size: 14px; color: var(--text-muted); margin: 3px 0; }
-.info-card p strong { color: var(--text); }
-
-/* Amenities */
-.amenity-grid { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
-.amenity { background: var(--maroon); color: white; padding: 9px 16px; border-radius: 24px; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; }
-
-/* Offer Box */
-.offer-box { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border: 2px solid #81c784; border-radius: 12px; padding: 20px 24px; margin-top: 20px; }
-.offer-box h3 { color: var(--green); margin-bottom: 6px; }
-
-/* Image Modal */
-.modal { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
-.modal.open { display: flex; }
-.modal img { max-width: 95%; max-height: 92%; object-fit: contain; border-radius: 4px; }
-.modal-close { position: absolute; top: 20px; right: 30px; color: white; font-size: 42px; cursor: pointer; line-height: 1; }
-
-/* Receipt Modal */
-.receipt-overlay { display: none; position: fixed; z-index: 10000; inset: 0; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; padding: 20px; overflow-y: auto; }
-.receipt-overlay.open { display: flex; }
-.receipt-box { background: white; border-radius: 16px; width: 100%; max-width: 500px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); animation: slideUp .3s ease; }
-@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-.rh { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); color: white; padding: 28px; text-align: center; }
-.rh-icon { width: 54px; height: 54px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 24px; }
-.rh h2 { font-size: 22px; margin-bottom: 4px; }
-.rh p { font-size: 13px; opacity: .85; }
-
-.rb { padding: 24px 28px; }
-.rb-logo { text-align: center; margin-bottom: 18px; }
-.rb-logo .hn { font-size: 20px; font-weight: 800; color: var(--maroon); letter-spacing: 1px; }
-.rb-logo .hs { font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
-.rdiv { border: none; border-top: 2px dashed var(--border); margin: 14px 0; }
-.rr { display: flex; justify-content: space-between; align-items: flex-start; padding: 7px 0; font-size: 14px; }
-.rr .rl { color: var(--text-muted); font-size: 13px; }
-.rr .rv { font-weight: 600; color: var(--text); text-align: right; max-width: 60%; }
-.rr.rr-big { background: #fff8f0; margin: 0 -28px; padding: 12px 28px; }
-.rr.rr-big .rl { font-weight: 700; color: var(--text); font-size: 15px; }
-.rr.rr-big .rv { color: var(--green); font-size: 20px; font-weight: 800; }
-
-.rnote { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #5a4000; margin-top: 16px; line-height: 1.7; }
-.rnote strong { display: block; margin-bottom: 4px; color: var(--maroon); font-size: 13px; }
-
-.ract { display: flex; gap: 10px; padding: 4px 28px 24px; }
-.ract button { flex: 1; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; transition: background .2s; }
-.rbtn-print { background: var(--maroon); color: white; border: none; }
-.rbtn-print:hover { background: var(--maroon-dark); }
-.rbtn-close { background: white; color: var(--text); border: 2px solid var(--border); }
-.rbtn-close:hover { background: #f0f0f0; }
-
-/* Print */
-@media print {
-  body * { visibility: hidden; }
-  .receipt-box, .receipt-box * { visibility: visible; }
-  .receipt-box { position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 480px; box-shadow: none; }
-  .ract { display: none; }
-}
-
-footer { background: var(--maroon-dark); color: white; text-align: center; padding: 30px; margin-top: 40px; }
-footer p { margin-bottom: 6px; font-size: 14px; }
-footer p:last-child { font-size: 12px; opacity: .7; }
-
-/* Responsive */
-@media(max-width: 768px) {
-  nav { display: none; }
-  .menu-btn { display: block; }
-  .hero h1 { font-size: 26px; }
-  .room-selector { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
-  .booking-body { padding: 24px 18px; }
-  .booking-header { padding: 24px 18px; }
-  .section { padding: 24px 18px; }
-  .cta-bar { flex-direction: column; padding: 16px; }
-  .cta-btn { justify-content: center; }
-  .rb { padding: 20px; }
-  .ract { padding: 4px 20px 20px; }
-  .rr.rr-big { margin: 0 -20px; padding: 12px 20px; }
-}
+  html { scroll-behavior: smooth; }
+  body { font-family:'Poppins',sans-serif; background:#fcfbf8; color:#1f1f1f; }
+  h1,h2,h3,h4 { font-family:'Playfair Display',serif; letter-spacing:-0.01em; }
+  .gradient-hero {
+    background: linear-gradient(180deg, rgba(122,31,31,.15) 0%, rgba(122,31,31,.55) 60%, rgba(82,20,20,.92) 100%);
+  }
+  .gradient-maroon { background: linear-gradient(135deg,#7a1f1f 0%,#521414 100%); }
+  .section-title {
+    position:relative; display:inline-block;
+    font-size:1.875rem; font-weight:700; color:#7a1f1f;
+  }
+  .section-title::after{
+    content:''; position:absolute; left:0; bottom:-10px;
+    width:60px; height:4px; background:#d4a23a; border-radius:2px;
+  }
+  @media(min-width:768px){ .section-title{ font-size:2.25rem; } }
+  .btn-gold {
+    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+    background:#d4a23a; color:#1f1f1f; font-weight:600;
+    padding:.65rem 1.1rem; border-radius:.75rem; transition:all .2s;
+    box-shadow:0 2px 8px -2px rgba(176,125,32,.4);
+  }
+  .btn-gold:hover{ background:#b07d20; color:#fff; transform:translateY(-1px); }
+  .btn-outline-light {
+    display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+    border:1.5px solid rgba(255,255,255,.7); color:#fff; font-weight:600;
+    padding:.6rem 1.1rem; border-radius:.75rem; transition:all .2s;
+  }
+  .btn-outline-light:hover{ background:#fff; color:#7a1f1f; }
+  .card-hover { transition:transform .25s ease, box-shadow .25s ease; }
+  .card-hover:hover { transform:translateY(-4px); box-shadow:0 12px 28px -10px rgba(122,31,31,.3); }
+  /* Hide scrollbars on mobile nav */
+  .no-scrollbar::-webkit-scrollbar { display:none; }
+  .no-scrollbar { -ms-overflow-style:none; scrollbar-width:none; }
 </style>
-</head>
-<body>
 
-<!-- HEADER -->
-<header>
-  <div class="topbar">
-    <a class="brand" href="index.html">
-      <img src="logonobg.png" alt="Manauna Dham">
-      <div class="brand-text">
-        <strong>Manauna Dham</strong>
-        <span>Hotel & Pilgrim Services</span>
+<!-- ============ Structured Data ============ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Manauna Dham",
+  "alternateName":["Manona Dham","Shree Khatu Shyam Ji Manauna Dham"],
+  "url":"https://manaunadham.org.in/",
+  "logo":"https://manaunadham.org.in/favicon.png",
+  "description":"Pilgrim information and booking services for Shree Khatu Shyam Ji Manauna Dham, Bareilly.",
+  "address":{"@type":"PostalAddress","addressLocality":"Manauna, Aonla","addressRegion":"Uttar Pradesh","addressCountry":"IN"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Place",
+  "name":"Shree Khatu Shyam Ji Manauna Dham",
+  "address":{"@type":"PostalAddress","addressLocality":"Manauna","addressRegion":"Uttar Pradesh","addressCountry":"IN"},
+  "geo":{"@type":"GeoCoordinates","latitude":28.273,"longitude":79.155},
+  "openingHours":"Mo-Su 07:00-21:00"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Offer",
+  "name":"Up to ₹200 OFF on Hotel Booking at Manauna Dham",
+  "priceCurrency":"INR",
+  "url":"https://manaunadham.org.in/accommodations.html",
+  "availability":"https://schema.org/InStock"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Where is Manauna Dham located?","acceptedAnswer":{"@type":"Answer","text":"Manauna Dham is located in Manauna village near Aonla in Bareilly district, Uttar Pradesh."}},
+    {"@type":"Question","name":"What are the darshan timings?","acceptedAnswer":{"@type":"Answer","text":"Darshan is available from 7 AM to 9 PM daily. Aarti is performed at 8 AM and 5 PM."}},
+    {"@type":"Question","name":"How to get a patient token?","acceptedAnswer":{"@type":"Answer","text":"Patient tokens can be given only when patients are present in Manauna Dham. We do not issue patient tokens."}},
+    {"@type":"Question","name":"Is this the official temple website?","acceptedAnswer":{"@type":"Answer","text":"No. ManaunaDham.org.in is a privately operated pilgrim information and services platform."}}
+  ]
+}
+</script>
+</head>
+
+<body class="bg-cream text-gray-900">
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-40 gradient-maroon text-white shadow-md">
+  <div class="container mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <a href="/" class="flex items-center gap-2 min-w-0">
+      <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-maroon-dark font-bold text-lg flex-shrink-0">🕉</div>
+      <div class="min-w-0">
+        <div class="font-display font-bold text-base sm:text-lg leading-tight truncate">Manauna Dham</div>
+        <div class="text-[10px] sm:text-xs text-gold-soft truncate">Shree Khatu Shyam Ji</div>
       </div>
     </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="accommodations.html">All Hotels</a>
-      <a href="#booking-section">Book Now</a>
+    <nav class="hidden md:flex items-center gap-5 text-sm font-medium">
+      <a href="/" class="hover:text-gold-soft">Home</a>
+      <a href="/accommodations.html" class="hover:text-gold-soft">Hotels</a>
+      <a href="/food.html" class="hover:text-gold-soft">Food</a>
+      <a href="/transport.html" class="hover:text-gold-soft">Taxi</a>
+      <a href="/gallery.html" class="hover:text-gold-soft">Gallery</a>
+      <a href="/about.html" class="hover:text-gold-soft">About</a>
     </nav>
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <a href="/live.html" class="btn-gold !py-2 !px-3 text-xs sm:text-sm">
+      <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse-soft"></span> Live
+    </a>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="accommodations.html">All Hotels</a>
-    <a href="#booking-section">Book Now</a>
-  </div>
+  <!-- Mobile horizontal nav -->
+  <nav class="md:hidden border-t border-white/10 overflow-x-auto no-scrollbar">
+    <div class="flex gap-1 px-3 py-2 text-xs whitespace-nowrap">
+      <a href="/" class="px-3 py-1 rounded-full bg-white/15">Home</a>
+      <a href="/accommodations.html" class="px-3 py-1 rounded-full hover:bg-white/10">Hotels</a>
+      <a href="/food.html" class="px-3 py-1 rounded-full hover:bg-white/10">Food</a>
+      <a href="/transport.html" class="px-3 py-1 rounded-full hover:bg-white/10">Taxi</a>
+      <a href="/jal.html" class="px-3 py-1 rounded-full hover:bg-white/10">Shyam Jal</a>
+      <a href="/patient.html" class="px-3 py-1 rounded-full hover:bg-white/10">Patient</a>
+      <a href="/gallery.html" class="px-3 py-1 rounded-full hover:bg-white/10">Gallery</a>
+      <a href="/about.html" class="px-3 py-1 rounded-full hover:bg-white/10">About</a>
+    </div>
+  </nav>
 </header>
 
-<!-- HERO -->
-<div class="hero">
-  <h1>🏨 Hotel Harshdeep, Aonla</h1>
-  <p class="subtitle">Budget Hotel Near Manauna Dham · Clean Rooms · WiFi & Geyser · 3–4 km from Temple</p>
-  <div class="hero-badges">
-    <span class="hero-badge">✓ Verified Property</span>
-    <span class="hero-badge">🛕 3–4 km from Manauna Dham</span>
-    <span class="hero-badge">💳 Secure Online Booking</span>
-    <span class="hero-badge">❄️ AC Available</span>
-  </div>
-</div>
-
-<!-- CTA BAR -->
-<div class="cta-bar">
-  <button class="cta-btn green" onclick="scrollToBooking()">
-    <i class="fa fa-calendar-check"></i> Book Your Room
-  </button>
-  <a class="cta-btn outline" id="payment-issue-btn" onclick="showPaymentHelp()" style="cursor:pointer;">
-    <i class="fa fa-exclamation-circle"></i> Payment Issue?
-  </a>
-  <a class="cta-btn outline" href="https://maps.app.goo.gl/bF7V8LSARG6mNSy97" target="_blank">
-    <i class="fa fa-map-marker-alt"></i> Get Directions
-  </a>
-</div>
-
-<div class="container" style="padding-top:32px;">
-
-  <!-- ══════════════════════════════════════
-       BOOKING WIDGET
-  ══════════════════════════════════════ -->
-  <div id="booking-section">
-    <div class="booking-header">
-      <h2>📅 Book Your Stay</h2>
-      <p>Instant confirmation · Secure payment · No hidden charges</p>
-    </div>
-    <div class="booking-body">
-
-      <!-- Step 1 -->
-      <div class="step-label">Step 1 — Choose Your Room</div>
-      <div class="room-selector">
-        <div class="room-option" id="room-opt-1" onclick="selectRoom(1)">
-          <div class="selected-badge">✓ Selected</div>
-          <div class="room-name">🛏️ Double Bed-1 Room</div>
-          <div class="room-desc">1 Double Bed · Sleeps up to 5</div>
-          <div class="room-price">₹1,599 <span>/ night</span></div>
-          <div class="room-features-mini">
-            <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
-          </div>
-        </div>
-        <div class="room-option" id="room-opt-2" onclick="selectRoom(2)">
-          <div class="selected-badge">✓ Selected</div>
-          <div class="room-name">🛏️🛏️ Double Bed-2 Extended</div>
-          <div class="room-desc">2 Double Beds · Sleeps up to 7</div>
-          <div class="room-price">₹2,599 <span>/ night</span></div>
-          <div class="room-features-mini">
-            <span class="rft">WiFi</span><span class="rft">Geyser</span><span class="rft">❄️ AC</span><span class="rft">Extra Bed Free</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="step-label">Step 2 — Guest Details</div>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Full Name <span class="req">*</span></label>
-          <input type="text" id="g-name" placeholder="e.g. Namitaben Patel" autocomplete="name">
-        </div>
-        <div class="form-group">
-          <label>Phone Number <span class="req">*</span></label>
-          <input type="tel" id="g-phone" placeholder="10-digit mobile number" maxlength="10" autocomplete="tel">
-        </div>
-        <div class="form-group">
-          <label>Check-in Date <span class="req">*</span></label>
-          <input type="date" id="g-checkin" onchange="onDateChange()">
-        </div>
-        <div class="form-group">
-          <label>Check-out Date <span class="req">*</span></label>
-          <input type="date" id="g-checkout" onchange="calcStay()">
-        </div>
-      </div>
-
-      <!-- Stay Summary -->
-      <div class="stay-summary" id="stay-summary">
-        <div class="s-row"><span>Room Type</span><span class="sv" id="s-room">—</span></div>
-        <div class="s-row"><span>Duration</span><span class="sv" id="s-nights">—</span></div>
-        <div class="s-row"><span>Room Rate</span><span class="sv" id="s-rate">—</span></div>
-        <div class="s-row s-disc" id="s-disc-row" style="display:none;"><span>Coupon Discount</span><span class="sv" id="s-disc">—</span></div>
-        <div class="s-row s-total"><span>Total Amount</span><span class="sv" id="s-total">—</span></div>
-        <div class="s-row s-advance"><span>💳 Advance to Pay (25%)</span><span class="sv" id="s-advance">—</span></div>
-        <div class="s-row" style="font-size:13px;color:var(--text-muted);"><span>Remaining at Hotel</span><span class="sv" id="s-remain">—</span></div>
-      </div>
-
-      <!-- Today's Offers Board -->
-      <div id="coupon-banner" style="margin-bottom:20px;">
-        <div style="background:linear-gradient(135deg,#fff8e1,#fffde7);border:2px solid var(--gold);border-radius:14px;overflow:hidden;">
-          <div style="background:var(--maroon);padding:10px 18px;display:flex;align-items:center;justify-content:space-between;">
-            <div style="color:white;font-weight:700;font-size:14px;">🎁 Today's Offers — Click any to apply</div>
-            <div style="color:var(--gold-light);font-size:12px;" id="banner-urgency"></div>
-          </div>
-          <div id="offers-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;"></div>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step-label">Step 3 — Coupon Code (Optional)</div>
-      <div class="coupon-row">
-        <input type="text" id="coupon-input" placeholder="Enter coupon code e.g. PILGRIM50" oninput="this.value=this.value.toUpperCase()">
-        <button class="coupon-btn" onclick="applyCoupon()"><i class="fa fa-tag"></i> Apply</button>
-      </div>
-      <div class="coupon-msg" id="coupon-msg"></div>
-
-      <!-- Pay -->
-      <button class="pay-btn" id="pay-btn" onclick="initiatePayment()">
-        <i class="fa fa-lock"></i>
-        <span id="pay-btn-text">Pay Advance & Confirm Booking</span>
-      </button>
-      <div class="secure-note">
-        <i class="fa fa-shield-alt" style="color:var(--green)"></i>
-        Powered by Razorpay · 100% Secure · UPI, Cards, Net Banking, Wallets
-      </div>
-
-    </div>
+<!-- ============ HERO ============ -->
+<section class="relative isolate overflow-hidden">
+  <div class="absolute inset-0 -z-10" id="hero-slideshow">
+    <img src="mandir1.webp" alt="Shree Khatu Shyam Ji Manauna Dham temple" class="hero-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100" />
+    <img src="mandir6.webp" alt="Manauna Dham temple front view" class="hero-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" loading="lazy" />
+    <img src="ilove.webp" alt="I Love Manauna Dham" class="hero-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" loading="lazy" />
+    <img src="khatushyam.webp" alt="Khatu Shyam Ji" class="hero-img absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0" loading="lazy" />
+    <div class="absolute inset-0 gradient-hero"></div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       PHOTOS
-  ══════════════════════════════════════ -->
-  <div class="section">
-    <h2>Hotel Photos</h2>
-    <p class="section-sub">Click any image to enlarge</p>
-
-    <div class="room-section-title">🏨 Exterior &amp; Location</div>
-    <div class="gallery">
-      <img src="images/hotels/harshdeep/harshdeep-exterior.webp" alt="Hotel Harshdeep Exterior" onclick="openModal(this)">
-      <img src="images/hotels/harshdeep/harshdeep-road1.webp" alt="Road View" onclick="openModal(this)">
-      <img src="images/hotels/harshdeep/harshdeep-road2.webp" alt="Location" onclick="openModal(this)">
+  <div class="container mx-auto px-4 pt-10 pb-8 md:pt-20 md:pb-16 min-h-[78vh] md:min-h-[80vh] flex flex-col justify-end">
+    <div class="max-w-3xl text-white animate-fade-up">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-3 py-1 text-xs font-semibold text-gold-soft border border-white/20">
+        🙏 Jai Shree Shyam
+      </span>
+      <h1 class="mt-4 font-display text-3xl sm:text-5xl md:text-6xl font-bold leading-tight">
+        Welcome to Shree Khatu Shyam Ji <span class="text-gold-soft">Manauna Dham</span>
+      </h1>
+      <p class="mt-3 md:mt-4 text-sm sm:text-lg text-white/90 max-w-xl">
+        Easy booking for hotel, food, taxi & more — all in one place. Plan your darshan with comfort.
+      </p>
     </div>
 
-    <div class="room-section-title">🛏️ Double Bed-1 Room</div>
-    <div class="gallery">
-      <img src="images/hotels/harshdeep/harshdeep-singlebed1.webp" alt="Room" onclick="openModal(this)">
-      <img src="images/hotels/harshdeep/harshdeep-singlebed2.webp" alt="Room View 2" onclick="openModal(this)">
-      <img src="images/hotels/harshdeep/harshdeep-singlebed-toilet.webp" alt="Bathroom" onclick="openModal(this)">
-    </div>
-
-    <div class="room-section-title">🛏️🛏️ Double Bed-2 Extended Room</div>
-    <div class="gallery">
-      <img src="images/hotels/harshdeep/harshdeep-doublebed1.webp" alt="Double Room" onclick="openModal(this)">
-      <img src="images/hotels/harshdeep/harshdeep-doublebed2.webp" alt="Double Room View 2" onclick="openModal(this)">
-      <img src="images/hotels/harshdeep/harshdeep-doublebed-toilet.webp" alt="Double Bathroom" onclick="openModal(this)">
-    </div>
-  </div>
-
-  <!-- ROOM TYPES -->
-  <div class="section">
-    <h2>Room Types &amp; Pricing</h2>
-    <p class="section-sub">All rooms include AC, Free WiFi, Geyser &amp; Attached Bathroom</p>
-    <div class="room-grid">
-      <div class="room-card">
-        <img src="images/hotels/harshdeep/harshdeep-singlebed1.webp" alt="Double Bed-1 Room" onclick="openModal(this)">
-        <div class="rc-body">
-          <h3>Double Bed-1 Room</h3>
-          <p style="color:var(--text-muted);font-size:13px;">Perfect for small families &amp; couples</p>
-          <p class="rc-price">₹1,599 <small>/night</small></p>
-          <ul>
-            <li><i class="fa fa-bed"></i> 1 Double Bed in room</li>
-            <li><i class="fa fa-plus"></i> 1 Extra Bed — Free of Cost</li>
-            <li><i class="fa fa-users"></i> Sleeps up to 5 comfortably</li>
-            <li><i class="fa fa-snowflake"></i> Air Conditioning</li>
-            <li><i class="fa fa-shower"></i> Attached Bathroom with Geyser</li>
-            <li><i class="fa fa-wifi"></i> Free WiFi</li>
-          </ul>
-          <button class="cta-btn green" style="width:100%;justify-content:center;" onclick="selectRoom(1);scrollToBooking()">
-            <i class="fa fa-calendar-check"></i> Book This Room
-          </button>
-        </div>
-      </div>
-      <div class="room-card">
-        <img src="images/hotels/harshdeep/harshdeep-doublebed1.webp" alt="Double Bed-2 Room" onclick="openModal(this)">
-        <div class="rc-body">
-          <h3>Double Bed-2 Extended</h3>
-          <p style="color:var(--text-muted);font-size:13px;">Ideal for large families &amp; groups</p>
-          <p class="rc-price">₹2,599 <small>/night</small></p>
-          <ul>
-            <li><i class="fa fa-bed"></i> 2 Double Beds in room</li>
-            <li><i class="fa fa-plus"></i> 1 Extra Bed — Free of Cost</li>
-            <li><i class="fa fa-users"></i> Sleeps up to 7 comfortably</li>
-            <li><i class="fa fa-snowflake"></i> Air Conditioning</li>
-            <li><i class="fa fa-shower"></i> Attached Bathroom with Geyser</li>
-            <li><i class="fa fa-wifi"></i> Free WiFi</li>
-          </ul>
-          <button class="cta-btn green" style="width:100%;justify-content:center;" onclick="selectRoom(2);scrollToBooking()">
-            <i class="fa fa-calendar-check"></i> Book This Room
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="offer-box">
-      <h3><i class="fa fa-gift"></i> Special Offer — Extra Bed FREE!</h3>
-      <p style="font-size:14px;margin-top:6px;">Accommodate your whole family. Up to 5 guests in Double Bed-1 (₹1,599) or up to 7 in Double Bed-2 (₹2,599) — extra bed at zero cost.</p>
+    <!-- Quick action buttons -->
+    <div class="mt-8 md:mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3 animate-fade-up">
+      <a href="/accommodations.html" class="btn-gold flex-col !rounded-2xl !py-4 text-center !px-2 leading-tight">
+        <span class="text-2xl">🏨</span><span class="text-xs sm:text-sm">Book Hotel</span>
+      </a>
+      <a href="/food.html" class="btn-gold flex-col !rounded-2xl !py-4 text-center !px-2 leading-tight">
+        <span class="text-2xl">🍽️</span><span class="text-xs sm:text-sm">Order Food</span>
+      </a>
+      <a href="/transport.html" class="btn-gold flex-col !rounded-2xl !py-4 text-center !px-2 leading-tight">
+        <span class="text-2xl">🚕</span><span class="text-xs sm:text-sm">Book Taxi</span>
+      </a>
+      <a href="/jal.html" class="btn-gold flex-col !rounded-2xl !py-4 text-center !px-2 leading-tight">
+        <span class="text-2xl">💧</span><span class="text-xs sm:text-sm">Shyam Jal</span>
+      </a>
+      <a href="/patient.html" class="btn-gold flex-col !rounded-2xl !py-4 text-center !px-2 leading-tight">
+        <span class="text-2xl">❤️‍🩹</span><span class="text-xs sm:text-sm">Patient Token</span>
+      </a>
+      <a href="/live.html" class="btn-gold flex-col !rounded-2xl !py-4 text-center !px-2 leading-tight ring-2 ring-white/70">
+        <span class="text-2xl">📡</span><span class="text-xs sm:text-sm">Live Darshan</span>
+      </a>
     </div>
   </div>
+</section>
 
-  <!-- HOTEL INFO -->
-  <div class="section">
-    <h2>Hotel Information</h2>
-    <div class="info-grid">
-      <div class="info-card">
-        <h3><i class="fa fa-map-marker-alt"></i> Location</h3>
-        <p><strong>Bisauli Bypass Road</strong></p>
-        <p>Near Naval Cold Store, Aonla</p>
-        <p>Bareilly — 243301, U.P.</p>
-        <p style="margin-top:6px;font-size:12px;color:var(--maroon);">3–4 km from Manauna Dham</p>
+<!-- ============ STATS BAND ============ -->
+<section class="gradient-maroon text-white py-10">
+  <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div><div class="text-3xl md:text-4xl font-bold text-gold-soft">6 Lakh+</div><div class="text-xs md:text-sm mt-1 text-white/80">Website Views</div></div>
+    <div><div class="text-3xl md:text-4xl font-bold text-gold-soft">10+</div><div class="text-xs md:text-sm mt-1 text-white/80">Services Available</div></div>
+    <div><div class="text-3xl md:text-4xl font-bold text-gold-soft">24/7</div><div class="text-xs md:text-sm mt-1 text-white/80">Support Available</div></div>
+    <div><div class="text-3xl md:text-4xl font-bold text-gold-soft">1000+</div><div class="text-xs md:text-sm mt-1 text-white/80">Bhakts Helped</div></div>
+  </div>
+</section>
+
+<!-- ============ SERVICES GRID ============ -->
+<section class="py-14 md:py-20 bg-cream">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="section-title">Our Services</h2>
+      <p class="mt-6 text-gray-600 max-w-2xl mx-auto text-sm md:text-base">Everything you need for a peaceful darshan — from booking your stay to getting Shyam Jal at home.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href="/accommodations.html" class="card-hover bg-white rounded-2xl p-6 shadow-soft border border-gray-100 block">
+        <div class="text-4xl mb-3">🏨</div>
+        <h3 class="font-display text-xl font-bold text-maroon">Book Hotel / Dharmshala</h3>
+        <p class="mt-2 text-sm text-gray-600">Comfortable rooms near the temple at fair prices.</p>
+        <div class="mt-4 text-gold-deep font-semibold text-sm">Book now →</div>
+      </a>
+      <a href="/food.html" class="card-hover bg-white rounded-2xl p-6 shadow-soft border border-gray-100 block">
+        <div class="text-4xl mb-3">🍽️</div>
+        <h3 class="font-display text-xl font-bold text-maroon">Order Food</h3>
+        <p class="mt-2 text-sm text-gray-600">Fresh, home-style food delivered to your room.</p>
+        <div class="mt-4 text-gold-deep font-semibold text-sm">Order now →</div>
+      </a>
+      <a href="/transport.html" class="card-hover bg-white rounded-2xl p-6 shadow-soft border border-gray-100 block">
+        <div class="text-4xl mb-3">🚕</div>
+        <h3 class="font-display text-xl font-bold text-maroon">Book Taxi / Auto</h3>
+        <p class="mt-2 text-sm text-gray-600">Easy pickup from station or bus stand.</p>
+        <div class="mt-4 text-gold-deep font-semibold text-sm">Book now →</div>
+      </a>
+      <a href="/jal.html" class="card-hover bg-white rounded-2xl p-6 shadow-soft border border-gray-100 block">
+        <div class="text-4xl mb-3">💧</div>
+        <h3 class="font-display text-xl font-bold text-maroon">Shyam Jal</h3>
+        <p class="mt-2 text-sm text-gray-600">Sacred jal from the Dham, sent to your home.</p>
+        <div class="mt-4 text-gold-deep font-semibold text-sm">Get now →</div>
+      </a>
+      <a href="/patient.html" class="card-hover bg-white rounded-2xl p-6 shadow-soft border border-gray-100 block">
+        <div class="text-4xl mb-3">❤️‍🩹</div>
+        <h3 class="font-display text-xl font-bold text-maroon">Patient Token</h3>
+        <p class="mt-2 text-sm text-gray-600">Help with darshan token for unwell devotees.</p>
+        <div class="mt-4 text-gold-deep font-semibold text-sm">Know more →</div>
+      </a>
+      <a href="/live.html" class="card-hover gradient-maroon text-white rounded-2xl p-6 shadow-card block">
+        <div class="text-4xl mb-3">📡</div>
+        <h3 class="font-display text-xl font-bold text-gold-soft">Live Darshan</h3>
+        <p class="mt-2 text-sm text-white/85">Watch live aarti & darshan from anywhere.</p>
+        <div class="mt-4 text-gold-soft font-semibold text-sm">Watch now →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="py-14 md:py-20 bg-cream-dark">
+  <div class="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <img src="khatushyam.webp" alt="Shree Khatu Shyam Ji" loading="lazy" class="rounded-2xl shadow-card w-full" />
+    </div>
+    <div>
+      <h2 class="section-title">About Manauna Dham</h2>
+      <p class="mt-6 text-gray-700 leading-relaxed">
+        Shree Khatu Shyam Ji <strong>Manauna Dham</strong> is a revered shrine in Manauna village near Aonla, Bareilly district, Uttar Pradesh. Devotees from across India visit to seek the blessings of <em>Shyam Baba</em> — the Hari of Kalyug.
+      </p>
+      <p class="mt-3 text-gray-700 leading-relaxed">
+        ManaunaDham.org.in is a privately operated pilgrim platform that helps you plan your darshan — booking hotels, food, taxi, Shyam Jal and more — so your journey is comfortable and peaceful.
+      </p>
+      <a href="/about.html" class="btn-gold mt-6 inline-flex">Read More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMINGS ============ -->
+<section class="py-14 md:py-20 bg-cream">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-10">
+      <h2 class="section-title">Darshan & Aarti Timings</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-5">
+      <div class="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
+        <h3 class="font-display text-xl font-bold text-maroon flex items-center gap-2">🌅 Morning</h3>
+        <ul class="mt-4 space-y-2 text-sm text-gray-700">
+          <li class="flex justify-between"><span>Mandir Opens</span><strong>5:00 AM</strong></li>
+          <li class="flex justify-between"><span>Mangal Aarti</span><strong>5:30 AM</strong></li>
+          <li class="flex justify-between"><span>Shringar Aarti</span><strong>8:00 AM</strong></li>
+          <li class="flex justify-between"><span>Bhog</span><strong>12:00 PM</strong></li>
+        </ul>
       </div>
-      <div class="info-card">
-        <h3><i class="fa fa-clock"></i> Check-in / Check-out</h3>
-        <p><strong>Check-in:</strong> After 1:00 PM</p>
-        <p><strong>Check-out:</strong> Before 11:00 AM</p>
-        <p style="margin-top:6px;font-size:12px;">Early check-in subject to availability</p>
+      <div class="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
+        <h3 class="font-display text-xl font-bold text-maroon flex items-center gap-2">🌇 Evening</h3>
+        <ul class="mt-4 space-y-2 text-sm text-gray-700">
+          <li class="flex justify-between"><span>Mandir Reopens</span><strong>4:00 PM</strong></li>
+          <li class="flex justify-between"><span>Sandhya Aarti</span><strong>5:00 PM</strong></li>
+          <li class="flex justify-between"><span>Shayan Aarti</span><strong>8:30 PM</strong></li>
+          <li class="flex justify-between"><span>Mandir Closes</span><strong>9:00 PM</strong></li>
+        </ul>
       </div>
-      <div class="info-card">
-        <h3><i class="fa fa-rupee-sign"></i> Pricing</h3>
-        <p><strong>Double Bed-1:</strong> ₹1,500 / night</p>
-        <p><strong>Double Bed-2:</strong> ₹2,500 / night</p>
-        <p><strong>Advance:</strong> 25% at booking</p>
-        <p style="margin-top:6px;font-size:12px;">Remaining paid at hotel</p>
+    </div>
+    <p class="mt-6 text-xs text-center text-gray-500">Timings may change on festivals & special occasions.</p>
+  </div>
+</section>
+
+<!-- ============ WEATHER ============ -->
+<section class="py-14 md:py-20 bg-cream-dark">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-10">
+      <h2 class="section-title">Weather at Manauna Dham</h2>
+      <p class="mt-6 text-gray-600 text-sm">Plan your visit with the latest forecast.</p>
+    </div>
+    <div id="weather-box" class="bg-white rounded-2xl p-6 shadow-soft border border-gray-100">
+      <div class="text-center text-gray-500 text-sm py-8">Loading weather...</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAN YOUR JOURNEY ============ -->
+<section class="py-14 md:py-20 bg-cream">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="text-center mb-10">
+      <h2 class="section-title">Plan Your Journey</h2>
+      <p class="mt-6 text-gray-600 text-sm">Easy ways to reach Manauna Dham.</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-5">
+      <div class="card-hover bg-white rounded-2xl p-6 shadow-soft border border-gray-100 text-center">
+        <div class="text-4xl mb-3">🚆</div>
+        <h3 class="font-display text-lg font-bold text-maroon">By Train</h3>
+        <p class="mt-2 text-sm text-gray-600">Nearest station: <strong>Aonla</strong> (~10 km) or <strong>Bareilly Jn</strong> (~50 km).</p>
+        <a href="https://www.irctc.co.in" target="_blank" rel="noopener" class="btn-gold mt-4 !py-2 !text-xs">Book Train</a>
       </div>
-      <div class="info-card">
-        <h3><i class="fa fa-car"></i> Parking</h3>
-        <p><strong>Free Parking</strong></p>
-        <p>Spacious — cars &amp; bikes</p>
-        <p>Well-lit and secure</p>
+      <div class="card-hover bg-white rounded-2xl p-6 shadow-soft border border-gray-100 text-center">
+        <div class="text-4xl mb-3">🚕</div>
+        <h3 class="font-display text-lg font-bold text-maroon">By Taxi</h3>
+        <p class="mt-2 text-sm text-gray-600">Pickup from station or bus stand at fixed prices.</p>
+        <a href="/transport.html" class="btn-gold mt-4 !py-2 !text-xs">Book Taxi</a>
+      </div>
+      <div class="card-hover bg-white rounded-2xl p-6 shadow-soft border border-gray-100 text-center">
+        <div class="text-4xl mb-3">🚌</div>
+        <h3 class="font-display text-lg font-bold text-maroon">By Bus</h3>
+        <p class="mt-2 text-sm text-gray-600">Regular UP Roadways buses to Aonla from Bareilly.</p>
+        <a href="/transport.html" class="btn-gold mt-4 !py-2 !text-xs">Know More</a>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- AMENITIES -->
-  <div class="section">
-    <h2>Amenities &amp; Facilities</h2>
-    <div class="amenity-grid">
-      <span class="amenity"><i class="fa fa-wifi"></i> Free WiFi</span>
-      <span class="amenity"><i class="fa fa-parking"></i> Free Parking</span>
-      <span class="amenity"><i class="fa fa-shower"></i> Geyser in All Rooms</span>
-      <span class="amenity"><i class="fa fa-snowflake"></i> Air Conditioning</span>
-      <span class="amenity"><i class="fa fa-bed"></i> Extra Bed Free</span>
-      <span class="amenity"><i class="fa fa-broom"></i> Daily Housekeeping</span>
-      <span class="amenity"><i class="fa fa-toilet"></i> Attached Bathrooms</span>
-      <span class="amenity"><i class="fa fa-shield-alt"></i> 24/7 Security</span>
+<!-- ============ LOCATION ============ -->
+<section class="py-14 md:py-20 bg-cream-dark">
+  <div class="container mx-auto px-4 max-w-5xl">
+    <div class="text-center mb-10">
+      <h2 class="section-title">Find Us on Map</h2>
+    </div>
+    <div class="rounded-2xl overflow-hidden shadow-card border border-gray-100">
+      <iframe
+        src="https://maps.google.com/maps?q=Manauna+Dham+Aonla+Bareilly&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Manauna Dham Map"></iframe>
     </div>
   </div>
+</section>
 
-  <!-- NEARBY -->
-  <div class="section">
-    <h2>Location &amp; Nearby Places</h2>
-    <div style="background:var(--bg);padding:20px;border-radius:10px;margin-bottom:20px;">
-      <ul style="list-style:none;line-height:2.3;font-size:15px;">
-        <li>🛕 <strong>Manauna Dham (Khatu Shyam Temple)</strong> — 3–4 km · 10–15 min</li>
-        <li>🏪 <strong>Naval Cold Store</strong> — 100 m (right next to hotel)</li>
-        <li>🏥 <strong>Aonla Civil Hospital</strong> — 1.5 km</li>
-        <li>🚉 <strong>Aonla Railway Station</strong> — 3 km</li>
-        <li>🍽️ <strong>Food Plaza Restaurant</strong> — 2 km</li>
+<!-- ============ GALLERY TEASER ============ -->
+<section class="py-14 md:py-20 bg-cream">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="section-title">Glimpses of the Dham</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <img src="mandir1.webp" alt="Manauna Dham temple" loading="lazy" class="rounded-xl w-full h-40 md:h-48 object-cover card-hover" />
+      <img src="mandir6.webp" alt="Mandir front" loading="lazy" class="rounded-xl w-full h-40 md:h-48 object-cover card-hover" />
+      <img src="ilove.webp" alt="I Love Manauna Dham" loading="lazy" class="rounded-xl w-full h-40 md:h-48 object-cover card-hover" />
+      <img src="khatushyam.webp" alt="Khatu Shyam Ji" loading="lazy" class="rounded-xl w-full h-40 md:h-48 object-cover card-hover" />
+    </div>
+    <div class="text-center mt-8">
+      <a href="/gallery.html" class="btn-gold">View Full Gallery →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="py-14 md:py-20 bg-cream-dark">
+  <div class="container mx-auto px-4 max-w-3xl">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="mt-6 text-sm text-gray-600">About Manauna (Manona) Dham</p>
+
+    <div class="mt-8 bg-white rounded-2xl border border-gray-100 shadow-soft divide-y divide-gray-100" id="faq-list">
+      <details class="group p-5">
+        <summary class="cursor-pointer font-semibold text-gray-900 flex justify-between items-center">Where is Manauna Dham located?<span class="ml-2 text-gold-deep group-open:rotate-180 transition">▼</span></summary>
+        <p class="mt-3 text-sm text-gray-700">Manauna Dham is located in Manauna village near Aonla in Bareilly district, Uttar Pradesh.</p>
+      </details>
+      <details class="group p-5">
+        <summary class="cursor-pointer font-semibold text-gray-900 flex justify-between items-center">What are the darshan timings?<span class="ml-2 text-gold-deep group-open:rotate-180 transition">▼</span></summary>
+        <p class="mt-3 text-sm text-gray-700">Darshan is available from 5 AM to 9 PM daily (with a midday break). Aarti is performed in morning and evening.</p>
+      </details>
+      <details class="group p-5">
+        <summary class="cursor-pointer font-semibold text-gray-900 flex justify-between items-center">How to get a patient token?<span class="ml-2 text-gold-deep group-open:rotate-180 transition">▼</span></summary>
+        <p class="mt-3 text-sm text-gray-700">Patient tokens can be given only when patients are present in Manauna Dham. We do not issue patient tokens. This information is based on prevailing on-site practices and may change.</p>
+      </details>
+      <details class="group p-5">
+        <summary class="cursor-pointer font-semibold text-gray-900 flex justify-between items-center">Is this the official temple website?<span class="ml-2 text-gold-deep group-open:rotate-180 transition">▼</span></summary>
+        <p class="mt-3 text-sm text-gray-700">No. ManaunaDham.org.in is a privately operated pilgrim information and services platform.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DISCLAIMER ============ -->
+<section id="disclaimer-full" class="py-12 bg-cream">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <div class="bg-white border-l-4 border-gold rounded-xl p-6 shadow-soft">
+      <h3 class="font-display text-lg font-bold text-maroon">Legal Disclaimer</h3>
+      <p class="mt-3 text-xs md:text-sm text-gray-700 leading-relaxed">
+        ManaunaDham.org.in is a <strong>privately operated pilgrim information and services platform</strong>. We are <strong>not</strong> the official Shree Khatu Shyam Ji Manauna Dham temple management, trust, or any government body. All services (hotel, food, taxi, jal, etc.) are facilitated independently by our team. Information about timings, festivals and on-site practices is collected in good faith and may change without notice. Please verify critical details with the temple before travel.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="gradient-maroon text-white py-10">
+  <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8">
+    <div>
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-maroon-dark font-bold">🕉</div>
+        <div>
+          <div class="font-display font-bold">Manauna Dham</div>
+          <div class="text-xs text-gold-soft">Shree Khatu Shyam Ji</div>
+        </div>
+      </div>
+      <p class="mt-3 text-sm text-white/80">Helping bhakts plan a peaceful darshan since day one.</p>
+    </div>
+    <div>
+      <h4 class="font-display font-bold text-gold-soft">Quick Links</h4>
+      <ul class="mt-3 space-y-2 text-sm text-white/85">
+        <li><a href="/accommodations.html" class="hover:text-gold-soft">Book Hotel</a></li>
+        <li><a href="/food.html" class="hover:text-gold-soft">Order Food</a></li>
+        <li><a href="/transport.html" class="hover:text-gold-soft">Book Taxi</a></li>
+        <li><a href="/jal.html" class="hover:text-gold-soft">Shyam Jal</a></li>
+        <li><a href="/live.html" class="hover:text-gold-soft">Live Darshan</a></li>
       </ul>
     </div>
-    <div class="info-grid">
-      <div class="info-card">
-        <h3><i class="fa fa-car"></i> From Bareilly</h3>
-        <p>40 km · ~1 hour drive</p>
-      </div>
-      <div class="info-card">
-        <h3><i class="fa fa-train"></i> From Aonla Station</h3>
-        <p>3 km · ~10 min by auto</p>
-      </div>
-      <div class="info-card">
-        <h3><i class="fa fa-road"></i> From Delhi</h3>
-        <p>220 km · 4–5 hrs via NH9</p>
-      </div>
+    <div>
+      <h4 class="font-display font-bold text-gold-soft">More</h4>
+      <ul class="mt-3 space-y-2 text-sm text-white/85">
+        <li><a href="/about.html" class="hover:text-gold-soft">About Us</a></li>
+        <li><a href="/gallery.html" class="hover:text-gold-soft">Gallery</a></li>
+        <li><a href="#disclaimer-full" class="hover:text-gold-soft">Disclaimer</a></li>
+      </ul>
     </div>
   </div>
-
-  <!-- ABOUT -->
-  <div class="section">
-    <h2>About Hotel Harshdeep</h2>
-    <p style="font-size:16px;line-height:1.9;color:var(--text);margin-bottom:12px;">
-      Hotel Harshdeep is a clean, budget-friendly hotel on Bisauli Bypass Road, Aonla — just 3–4 km from Manauna Dham (Manona Dham) temple. Perfect for families and devotees visiting Shri Khatu Shyam Ji.
-    </p>
-    <p style="font-size:16px;line-height:1.9;color:var(--text);">
-      High cleanliness standards, warm hospitality, and honest rates make Hotel Harshdeep your home away from home near the temple.
-    </p>
-    <div class="amenity-grid" style="margin-top:20px;">
-      <span class="amenity"><i class="fa fa-wifi"></i> Free WiFi</span>
-      <span class="amenity"><i class="fa fa-parking"></i> Free Parking</span>
-      <span class="amenity"><i class="fa fa-shower"></i> Geyser</span>
-      <span class="amenity"><i class="fa fa-bed"></i> Extra Bed Free</span>
-      <span class="amenity"><i class="fa fa-broom"></i> Daily Cleaning</span>
-    </div>
+  <div class="container mx-auto px-4 mt-8 pt-6 border-t border-white/15 text-center text-xs text-white/70">
+    © <span id="year"></span> ManaunaDham.org.in — All rights reserved. | Jai Shree Shyam 🙏
   </div>
-
-  <!-- BOTTOM CTA -->
-  <div class="section" style="background:linear-gradient(135deg,var(--maroon),var(--maroon-dark));color:white;text-align:center;">
-    <h2 style="color:white;border-color:var(--gold);">Ready to Book Your Room?</h2>
-    <p style="font-size:16px;opacity:.9;margin-bottom:20px;">Secure your stay with just 25% advance. Instant confirmation, no hassle.</p>
-    <button class="cta-btn" style="background:var(--gold);color:var(--maroon-dark);margin:0 auto;font-size:16px;" onclick="scrollToBooking()">
-      <i class="fa fa-calendar-check"></i> Book Now
-    </button>
-  </div>
-
-</div>
-
-<!-- IMAGE MODAL -->
-<div class="modal" id="imgModal" onclick="closeModal()">
-  <span class="modal-close">&times;</span>
-  <img id="modalImg" src="" alt="">
-</div>
-
-<!-- RECEIPT MODAL -->
-<div class="receipt-overlay" id="receiptOverlay">
-  <div class="receipt-box">
-    <div class="rh">
-      <div class="rh-icon">✅</div>
-      <h2>Booking Confirmed!</h2>
-      <p>Your advance payment has been received</p>
-    </div>
-    <div class="rb">
-      <div class="rb-logo">
-        <div class="hn">HOTEL HARSHDEEP</div>
-        <div class="hs">Advance Booking Receipt</div>
-      </div>
-      <hr class="rdiv">
-      <div class="rr"><span class="rl">Invoice No.</span><span class="rv" id="r-inv">—</span></div>
-      <div class="rr"><span class="rl">Date</span><span class="rv" id="r-date">—</span></div>
-      <hr class="rdiv">
-      <div class="rr"><span class="rl">Guest Name</span><span class="rv" id="r-name">—</span></div>
-      <div class="rr"><span class="rl">Phone</span><span class="rv" id="r-phone">—</span></div>
-      <div class="rr"><span class="rl">Check-in</span><span class="rv" id="r-ci">—</span></div>
-      <div class="rr"><span class="rl">Check-out</span><span class="rv" id="r-co">—</span></div>
-      <div class="rr"><span class="rl">Room Type</span><span class="rv" id="r-room">—</span></div>
-      <div class="rr"><span class="rl">Nights</span><span class="rv" id="r-nights">—</span></div>
-      <hr class="rdiv">
-      <div class="rr"><span class="rl">Room Rate</span><span class="rv" id="r-rate">—</span></div>
-      <div class="rr" id="r-disc-row" style="display:none;"><span class="rl" style="color:var(--green);">Coupon Discount</span><span class="rv" style="color:var(--green);" id="r-disc">—</span></div>
-      <div class="rr"><span class="rl">Total Amount</span><span class="rv" id="r-total">—</span></div>
-      <div class="rr rr-big"><span class="rl">Advance Paid (25%)</span><span class="rv" id="r-advance">—</span></div>
-      <div class="rr"><span class="rl">Remaining at Hotel</span><span class="rv" id="r-remain">—</span></div>
-      <div class="rr"><span class="rl">Payment ID</span><span class="rv" id="r-pid" style="font-size:11px;word-break:break-all;">—</span></div>
-      <div class="rnote">
-        <strong>⚠️ Important Information</strong>
-        Check-in: After 1:00 PM &nbsp;·&nbsp; Check-out: Before 11:00 AM<br>
-        Advance booking fee is <strong>non-refundable</strong>.<br>
-        Please show this receipt at the hotel during check-in.<br>
-        ManaunaDham.org.in is an independent booking assistance platform.
-      </div>
-    </div>
-    <div class="ract">
-      <button class="rbtn-print" onclick="window.print()"><i class="fa fa-print"></i> Print / Save PDF</button>
-      <button class="rbtn-close" onclick="closeReceipt()">Close</button>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2026 ManaunaDham.org.in | Hotel Harshdeep, Aonla</p>
-  <p>ManaunaDham.org.in is a privately operated pilgrim information and services platform. Not affiliated with any mandir or temple authority.</p>
 </footer>
 
+<!-- ============ MAIN PROMO POPUP ============ -->
+<div id="promo-popup" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+  <div class="relative bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl animate-slide-in">
+    <button onclick="closePromo()" aria-label="Close" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-gray-700 flex items-center justify-center text-xl shadow">×</button>
+    <div class="gradient-maroon text-white p-6 text-center">
+      <div class="text-5xl mb-2">🎉</div>
+      <h3 class="font-display text-2xl font-bold text-gold-soft">Special Offer!</h3>
+      <p class="mt-1 text-sm text-white/85">Limited time discount for bhakts</p>
+    </div>
+    <div class="p-6 text-center">
+      <div class="inline-block bg-gold/20 text-maroon font-bold px-4 py-1 rounded-full text-sm">HOTEL BOOKING</div>
+      <h4 class="mt-3 font-display text-3xl font-bold text-maroon">Up to ₹200 OFF</h4>
+      <p class="mt-2 text-sm text-gray-600">on hotel booking at Manauna Dham. Comfortable rooms near the temple — book now & save!</p>
+      <a href="/accommodations.html" onclick="closePromo()" class="btn-gold mt-5 w-full !py-3 text-base">Check Hotels Now →</a>
+      <button onclick="closePromo()" class="mt-2 text-xs text-gray-500 hover:text-gray-800">No thanks</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECONDARY TOAST POPUP ============ -->
+<div id="toast-popup" class="fixed bottom-4 right-4 z-40 hidden max-w-xs">
+  <div class="bg-white rounded-2xl shadow-card border border-gold/40 p-4 animate-slide-in">
+    <div class="flex items-start gap-3">
+      <div class="text-2xl">🍽️</div>
+      <div class="flex-1 min-w-0">
+        <div class="font-bold text-sm text-maroon">Hungry? We deliver!</div>
+        <p class="text-xs text-gray-600 mt-1">Fresh food + taxi service available 24/7</p>
+        <div class="flex gap-2 mt-2">
+          <a href="/food.html" class="text-xs btn-gold !py-1 !px-2.5">Food</a>
+          <a href="/transport.html" class="text-xs btn-gold !py-1 !px-2.5">Taxi</a>
+        </div>
+      </div>
+      <button onclick="closeToast()" aria-label="Close" class="text-gray-400 hover:text-gray-700 text-lg">×</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FLOATING WHATSAPP / CALL ============ -->
+<div class="fixed bottom-4 left-4 z-30 flex flex-col gap-2">
+  <a href="tel:+919999999999" aria-label="Call us" class="w-12 h-12 rounded-full bg-maroon text-white flex items-center justify-center shadow-card hover:scale-105 transition">📞</a>
+</div>
+
+<!-- ============ SCRIPTS ============ -->
 <script>
-// ══════════════════════════════════════════════
-// CONFIG — Replace YOUR_RAZORPAY_KEY_ID below
-// ══════════════════════════════════════════════
-const RAZORPAY_KEY = 'YOUR_RAZORPAY_KEY_ID';
-// Example: const RAZORPAY_KEY = 'rzp_live_xxxxxxxxxxxxxxxx';
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-// ── COUPONS ──
-// Primary: loaded from coupons.js (edit that file to change coupons)
-// Fallback: defined here in case coupons.js fails to load
-const HOTEL_KEY = 'harshdeep';
+  // Hero slideshow
+  (function(){
+    const imgs = document.querySelectorAll('#hero-slideshow .hero-img');
+    let i = 0;
+    setInterval(() => {
+      imgs[i].classList.replace('opacity-100','opacity-0');
+      i = (i+1) % imgs.length;
+      imgs[i].classList.replace('opacity-0','opacity-100');
+    }, 5000);
+  })();
 
-const FALLBACK_CONFIG = {
-  harshdeep: {
-    urgencyMessage: '🕐 Valid today only!',
-    COUPONS: {
-      'HARSHDEEP100': { type: 'flat',    value: 100, label: '₹100 off', description: 'Special booking discount' },
-      'PILGRIM50':    { type: 'flat',    value: 50,  label: '₹50 off',  description: 'Pilgrim special offer'    },
-      'BABA100':      { type: 'flat',    value: 100, label: '₹100 off', description: 'Shyam Baba blessing deal' },
-      'WELCOME5':     { type: 'percent', value: 5,   label: '5% off',   description: 'First time booker offer'  },
+  // Promo popups
+  function closePromo(){
+    document.getElementById('promo-popup').classList.add('hidden');
+    document.getElementById('promo-popup').classList.remove('flex');
+    sessionStorage.setItem('promo_seen','1');
+    // schedule toast
+    setTimeout(showToast, 25000);
+  }
+  function showToast(){
+    if(sessionStorage.getItem('toast_seen')) return;
+    document.getElementById('toast-popup').classList.remove('hidden');
+  }
+  function closeToast(){
+    document.getElementById('toast-popup').classList.add('hidden');
+    sessionStorage.setItem('toast_seen','1');
+  }
+  setTimeout(() => {
+    if(sessionStorage.getItem('promo_seen')){
+      setTimeout(showToast, 20000);
+      return;
     }
-  }
-};
+    const p = document.getElementById('promo-popup');
+    p.classList.remove('hidden'); p.classList.add('flex');
+  }, 3000);
 
-const _config   = (typeof COUPON_CONFIG !== 'undefined' ? COUPON_CONFIG : FALLBACK_CONFIG)[HOTEL_KEY];
-const COUPONS   = _config.COUPONS;
-const URGENCY_MSG = _config.urgencyMessage;
-
-// ── ROOM PRICES ──
-const ROOMS = {
-  1: { name: 'Double Bed-1 Room',      price: 1599 },
-  2: { name: 'Double Bed-2 Extended',  price: 2599 },
-};
-
-// ── STATE ──
-let selRoom = null, nights = 0, baseTotal = 0, discAmt = 0, finalTotal = 0, advAmt = 0, activeCoupon = null;
-
-// Invoice counter (increments per booking in this browser — Razorpay dashboard is source of truth)
-let invNum = parseInt(localStorage.getItem('hd_inv') || '100');
-
-// ── SELECT ROOM ──
-function selectRoom(n) {
-  selRoom = n;
-  document.querySelectorAll('.room-option').forEach(el => el.classList.remove('selected'));
-  document.getElementById('room-opt-' + n).classList.add('selected');
-  recalc();
-}
-
-// ── DATE CHANGE ──
-function onDateChange() {
-  const ci = document.getElementById('g-checkin').value;
-  const co = document.getElementById('g-checkout').value;
-  // Enforce checkout > checkin
-  document.getElementById('g-checkout').min = ci;
-  if (co && co <= ci) {
-    document.getElementById('g-checkout').value = '';
-  }
-  calcStay();
-}
-
-function calcStay() {
-  const ci = document.getElementById('g-checkin').value;
-  const co = document.getElementById('g-checkout').value;
-  if (!ci || !co) return;
-  nights = Math.round((new Date(co) - new Date(ci)) / 86400000);
-  if (nights <= 0) { nights = 0; return; }
-  recalc();
-}
-
-function recalc() {
-  if (!selRoom || nights <= 0) return;
-  baseTotal = ROOMS[selRoom].price * nights;
-  discAmt = 0;
-  if (activeCoupon && COUPONS[activeCoupon]) {
-    const c = COUPONS[activeCoupon];
-    discAmt = c.type === 'flat' ? c.value : Math.round(baseTotal * c.value / 100);
-  }
-  finalTotal = Math.max(baseTotal - discAmt, 0);
-  advAmt = Math.round(finalTotal * 0.25);
-
-  // Update summary UI
-  const summary = document.getElementById('stay-summary');
-  summary.classList.add('show');
-  document.getElementById('s-room').textContent    = ROOMS[selRoom].name;
-  document.getElementById('s-nights').textContent  = nights + ' night' + (nights > 1 ? 's' : '');
-  document.getElementById('s-rate').textContent    = '₹' + ROOMS[selRoom].price.toLocaleString() + ' × ' + nights;
-
-  const discRow = document.getElementById('s-disc-row');
-  if (discAmt > 0) {
-    discRow.style.display = 'flex';
-    document.getElementById('s-disc').textContent = '−₹' + discAmt.toLocaleString();
-  } else {
-    discRow.style.display = 'none';
-  }
-
-  document.getElementById('s-total').textContent  = '₹' + finalTotal.toLocaleString();
-  document.getElementById('s-advance').textContent = '₹' + advAmt.toLocaleString();
-  document.getElementById('s-remain').textContent  = '₹' + (finalTotal - advAmt).toLocaleString();
-
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
-}
-
-// ── COUPON ──
-function applyCoupon() {
-  const code = document.getElementById('coupon-input').value.trim().toUpperCase();
-  const msg  = document.getElementById('coupon-msg');
-  if (!code) { showCMsg('Please enter a coupon code.', 'no'); return; }
-  if (COUPONS[code]) {
-    activeCoupon = code;
-    showCMsg('✅ Coupon applied — ' + COUPONS[code].label + '!', 'ok');
-    recalc();
-  } else {
-    activeCoupon = null;
-    showCMsg('❌ Invalid coupon code. Please check and try again.', 'no');
-    recalc();
-  }
-}
-
-function showCMsg(txt, type) {
-  const el = document.getElementById('coupon-msg');
-  el.textContent = txt;
-  el.className = 'coupon-msg ' + type;
-}
-
-// ── VALIDATE ──
-function validate() {
-  let ok = true;
-  ['g-name', 'g-phone', 'g-checkin', 'g-checkout'].forEach(id => {
-    const el = document.getElementById(id);
-    if (!el.value.trim()) { el.classList.add('err'); ok = false; }
-    else el.classList.remove('err');
-  });
-  if (!selRoom)   { alert('Please select a room type first.'); ok = false; }
-  if (nights <= 0){ alert('Please select valid check-in and check-out dates.'); ok = false; }
-  const ph = document.getElementById('g-phone').value.trim();
-  if (ph && !/^\d{10}$/.test(ph)) {
-    document.getElementById('g-phone').classList.add('err');
-    alert('Please enter a valid 10-digit phone number.'); ok = false;
-  }
-  return ok;
-}
-
-// ── RAZORPAY ──
-async function initiatePayment() {
-  if (!validate()) return;
-
-  const name  = document.getElementById('g-name').value.trim();
-  const phone = document.getElementById('g-phone').value.trim();
-  const ci    = document.getElementById('g-checkin').value;
-  const co    = document.getElementById('g-checkout').value;
-
-  invNum++;
-  localStorage.setItem('hd_inv', invNum);
-  const invStr = String(invNum).padStart(5, '0');
-
-  // Disable button and show loading
-  const btn = document.getElementById('pay-btn');
-  btn.disabled = true;
-  document.getElementById('pay-btn-text').textContent = 'Creating order...';
-
-  const notes = {
-    invoice_no:   invStr,
-    room_type:    ROOMS[selRoom].name,
-    checkin:      ci,
-    checkout:     co,
-    nights:       String(nights),
-    total_amount: String(finalTotal),
-    advance_paid: String(advAmt),
-    coupon_used:  activeCoupon || 'None',
-    guest_name:   name,
-    guest_phone:  phone,
-  };
-
-  let orderId;
-  try {
-    // Call Vercel backend to create order securely
-    const resp = await fetch('https://harshdeep-api.vercel.app/api/create-order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: advAmt * 100, notes }),
-    });
-
-    if (!resp.ok) {
-      const err = await resp.json();
-      throw new Error(err.error || 'Server error');
+  // Weather (Open-Meteo, no API key)
+  (async function(){
+    try{
+      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=28.273&longitude=79.155&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code&timezone=Asia%2FKolkata&forecast_days=5');
+      const d = await r.json();
+      const codeIcon = c => {
+        if(c===0) return '☀️'; if([1,2].includes(c)) return '🌤️'; if(c===3) return '☁️';
+        if([45,48].includes(c)) return '🌫️'; if(c>=51 && c<=67) return '🌧️';
+        if(c>=71 && c<=77) return '🌨️'; if(c>=80 && c<=82) return '🌦️';
+        if(c>=95) return '⛈️'; return '🌡️';
+      };
+      const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      const today = new Date(d.daily.time[0]);
+      let html = `
+        <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
+          <div>
+            <div class="text-sm text-gray-500">Right now in Manauna Dham</div>
+            <div class="font-display text-4xl font-bold text-maroon">${Math.round(d.current.temperature_2m)}°C ${codeIcon(d.current.weather_code)}</div>
+          </div>
+          <div class="text-xs text-gray-500">Updated just now</div>
+        </div>
+        <div class="grid grid-cols-5 gap-2">`;
+      d.daily.time.forEach((t,i) => {
+        const dt = new Date(t);
+        html += `
+          <div class="text-center bg-cream rounded-xl p-3">
+            <div class="text-xs font-semibold text-maroon">${i===0?'Today':days[dt.getDay()]}</div>
+            <div class="text-2xl my-1">${codeIcon(d.daily.weather_code[i])}</div>
+            <div class="text-xs"><strong>${Math.round(d.daily.temperature_2m_max[i])}°</strong> / ${Math.round(d.daily.temperature_2m_min[i])}°</div>
+          </div>`;
+      });
+      html += `</div>`;
+      document.getElementById('weather-box').innerHTML = html;
+    }catch(e){
+      document.getElementById('weather-box').innerHTML = '<div class="text-center text-gray-500 text-sm py-4">Weather unavailable right now.</div>';
     }
-
-    const data = await resp.json();
-    orderId = data.orderId;
-
-  } catch (err) {
-    alert('Could not initiate payment: ' + err.message + '\nPlease try again.');
-    btn.disabled = false;
-    document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
-    return;
-  }
-
-  // Re-enable button
-  btn.disabled = false;
-  document.getElementById('pay-btn-text').textContent = 'Pay ₹' + advAmt.toLocaleString() + ' Advance & Confirm Booking';
-
-  const options = {
-    key: RAZORPAY_KEY,
-    order_id: orderId,           // ← This is what was missing before
-    amount: advAmt * 100,
-    currency: 'INR',
-    name: 'Hotel Harshdeep',
-    description: ROOMS[selRoom].name + ' · ' + nights + ' night(s) · ' + fmtDate(ci) + ' – ' + fmtDate(co),
-    image: 'logonobg.png',
-    prefill: { name: name, contact: '+91' + phone },
-    notes: notes,
-    theme: { color: '#7a0000' },
-    modal: { backdropclose: false },
-    handler: function(resp) {
-      showReceipt({ invStr, name, phone, ci, co, nights, baseTotal, discAmt, finalTotal, advAmt, payId: resp.razorpay_payment_id });
-    }
-  };
-
-  const rzp = new Razorpay(options);
-  rzp.on('payment.failed', function(r) {
-    alert('Payment failed: ' + r.error.description + '\nPlease try again.');
-  });
-  rzp.open();
-}
-
-// ── RECEIPT ──
-function showReceipt(d) {
-  const rem = d.finalTotal - d.advAmt;
-  document.getElementById('r-inv').textContent    = '#' + d.invStr;
-  document.getElementById('r-date').textContent   = new Date().toLocaleDateString('en-IN', {day:'2-digit',month:'short',year:'numeric'});
-  document.getElementById('r-name').textContent   = d.name;
-  document.getElementById('r-phone').textContent  = '+91 ' + d.phone;
-  document.getElementById('r-ci').textContent     = fmtDate(d.ci);
-  document.getElementById('r-co').textContent     = fmtDate(d.co);
-  document.getElementById('r-room').textContent   = ROOMS[selRoom].name;
-  document.getElementById('r-nights').textContent = d.nights + ' night' + (d.nights > 1 ? 's' : '');
-  document.getElementById('r-rate').textContent   = '₹' + ROOMS[selRoom].price.toLocaleString() + ' × ' + d.nights;
-
-  const dr = document.getElementById('r-disc-row');
-  if (d.discAmt > 0) {
-    dr.style.display = 'flex';
-    document.getElementById('r-disc').textContent = '−₹' + d.discAmt.toLocaleString();
-  } else { dr.style.display = 'none'; }
-
-  document.getElementById('r-total').textContent   = '₹' + d.finalTotal.toLocaleString();
-  document.getElementById('r-advance').textContent = '₹' + d.advAmt.toLocaleString();
-  document.getElementById('r-remain').textContent  = '₹' + rem.toLocaleString();
-  document.getElementById('r-pid').textContent     = d.payId;
-
-  document.getElementById('receiptOverlay').classList.add('open');
-}
-
-function closeReceipt() {
-  document.getElementById('receiptOverlay').classList.remove('open');
-  // Reset form
-  ['g-name','g-phone','g-checkin','g-checkout','coupon-input'].forEach(id => document.getElementById(id).value = '');
-  selRoom = null; nights = 0; finalTotal = 0; advAmt = 0; discAmt = 0; activeCoupon = null;
-  document.querySelectorAll('.room-option').forEach(el => el.classList.remove('selected'));
-  document.getElementById('stay-summary').classList.remove('show');
-  document.getElementById('coupon-msg').className = 'coupon-msg';
-  document.getElementById('pay-btn-text').textContent = 'Pay Advance & Confirm Booking';
-}
-
-// ── HELPERS ──
-function fmtDate(str) {
-  if (!str) return '—';
-  return new Date(str).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
-}
-
-function scrollToBooking() {
-  document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function openModal(img) {
-  document.getElementById('imgModal').classList.add('open');
-  document.getElementById('modalImg').src = img.src;
-}
-
-function closeModal() { document.getElementById('imgModal').classList.remove('open'); }
-
-function toggleMenu() {
-  const m = document.getElementById('mobileMenu');
-  m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
-}
-
-// ── OFFERS BOARD ──
-function initCouponBanner() {
-  const grid = document.getElementById('offers-grid');
-  if (!grid) return;
-
-  // Set urgency message
-  document.getElementById('banner-urgency').textContent = URGENCY_MSG;
-
-  // Build a card for every coupon
-  Object.entries(COUPONS).forEach(([code, c]) => {
-    const card = document.createElement('div');
-    card.style.cssText = `
-      background:white;border:2px dashed var(--gold);border-radius:10px;
-      padding:12px 14px;cursor:pointer;transition:all .2s;
-    `;
-    card.innerHTML = `
-      <div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">${c.description}</div>
-      <div style="font-size:16px;font-weight:800;color:var(--maroon);letter-spacing:1px;margin-bottom:6px;">${code}</div>
-      <div style="background:var(--maroon);color:white;text-align:center;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:700;">${c.label} ✂️</div>
-    `;
-    card.onmouseenter = () => card.style.background = '#fff3e0';
-    card.onmouseleave = () => card.style.background = 'white';
-    card.onclick = () => claimCoupon(code);
-    grid.appendChild(card);
-  });
-}
-
-function claimCoupon(code) {
-  document.getElementById('coupon-input').value = code;
-  applyCoupon();
-  // Highlight the input briefly
-  const inp = document.getElementById('coupon-input');
-  inp.style.borderColor = 'var(--gold)';
-  setTimeout(() => inp.style.borderColor = '', 1599);
-  // Scroll to summary
-  document.getElementById('stay-summary').scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-// ── PAYMENT ISSUE HELP ──
-function showPaymentHelp() {
-  const msg = `If your payment was deducted but booking failed:\n\n` +
-    `1. Note your UPI/bank transaction ID\n` +
-    `2. Take a screenshot of the deduction\n` +
-    `3. Razorpay automatically refunds within 5-7 business days\n\n` +
-    `For faster help, whatsapp us at:\n 7817803342 \n\nMention your name, phone, and transaction ID.`;
-  alert(msg);
-}
-
-// Set min dates on load
-window.addEventListener('DOMContentLoaded', () => {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('g-checkin').min = today;
-  document.getElementById('g-checkout').min = today;
-  // Init coupon banner
-  initCouponBanner();
-});
+  })();
 </script>
+
 </body>
 </html>
