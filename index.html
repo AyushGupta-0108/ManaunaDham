@@ -219,20 +219,16 @@ header {
   text-decoration: none;
 }
 
-.brand-logo {
-  width: 42px;
-  height: 42px;
-  background: rgba(255,255,255,0.15);
+.brand-logo-img {
+  height: 46px;
+  width: 46px;
+  object-fit: contain;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--white);
+  background: rgba(255,255,255,0.12);
   border: 2px solid rgba(255,255,255,0.25);
+  padding: 3px;
   flex-shrink: 0;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
 }
 
 .brand-text strong {
@@ -431,10 +427,10 @@ nav a:hover { color: var(--gold-light); }
 
 .hero-slide.active { opacity: 1; }
 
-.hero-slide:nth-child(1) { background-image: url('ILoveManaunaDham.webp'); }
-.hero-slide:nth-child(2) { background-image: url('Mandir1.webp'); }
-.hero-slide:nth-child(3) { background-image: url('Mandir6.webp'); }
-.hero-slide:nth-child(4) { background-image: url('Omendra3.webp'); }
+.hero-slide:nth-child(1) { background-image: url('ILoveManaunaDham.webp'); background-position: center 20%; }
+.hero-slide:nth-child(2) { background-image: url('Mandir1.webp');           background-position: center top; }
+.hero-slide:nth-child(3) { background-image: url('Mandir6.webp');           background-position: center 30%; }
+.hero-slide:nth-child(4) { background-image: url('Omendra3.webp');          background-position: center top; }
 
 /* Multi-layer gradient overlay */
 .hero-overlay {
@@ -1453,7 +1449,7 @@ footer {
 <header>
   <div class="topbar">
     <a href="index.html" class="brand">
-      <div class="brand-logo">M</div>
+      <img src="logonobg.webp" alt="Manauna Dham Logo" class="brand-logo-img" loading="eager">
       <div class="brand-text">
         <strong>Manauna Dham</strong>
         <span>Latest Information & Services</span>
@@ -1524,7 +1520,7 @@ footer {
 
     <div class="hero-title-block">
       <h1 class="hero-title">
-        Welcome to Shyam Janm Bhoomi
+        Welcome to Shree Khatu Shyam Ji
         <span class="accent">Manauna Dham</span>
       </h1>
       <p class="hero-subtitle">Easy booking for hotel, food, taxi & more — all in one place. Plan your darshan with comfort.</p>
