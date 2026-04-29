@@ -1278,8 +1278,8 @@ function updateRevenueHero() {
   const nights  = b.reduce((s, x) => s + (x.nights      || 0), 0);
   const income  = room - advance;
   const fmt     = n => '₹' + Math.round(n).toLocaleString('en-IN');
-  document.getElementById('rh-income').textContent    = fmt(income);
-  document.getElementById('rh-total-rev').textContent = fmt(room);
+document.getElementById('rh-income').textContent    = fmt(room);
+document.getElementById('rh-total-rev').textContent = fmt(income);
   document.getElementById('rh-bookings').textContent  = b.length;
   document.getElementById('rh-nights').textContent    = nights;
   document.getElementById('rh-avg').textContent       = b.length ? fmt(room / b.length) : '—';
