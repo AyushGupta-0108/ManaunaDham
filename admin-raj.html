@@ -635,6 +635,10 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
             <option value="bulk-import">Bulk Import</option>
           </select>
         </div>
+        <div class="edit-field">
+  <label>Booked On Date</label>
+  <input type="date" id="edit-bookedon">
+</div>
       </div>
     </div>
     <div class="edit-modal-footer">
@@ -1431,6 +1435,7 @@ function openEditModal(invoiceNo) {
     document.getElementById('edit-coupon').value     = b.coupon !== 'None' ? (b.coupon || '') : '';
     document.getElementById('edit-payid').value      = b.paymentId  || '';
     document.getElementById('edit-source').value     = b.source     || 'website';
+    document.getElementById('edit-bookedon').value = b.timestamp ? new Date(b.timestamp).toISOString().split('T')[0] : '';
     document.getElementById('edit-modal').style.display = 'flex';
   });
 }
@@ -1457,6 +1462,9 @@ async function submitEditBooking() {
     coupon:      document.getElementById('edit-coupon').value.trim() || 'None',
     paymentId:   document.getElementById('edit-payid').value.trim(),
     source:      document.getElementById('edit-source').value,
+    timestamp: document.getElementById('edit-bookedon').value
+  ? new Date(document.getElementById('edit-bookedon').value).getTime()
+  : undefined,
   };
   try {
     const res = await fetch(`${BOOKINGS_API}?hotel=${HOTEL_ID}`, {
