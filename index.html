@@ -416,21 +416,54 @@ nav a:hover { color: var(--gold-light); }
   z-index: 0;
 }
 
+/* Ken Burns continuous motion effect */
+@keyframes kenBurnsA {
+  0%   { transform: scale(1.0) translate(0%, 0%); }
+  100% { transform: scale(1.08) translate(-1.5%, -1%); }
+}
+@keyframes kenBurnsB {
+  0%   { transform: scale(1.08) translate(1%, -1%); }
+  100% { transform: scale(1.0) translate(-0.5%, 0.5%); }
+}
+@keyframes kenBurnsC {
+  0%   { transform: scale(1.0) translate(-1%, 0%); }
+  100% { transform: scale(1.07) translate(1%, -1.5%); }
+}
+
 .hero-slide {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out;
+  /* Instant reset of transform when not active */
+  transition: opacity 1s ease-in-out;
+  transform: scale(1);
+  will-change: opacity, transform;
 }
 
-.hero-slide.active { opacity: 1; }
+/* When a slide becomes active, start Ken Burns zoom */
+.hero-slide.active {
+  opacity: 1;
+}
+.hero-slide.active:nth-child(odd) {
+  animation: kenBurnsA 8s ease-in-out forwards;
+}
+.hero-slide.active:nth-child(even) {
+  animation: kenBurnsB 8s ease-in-out forwards;
+}
 
-.hero-slide:nth-child(1) { background-image: url('EntryGate.webp'); background-position: center top; }
-.hero-slide:nth-child(2) { background-image: url('Omendra3.webp');           background-position: center top; }
-.hero-slide:nth-child(3) { background-image: url('ILoveManaunaDham.webp');           background-position: center 10%; }
-.hero-slide:nth-child(4) { background-image: url('Mandir6.webp');          background-position: center top; }
+/* Individual slide backgrounds — ILoveManaunaDham FIRST */
+.hero-slide:nth-child(1)  { background-image: url('ILoveManaunaDham.webp');   background-position: center 10%; }
+.hero-slide:nth-child(2)  { background-image: url('EntryGate.webp');           background-position: center top; }
+.hero-slide:nth-child(3)  { background-image: url('Gathering.webp');           background-position: center center; }
+.hero-slide:nth-child(4)  { background-image: url('night.webp');               background-position: center center; }
+.hero-slide:nth-child(5)  { background-image: url('Omendra3.webp');            background-position: center top; }
+.hero-slide:nth-child(6)  { background-image: url('Gathering2.webp');          background-position: center center; }
+.hero-slide:nth-child(7)  { background-image: url('Mandir6.webp');             background-position: center top; }
+.hero-slide:nth-child(8)  { background-image: url('Mandir5.webp');             background-position: center center; }
+.hero-slide:nth-child(9)  { background-image: url('Mandir1.webp');             background-position: center center; }
+.hero-slide:nth-child(10) { background-image: url('Omendra.webp');             background-position: center top; }
 
 /* Multi-layer gradient overlay */
 .hero-overlay {
@@ -499,6 +532,31 @@ nav a:hover { color: var(--gold-light); }
   font-style: italic;
 }
 
+/* NEW: platform subtitle line */
+.hero-platform-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  background: rgba(200,150,12,0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(232,176,32,0.35);
+  border-radius: 30px;
+  padding: 6px 14px 6px 10px;
+  color: rgba(255,255,255,0.95);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.hero-platform-line i {
+  color: var(--gold-light);
+  font-size: 13px;
+}
+
 .hero-subtitle {
   margin-top: 12px;
   font-size: 14px;
@@ -511,21 +569,24 @@ nav a:hover { color: var(--gold-light); }
 /* Slideshow dots */
 .hero-dots {
   display: flex;
-  gap: 6px;
+  gap: 5px;
   margin-top: 20px;
+  align-items: center;
 }
 
 .hero-dot {
-  width: 6px; height: 6px;
+  width: 5px; height: 5px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.4);
-  transition: all 0.3s ease;
-  cursor: pointer;
+  background: rgba(255,255,255,0.35);
+  transition: all 0.35s ease;
   border: none;
+  cursor: default;
+  pointer-events: none;
+  flex-shrink: 0;
 }
 
 .hero-dot.active {
-  width: 22px;
+  width: 20px;
   border-radius: 3px;
   background: var(--gold-light);
 }
@@ -573,7 +634,7 @@ nav a:hover { color: var(--gold-light); }
 }
 
 /* ═══════════════════════════════════════════
-   STATS SECTION — "How big we are"
+   STATS SECTION
 ═══════════════════════════════════════════ */
 .stats-section {
   background: var(--cream);
@@ -1505,10 +1566,17 @@ footer {
 <!-- ═══════ HERO ═══════ -->
 <section class="hero">
   <div class="hero-bg">
-    <div class="hero-slide active"></div>
-    <div class="hero-slide"></div>
-    <div class="hero-slide"></div>
-    <div class="hero-slide"></div>
+    <!-- ILoveManaunaDham first, then remaining gallery images -->
+    <div class="hero-slide active"></div><!-- ILoveManaunaDham.webp -->
+    <div class="hero-slide"></div><!-- EntryGate.webp -->
+    <div class="hero-slide"></div><!-- Gathering.webp -->
+    <div class="hero-slide"></div><!-- night.webp -->
+    <div class="hero-slide"></div><!-- Omendra3.webp -->
+    <div class="hero-slide"></div><!-- Gathering2.webp -->
+    <div class="hero-slide"></div><!-- Mandir6.webp -->
+    <div class="hero-slide"></div><!-- Mandir5.webp -->
+    <div class="hero-slide"></div><!-- Mandir1.webp -->
+    <div class="hero-slide"></div><!-- Omendra.webp -->
   </div>
   <div class="hero-overlay"></div>
 
@@ -1520,16 +1588,28 @@ footer {
 
     <div class="hero-title-block">
       <h1 class="hero-title">
-        Welcome to 
+        Welcome to
         <span class="accent">Manauna Dham</span>
       </h1>
+      <!-- NEW subtitle line -->
+      <div class="hero-platform-line">
+        <i class="fa fa-circle-info"></i>
+        Latest Information &amp; Services Platform
+      </div>
     </div>
 
-    <div class="hero-dots">
-      <button class="hero-dot active" onclick="goSlide(0)"></button>
-      <button class="hero-dot" onclick="goSlide(1)"></button>
-      <button class="hero-dot" onclick="goSlide(2)"></button>
-      <button class="hero-dot" onclick="goSlide(3)"></button>
+    <!-- Progress dots — auto-only, no onclick -->
+    <div class="hero-dots" id="heroDots">
+      <div class="hero-dot active"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
     </div>
 
     <div class="hero-services">
@@ -1822,7 +1902,6 @@ footer {
   </div>
 </section>
 
-
 <section class="faq-section">
   <div class="section-header reveal">
     <h2>Frequently Asked Questions</h2>
@@ -1987,24 +2066,32 @@ function toggleMenu() {
   hb.classList.toggle('open', open);
 }
 
-/* ── Hero slideshow ── */
+/* ── Hero slideshow — 10 slides, Ken Burns, 3s interval ── */
 const slides = document.querySelectorAll('.hero-slide');
-const dots = document.querySelectorAll('.hero-dot');
-let currentSlide = 0, slideTimer;
+const dots   = document.querySelectorAll('#heroDots .hero-dot');
+const TOTAL  = slides.length;   // 10
+let current  = 0;
 
 function goSlide(n) {
-  slides[currentSlide].classList.remove('active');
-  dots[currentSlide].classList.remove('active');
-  currentSlide = n;
-  slides[currentSlide].classList.add('active');
-  dots[currentSlide].classList.add('active');
+  // Remove active from current
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  // Reset animation so Ken Burns re-triggers on next activation
+  slides[current].style.animation = 'none';
+
+  current = (n + TOTAL) % TOTAL;
+
+  // Force reflow to restart animation
+  slides[current].style.animation = 'none';
+  void slides[current].offsetWidth; // reflow
+  slides[current].style.animation = '';
+
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
 }
 
-function nextSlide() {
-  goSlide((currentSlide + 1) % slides.length);
-}
-
-slideTimer = setInterval(nextSlide, 4500);
+// Auto-advance every 3 seconds
+setInterval(() => goSlide(current + 1), 3000);
 
 /* ── FAQ accordion ── */
 function toggleFaq(el) {
@@ -2027,7 +2114,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ── Animated counter ── */
-function formatNum(n, target, displayVal) {
+function formatNum(n, target) {
   if (target >= 100000) {
     const lakhs = n / 100000;
     return lakhs >= 6 ? '6Lakh' : Math.floor(lakhs * 10) / 10 + 'L';
