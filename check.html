@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Manauna Dham Cab Booking | Bareilly to Manauna Dham Taxi | 7-Seater Available</title>
-<meta name="description" content="Book a 7-seater cab from Bareilly Railway Station, Bareilly Airport or anywhere in Bareilly to Manauna Dham. Pay only 20% advance. Instant booking — WhatsApp confirmation.">
+<title>Manauna Dham Cab Booking | Bareilly to Manauna Dham Taxi Service</title>
+<meta name="description" content="Book a cab from Bareilly Railway Station, Airport or anywhere in Bareilly to Manauna Dham. Also serving Delhi, Agra, Mathura, Lucknow. Pay only 20% advance. Instant booking.">
 <meta name="keywords" content="Manauna Dham cab, Bareilly to Manauna Dham taxi, 7 seater cab Aonla, transport Manauna Dham, Bareilly airport cab, Bareilly station taxi Manauna">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://manaunadham.org.in/transport.html">
@@ -382,12 +382,12 @@ footer p:last-child { font-size:12px; opacity:.65; }
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">🚗 7-Seater Cab Service</div>
-  <h1>Bareilly to Manauna Dham<br>Cab Booking</h1>
-  <p>Direct, comfortable 7-seater cab from Bareilly Railway Station, Airport, or anywhere in Bareilly city straight to Manauna Dham. Pay just 20% advance to confirm your seat.</p>
+  <div class="hero-tag">🚗 Cab Service — Manauna Dham</div>
+  <h1>Book Your Cab to<br>Manauna Dham</h1>
+  <p>Comfortable cab service from Bareilly, Delhi, Agra, Mathura, Lucknow and more — straight to Manauna Dham. Pay just 20% advance to confirm your ride.</p>
   <div class="hero-badges">
     <span class="hero-badge">📍 Bareilly → Manauna Dham</span>
-    <span class="hero-badge">🚐 7-Seater Innova/Ertiga</span>
+    <span class="hero-badge">🚗 Multiple Car Options</span>
     <span class="hero-badge">💳 20% Advance Only</span>
     <span class="hero-badge">👨‍👩‍👧 Perfect for Families</span>
   </div>
@@ -401,17 +401,17 @@ footer p:last-child { font-size:12px; opacity:.65; }
   <div class="price-pill">
     <div class="route">Bareilly → Dham</div>
     <div class="amount">₹1,599–2,599</div>
-    <div class="type">One Way · 5 &amp; 7 Seater</div>
+    <div class="type">One Way</div>
   </div>
   <div class="price-pill">
     <div class="route">Bareilly ↔ Dham</div>
     <div class="amount">₹3,099–4,999</div>
-    <div class="type">Return Trip · All Car Types</div>
+    <div class="type">Return Trip</div>
   </div>
   <div class="price-pill">
     <div class="route">Delhi → Dham</div>
     <div class="amount">₹2,799–3,999</div>
-    <div class="type">Sedan · One Way</div>
+    <div class="type">One Way</div>
   </div>
   <div class="price-pill">
     <div class="route">Advance Only</div>
@@ -603,15 +603,15 @@ footer p:last-child { font-size:12px; opacity:.65; }
         <div class="opt-card" id="car-7" onclick="selectCar(7)">
           <div class="sel-badge">✓</div>
           <div class="opt-icon">🚐</div>
-          <div class="opt-title">7-Seater</div>
-          <div class="opt-sub">Innova / Ertiga — Comfortable for families & groups</div>
-          <div class="opt-price">₹1,875 – ₹2,600 / trip</div>
+          <div class="opt-title">7-Seater Car</div>
+          <div class="opt-sub">Spacious — comfortable for families &amp; groups up to 6 with luggage</div>
+          <div class="opt-price">₹1,599 – ₹2,599 / trip</div>
         </div>
       </div>
 
       <div class="alert-box warn" id="fiveseater-notice">
         <i class="fa fa-circle-info"></i>
-        <div>5-Seater is currently not available. Please choose the 7-Seater — it comfortably fits families of up to 6 with luggage.</div>
+        <div>5-Seater is currently not available. Please select the 7-Seater Car — it comfortably fits families of up to 6 with luggage.</div>
       </div>
 
       <div class="nav-btns">
@@ -664,7 +664,24 @@ footer p:last-child { font-size:12px; opacity:.65; }
           <i class="fa fa-circle-info"></i>
           <div>For a different drop location, we will calculate the price and confirm via WhatsApp. You can proceed and we'll send the quote before payment.</div>
         </div>
-      </div>
+
+        <!-- Return date & time -->
+        <div id="return-datetime-group" style="display:none;margin-top:16px;animation:stageIn .3s ease;">
+          <div style="background:linear-gradient(135deg,#f0fdf4,#e8faf0);border:1.5px solid #a8d8b8;border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13px;color:#1a5c2a;font-weight:600;display:flex;gap:8px;align-items:center;">
+            <i class="fa fa-calendar-check"></i>
+            <span>When should the driver pick you up for the return journey?</span>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Return Date <span class="req">*</span></label>
+              <input type="date" id="return-date">
+            </div>
+            <div class="form-group">
+              <label>Return Pickup Time <span class="req">*</span></label>
+              <input type="time" id="return-time">
+            </div>
+          </div>
+        </div>
 
       <div class="nav-btns">
         <button class="btn-back" onclick="goToStage(3)"><i class="fa fa-arrow-left"></i> Back</button>
@@ -851,25 +868,40 @@ footer p:last-child { font-size:12px; opacity:.65; }
     </div>
   </div>
   <div style="padding:18px 24px;display:flex;flex-wrap:wrap;gap:12px;">
-    <div style="flex:1;min-width:180px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--maroon);">
-      <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Bareilly → Dham · One Way</div>
-      <div style="font-size:22px;font-weight:800;color:var(--maroon);">₹1,599 – ₹2,599</div>
+    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--maroon);">
+      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Bareilly → Dham · One Way</div>
+      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹1,599 – ₹2,599</div>
       <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Station / Airport / City pickup</div>
     </div>
-    <div style="flex:1;min-width:180px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--gold);">
-      <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Bareilly ↔ Dham · Return</div>
-      <div style="font-size:22px;font-weight:800;color:var(--maroon);">₹3,099 – ₹4,999</div>
+    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--gold);">
+      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Bareilly ↔ Dham · Return</div>
+      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹3,099 – ₹4,999</div>
       <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Same or different drop location</div>
     </div>
-    <div style="flex:1;min-width:180px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--green);">
-      <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Delhi → Dham · One Way</div>
-      <div style="font-size:22px;font-weight:800;color:var(--maroon);">₹2,799 – ₹3,999</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Sedan · Price quoted on WhatsApp</div>
+    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--green);">
+      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Delhi → Dham · One Way</div>
+      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹2,799 – ₹3,999</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">WhatsApp for confirmation</div>
+    </div>
+    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid #9b59b6;">
+      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Mathura → Dham · One Way</div>
+      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹4,499 – ₹5,599</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">WhatsApp for confirmation</div>
+    </div>
+    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid #e67e22;">
+      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Agra → Dham · One Way</div>
+      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹4,499 – ₹5,599</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">WhatsApp for confirmation</div>
+    </div>
+    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid #2980b9;">
+      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Lucknow → Dham · One Way</div>
+      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹5,499 – ₹6,999</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">WhatsApp for confirmation</div>
     </div>
   </div>
   <div style="background:#fff8ee;border-top:1px solid var(--border-soft);padding:11px 24px;font-size:12.5px;color:var(--text-muted);display:flex;align-items:center;gap:8px;">
     <i class="fa fa-circle-info" style="color:var(--gold);flex-shrink:0;"></i>
-    Price depends on pickup point, car type &amp; booking date. Select your details above to see the exact fare instantly.
+    Price depends on pickup point, car type &amp; booking date. Bareilly routes get instant fare — other cities confirmed via WhatsApp.
   </div>
 </div>
 
@@ -1188,7 +1220,7 @@ function validateStage(n) {
     return true;
   }
   if (n === 3) {
-    if (!selCar) { alert('Please select a car type (7-Seater).'); return false; }
+    if (!selCar) { alert('Please select a car type.'); return false; }
     return true;
   }
   if (n === 4) {
