@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Manauna Dham Cab Booking | Bareilly to Manauna Dham Taxi Service</title>
-<meta name="description" content="Book a cab from Bareilly Railway Station, Airport or anywhere in Bareilly to Manauna Dham. Also serving Delhi, Agra, Mathura, Lucknow. Pay only 20% advance. Instant booking.">
-<meta name="keywords" content="Manauna Dham cab, Bareilly to Manauna Dham taxi, 7 seater cab Aonla, transport Manauna Dham, Bareilly airport cab, Bareilly station taxi Manauna">
+<title>Manauna Dham Cab Booking | Taxi Service | 7-Seater & 5-Seater</title>
+<meta name="description" content="Book a cab to Manauna Dham from Bareilly, U.P. or Delhi. 5-seater and 7-seater options. Pay only 20% advance. Instant booking — WhatsApp confirmation.">
+<meta name="keywords" content="Manauna Dham cab, taxi to Manauna Dham, 7 seater cab Aonla, transport Manauna Dham, Bareilly cab Manauna, pilgrim taxi Aonla">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://manaunadham.org.in/transport.html">
 <link rel="icon" href="logonobg.png" type="image/png">
@@ -65,7 +65,61 @@ nav a.live { background:#1a7a1a; }
 .mobile-menu { display:none; flex-direction:column; background:var(--maroon-dark); }
 .mobile-menu a { padding:13px 22px; color:white; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.08); font-size:15px; }
 
-/* ── DISCLAIMER ── */
+/* ── TOP DISCOUNT BANNER ── */
+.top-discount-banner {
+  background: linear-gradient(90deg, #1a7a3a 0%, #0f5c2a 40%, #1a7a3a 100%);
+  color: white;
+  text-align: center;
+  padding: 13px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-bottom: 2px solid #a8f0c0;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.top-discount-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
+  animation: shimmerBanner 2.5s infinite;
+}
+@keyframes shimmerBanner {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.top-discount-banner:hover { background: linear-gradient(90deg, #145c2e 0%, #0a4020 40%, #145c2e 100%); }
+.tdb-tag {
+  background: #f0c040;
+  color: #1a3a0a;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tdb-arrow {
+  font-size: 18px;
+  animation: bounceRight 1.2s ease infinite;
+  flex-shrink: 0;
+}
+@keyframes bounceRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+@media(max-width:600px) {
+  .top-discount-banner { font-size: 13px; padding: 11px 14px; gap: 8px; }
+  .tdb-tag { font-size: 9px; }
+}
 .disclaimer { background:#faf7f2; border-bottom:1px solid #e8dcc8; padding:7px 20px; text-align:center; font-size:12.5px; color:#666; }
 .disclaimer strong { color:var(--maroon); }
 
@@ -361,6 +415,13 @@ footer p:last-child { font-size:12px; opacity:.65; }
   </div>
 </header>
 
+<!-- TOP DISCOUNT BANNER -->
+<div class="top-discount-banner" onclick="document.getElementById('booking-wizard').scrollIntoView({behavior:'smooth',block:'start'})">
+  <span class="tdb-tag">🔓 UNLOCKED</span>
+  <span>Upto <strong>₹200 discount</strong> unlocked for you — See prices &amp; apply in the booking form below</span>
+  <span class="tdb-arrow">↓</span>
+</div>
+
 <!-- DISCLAIMER -->
 <div class="disclaimer">
   <strong>ManaunaDham.org.in is an independent pilgrim services platform.</strong> Not affiliated with temple management.
@@ -382,42 +443,49 @@ footer p:last-child { font-size:12px; opacity:.65; }
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">🚗 Cab Service — Manauna Dham</div>
-  <h1>Book Your Cab to<br>Manauna Dham</h1>
-  <p>Comfortable cab service from Bareilly, Delhi, Agra, Mathura, Lucknow and more — straight to Manauna Dham. Pay just 20% advance to confirm your ride.</p>
+  <div class="hero-tag">🚗 Cab Service to Manauna Dham</div>
+  <h1>Manauna Dham<br>Cab Booking Service</h1>
+  <p>Comfortable cab from Bareilly, anywhere in U.P., or Delhi — straight to Manauna Dham. 5-seater &amp; 7-seater options. Pay just 20% advance to confirm your ride.</p>
   <div class="hero-badges">
-    <span class="hero-badge">📍 Bareilly → Manauna Dham</span>
-    <span class="hero-badge">🚗 Multiple Car Options</span>
+    <span class="hero-badge">📍 Pickup from Your Location</span>
+    <span class="hero-badge">🚗 5-Seater &amp; 🚐 7-Seater</span>
     <span class="hero-badge">💳 20% Advance Only</span>
-    <span class="hero-badge">👨‍👩‍👧 Perfect for Families</span>
+    <span class="hero-badge">↩️ Return Trip = Bigger Discount</span>
+  </div>
+  <div style="background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.25);border-radius:12px;padding:12px 20px;margin-bottom:24px;font-size:13.5px;color:rgba(255,255,255,0.92);max-width:520px;margin-left:auto;margin-right:auto;position:relative;">
+    <strong style="color:#f0c040;">💡 How to see prices:</strong> Fill in the booking form below (step by step) and your exact fare with all discounts will show automatically before you pay.
   </div>
   <button onclick="document.getElementById('booking-wizard').scrollIntoView({behavior:'smooth'})" style="display:inline-flex;align-items:center;gap:9px;background:var(--gold);color:var(--maroon-dark);padding:14px 30px;border-radius:50px;border:none;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 4px 20px rgba(212,160,23,0.4);transition:all .25s;font-family:'DM Sans',inherit;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
-    <i class="fa fa-calendar-check"></i> Book Now — 20% Advance
+    <i class="fa fa-calendar-check"></i> Check Prices &amp; Book — 20% Advance
   </button>
 </div>
 
 <!-- PRICE STRIP -->
 <div class="price-strip">
   <div class="price-pill">
-    <div class="route">Bareilly → Dham</div>
+    <div class="route">One Way Trip</div>
     <div class="amount">₹1,599–2,599</div>
-    <div class="type">One Way</div>
+    <div class="type">5-Seater &amp; 7-Seater</div>
   </div>
   <div class="price-pill">
-    <div class="route">Bareilly ↔ Dham</div>
+    <div class="route">Return Trip</div>
     <div class="amount">₹3,099–4,999</div>
-    <div class="type">Return Trip</div>
+    <div class="type">Bigger discount on return ↩️</div>
   </div>
   <div class="price-pill">
-    <div class="route">Delhi → Dham</div>
+    <div class="route">Delhi / NCR</div>
     <div class="amount">₹2,799–3,999</div>
-    <div class="type">One Way</div>
+    <div class="type">Quote on WhatsApp</div>
   </div>
   <div class="price-pill">
     <div class="route">Advance Only</div>
     <div class="amount">20%</div>
     <div class="type">Rest paid to driver</div>
   </div>
+</div>
+<div style="background:#fff8e1;border-bottom:2px solid #e8c050;padding:10px 20px;text-align:center;font-size:13px;font-weight:600;color:#5a3c00;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;" onclick="document.getElementById('booking-wizard').scrollIntoView({behavior:'smooth',block:'start'})">
+  <span>👇 Exact fare + all discounts are shown in the <strong>booking form below</strong> — fill your details to see your price</span>
+  <span style="background:var(--maroon);color:white;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;">Check Price ↓</span>
 </div>
 
 <div class="container" style="padding-top:0;padding-bottom:40px;">
@@ -597,21 +665,21 @@ footer p:last-child { font-size:12px; opacity:.65; }
         <div class="opt-card disabled" onclick="on5Seater()">
           <div class="opt-icon">🚗</div>
           <div class="opt-title">5-Seater</div>
-          <div class="opt-sub">Sedan / Hatchback</div>
-          <div><span class="unavail-tag">Currently Unavailable</span></div>
+          <div class="opt-sub">Sedan / Hatchback — up to 5 passengers</div>
+          <div><span class="unavail-tag">🔜 Coming Soon</span></div>
         </div>
         <div class="opt-card" id="car-7" onclick="selectCar(7)">
           <div class="sel-badge">✓</div>
           <div class="opt-icon">🚐</div>
-          <div class="opt-title">7-Seater Car</div>
-          <div class="opt-sub">Spacious — comfortable for families &amp; groups up to 6 with luggage</div>
-          <div class="opt-price">₹1,599 – ₹2,599 / trip</div>
+          <div class="opt-title">7-Seater</div>
+          <div class="opt-sub">Spacious 7-seater — comfortable for families &amp; groups up to 7</div>
+          <div class="opt-price">₹1,875 – ₹2,600 / trip</div>
         </div>
       </div>
 
       <div class="alert-box warn" id="fiveseater-notice">
         <i class="fa fa-circle-info"></i>
-        <div>5-Seater is currently not available. Please select the 7-Seater Car — it comfortably fits families of up to 6 with luggage.</div>
+        <div>5-Seater is <strong>coming soon</strong>. Right now only the 7-Seater is available — it comfortably fits families of up to 7 with luggage.</div>
       </div>
 
       <div class="nav-btns">
@@ -665,11 +733,11 @@ footer p:last-child { font-size:12px; opacity:.65; }
           <div>For a different drop location, we will calculate the price and confirm via WhatsApp. You can proceed and we'll send the quote before payment.</div>
         </div>
 
-        <!-- Return date & time -->
-        <div id="return-datetime-group" style="display:none;margin-top:16px;animation:stageIn .3s ease;">
-          <div style="background:linear-gradient(135deg,#f0fdf4,#e8faf0);border:1.5px solid #a8d8b8;border-radius:10px;padding:14px 16px;margin-bottom:14px;font-size:13px;color:#1a5c2a;font-weight:600;display:flex;gap:8px;align-items:center;">
-            <i class="fa fa-calendar-check"></i>
-            <span>When should the driver pick you up for the return journey?</span>
+        <!-- Return Date & Time -->
+        <div id="return-datetime-group" style="display:none;margin-top:18px;animation:stageIn .3s ease;">
+          <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+            <span style="width:20px;height:20px;border-radius:50%;background:var(--maroon);color:white;font-size:10px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;">↩</span>
+            Return Date &amp; Time
           </div>
           <div class="form-grid-2">
             <div class="form-group">
@@ -677,11 +745,12 @@ footer p:last-child { font-size:12px; opacity:.65; }
               <input type="date" id="return-date">
             </div>
             <div class="form-group">
-              <label>Return Pickup Time <span class="req">*</span></label>
+              <label>Return Pickup Time (approx) <span class="req">*</span></label>
               <input type="time" id="return-time">
             </div>
           </div>
         </div>
+      </div>
 
       <div class="nav-btns">
         <button class="btn-back" onclick="goToStage(3)"><i class="fa fa-arrow-left"></i> Back</button>
@@ -758,10 +827,10 @@ footer p:last-child { font-size:12px; opacity:.65; }
           <i class="fab fa-whatsapp" style="font-size:20px;"></i>
           Send Booking Request via WhatsApp
         </button>
-        <div style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;">
-          <i class="fab fa-whatsapp" style="color:var(--wa-green);"></i>
-          Driver will reply within minutes · +91 78178 03342
-        </div>
+        <div style="text-align:center;font-size:12.5px;color:var(--text-muted);margin-top:10px;">
+        <i class="fab fa-whatsapp" style="color:var(--wa-green);"></i>
+        Driver will reply within minutes · +91 8909208453
+      </div>
       </div>
 
       <!-- Online payment section -->
@@ -769,14 +838,15 @@ footer p:last-child { font-size:12px; opacity:.65; }
         <!-- Coupon board -->
         <div style="background:linear-gradient(135deg,#fff8e1,#fffde7);border:2px solid var(--gold);border-radius:14px;overflow:hidden;margin-bottom:20px;">
           <div style="background:var(--maroon);padding:11px 20px;display:flex;align-items:center;justify-content:space-between;">
-            <div style="color:white;font-weight:700;font-size:14px;">🎁 Apply a Coupon — Click to Use</div>
-            <div style="color:var(--gold-light);font-size:12px;">₹100 off</div>
+            <div style="color:white;font-weight:700;font-size:14px;">🎁 Today's Discounts — Click to Apply</div>
+            <div style="color:var(--gold-light);font-size:12px;font-weight:700;">Upto ₹200 off 🏷️</div>
           </div>
+          <div id="coupon-banner-note" style="background:#fff8f0;padding:8px 16px;font-size:12px;color:#7a4500;font-weight:600;border-bottom:1px solid #f0d8b8;display:none;"></div>
           <div class="coupon-cards" id="coupon-cards"></div>
         </div>
 
         <div class="coupon-row">
-          <input type="text" id="coupon-input" placeholder="Enter coupon code e.g. SHYAM100" oninput="this.value=this.value.toUpperCase()">
+          <input type="text" id="coupon-input" placeholder="e.g. MANONA100 or BABA5" oninput="this.value=this.value.toUpperCase()">
           <button class="coupon-btn" onclick="applyCoupon()"><i class="fa fa-tag"></i> Apply</button>
         </div>
         <div class="coupon-msg" id="coupon-msg"></div>
@@ -868,40 +938,25 @@ footer p:last-child { font-size:12px; opacity:.65; }
     </div>
   </div>
   <div style="padding:18px 24px;display:flex;flex-wrap:wrap;gap:12px;">
-    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--maroon);">
-      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Bareilly → Dham · One Way</div>
-      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹1,599 – ₹2,599</div>
+    <div style="flex:1;min-width:180px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--maroon);">
+      <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Bareilly → Dham · One Way</div>
+      <div style="font-size:22px;font-weight:800;color:var(--maroon);">₹1,599 – ₹2,599</div>
       <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Station / Airport / City pickup</div>
     </div>
-    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--gold);">
-      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Bareilly ↔ Dham · Return</div>
-      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹3,099 – ₹4,999</div>
+    <div style="flex:1;min-width:180px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--gold);">
+      <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Return Trip</div>
+      <div style="font-size:22px;font-weight:800;color:var(--maroon);">₹3,099 – ₹4,999</div>
       <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Same or different drop location</div>
     </div>
-    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--green);">
-      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Delhi → Dham · One Way</div>
-      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹2,799 – ₹3,999</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">WhatsApp for confirmation</div>
-    </div>
-    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid #9b59b6;">
-      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Mathura → Dham · One Way</div>
-      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹4,499 – ₹5,599</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">WhatsApp for confirmation</div>
-    </div>
-    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid #e67e22;">
-      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Agra → Dham · One Way</div>
-      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹4,499 – ₹5,599</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">WhatsApp for confirmation</div>
-    </div>
-    <div style="flex:1;min-width:160px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid #2980b9;">
-      <div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Lucknow → Dham · One Way</div>
-      <div style="font-size:20px;font-weight:800;color:var(--maroon);">₹5,499 – ₹6,999</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">WhatsApp for confirmation</div>
+    <div style="flex:1;min-width:180px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--green);">
+      <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Delhi → Dham · One Way</div>
+      <div style="font-size:22px;font-weight:800;color:var(--maroon);">₹2,799 – ₹3,999</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">Sedan · Price quoted on WhatsApp</div>
     </div>
   </div>
   <div style="background:#fff8ee;border-top:1px solid var(--border-soft);padding:11px 24px;font-size:12.5px;color:var(--text-muted);display:flex;align-items:center;gap:8px;">
     <i class="fa fa-circle-info" style="color:var(--gold);flex-shrink:0;"></i>
-    Price depends on pickup point, car type &amp; booking date. Bareilly routes get instant fare — other cities confirmed via WhatsApp.
+    Price depends on pickup point, car type &amp; booking date. Select your details above to see the exact fare instantly.
   </div>
 </div>
 
@@ -941,6 +996,7 @@ footer p:last-child { font-size:12px; opacity:.65; }
       <div class="rr"><span class="rl">Phone</span><span class="rv" id="r-phone">—</span></div>
       <div class="rr"><span class="rl">Pickup</span><span class="rv" id="r-pickup">—</span></div>
       <div class="rr"><span class="rl">Pickup Date &amp; Time</span><span class="rv" id="r-datetime">—</span></div>
+      <div class="rr" id="r-return-row" style="display:none;"><span class="rl">Return Date &amp; Time</span><span class="rv" id="r-return-datetime">—</span></div>
       <div class="rr"><span class="rl">Car Type</span><span class="rv" id="r-car">—</span></div>
       <div class="rr"><span class="rl">Trip Type</span><span class="rv" id="r-trip">—</span></div>
       <hr class="rdiv">
@@ -954,7 +1010,7 @@ footer p:last-child { font-size:12px; opacity:.65; }
         Show this receipt to the driver at pickup.<br>
         Remaining balance paid directly to driver.<br>
         Driver will WhatsApp/call you to confirm pickup time.<br>
-        <strong>Driver Helpline: +91 7817803342</strong>
+        <strong>Driver Helpline: +91 8909208453</strong>
       </div>
     </div>
     <div class="ract-wa">
@@ -1065,9 +1121,12 @@ let qrTimerInterval = null;
 let paymentDetected = false;
 
 const COUPONS = {
-  'SHYAM100':  { value: 100, label: '₹100 off', description: 'Khatu Shyam Ji blessing deal' },
-  'DHAM100':   { value: 100, label: '₹100 off', description: 'Manauna Dham special offer'   },
-  'DRIVER100': { value: 100, label: '₹100 off', description: 'Early booking discount'        },
+  // One-way coupons
+  'MANONA100': { value: 100, type: 'flat',    label: '₹100 off', tripType: 'oneway', description: 'One-way Manauna special' },
+  'BABA5':     { value: 5,   type: 'percent', label: '5% off',   tripType: 'oneway', description: 'Shyam Baba 5% off (one-way)' },
+  // Return-trip coupons
+  'MANONA200': { value: 200, type: 'flat',    label: '₹200 off', tripType: 'return', description: 'Return trip special' },
+  'BABA4':     { value: 4,   type: 'percent', label: '4% off',   tripType: 'return', description: 'Return trip 4% off' },
 };
 
 // ════════════════════════════════
@@ -1112,7 +1171,17 @@ function computePrices() {
   }
   discAmt = 0;
   if (activeCoupon && COUPONS[activeCoupon]) {
-    discAmt = COUPONS[activeCoupon].value;
+    const c = COUPONS[activeCoupon];
+    // Only apply if coupon matches the current trip type
+    if (c.tripType === selTrip) {
+      if (c.type === 'flat') {
+        discAmt = c.value;
+      } else if (c.type === 'percent') {
+        discAmt = Math.round(basePrice * c.value / 100);
+      }
+    } else {
+      activeCoupon = null; // reset if trip type changed
+    }
   }
   finalPrice = Math.max(basePrice - discAmt, 0);
   advanceAmt = Math.round(finalPrice * 0.20);
@@ -1220,7 +1289,7 @@ function validateStage(n) {
     return true;
   }
   if (n === 3) {
-    if (!selCar) { alert('Please select a car type.'); return false; }
+    if (!selCar) { alert('Please select a car type (7-Seater).'); return false; }
     return true;
   }
   if (n === 4) {
@@ -1230,6 +1299,12 @@ function validateStage(n) {
       if (selDrop === 'diff' && !document.getElementById('diff-drop-addr').value.trim()) {
         alert('Please enter your drop-off address.'); return false;
       }
+      const rd = document.getElementById('return-date').value;
+      const rt = document.getElementById('return-time').value;
+      if (!rd) { alert('Please select your return date.'); return false; }
+      if (!rt) { alert('Please select your approximate return time.'); return false; }
+      const pickupDate = document.getElementById('pickup-date').value;
+      if (rd < pickupDate) { alert('Return date cannot be before pickup date.'); return false; }
     }
     return true;
   }
@@ -1337,6 +1412,7 @@ function selectCar(n) {
 function selectTrip(type) {
   selTrip = type;
   selDrop = null;
+  activeCoupon = null; // reset coupon when trip type changes
   ['trip-oneway','trip-return'].forEach(id => document.getElementById(id).classList.remove('selected'));
   document.getElementById('trip-' + type).classList.add('selected');
   const rsub = document.getElementById('return-sub');
@@ -1344,6 +1420,7 @@ function selectTrip(type) {
     rsub.style.display = 'block';
   } else {
     rsub.style.display = 'none';
+    document.getElementById('return-datetime-group').style.display = 'none';
   }
   document.getElementById('diff-drop-group').style.display = 'none';
   document.getElementById('diff-drop-notice').style.display = 'none';
@@ -1356,6 +1433,11 @@ function selectDrop(type) {
   document.getElementById('drop-' + type).classList.add('selected');
   document.getElementById('diff-drop-group').style.display = type === 'diff' ? 'block' : 'none';
   document.getElementById('diff-drop-notice').style.display = type === 'diff' ? 'flex' : 'none';
+  // Show return date/time for both same and diff drop
+  document.getElementById('return-datetime-group').style.display = 'block';
+  // Set min return date to pickup date
+  const pickupDate = document.getElementById('pickup-date').value;
+  if (pickupDate) document.getElementById('return-date').min = pickupDate;
 }
 
 // ════════════════════════════════
@@ -1374,12 +1456,20 @@ function preparePaymentStage() {
   const d = document.getElementById('pickup-date').value;
   const t = document.getElementById('pickup-time').value;
   document.getElementById('sum-date').textContent = (d ? fmtDate(d) : '—') + (t ? ' · ' + fmtTime(t) : '');
-  document.getElementById('sum-car').textContent = '7-Seater (Innova/Ertiga)';
+  document.getElementById('sum-car').textContent = '7-Seater';
   let tripLbl = selTrip === 'oneway' ? 'One Way' : 'Return';
-  if (selTrip === 'return' && selDrop === 'same') tripLbl += ' · Same location';
+  if (selTrip === 'return' && selDrop === 'same') {
+    const rd = document.getElementById('return-date').value;
+    const rt = document.getElementById('return-time').value;
+    tripLbl += ' · Same location';
+    if (rd) tripLbl += ' · Return: ' + fmtDate(rd) + (rt ? ' ' + fmtTime(rt) : '');
+  }
   if (selTrip === 'return' && selDrop === 'diff') {
     const addr = document.getElementById('diff-drop-addr').value.trim();
+    const rd = document.getElementById('return-date').value;
+    const rt = document.getElementById('return-time').value;
     tripLbl += ' · Drop: ' + (addr || 'Custom location');
+    if (rd) tripLbl += ' · Return: ' + fmtDate(rd) + (rt ? ' ' + fmtTime(rt) : '');
   }
   document.getElementById('sum-trip').textContent = tripLbl;
   document.getElementById('sum-name').textContent = document.getElementById('g-name').value.trim();
@@ -1400,16 +1490,44 @@ function preparePaymentStage() {
 // ════════════════════════════════
 let couponCardsInited = false;
 function initCouponCards() {
-  if (couponCardsInited) return;
-  couponCardsInited = true;
   const grid = document.getElementById('coupon-cards');
-  Object.entries(COUPONS).forEach(([code, c]) => {
+  const noteEl = document.getElementById('coupon-banner-note');
+  grid.innerHTML = ''; // always re-render so trip-type filtered coupons are correct
+
+  // Filter by current trip type
+  const relevant = Object.entries(COUPONS).filter(([,c]) => c.tripType === selTrip);
+  const maxDisc = relevant.reduce((max, [,c]) => {
+    const est = c.type === 'flat' ? c.value : Math.round((basePrice || 2000) * c.value / 100);
+    return Math.max(max, est);
+  }, 0);
+
+  // Update note
+  if (noteEl) {
+    if (selTrip === 'oneway') {
+      noteEl.textContent = '✂️ One-way discounts — upto ₹' + maxDisc + ' off your trip!';
+      noteEl.style.display = 'block';
+    } else if (selTrip === 'return') {
+      noteEl.textContent = '✂️ Return-trip discounts — upto ₹' + maxDisc + ' off! Best deal for pilgrims.';
+      noteEl.style.display = 'block';
+    } else {
+      noteEl.style.display = 'none';
+    }
+  }
+
+  relevant.forEach(([code, c]) => {
+    const estDisc = c.type === 'flat' ? c.value : Math.round((basePrice || 2000) * c.value / 100);
     const card = document.createElement('div');
     card.className = 'coupon-card';
-    card.innerHTML = `<div class="cc-desc">${c.description}</div><div class="cc-code">${code}</div><div class="cc-badge">${c.label} ✂️</div>`;
+    card.innerHTML = `<div class="cc-desc">${c.description}</div><div class="cc-code">${code}</div><div class="cc-badge">${c.label} — save ~₹${estDisc} ✂️</div>`;
     card.onclick = () => claimCoupon(code);
     grid.appendChild(card);
   });
+
+  // If no relevant coupons, show a note
+  if (relevant.length === 0) {
+    grid.innerHTML = '<div style="padding:14px 16px;font-size:13px;color:var(--text-muted);grid-column:1/-1;">No coupons available for this trip type.</div>';
+  }
+  couponCardsInited = true;
 }
 
 function claimCoupon(code) {
@@ -1421,12 +1539,21 @@ function applyCoupon() {
   const code = document.getElementById('coupon-input').value.trim().toUpperCase();
   if (!code) { showCMsg('Please enter a coupon code.','no'); return; }
   if (COUPONS[code]) {
+    const c = COUPONS[code];
+    if (c.tripType !== selTrip) {
+      const tripLabel = c.tripType === 'oneway' ? 'one-way' : 'return';
+      showCMsg(`❌ ${code} is only valid for ${tripLabel} bookings.`, 'no');
+      activeCoupon = null;
+      updatePriceSummary();
+      return;
+    }
     activeCoupon = code;
-    showCMsg('✅ Coupon applied — ' + COUPONS[code].label + '!', 'ok');
+    showCMsg('✅ Coupon applied — ' + c.label + '!', 'ok');
     updatePriceSummary();
   } else {
     activeCoupon = null;
-    showCMsg('❌ Invalid coupon. Try SHYAM100, DHAM100, or DRIVER100.', 'no');
+    const hint = selTrip === 'oneway' ? 'Try MANONA100 or BABA5.' : 'Try MANONA200 or BABA4.';
+    showCMsg('❌ Invalid coupon. ' + hint, 'no');
     updatePriceSummary();
   }
 }
@@ -1445,6 +1572,8 @@ function sendWARequest() {
   const phone = document.getElementById('g-phone').value.trim();
   const d     = document.getElementById('pickup-date').value;
   const t     = document.getElementById('pickup-time').value;
+  const rd    = selTrip === 'return' ? document.getElementById('return-date').value : '';
+  const rt    = selTrip === 'return' ? document.getElementById('return-time').value : '';
   const pax   = document.getElementById('g-passengers').value;
   const msg_  = document.getElementById('g-message').value.trim();
 
@@ -1452,6 +1581,7 @@ function sendWARequest() {
   if (selTrip === 'return' && selDrop === 'diff') {
     dropInfo = '\n📍 *Return Drop:* ' + document.getElementById('diff-drop-addr').value.trim();
   }
+  const returnLine = rd ? ('\n🔄 *Return Date & Time:* ' + fmtDate(rd) + (rt ? ' · ' + fmtTime(rt) : '')) : '';
 
   const waMsg = [
     '🚗 *Cab Booking Request — Manauna Dham*',
@@ -1459,8 +1589,9 @@ function sendWARequest() {
     '👤 *Name:* ' + name,
     '📞 *Phone:* +91 ' + phone,
     '📍 *Pickup:* ' + getPickupLabel(),
-    '📅 *Date:* ' + (d ? fmtDate(d) : '—'),
-    '⏰ *Time:* ' + (t || '—'),
+    '📅 *Pickup Date:* ' + (d ? fmtDate(d) : '—'),
+    '⏰ *Pickup Time:* ' + (t ? fmtTime(t) : '—'),
+    rd ? ('🔄 *Return Date:* ' + fmtDate(rd) + (rt ? ' · ' + fmtTime(rt) : '')) : null,
     '🚐 *Car:* 7-Seater',
     '↩️ *Trip Type:* ' + (selTrip === 'oneway' ? 'One Way' : 'Return') + dropInfo,
     pax ? '👥 *Passengers:* ' + pax : null,
@@ -1561,18 +1692,19 @@ function onQRSuccess(data) {
   setTimeout(() => {
     document.getElementById('qrModal').classList.remove('open');
     showReceipt({
-      invStr:      data.notes.invoice_no || ('CAB' + Date.now()),
-      name:        data.notes.passenger_name,
-      phone:       data.notes.passenger_phone,
-      pickup:      data.notes.pickup_label,
-      datetime:    data.notes.pickup_datetime,
-      car:         '7-Seater (Innova/Ertiga)',
-      trip:        data.notes.trip_type,
-      total:       parseInt(data.notes.total_fare),
-      discAmt:     parseInt(data.notes.coupon_discount || 0),
-      finalTotal:  parseInt(data.notes.final_fare),
-      advance:     parseInt(data.notes.advance_amount),
-      payId:       data.payment_id,
+      invStr:          data.notes.invoice_no || ('CAB' + Date.now()),
+      name:            data.notes.passenger_name,
+      phone:           data.notes.passenger_phone,
+      pickup:          data.notes.pickup_label,
+      datetime:        data.notes.pickup_datetime,
+      returnDatetime:  data.notes.return_datetime || '',
+      car:             '7-Seater',
+      trip:            data.notes.trip_type,
+      total:           parseInt(data.notes.total_fare),
+      discAmt:         parseInt(data.notes.coupon_discount || 0),
+      finalTotal:      parseInt(data.notes.final_fare),
+      advance:         parseInt(data.notes.advance_amount),
+      payId:           data.payment_id,
     });
   }, 1800);
 }
@@ -1623,17 +1755,20 @@ async function initiatePayment() {
       notes: notes,
       theme: { color: '#7a0000' },
       handler: function(resp) {
+        const rd = selTrip === 'return' ? document.getElementById('return-date').value : '';
+        const rt = selTrip === 'return' ? document.getElementById('return-time').value : '';
         showReceipt({
           invStr, name, phone,
-          pickup:     getPickupLabel(),
-          datetime:   fmtDate(document.getElementById('pickup-date').value) + ' · ' + fmtTime(document.getElementById('pickup-time').value),
-          car:        '7-Seater (Innova/Ertiga)',
-          trip:       (selTrip === 'oneway' ? 'One Way' : 'Return Trip'),
-          total:      basePrice,
-          discAmt:    discAmt,
-          finalTotal: finalPrice,
-          advance:    advanceAmt,
-          payId:      resp.razorpay_payment_id,
+          pickup:          getPickupLabel(),
+          datetime:        fmtDate(document.getElementById('pickup-date').value) + ' · ' + fmtTime(document.getElementById('pickup-time').value),
+          returnDatetime:  rd ? (fmtDate(rd) + (rt ? ' · ' + fmtTime(rt) : '')) : '',
+          car:             '7-Seater',
+          trip:            (selTrip === 'oneway' ? 'One Way' : 'Return Trip'),
+          total:           basePrice,
+          discAmt:         discAmt,
+          finalTotal:      finalPrice,
+          advance:         advanceAmt,
+          payId:           resp.razorpay_payment_id,
         });
       },
     });
@@ -1651,6 +1786,8 @@ function buildNotes(invStr) {
   const phone = document.getElementById('g-phone').value.trim();
   const d     = document.getElementById('pickup-date').value;
   const t     = document.getElementById('pickup-time').value;
+  const rd    = selTrip === 'return' ? (document.getElementById('return-date').value || '') : '';
+  const rt    = selTrip === 'return' ? (document.getElementById('return-time').value || '') : '';
   return {
     service:          'Manauna Dham Cab',
     invoice_no:       invStr,
@@ -1658,7 +1795,8 @@ function buildNotes(invStr) {
     passenger_phone:  phone,
     pickup_label:     getPickupLabel(),
     pickup_datetime:  (d ? fmtDate(d) : '—') + (t ? ' · ' + fmtTime(t) : ''),
-    car_type:         '7-Seater (Innova/Ertiga)',
+    return_datetime:  rd ? (fmtDate(rd) + (rt ? ' · ' + fmtTime(rt) : '')) : '',
+    car_type:         '7-Seater',
     trip_type:        selTrip === 'oneway' ? 'One Way' : 'Return Trip',
     total_fare:       String(basePrice),
     coupon_used:      activeCoupon || 'None',
@@ -1679,6 +1817,14 @@ function showReceipt(d) {
   document.getElementById('r-phone').textContent    = '+91 ' + d.phone;
   document.getElementById('r-pickup').textContent   = d.pickup;
   document.getElementById('r-datetime').textContent = d.datetime;
+  // Return date/time row
+  const returnRow = document.getElementById('r-return-row');
+  if (d.returnDatetime) {
+    document.getElementById('r-return-datetime').textContent = d.returnDatetime;
+    returnRow.style.display = 'flex';
+  } else {
+    returnRow.style.display = 'none';
+  }
   document.getElementById('r-car').textContent      = d.car;
   document.getElementById('r-trip').textContent     = d.trip;
   document.getElementById('r-total').textContent    = '₹' + d.finalTotal.toLocaleString('en-IN');
@@ -1695,7 +1841,8 @@ function shareReceiptToCustomer() {
   if (!lastBooking) return;
   const d = lastBooking;
   const discLine = d.discAmt > 0 ? '\n🏷️ *Coupon Discount:* −₹' + d.discAmt.toLocaleString('en-IN') : '';
-  const msg = `🧾 *Your Cab Booking Receipt — Manauna Dham*\n\n━━━━━━━━━━━━━━━━━━━━\n📋 *Invoice:* #${d.invStr}\n📅 *Booked On:* ${new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}\n━━━━━━━━━━━━━━━━━━━━\n👤 *Name:* ${d.name}\n📱 *Phone:* +91 ${d.phone}\n📍 *Pickup:* ${d.pickup}\n🗓️ *Date & Time:* ${d.datetime}\n🚐 *Car:* ${d.car}\n↩️ *Trip:* ${d.trip}${discLine}\n━━━━━━━━━━━━━━━━━━━━\n✅ *Advance Paid (20%):* ₹${d.advance.toLocaleString('en-IN')}\n🏦 *Pay Driver Remaining:* ₹${(d.finalTotal-d.advance).toLocaleString('en-IN')}\n🆔 *Payment ID:* ${d.payId}\n━━━━━━━━━━━━━━━━━━━━\n⚠️ Show this to driver at pickup.\nDriver Helpline: +91 7817803342\n_ManaunaDham.org.in_`;
+  const returnLine = d.returnDatetime ? '\n🔄 *Return Date & Time:* ' + d.returnDatetime : '';
+  const msg = `🧾 *Your Cab Booking Receipt — Manauna Dham*\n\n━━━━━━━━━━━━━━━━━━━━\n📋 *Invoice:* #${d.invStr}\n📅 *Booked On:* ${new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}\n━━━━━━━━━━━━━━━━━━━━\n👤 *Name:* ${d.name}\n📱 *Phone:* +91 ${d.phone}\n📍 *Pickup:* ${d.pickup}\n🗓️ *Pickup Date & Time:* ${d.datetime}${returnLine}\n🚐 *Car:* ${d.car}\n↩️ *Trip:* ${d.trip}${discLine}\n━━━━━━━━━━━━━━━━━━━━\n✅ *Advance Paid (20%):* ₹${d.advance.toLocaleString('en-IN')}\n🏦 *Pay Driver Remaining:* ₹${(d.finalTotal-d.advance).toLocaleString('en-IN')}\n🆔 *Payment ID:* ${d.payId}\n━━━━━━━━━━━━━━━━━━━━\n⚠️ Show this to driver at pickup.\n📞 Driver Helpline: +91 8909208453\n_ManaunaDham.org.in_`;
   window.open('https://wa.me/91' + d.phone + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
