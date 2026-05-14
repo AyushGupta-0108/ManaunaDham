@@ -190,6 +190,37 @@ nav a:hover { background: rgba(255,255,255,0.15); color: white; }
 .blocked-warning .bw-msg { line-height: 1.6; }
 .blocked-warning .bw-dates { font-size: 12px; color: #c00; margin-top: 4px; opacity: .85; }
 
+  
+/* ★ DISCOUNT STICKER ★ */
+.discount-sticker {
+  position: absolute; top: 14px; right: 14px; z-index: 10;
+  width: 72px; height: 72px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(212,160,23,0.6);
+  animation: sticker-pop 2s ease-in-out infinite;
+  cursor: pointer;
+  text-decoration: none;
+}
+.discount-sticker::before {
+  content: '';
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 2px dashed rgba(212,160,23,0.5);
+  animation: spin 8s linear infinite;
+}
+@keyframes sticker-pop {
+  0%, 100% { transform: scale(1) rotate(-3deg); }
+  50% { transform: scale(1.08) rotate(3deg); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.sticker-top { font-size: 9px; font-weight: 800; color: var(--maroon-dark); text-transform: uppercase; letter-spacing: .5px; }
+.sticker-mid { font-size: 17px; font-weight: 800; color: var(--maroon-dark); line-height: 1; }
+.sticker-bot { font-size: 9px; font-weight: 700; color: var(--maroon-dark); }
+
 /* ══ HOTEL TITLE STRIP ══ */
 .hotel-strip {
   background: white;
@@ -1298,6 +1329,12 @@ footer p:last-child { font-size: 12px; opacity: .65; }
       <div class="room-card">
         <img src="images/hotels/Pathak/nonac.JPG" alt="Non-AC Grand Room" onclick="openModal(this)">
         <div class="rc-body">
+              <a href="paathak.html#booking-section" class="discount-sticker" title="Exclusive discounts available!" onclick="event.stopPropagation()">
+        <span class="sticker-top">UPTO</span>
+        <span class="sticker-mid">₹400</span>
+        <span class="sticker-bot">OFF 🎁</span>
+      </a>
+
           <span class="summer-badge">☀️ SUMMER DEAL</span>
           <h3>Non-AC Grand Room</h3>
           <p style="color:var(--text-muted);font-size:13px;">Extra spacious — 2 double beds, perfect for groups &amp; families</p>
