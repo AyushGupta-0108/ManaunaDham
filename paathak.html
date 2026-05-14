@@ -2031,29 +2031,58 @@ function showCMsg(txt, type) {
 
 function validate() {
   let ok = true;
-  ['g-name','g-phone','g-checkin','g-checkout'].forEach(id => {
+
+  ['g-name', 'g-phone', 'g-checkin', 'g-checkout'].forEach(id => {
     const el = document.getElementById(id);
-    if (!el.value.trim()) { el.classList.add('err'); ok = false; }
-    else el.classList.remove('err');
+
+    if (!el.value.trim()) {
+      el.classList.add('err');
+      ok = false;
+    } else {
+      el.classList.remove('err');
+    }
   });
-  if (!selRoom)    { alert('Please select a room type first.'); ok = false; }
-  if (nights <= 0) { alert('Please select valid check-in and check-out dates.'); ok = false; }
+
+  if (!selRoom) {
+    alert('Please select a room type first.');
+    ok = false;
+  }
+
+  if (nights <= 0) {
+    alert('Please select valid check-in and check-out dates.');
+    ok = false;
+  }
+
   const ph = document.getElementById('g-phone').value.trim();
+
   if (ph && !/^\d{10}$/.test(ph)) {
     document.getElementById('g-phone').classList.add('err');
-    alert('Please enter a valid 10-digit phone number.'); ok = false;
+    alert('Please enter a valid 10-digit phone number.');
+    ok = false;
   }
+
+  // BLOCK IF ANY DATE IN RANGE IS BLOCKED
   if (ok) {
+    const ci = document.getElementById('g-checkin').value;
+    const co = document.getElementById('g-checkout').value;
 
     const bDates = getBlockedDatesInRange(ci, co);
+
     if (bDates.length > 0) {
-      alert('Sorry — ' + bDates.map(fmtShort).join(', ') + ' ' + (bDates.length === 1 ? 'is' : 'are') + ' fully booked.\n\nPlease choose different dates.');
+      alert(
+        'Sorry — ' +
+        bDates.map(fmtShort).join(', ') +
+        ' ' +
+        (bDates.length === 1 ? 'is' : 'are') +
+        ' fully booked.\n\nPlease choose different dates to proceed with your booking.'
+      );
+
       ok = false;
     }
   }
+
   return ok;
 }
-
 async function initiatePayment() {
   if (!validate()) return;
   if (isMobile) {
