@@ -1945,9 +1945,13 @@ function calcStay() {
   const bDates = getBlockedDatesInRange(ci, co);
   const warningEl    = document.getElementById('blocked-warning-online');
   const warningDates = document.getElementById('blocked-warning-dates-online');
+// AFTER (fixed)
   if (bDates.length > 0) {
     warningDates.textContent = 'Blocked: ' + bDates.map(fmtShort).join(', ');
     warningEl.classList.add('show');
+    document.getElementById('stay-summary').classList.remove('show');
+    nights = 0;
+    return; // ← stop here, don't calculate
   } else {
     warningEl.classList.remove('show');
   }
@@ -2213,9 +2217,13 @@ function calcWAStay() {
   const bDates = getBlockedDatesInRange(ci, co);
   const warningEl    = document.getElementById('blocked-warning-wa');
   const warningDates = document.getElementById('blocked-warning-dates-wa');
+// AFTER (fixed)
   if (bDates.length > 0) {
     warningDates.textContent = 'Blocked: ' + bDates.map(fmtShort).join(', ');
     warningEl.classList.add('show');
+    document.getElementById('wa-stay-summary').classList.remove('show');
+    waNights = 0;
+    return; // ← stop here, don't calculate
   } else {
     warningEl.classList.remove('show');
   }
