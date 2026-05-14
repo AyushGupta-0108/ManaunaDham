@@ -644,6 +644,7 @@ nav a:hover { background: rgba(255,255,255,0.15); color: white; }
   background: white; border-radius: 14px; overflow: hidden;
   box-shadow: var(--shadow); border: 1.5px solid var(--border-soft);
   transition: var(--transition);
+   position: relative; /* ADD THIS */
 }
 .room-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 .room-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
@@ -1328,12 +1329,13 @@ footer p:last-child { font-size: 12px; opacity: .65; }
       <!-- Non-AC Grand Room -->
       <div class="room-card">
         <img src="images/hotels/Pathak/nonac.JPG" alt="Non-AC Grand Room" onclick="openModal(this)">
+          <!-- STICKER HERE, outside rc-body -->
+  <a href="#booking-section" class="discount-sticker" title="₹400 off this summer!" onclick="event.stopPropagation()">
+    <span class="sticker-top">UPTO</span>
+    <span class="sticker-mid">₹400</span>
+    <span class="sticker-bot">OFF 🎁</span>
+  </a>
         <div class="rc-body">
-              <a href="paathak.html#booking-section" class="discount-sticker" title="Exclusive discounts available!" onclick="event.stopPropagation()">
-        <span class="sticker-top">UPTO</span>
-        <span class="sticker-mid">₹400</span>
-        <span class="sticker-bot">OFF 🎁</span>
-      </a>
 
           <span class="summer-badge">☀️ SUMMER DEAL</span>
           <h3>Non-AC Grand Room</h3>
