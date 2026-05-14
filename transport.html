@@ -1781,21 +1781,37 @@ async function initiatePayment() {
   }
 }
 
+// ════════════════════════════════════════════════════════════
+// REPLACE the entire buildNotes() function in transport.html
+// with this version.
+// ════════════════════════════════════════════════════════════
+
 function buildNotes(invStr) {
   const name  = document.getElementById('g-name').value.trim();
   const phone = document.getElementById('g-phone').value.trim();
-  const d     = document.getElementById('pickup-date').value;
-  const t     = document.getElementById('pickup-time').value;
-  const rd    = selTrip === 'return' ? (document.getElementById('return-date').value || '') : '';
-  const rt    = selTrip === 'return' ? (document.getElementById('return-time').value || '') : '';
+  const d     = document.getElementById('pickup-date').value;           // YYYY-MM-DD
+  const t     = document.getElementById('pickup-time').value;           // HH:MM
+  const rd    = selTrip === 'return' ? document.getElementById('return-date').value : '';
+  const rt    = selTrip === 'return' ? document.getElementById('return-time').value : '';
+  const pax   = document.getElementById('g-passengers').value || '';
+
+  // Drop location: custom address if return+different, else Manauna Dham
+  const dropLoc = (selTrip === 'return' && selDrop === 'diff')
+    ? (document.getElementById('diff-drop-addr').value.trim() || 'Manauna Dham')
+    : 'Manauna Dham';
+
   return {
     service:          'Manauna Dham Cab',
     invoice_no:       invStr,
     passenger_name:   name,
     passenger_phone:  phone,
     pickup_label:     getPickupLabel(),
+    pickup_date:      d,                                                 // ← NEW: raw YYYY-MM-DD for admin panel
+    pickup_time:      t,                                                 // ← NEW: raw HH:MM for admin panel
     pickup_datetime:  (d ? fmtDate(d) : '—') + (t ? ' · ' + fmtTime(t) : ''),
     return_datetime:  rd ? (fmtDate(rd) + (rt ? ' · ' + fmtTime(rt) : '')) : '',
+    drop_location:    dropLoc,                                           // ← NEW: actual drop location
+    passengers:       pax,                                               // ← NEW: passenger count
     car_type:         '7-Seater',
     trip_type:        selTrip === 'oneway' ? 'One Way' : 'Return Trip',
     total_fare:       String(basePrice),
@@ -1805,7 +1821,6 @@ function buildNotes(invStr) {
     advance_amount:   String(advanceAmt),
   };
 }
-
 // ════════════════════════════════
 // RECEIPT
 // ════════════════════════════════
