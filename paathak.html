@@ -1752,6 +1752,15 @@ function attachDateValidation() {
       if (blockedDates.includes(el.value)) {
         alert('❌ This date is not available. Please choose a different date.');
         el.value = '';
+        // ← NEW: reset state so stale values can't slip through
+        if (id === 'g-checkin' || id === 'g-checkout') {
+          nights = 0; advAmt = 0;
+          document.getElementById('stay-summary').classList.remove('show');
+        }
+        if (id === 'wa-checkin' || id === 'wa-checkout') {
+          waNights = 0;
+          document.getElementById('wa-stay-summary').classList.remove('show');
+        }
       }
     });
   });
@@ -1776,12 +1785,18 @@ function setQRState(state) {
 async function showQRPayment() {
   paymentDetected = false;
   if (!selRoom || nights <= 0) { alert('Please fill in booking details first.'); return; }
+
+  // ← NEW: guard against stale nights with empty date fields
+  const ci = document.getElementById('g-checkin').value;
+  const co = document.getElementById('g-checkout').value;
+  if (!ci || !co) { alert('Please select your check-in and check-out dates.'); return; }
+
   if (!document.getElementById('g-name').value.trim() || !document.getElementById('g-phone').value.trim()) {
     alert('Please enter your name and phone number first.'); return;
   }
-  const ci = document.getElementById('g-checkin').value;
-  const co = document.getElementById('g-checkout').value;
+
   const bDates = getBlockedDatesInRange(ci, co);
+  // ... rest of the function unchanged (remove the duplicate ci/co declarations below)
   if (bDates.length > 0) {
     alert('Sorry — ' + bDates.map(fmtShort).join(', ') + ' ' + (bDates.length === 1 ? 'is' : 'are') + ' fully booked. Please choose different dates.');
     return;
@@ -2029,8 +2044,7 @@ function validate() {
     alert('Please enter a valid 10-digit phone number.'); ok = false;
   }
   if (ok) {
-    const ci = document.getElementById('g-checkin').value;
-    const co = document.getElementById('g-checkout').value;
+
     const bDates = getBlockedDatesInRange(ci, co);
     if (bDates.length > 0) {
       alert('Sorry — ' + bDates.map(fmtShort).join(', ') + ' ' + (bDates.length === 1 ? 'is' : 'are') + ' fully booked.\n\nPlease choose different dates.');
