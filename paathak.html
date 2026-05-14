@@ -1808,7 +1808,8 @@ async function showQRPayment() {
 
   const invStr = 'PC' + Date.now().toString().slice(-7);
   const notes = {
-    hotel_name:   'Paathak Complex',
+    hotel:        'paathak-complex',
+hotel_name:   'Paathak Complex',
     guest_name:   document.getElementById('g-name').value.trim(),
     guest_phone:  document.getElementById('g-phone').value.trim(),
     room_type:    ROOMS[selRoom].name,
@@ -2101,7 +2102,8 @@ async function initiatePayment() {
   btn.querySelector('span').textContent = 'Creating order...';
 
   const notes = {
-    hotel_name:   'Paathak Complex',
+  hotel:        'paathak-complex',
+hotel_name:   'Paathak Complex',
     invoice_no:   invStr,
     room_type:    ROOMS[selRoom].name,
     checkin:      ci,
