@@ -2433,31 +2433,24 @@ function toggleMenu() {
   hb.classList.toggle('open', open);
 }
 
-/* ── Hero slideshow — 10 slides, Ken Burns, 3s interval ── */
+/* ── Hero slideshow ── */
 const slides = document.querySelectorAll('.hero-slide');
 const dots   = document.querySelectorAll('#heroDots .hero-dot');
-const TOTAL  = slides.length;   // 10
+const TOTAL  = slides.length;
 let current  = 0;
 
 function goSlide(n) {
-  // Remove active from current
   slides[current].classList.remove('active');
   dots[current].classList.remove('active');
-  // Reset animation so Ken Burns re-triggers on next activation
   slides[current].style.animation = 'none';
-
   current = (n + TOTAL) % TOTAL;
-
-  // Force reflow to restart animation
   slides[current].style.animation = 'none';
-  void slides[current].offsetWidth; // reflow
+  void slides[current].offsetWidth;
   slides[current].style.animation = '';
-
   slides[current].classList.add('active');
   dots[current].classList.add('active');
 }
 
-// Auto-advance every 3 seconds
 setInterval(() => goSlide(current + 1), 3000);
 
 /* ── FAQ accordion ── */
@@ -2499,18 +2492,11 @@ function animateCounter(el) {
   function step(now) {
     const progress = Math.min((now - start) / duration, 1);
     const ease = 1 - Math.pow(1 - progress, 3);
-    const current = ease * target;
-
-    if (isSpecial) {
-      el.textContent = Math.floor(current);
-    } else {
-      el.textContent = formatNum(current, target);
-    }
-
+    const cur = ease * target;
+    el.textContent = isSpecial ? Math.floor(cur) : formatNum(cur, target);
     if (progress < 1) requestAnimationFrame(step);
     else el.textContent = el.dataset.display || formatNum(target, target);
   }
-
   requestAnimationFrame(step);
 }
 
@@ -2525,6 +2511,41 @@ const statsObserver = new IntersectionObserver((entries) => {
 
 const statsEl = document.querySelector('.stats-card-wrap');
 if (statsEl) statsObserver.observe(statsEl);
+
+/* ── Mega Offer Popup — GLOBAL scope so onclick attributes work ── */
+let megaCountdownSec = 14 * 60 + 59;
+let megaCountdownStarted = false;
+
+function startMegaCountdown() {
+  if (megaCountdownStarted) return;
+  megaCountdownStarted = true;
+  const minEl = document.getElementById('tMin');
+  const secEl = document.getElementById('tSec');
+  if (!minEl || !secEl) return;
+  setInterval(() => {
+    if (megaCountdownSec <= 0) megaCountdownSec = 14 * 60 + 59;
+    megaCountdownSec--;
+    minEl.textContent = String(Math.floor(megaCountdownSec / 60)).padStart(2, '0');
+    secEl.textContent = String(megaCountdownSec % 60).padStart(2, '0');
+  }, 1000);
+}
+
+function openMegaPopup() {
+  document.getElementById('megaOverlay').classList.add('show');
+  startMegaCountdown();
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMegaPopupDirect() {
+  document.getElementById('megaOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function closeMegaPopup(e) {
+  if (e.target === document.getElementById('megaOverlay')) closeMegaPopupDirect();
+}
+
+setTimeout(openMegaPopup, 5000);
 
 /* ── Weather ── */
 (async function loadWeather() {
@@ -2544,7 +2565,7 @@ if (statsEl) statsObserver.observe(statsEl);
       return '🌥️';
     };
 
-    document.getElementById('weatherCards').innerHTML = time.slice(0,7).map((d, i) => {
+    document.getElementById('weatherCards').innerHTML = time.slice(0, 7).map((d, i) => {
       const day = new Date(d).toLocaleDateString('en-IN', { weekday: 'short' });
       return `<div class="weather-card">
         <div class="w-emoji">${icon(weathercode[i])}</div>
@@ -2553,51 +2574,12 @@ if (statsEl) statsObserver.observe(statsEl);
       </div>`;
     }).join('');
 
-/* ── Mega Offer Popup ── */
-let megaCountdownSec = 14 * 60 + 59;
-
-function startMegaCountdown() {
-  const minEl = document.getElementById('tMin');
-  const secEl = document.getElementById('tSec');
-  if (!minEl || !secEl) return;
-
-  setInterval(() => {
-    if (megaCountdownSec <= 0) { megaCountdownSec = 14 * 60 + 59; }
-    megaCountdownSec--;
-    const m = Math.floor(megaCountdownSec / 60);
-    const s = megaCountdownSec % 60;
-    minEl.textContent = String(m).padStart(2, '0');
-    secEl.textContent = String(s).padStart(2, '0');
-  }, 1000);
-}
-
-function openMegaPopup() {
-  const overlay = document.getElementById('megaOverlay');
-  overlay.classList.add('show');
-  startMegaCountdown();
-  document.body.style.overflow = 'hidden';
-}
-
-function closeMegaPopupDirect() {
-  document.getElementById('megaOverlay').classList.remove('show');
-  document.body.style.overflow = '';
-}
-
-function closeMegaPopup(e) {
-  if (e.target === document.getElementById('megaOverlay')) {
-    closeMegaPopupDirect();
-  }
-}
-
-// Show after 5 seconds
-setTimeout(openMegaPopup, 5000);    document.getElementById('todayTemp').textContent = cw.temperature + '°C';
+    document.getElementById('todayTemp').textContent = cw.temperature + '°C';
     document.getElementById('todayWind').textContent = cw.windspeed;
-  } catch(e) {
+  } catch (e) {
     document.getElementById('weatherCards').innerHTML = '<div class="weather-card"><div class="w-day">Unavailable</div></div>';
   }
 })();
-
-
 </script>
 
 </body>
