@@ -1231,7 +1231,7 @@ footer p {
 
 <!-- Scrolling Discount Strip (always visible after popup closed) -->
 <div class="discount-strip" onclick="window.location.href='accommodations.html'">
-  🔥 <span>SIMIT OFFER:</span> Hotels par ₹400 tak Off &nbsp;|&nbsp; Taxi par ₹100 tak Off &nbsp;→&nbsp; Abhi Book Karein!
+  🔥 <span>SUMMER OFFER:</span> Hotels par ₹400 tak Off &nbsp;|&nbsp; Taxi par ₹100 tak Off &nbsp;→&nbsp; Abhi Book Karein!
 </div>
 
 <!-- Top Disclaimer Banner -->
@@ -1530,10 +1530,10 @@ function closePopup() {
   document.getElementById('discountPopup').classList.add('hidden');
 }
 
-// Show popup after 2.5 seconds
+// Show popup after 3 seconds
 setTimeout(function() {
   document.getElementById('discountPopup').classList.remove('hidden');
-}, 2500);
+}, 3000);
 
 // Close popup if overlay background clicked
 document.getElementById('discountPopup').addEventListener('click', function(e) {
