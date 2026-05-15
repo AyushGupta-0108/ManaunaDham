@@ -73,6 +73,199 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ===== POPUP OVERLAY ===== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeOverlay 0.4s ease;
+  backdrop-filter: blur(3px);
+}
+
+.popup-overlay.hidden {
+  display: none;
+}
+
+@keyframes fadeOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.popup-box {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.7) translateY(40px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.popup-header {
+  background: linear-gradient(135deg, #8b0000 0%, #5a0000 100%);
+  padding: 28px 30px 22px;
+  text-align: center;
+  position: relative;
+}
+
+.popup-header .fire-emoji {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 6px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.popup-header h2 {
+  color: #ffd56b;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.popup-header p {
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  color: rgba(255,255,255,0.7);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+}
+
+.popup-close:hover { color: white; }
+
+.popup-body {
+  padding: 28px 30px;
+}
+
+.popup-deal {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: linear-gradient(135deg, #fff9f0 0%, #fff3e0 100%);
+  border: 2px solid #ffd56b;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  transition: transform 0.2s;
+}
+
+.popup-deal:hover { transform: scale(1.02); }
+
+.popup-deal .deal-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.popup-deal .deal-text strong {
+  display: block;
+  font-size: 20px;
+  color: #7a0000;
+  font-weight: 800;
+}
+
+.popup-deal .deal-text span {
+  font-size: 13px;
+  color: #666;
+}
+
+.popup-timer {
+  text-align: center;
+  margin: 16px 0 20px;
+  font-size: 13px;
+  color: #888;
+}
+
+.popup-timer b {
+  color: #d4a017;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.popup-cta {
+  display: block;
+  width: 100%;
+  background: linear-gradient(135deg, #8b0000 0%, #5a0000 100%);
+  color: white;
+  text-align: center;
+  padding: 16px;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(122,0,0,0.35);
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.popup-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(122,0,0,0.5);
+}
+
+.popup-skip {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  cursor: pointer;
+  padding: 6px;
+  transition: color 0.2s;
+}
+
+.popup-skip:hover { color: #555; text-decoration: underline; }
+
+/* ===== STICKY DISCOUNT STRIP ===== */
+.discount-strip {
+  background: linear-gradient(90deg, #8b0000, #c0392b, #8b0000);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+.discount-strip span {
+  color: #ffd56b;
+}
+
 /* Top Disclaimer Banner */
 .disclaimer-banner {
   background: linear-gradient(135deg, #f7f5f2 0%, #ede8dc 100%);
@@ -101,23 +294,6 @@ html {
 
 .disclaimer-banner a:hover {
   border-bottom-color: #7a0000;
-}
-
-/* Sevadar Banner */
-.sevadar-banner {
-  background: linear-gradient(135deg, #f7f5f2 0%, #ede8dc 100%);
-  border-bottom: 2px solid #d4a017;
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 13px;
-  color: #555;
-  line-height: 1.6;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.sevadar-banner strong {
-  color: #7a0000;
-  font-weight: 700;
 }
 
 /* Header */
@@ -383,6 +559,89 @@ nav a:hover::after {
   margin-bottom: 10px;
 }
 
+/* ===== PATIENT TOKEN PROMO CARD ===== */
+.patient-promo {
+  background: linear-gradient(135deg, #7a0000 0%, #5a0000 100%);
+  border-radius: 20px;
+  padding: 40px;
+  margin-top: 50px;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 15px 50px rgba(122,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.patient-promo:hover {
+  transform: translateY(-4px);
+}
+
+.patient-promo::before {
+  content: '📋';
+  position: absolute;
+  font-size: 120px;
+  right: -10px;
+  bottom: -20px;
+  opacity: 0.1;
+}
+
+.patient-promo-icon {
+  font-size: 60px;
+  flex-shrink: 0;
+}
+
+.patient-promo-content h3 {
+  color: #ffd56b;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.patient-promo-content p {
+  color: rgba(255,255,255,0.88);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.patient-promo-content .tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.patient-promo-content .tag {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.patient-promo-btn {
+  display: inline-block;
+  background: #ffd56b;
+  color: #5a0000;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.patient-promo-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
 /* Quick Services Section */
 .quick-services {
   display: grid;
@@ -466,6 +725,21 @@ nav a:hover::after {
 .service-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(122,0,0,0.5);
+}
+
+/* Discount badge on service card */
+.service-card .discount-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: linear-gradient(135deg, #d4a017, #b8860b);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* Special Offer Banner */
@@ -710,6 +984,67 @@ footer p {
   line-height: 1.8;
 }
 
+/* ===== INLINE DEAL STRIP ===== */
+.inline-deal-strip {
+  background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
+  border: 2px solid #d4a017;
+  border-radius: 16px;
+  padding: 20px 28px;
+  margin-top: 30px;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(212,160,23,0.2);
+  animation: stripGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes stripGlow {
+  0%,100% { box-shadow: 0 4px 20px rgba(212,160,23,0.2); }
+  50% { box-shadow: 0 6px 30px rgba(212,160,23,0.45); }
+}
+
+.inline-deal-strip .deal-tag {
+  background: linear-gradient(135deg, #7a0000, #5a0000);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.inline-deal-strip p {
+  font-size: 15px;
+  color: #444;
+  flex: 1;
+  margin: 0;
+}
+
+.inline-deal-strip p strong {
+  color: #7a0000;
+}
+
+.inline-deal-strip a {
+  background: linear-gradient(135deg, #7a0000, #5a0000);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.inline-deal-strip a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(122,0,0,0.4);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .section {
@@ -781,6 +1116,24 @@ footer p {
   .topbar {
     padding: 14px 20px;
   }
+
+  .patient-promo {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .popup-box {
+    border-radius: 18px;
+  }
+
+  .popup-header h2 {
+    font-size: 24px;
+  }
+
+  .popup-deal .deal-text strong {
+    font-size: 17px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -803,11 +1156,49 @@ footer p {
   .offer-banner h3 {
     font-size: 22px;
   }
+
+  .inline-deal-strip {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<!-- ===== DISCOUNT POPUP ===== -->
+<div class="popup-overlay hidden" id="discountPopup">
+  <div class="popup-box">
+    <div class="popup-header">
+      <button class="popup-close" onclick="closePopup()" aria-label="Close">✕</button>
+      <span class="fire-emoji">🔥</span>
+      <h2>HUGE DISCOUNT!</h2>
+      <p>Sirf aaj ke liye — limited time offer</p>
+    </div>
+    <div class="popup-body">
+      <div class="popup-deal">
+        <span class="deal-icon">🏨</span>
+        <div class="deal-text">
+          <strong>Upto ₹400 Off on Hotels</strong>
+          <span>Manauna Dham ke paas verified stays</span>
+        </div>
+      </div>
+      <div class="popup-deal">
+        <span class="deal-icon">🚖</span>
+        <div class="deal-text">
+          <strong>Upto ₹200 Off on Taxi Booking</strong>
+          <span>Comfortable temple transport at low rates</span>
+        </div>
+      </div>
+      <div class="popup-timer">
+        ⏰ Yeh offer sirf <b id="countdown">15:00</b> mein khatam ho raha hai!
+      </div>
+      <a href="accommodations.html" class="popup-cta">Abhi Book Karein &amp; Save Karein →</a>
+      <span class="popup-skip" onclick="closePopup()">Nahi chahiye discount, skip karein</span>
+    </div>
+  </div>
+</div>
 
 <header>
 <div class="topbar">
@@ -838,17 +1229,16 @@ footer p {
 </div>
 </header>
 
+<!-- Scrolling Discount Strip (always visible after popup closed) -->
+<div class="discount-strip" onclick="window.location.href='accommodations.html'">
+  🔥 <span>SUMMER OFFER:</span> Hotels par ₹400 tak Off &nbsp;|&nbsp; Taxi par ₹200 tak Off &nbsp;→&nbsp; Abhi Book Karein!
+</div>
+
 <!-- Top Disclaimer Banner -->
 <div class="disclaimer-banner">
   <span>ManaunaDham.org.in</span>
   is an independent pilgrim services platform. Not affiliated with temple management.
   <a href="#disclaimer-full">Learn more</a>
-</div>
-
-<!-- Sevadar Disclaimer Banner -->
-<div class="sevadar-banner">
-  <strong>हम मंदिर के सेवादार नहीं हैं।</strong>
-  हम बस भक्तों की मदद करते हैं दर्शन पाने में।
 </div>
 
 <section class="section">
@@ -874,31 +1264,20 @@ footer p {
 </div>
 
 <div class="card">
-<p>
-Independent information & services platform for devotees visiting
-<strong>Manauna Dham / Manona Dham Bareilly</strong>.
-Darshan, patient token, hotel & transport guidance is available via chatbot.
-</p>
 
 <div class="contact-row">
 
 <div class="contact-box">
-<i class="fa fa-comments"></i>
-<strong>Visitor Help Desk</strong><br>
-Use the <b>"Chat Karein"</b> button for instant guidance.
+<i class="fa fa-clock"></i>
+<strong>Darshan &amp; Aarti Timing</strong><br>
+Darshan: 7 AM – 9 PM<br>
+Aarti: 8 AM &amp; 5 PM
 </div>
-
+  
 <div class="contact-box">
 <i class="fa fa-map-marker-alt"></i>
 <strong>Temple Location</strong><br>
 Manauna Village, Tehsil Aonla, Bareilly (UP)
-</div>
-
-<div class="contact-box">
-<i class="fa fa-clock"></i>
-<strong>Darshan & Aarti</strong><br>
-Darshan: 7 AM – 9 PM<br>
-Aarti: 8 AM & 5 PM
 </div>
 
 </div>
@@ -907,13 +1286,38 @@ Aarti: 8 AM & 5 PM
 
 </div>
 
+<!-- Inline Deal Strip after map -->
+<div class="inline-deal-strip">
+  <span class="deal-tag">⚡ Special Offer</span>
+  <p>Manauna Dham trip plan kar rahe hain? <strong>Hotels par ₹400 off &amp; Taxi par ₹200 off</strong> — aaj book karein!</p>
+  <a href="accommodations.html">Book Now</a>
+</div>
+
+<!-- Patient Token Promo — prominently placed -->
+<div class="patient-promo">
+  <div class="patient-promo-icon">📋</div>
+  <div class="patient-promo-content">
+    <h3>Patient Token Ki Poori Jaankari — Free!</h3>
+    <p>
+      Manauna Dham mein <strong>Patient Token</strong> kaise milta hai, kab milta hai, kaun le sakta hai — yeh sab jaanna zaroori hai <em>aane se pehle</em>. Galat jaankari se samay barbad ho sakta hai.
+    </p>
+    <div class="tag-list">
+      <span class="tag">✅ Token Process</span>
+      <span class="tag">✅ Patient Ki Zaroorat</span>
+      <span class="tag">✅ Important Rules</span>
+      <span class="tag">✅ On-Site Tips</span>
+    </div>
+    <a href="patient.html" class="patient-promo-btn">Poori Jaankari Dekhein →</a>
+  </div>
+</div>
+
 <!-- Special Offer Banner -->
-<div class="offer-banner">
+<div class="offer-banner" style="margin-top: 40px;">
   <h3>🎉 Plan Your Visit Today!</h3>
   <p>Book hotels, food, and transport in advance for a hassle-free darshan experience</p>
-  <a href="accommodations.html" class="cta-btn">Browse Hotels</a>
-  <a href="food.html" class="cta-btn">Order Food</a>
-  <a href="transport.html" class="cta-btn">Book Transport</a>
+  <a href="accommodations.html" class="cta-btn">🏨 Hotels — ₹400 Off</a>
+  <a href="food.html" class="cta-btn">🍱 Order Food</a>
+  <a href="transport.html" class="cta-btn">🚖 Taxi — ₹200 Off</a>
 </div>
 
 <!-- Quick Services -->
@@ -921,8 +1325,9 @@ Aarti: 8 AM & 5 PM
 
 <div class="quick-services">
   <a href="accommodations.html" class="service-card">
+    <span class="discount-badge">₹400 Off!</span>
     <i class="fa fa-hotel"></i>
-    <h3>Hotels & Dharmshala</h3>
+    <h3>Hotels &amp; Dharmshala</h3>
     <p>Comfortable stays near the temple. Budget to luxury options available.</p>
     <span class="service-btn">Book Now</span>
   </a>
@@ -935,10 +1340,19 @@ Aarti: 8 AM & 5 PM
   </a>
 
   <a href="transport.html" class="service-card">
+    <span class="discount-badge">₹200 Off!</span>
     <i class="fa fa-bus"></i>
     <h3>Transport Services</h3>
     <p>Taxi, rickshaw, and bus bookings for comfortable travel to the temple.</p>
     <span class="service-btn">Book Transport</span>
+  </a>
+
+  <a href="patient.html" class="service-card">
+    <span class="discount-badge">Free Info</span>
+    <i class="fa fa-notes-medical"></i>
+    <h3>Patient Token Guide</h3>
+    <p>Complete guide on how Patient Token works at Manauna Dham. Know before you go!</p>
+    <span class="service-btn">Read Now</span>
   </a>
 
   <a href="jal.html" class="service-card">
@@ -954,18 +1368,11 @@ Aarti: 8 AM & 5 PM
     <p>Watch live darshan streaming from anywhere in the world.</p>
     <span class="service-btn">Watch Live</span>
   </a>
-
-  <a href="index.html" class="service-card">
-    <i class="fa fa-home"></i>
-    <h3>Complete Guide</h3>
-    <p>Everything you need to know about visiting Manauna Dham.</p>
-    <span class="service-btn">View Guide</span>
-  </a>
 </div>
 
 </section>
 
-<!-- Patient Token Information Section -->
+<!-- Patient Token Information Section (detailed) -->
 <section class="section">
 <h2>Patient Token Jaankari – Manauna Dham</h2>
 
@@ -989,7 +1396,7 @@ Yahan aap jaan sakte hain:
 </p>
 
 <a href="patient.html" class="token-btn">
-Patient Token Jaankari Dekhein
+Patient Token Jaankari Dekhein →
 </a>
 </div>
 </section>
@@ -1053,13 +1460,14 @@ Patient Token Jaankari Dekhein
 ManaunaDham.org.in is a <strong>privately operated information and services platform</strong> created to help pilgrims visiting Manauna Dham. We provide hotel bookings, food delivery, transport arrangements, and up-to-date information about the temple.</p>
 
 <p style="margin:20px 0"><strong>🏛️ What We Are NOT:</strong><br>
-We are <strong>NOT the official website</strong> of Shri Khatu Shyam Mandir, Manauna Dham. We are <strong>NOT affiliated with, endorsed by, or managed by</strong> the temple management or any religious authority. <strong>We are NOT sevadars</strong> of the temple.</p>
+We are <strong>NOT the official website</strong> of Shri Khatu Shyam Mandir, Manauna Dham. We are <strong>NOT affiliated with, endorsed by, or managed by</strong> the temple management or any religious authority.</p>
 
 <p style="margin:20px 0"><strong>✅ Our Services:</strong><br>
 - Verified hotel/dharamshala booking assistance<br>
 - Food delivery coordination with local restaurants<br>
 - Transport booking (taxi, rickshaw, buses)<br>
 - Shyam Jal information<br>
+- Patient Token guide &amp; information<br>
 - Latest temple timings and information<br>
 - All services are provided by third-party vendors; we act as a booking platform and information center</p>
 
@@ -1094,7 +1502,7 @@ Not the official temple website.
 </div>
 </footer>
 
-<script defer>
+<script>
 function toggleMenu(){
   let m = document.getElementById("mobileMenu");
   if(m.classList.contains('active')) {
@@ -1105,9 +1513,42 @@ function toggleMenu(){
     m.style.maxHeight = '400px';
   }
 }
+
+// ===== POPUP LOGIC =====
+function closePopup() {
+  document.getElementById('discountPopup').classList.add('hidden');
+}
+
+// Show popup after 3 seconds
+setTimeout(function() {
+  document.getElementById('discountPopup').classList.remove('hidden');
+}, 3000);
+
+// Close popup if overlay background clicked
+document.getElementById('discountPopup').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+
+// ===== COUNTDOWN TIMER (15 min) =====
+(function() {
+  var timeLeft = 15 * 60; // 15 minutes in seconds
+  var el = document.getElementById('countdown');
+  function tick() {
+    if (!el) return;
+    var m = Math.floor(timeLeft / 60);
+    var s = timeLeft % 60;
+    el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    if (timeLeft > 0) {
+      timeLeft--;
+      setTimeout(tick, 1000);
+    } else {
+      el.textContent = 'Khatam!';
+    }
+  }
+  tick();
+})();
 </script>
 
-<script defer src="assets/chatbot.js"></script>
 
 </body>
 </html>
