@@ -1368,69 +1368,381 @@ footer {
 }
 
 /* ═══════════════════════════════════════════
-   BOTTOM POPUP
+   MEGA OFFER POPUP
 ═══════════════════════════════════════════ */
-.popup {
+
+/* Backdrop */
+.mega-overlay {
   display: none;
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 20px 22px;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 12px 50px rgba(0,0,0,0.25);
-  width: calc(100% - 40px);
-  max-width: 360px;
-  z-index: 1000;
-  border-top: 4px solid var(--gold);
-  animation: popupIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  inset: 0;
+  z-index: 2000;
+  background: rgba(20, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+  animation: overlayIn 0.4s ease forwards;
 }
 
-@keyframes popupIn {
-  from { transform: translateX(-50%) translateY(120%); opacity: 0; }
-  to { transform: translateX(-50%) translateY(0); opacity: 1; }
+.mega-overlay.show {
+  display: flex;
 }
 
-.popup-close {
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Modal card */
+.mega-modal {
+  position: relative;
+  background: linear-gradient(160deg, #1a0000 0%, #2d0000 40%, #1a0a00 100%);
+  border-radius: 28px 28px 0 0;
+  width: 100%;
+  max-width: 480px;
+  padding: 32px 22px 28px;
+  overflow: hidden;
+  border-top: 2.5px solid rgba(232,176,32,0.6);
+  border-left: 1px solid rgba(232,176,32,0.2);
+  border-right: 1px solid rgba(232,176,32,0.2);
+  box-shadow:
+    0 -20px 80px rgba(200,150,12,0.18),
+    0 -4px 30px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,220,80,0.15);
+  animation: megaSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(100%);
+}
+
+@keyframes megaSlideUp {
+  from { transform: translateY(100%); opacity: 0.4; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Shimmer sweep */
+.mega-shimmer {
   position: absolute;
-  top: 10px; right: 14px;
-  font-size: 22px;
-  cursor: pointer;
-  color: var(--text-soft);
-  line-height: 1;
-  transition: transform 0.2s;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 220, 80, 0.06) 48%,
+    rgba(255, 220, 80, 0.12) 50%,
+    rgba(255, 220, 80, 0.06) 52%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.popup-close:hover { transform: rotate(90deg); color: var(--crimson); }
+@keyframes shimmerSweep {
+  0%   { background-position: -100% 0; }
+  60%  { background-position: 200% 0; }
+  100% { background-position: 200% 0; }
+}
 
-.popup h3 {
-  font-family: var(--font-display);
-  color: var(--crimson);
-  font-size: 18px;
+/* Close button */
+.mega-close {
+  position: absolute;
+  top: 16px; right: 18px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+  font-size: 16px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+  transition: background 0.2s, color 0.2s;
+}
+.mega-close:hover { background: rgba(255,255,255,0.16); color: white; }
+
+/* Header */
+.mega-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.mega-badge-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.mega-badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0,160,0,0.2);
+  border: 1px solid rgba(0,200,0,0.35);
+  color: #6aff6a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.mega-live-dot {
+  width: 6px; height: 6px;
+  background: #4dff4d;
+  border-radius: 50%;
+  animation: blink 1s infinite;
+}
+
+.mega-badge-today {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(200,150,12,0.22);
+  border: 1px solid rgba(232,176,32,0.4);
+  color: var(--gold-light);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.mega-fire-line {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.5px;
   margin-bottom: 6px;
 }
 
-.popup p {
-  font-size: 13.5px;
-  color: var(--text-soft);
-  margin-bottom: 14px;
-}
-
-.popup a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--crimson);
+.mega-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 6vw, 30px);
+  font-weight: 800;
   color: white;
-  padding: 11px 22px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 4px 15px var(--shadow-warm);
+  line-height: 1.2;
+  margin-bottom: 6px;
 }
 
+.mega-title-accent {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.mega-subtitle {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.55);
+}
+
+/* Countdown timer */
+.mega-timer-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(200,150,12,0.12);
+  border: 1px solid rgba(232,176,32,0.25);
+  border-radius: 14px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+}
+
+.mega-timer-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+}
+
+.mega-timer-boxes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mega-timer-box {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(232,176,32,0.3);
+  border-radius: 8px;
+  min-width: 46px;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.mega-timer-box span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+.mega-timer-box small {
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.mega-timer-sep {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin-top: -6px;
+}
+
+/* Deal cards */
+.mega-deals {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.mega-deal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  padding: 14px 16px;
+  text-decoration: none;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.mega-deal:active { transform: scale(0.97); }
+
+/* Individual deal colors */
+.mega-deal-hotel {
+  background: linear-gradient(120deg, rgba(107,0,0,0.7) 0%, rgba(70,0,0,0.9) 100%);
+  border-color: rgba(200,150,12,0.35);
+  box-shadow: 0 4px 20px rgba(107,0,0,0.4);
+}
+.mega-deal-taxi {
+  background: linear-gradient(120deg, rgba(140,90,0,0.65) 0%, rgba(80,50,0,0.9) 100%);
+  border-color: rgba(232,176,32,0.4);
+  box-shadow: 0 4px 20px rgba(140,90,0,0.35);
+}
+.mega-deal-food {
+  background: linear-gradient(120deg, rgba(0,80,20,0.65) 0%, rgba(0,50,10,0.9) 100%);
+  border-color: rgba(80,220,80,0.25);
+  box-shadow: 0 4px 20px rgba(0,80,20,0.35);
+}
+
+/* Shine on each deal card */
+.mega-deal-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255,255,255,0.05) 50%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: dealShine 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.mega-deal-hotel .mega-deal-shine { animation-delay: 0s; }
+.mega-deal-taxi  .mega-deal-shine { animation-delay: 1.3s; }
+.mega-deal-food  .mega-deal-shine { animation-delay: 2.6s; }
+
+@keyframes dealShine {
+  0%   { background-position: -100% 0; opacity: 0; }
+  20%  { opacity: 1; }
+  60%  { background-position: 200% 0; opacity: 0; }
+  100% { background-position: 200% 0; opacity: 0; }
+}
+
+.mega-deal-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mega-deal-icon {
+  font-size: 26px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+
+.mega-deal-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+
+.mega-deal-desc {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+}
+
+.mega-deal-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 58px;
+}
+
+.mega-deal-off {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gold-light);
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(232,176,32,0.5);
+}
+
+.mega-deal-offlabel {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.mega-deal-arrow {
+  font-size: 16px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 3px;
+}
+
+/* Footer */
+.mega-footnote {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+}
+
+/* Desktop: center it as a floating card instead of bottom sheet */
+@media (min-width: 600px) {
+  .mega-overlay {
+    align-items: center;
+  }
+  .mega-modal {
+    border-radius: 28px;
+    border: 1.5px solid rgba(232,176,32,0.4);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
 /* ═══════════════════════════════════════════
    DESKTOP OVERRIDES
 ═══════════════════════════════════════════ */
@@ -2023,39 +2335,93 @@ footer {
   </div>
 </footer>
 
-<!-- Popups -->
-<div class="popup" id="popup1">
-  <span class="popup-close" onclick="closePopup('popup1')">&times;</span>
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-    <div style="background:var(--gold-pale);border-radius:10px;padding:8px 12px;font-size:22px">🏨</div>
-    <div>
-      <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:2px">Limited Offer</div>
-      <h3 style="margin:0;font-size:17px">Discount Unlocked for You!</h3>
+<!-- ═══════ MEGA OFFER POPUP ═══════ -->
+<div class="mega-overlay" id="megaOverlay" onclick="closeMegaPopup(event)">
+  <div class="mega-modal" id="megaModal">
+
+    <!-- Shimmer sweep layer -->
+    <div class="mega-shimmer"></div>
+
+    <!-- Close -->
+    <button class="mega-close" onclick="closeMegaPopupDirect()" aria-label="Close">✕</button>
+
+    <!-- Header -->
+    <div class="mega-header">
+      <div class="mega-badge-row">
+        <span class="mega-badge-live"><span class="mega-live-dot"></span>Limited Time</span>
+        <span class="mega-badge-today">Today Only</span>
+      </div>
+      <div class="mega-fire-line">🔥 Exclusive Pilgrim Offers</div>
+      <h2 class="mega-title">Save Big on Your<br><span class="mega-title-accent">Manauna Yatra</span></h2>
+      <p class="mega-subtitle">Offers unlocked for visitors right now — don't miss out</p>
     </div>
+
+    <!-- Countdown -->
+    <div class="mega-timer-wrap">
+      <div class="mega-timer-label">⏳ Offer expires in</div>
+      <div class="mega-timer-boxes">
+        <div class="mega-timer-box"><span id="tMin">14</span><small>min</small></div>
+        <div class="mega-timer-sep">:</div>
+        <div class="mega-timer-box"><span id="tSec">59</span><small>sec</small></div>
+      </div>
+    </div>
+
+    <!-- Deals -->
+    <div class="mega-deals">
+      <a href="accommodations.html" class="mega-deal mega-deal-hotel">
+        <div class="mega-deal-shine"></div>
+        <div class="mega-deal-left">
+          <div class="mega-deal-icon">🏨</div>
+          <div class="mega-deal-info">
+            <div class="mega-deal-name">Hotel / Dharmshala</div>
+            <div class="mega-deal-desc">Rooms near the mandir</div>
+          </div>
+        </div>
+        <div class="mega-deal-right">
+          <div class="mega-deal-off">₹400</div>
+          <div class="mega-deal-offlabel">OFF</div>
+          <div class="mega-deal-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="transport.html" class="mega-deal mega-deal-taxi">
+        <div class="mega-deal-shine"></div>
+        <div class="mega-deal-left">
+          <div class="mega-deal-icon">🚖</div>
+          <div class="mega-deal-info">
+            <div class="mega-deal-name">Taxi / Auto Booking</div>
+            <div class="mega-deal-desc">Discounted pilgrim fare</div>
+          </div>
+        </div>
+        <div class="mega-deal-right">
+          <div class="mega-deal-off">₹200</div>
+          <div class="mega-deal-offlabel">OFF</div>
+          <div class="mega-deal-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="food.html" class="mega-deal mega-deal-food">
+        <div class="mega-deal-shine"></div>
+        <div class="mega-deal-left">
+          <div class="mega-deal-icon">🍱</div>
+          <div class="mega-deal-info">
+            <div class="mega-deal-name">Food Delivery</div>
+            <div class="mega-deal-desc">Hot meals to your stay</div>
+          </div>
+        </div>
+        <div class="mega-deal-right">
+          <div class="mega-deal-off" style="font-size:15px;line-height:1.2">Instant</div>
+          <div class="mega-deal-offlabel">DISCOUNT</div>
+          <div class="mega-deal-arrow">→</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Footer note -->
+    <p class="mega-footnote">🙏 Jai Shree Shyam — Serving pilgrims with devotion</p>
+
   </div>
-  <div style="background:linear-gradient(135deg,#fffbf0,#fff3d0);border:1.5px dashed var(--gold);border-radius:10px;padding:12px 14px;margin:10px 0 14px;text-align:center">
-    <div style="font-size:28px;font-weight:800;font-family:var(--font-display);color:var(--crimson)">Up to ₹200 OFF</div>
-    <div style="font-size:12px;color:var(--text-soft);margin-top:2px">on Hotel / Dharmshala booking near Manauna Dham</div>
-  </div>
-  <a href="accommodations.html" style="display:flex;align-items:center;justify-content:center;gap:8px">
-    <i class="fa fa-tag"></i> Check Now →
-  </a>
 </div>
-
-<div class="popup" id="popup2">
-  <span class="popup-close" onclick="closePopup('popup2')">&times;</span>
-  <h3>🍱 Need Food Delivered?</h3>
-  <p>Get delicious hot meals delivered right to your stay.</p>
-  <a href="food.html">Order Now →</a>
-</div>
-
-<div class="popup" id="popup3">
-  <span class="popup-close" onclick="closePopup('popup3')">&times;</span>
-  <h3>🚖 Need Taxi / Auto?</h3>
-  <p>Book cabs and rickshaws at discounted pilgrim rates.</p>
-  <a href="transport.html">View Prices →</a>
-</div>
-
 <!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
 /* ── Mobile menu ── */
@@ -2186,29 +2552,51 @@ if (statsEl) statsObserver.observe(statsEl);
       </div>`;
     }).join('');
 
-    document.getElementById('todayTemp').textContent = cw.temperature + '°C';
+/* ── Mega Offer Popup ── */
+let megaCountdownSec = 14 * 60 + 59;
+
+function startMegaCountdown() {
+  const minEl = document.getElementById('tMin');
+  const secEl = document.getElementById('tSec');
+  if (!minEl || !secEl) return;
+
+  setInterval(() => {
+    if (megaCountdownSec <= 0) { megaCountdownSec = 14 * 60 + 59; }
+    megaCountdownSec--;
+    const m = Math.floor(megaCountdownSec / 60);
+    const s = megaCountdownSec % 60;
+    minEl.textContent = String(m).padStart(2, '0');
+    secEl.textContent = String(s).padStart(2, '0');
+  }, 1000);
+}
+
+function openMegaPopup() {
+  const overlay = document.getElementById('megaOverlay');
+  overlay.classList.add('show');
+  startMegaCountdown();
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMegaPopupDirect() {
+  document.getElementById('megaOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function closeMegaPopup(e) {
+  if (e.target === document.getElementById('megaOverlay')) {
+    closeMegaPopupDirect();
+  }
+}
+
+// Show after 3.5 seconds
+setTimeout(openMegaPopup, 3500);    document.getElementById('todayTemp').textContent = cw.temperature + '°C';
     document.getElementById('todayWind').textContent = cw.windspeed;
   } catch(e) {
     document.getElementById('weatherCards').innerHTML = '<div class="weather-card"><div class="w-day">Unavailable</div></div>';
   }
 })();
 
-/* ── Popup system ── */
-const popups = ['popup1', 'popup2', 'popup3'];
-let popupIdx = 0;
 
-function showPopup() {
-  const el = document.getElementById(popups[popupIdx]);
-  el.style.display = 'block';
-  popupIdx = (popupIdx + 1) % popups.length;
-}
-
-function closePopup(id) {
-  document.getElementById(id).style.display = 'none';
-}
-
-setTimeout(showPopup, 10000);
-setInterval(showPopup, 25000);
 </script>
 
 </body>
