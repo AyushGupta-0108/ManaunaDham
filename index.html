@@ -1444,23 +1444,24 @@ footer {
   100% { background-position: 200% 0; }
 }
 
-/* Close button */
 .mega-close {
   position: absolute;
-  top: 16px; right: 18px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.7);
-  font-size: 16px;
-  width: 32px; height: 32px;
+  top: 12px; right: 12px;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.85);
+  font-size: 18px;
+  width: 44px; height: 44px;
   border-radius: 50%;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   z-index: 10;
   transition: background 0.2s, color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.mega-close:hover { background: rgba(255,255,255,0.16); color: white; }
-
+.mega-close:hover { background: rgba(255,255,255,0.22); color: white; }
+.mega-close:active { background: rgba(255,255,255,0.3); transform: scale(0.93); }
 /* Header */
 .mega-header {
   position: relative;
@@ -2588,8 +2589,8 @@ function closeMegaPopup(e) {
   }
 }
 
-// Show after 3.5 seconds
-setTimeout(openMegaPopup, 3500);    document.getElementById('todayTemp').textContent = cw.temperature + '°C';
+// Show after 5 seconds
+setTimeout(openMegaPopup, 5000);    document.getElementById('todayTemp').textContent = cw.temperature + '°C';
     document.getElementById('todayWind').textContent = cw.windspeed;
   } catch(e) {
     document.getElementById('weatherCards').innerHTML = '<div class="weather-card"><div class="w-day">Unavailable</div></div>';
