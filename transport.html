@@ -474,8 +474,8 @@ footer p:last-child { font-size:12px; opacity:.65; }
   </div>
   <div class="price-pill">
     <div class="route">Delhi Airport</div>
-    <div class="amount">&#8377;5,600&ndash;10,700</div>
-    <div class="type">One Way &bull; Return</div>
+    <div class="amount">&#8377;3799&ndash;5,499</div>
+    <div class="type">One Way. 7 seater</div>
   </div>
   <div class="price-pill">
     <div class="route">Advance Only</div>
@@ -494,7 +494,7 @@ footer p:last-child { font-size:12px; opacity:.65; }
 <div id="booking-wizard">
   <div class="wizard-header">
     <h2>&#128663; Check Prices &mdash; Step by Step</h2>
-    <p>Fill in details below &middot; Pay 20% advance to confirm &middot; Driver contacts you on WhatsApp</p>
+    <p>Fill in details below &middot; Pay 20% advance to confirm &middot; We will contact you</p>
   </div>
 
   <!-- Progress -->
@@ -608,7 +608,7 @@ footer p:last-child { font-size:12px; opacity:.65; }
             <div class="opt-icon">&#9992;&#65039;</div>
             <div class="opt-title">Delhi Airport (IGI)</div>
             <div class="opt-sub">Terminal 1, 2 or 3 &mdash; Indira Gandhi International</div>
-            <div class="opt-price">&#8377;5,600 one-way &bull; &#8377;10,700 return</div>
+            <div class="opt-price">&#8377;3799-5499 one-way</div>
           </div>
           <div class="opt-card" id="sub-delhi-other" onclick="selectPickup('delhi-other')">
             <div class="sel-badge">&#10003;</div>
@@ -694,7 +694,6 @@ footer p:last-child { font-size:12px; opacity:.65; }
           <div class="opt-icon">&#128652;</div>
           <div class="opt-title">7-Seater</div>
           <div class="opt-sub">Spacious 7-seater &mdash; comfortable for families &amp; groups up to 7</div>
-          <div class="opt-price" id="car-price-hint">&#8377;1,875 &ndash; &#8377;5,600 / trip</div>
         </div>
       </div>
 
@@ -850,7 +849,7 @@ footer p:last-child { font-size:12px; opacity:.65; }
         </button>
         <div style="text-align:center;font-size:12.5px;color:var(--text-muted);margin-top:10px;">
           <i class="fab fa-whatsapp" style="color:var(--wa-green);"></i>
-          Driver will reply within minutes &middot; +91 8909208453
+          We will reply within minutes
         </div>
       </div>
 
@@ -939,8 +938,7 @@ footer p:last-child { font-size:12px; opacity:.65; }
       <ul>
         <li><span>Distance</span><b>~250 km</b></li>
         <li><span>Drive Time</span><b>~4.5 &ndash; 5 hrs</b></li>
-        <li><span>One Way</span><b>&#8377;5,600</b></li>
-        <li><span>Return</span><b>&#8377;10,700</b></li>
+        <li><span>One Way</span><b>&#8377;Starting from 3799</b></li>
       </ul>
     </div>
     <div class="info-card">
@@ -972,8 +970,8 @@ footer p:last-child { font-size:12px; opacity:.65; }
     </div>
     <div style="flex:1;min-width:180px;background:var(--bg);border-radius:10px;padding:14px 16px;border-left:4px solid var(--green);">
       <div style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;">Delhi Airport &#8594; Dham</div>
-      <div style="font-size:22px;font-weight:800;color:var(--maroon);">&#8377;5,600 &ndash; &#8377;10,700</div>
-      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">One Way &#8377;5,600 &middot; Return &#8377;10,700</div>
+      <div style="font-size:22px;font-weight:800;color:var(--maroon);">&#8377;3799</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:4px;">One Way starting from &#8377;3799</div>
     </div>
   </div>
   <div style="background:#fff8ee;border-top:1px solid var(--border-soft);padding:11px 24px;font-size:12.5px;color:var(--text-muted);display:flex;align-items:center;gap:8px;">
@@ -1468,7 +1466,7 @@ function onDateChange() {
 
   // Note: urgency hint for Delhi airport (fixed price) is different
   if (selPickup === 'delhi-airport') {
-    text = 'Delhi Airport fare is fixed at ₹5,600 (one-way) · ₹10,700 (return) regardless of booking date.';
+    text = 'Discounts upto 200 available';
     icon = 'ℹ️';
   }
 
