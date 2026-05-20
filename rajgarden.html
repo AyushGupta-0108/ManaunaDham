@@ -1781,6 +1781,7 @@ async function showQRPayment() {
     room_price:   String(finalTotal),
     platform_fee: String(advAmt),
     coupon_used:  activeCoupon || 'None',
+    coupon_discount: String(discAmt),   
     invoice_no:   invStr,
   };
 
@@ -2037,6 +2038,7 @@ async function initiatePayment() {
     room_price:   String(finalTotal),
     platform_fee: String(advAmt),
     coupon_used:  activeCoupon || 'None',
+    coupon_discount: String(discAmt),   
     guest_name:   name,
     guest_phone:  phone,
   };
