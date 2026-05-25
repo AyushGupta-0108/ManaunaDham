@@ -1,74 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage -->
+
   <url>
     <loc>https://manaunadham.org.in/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Contact: Highest user intent -->
   <url>
     <loc>https://manaunadham.org.in/contact.html</loc>
-    <changefreq>daily</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.98</priority>
   </url>
 
-  <!-- Shyam Jal: Most profitable -->
   <url>
-    <loc>https://manaunadham.org.in/harshdeep.html</loc>
-    <changefreq>daily</changefreq>
+    <loc>https://manaunadham.org.in/patient.html</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.97</priority>
   </url>
 
    <url>
-    <loc>https://manaunadham.org.in/rajgarden.html</loc>
+    <loc>https://manaunadham.org.in/accommodations.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.97</priority>
   </url>
 
-  <!-- Accommodations: Revenue-driving -->
+
   <url>
-    <loc>https://manaunadham.org.in/accommodations.html</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://manaunadham.org.in/transport.html</loc>
+    <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 
-  <!-- Food / Restaurants -->
+
   <url>
-    <loc>https://manaunadham.org.in/food.html</loc>
+    <loc>https://manaunadham.org.in/rajgarden.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.93</priority>
   </url>
 
-  <!-- Transport -->
+
   <url>
-    <loc>https://manaunadham.org.in/transport.html</loc>
+    <loc>https://manaunadham.org.in/paathak.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
-  <!-- Patient Token (High informational trust page) -->
+  
   <url>
     <loc>https://manaunadham.org.in/jal.html</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.95</priority>
   </url>
 
-  <!-- Live Darshan -->
-  <url>
-    <loc>https://manaunadham.org.in/live.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
 
-  <!-- Supporting / Authority pages -->
   <url>
-    <loc>https://manaunadham.org.in/patient.html</loc>
+    <loc>https://manaunadham.org.in/mahant.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+
+
 
   <url>
     <loc>https://manaunadham.org.in/khatushyam.html</loc>
