@@ -1772,6 +1772,7 @@ async function showQRPayment() {
   const invStr = 'RG' + Date.now().toString().slice(-7);
   const notes = {
     hotel_name:   'Hotel Raj Garden',
+    hotel_id:     'raj-garden',
     guest_name:   document.getElementById('g-name').value.trim(),
     guest_phone:  document.getElementById('g-phone').value.trim(),
     room_type:    ROOMS[selRoom].name,
@@ -2030,6 +2031,7 @@ async function initiatePayment() {
 
   const notes = {
     hotel_name:   'Hotel Raj Garden',
+    hotel_id:     'raj-garden',
     invoice_no:   invStr,
     room_type:    ROOMS[selRoom].name,
     checkin:      ci,
