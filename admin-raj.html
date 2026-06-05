@@ -23,6 +23,7 @@
   --shadow:      0 4px 24px rgba(122,0,0,0.10);
   --shadow-lg:   0 8px 40px rgba(122,0,0,0.16);
   --transition:  all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --owner-gold:  #b8860b;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -88,6 +89,10 @@ header {
   box-shadow: 0 2px 20px rgba(0,0,0,0.3);
   position: sticky; top: 0; z-index: 50;
   gap: 10px;
+  transition: background 0.4s ease;
+}
+header.owner-active {
+  background: linear-gradient(135deg, #5a3a00, #3a2000 50%, #7a5000);
 }
 .header-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .header-icon {
@@ -108,6 +113,18 @@ header {
 .sync-badge.ok   { background: rgba(26,122,58,0.25); color: #7affa0; }
 .sync-badge.busy { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
 .sync-badge.err  { background: rgba(200,0,0,0.3); color: #ffaaaa; }
+
+/* Owner badge in header */
+.owner-badge-header {
+  font-size: 11px; font-weight: 700;
+  padding: 4px 10px; border-radius: 20px;
+  background: rgba(212,160,23,0.3);
+  border: 1px solid rgba(212,160,23,0.5);
+  color: var(--gold-light);
+  display: none; align-items: center; gap: 4px; white-space: nowrap;
+}
+.owner-badge-header.show { display: flex; }
+
 .logout-btn {
   background: rgba(255,255,255,0.12); color: white;
   border: 1px solid rgba(255,255,255,0.2);
@@ -115,6 +132,26 @@ header {
   font-size: 12px; font-weight: 600;
   cursor: pointer; transition: var(--transition); font-family: 'DM Sans', sans-serif;
   white-space: nowrap;
+}
+
+/* ── OWNER MODE UNLOCK STRIP ── */
+.owner-unlock-strip {
+  background: linear-gradient(135deg, #3a2200, #5a3500);
+  border-bottom: 2px solid rgba(212,160,23,0.4);
+  padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  color: rgba(255,255,255,0.85);
+}
+.owner-unlock-strip .strip-left { display: flex; align-items: center; gap: 8px; }
+.owner-unlock-strip .strip-icon { font-size: 16px; }
+.owner-unlock-strip .strip-text { font-size: 12px; font-weight: 600; }
+.owner-unlock-strip .strip-sub  { font-size: 10px; opacity: .6; margin-top: 1px; }
+.owner-exit-btn {
+  background: rgba(212,160,23,0.2); color: var(--gold-light);
+  border: 1px solid rgba(212,160,23,0.4);
+  padding: 7px 14px; border-radius: 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; white-space: nowrap;
 }
 
 /* ── MAIN ── */
@@ -185,6 +222,133 @@ main { max-width: 900px; margin: 0 auto; padding: 16px 12px 120px; }
 .rh-metric-val { font-family: 'Lora', serif; font-size: 18px; font-weight: 700; color: white; line-height: 1; margin-bottom: 3px; }
 .rh-metric-val.gold { color: var(--gold-light); }
 .rh-metric-lbl { font-size: 9.5px; font-weight: 600; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: .6px; }
+
+/* ── OWNER PLATFORM DASHBOARD ── */
+#owner-platform-section {
+  display: none;
+  margin-bottom: 14px;
+  animation: fadeInUp .35s ease;
+}
+#owner-platform-section.show { display: block; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+.platform-hero {
+  background: linear-gradient(145deg, #2a1500 0%, #5a3500 40%, #7a5000 70%, #4a2800 100%);
+  border-radius: 20px;
+  padding: 22px 20px 18px;
+  box-shadow: 0 12px 48px rgba(90,50,0,0.45), 0 2px 0 rgba(212,160,23,0.5) inset;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(212,160,23,0.3);
+}
+.platform-hero::before {
+  content: '👑';
+  position: absolute; top: -10px; right: 10px;
+  font-size: 100px; opacity: .06;
+  line-height: 1; pointer-events: none; user-select: none;
+}
+.platform-hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+}
+.ph-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.ph-badge {
+  background: rgba(212,160,23,0.25);
+  border: 1px solid rgba(212,160,23,0.5);
+  color: var(--gold-light);
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+  display: flex; align-items: center; gap: 5px;
+}
+
+/* Date range filter for platform dashboard */
+.platform-date-filter {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.platform-date-filter label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: .5px; text-transform: uppercase; }
+.platform-date-filter input[type="date"] {
+  padding: 7px 10px; border-radius: 8px;
+  border: 1.5px solid rgba(212,160,23,0.4);
+  background: rgba(0,0,0,0.3); color: white;
+  font-size: 12px; font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+}
+.platform-date-filter input[type="date"]:focus { outline: none; border-color: var(--gold-light); }
+.platform-filter-btn {
+  padding: 7px 14px; border-radius: 8px;
+  background: rgba(212,160,23,0.25); color: var(--gold-light);
+  border: 1.5px solid rgba(212,160,23,0.5);
+  font-size: 12px; font-weight: 700; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.platform-filter-btn:active { background: rgba(212,160,23,0.4); }
+
+.ph-filter-note {
+  font-size: 10px; color: rgba(255,255,255,0.45); font-style: italic;
+  margin-bottom: 14px; padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Two big metric boxes */
+.ph-big-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.ph-big-metric {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(212,160,23,0.2);
+  border-radius: 14px; padding: 16px 14px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.ph-big-metric::before {
+  content: attr(data-icon);
+  position: absolute; bottom: -8px; right: -4px;
+  font-size: 56px; opacity: .07; pointer-events: none;
+}
+.ph-big-label {
+  font-size: 9.5px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.ph-big-label.gmv-lbl  { color: #ffd700; }
+.ph-big-label.rev-lbl  { color: #98fb98; }
+.ph-big-val {
+  font-family: 'Lora', serif;
+  font-size: clamp(22px, 6vw, 34px);
+  font-weight: 700; line-height: 1;
+  text-shadow: 0 0 30px rgba(212,160,23,0.3);
+  letter-spacing: -0.5px;
+}
+.ph-big-val.gmv-val { color: #ffd700; }
+.ph-big-val.rev-val { color: #98fb98; }
+.ph-big-sub { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 5px; line-height: 1.4; }
+
+/* Smaller breakdown metrics */
+.ph-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.ph-metric {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 10px 8px; text-align: center;
+}
+.ph-metric-val { font-family: 'Lora', serif; font-size: 16px; font-weight: 700; color: white; line-height: 1; margin-bottom: 3px; }
+.ph-metric-val.gold { color: var(--gold-light); }
+.ph-metric-val.green { color: #98fb98; }
+.ph-metric-lbl { font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: .5px; }
+
+/* Quick preset buttons */
+.ph-presets { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.ph-preset-btn {
+  padding: 5px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 700; cursor: pointer;
+  background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.12);
+  font-family: 'DM Sans', sans-serif;
+  transition: all .15s ease;
+}
+.ph-preset-btn:hover, .ph-preset-btn.active {
+  background: rgba(212,160,23,0.25); color: var(--gold-light);
+  border-color: rgba(212,160,23,0.4);
+}
 
 /* ── CHECKIN BANNER ── */
 .checkin-banner {
@@ -268,6 +432,8 @@ main { max-width: 900px; margin: 0 auto; padding: 16px 12px 120px; }
 .qa-btn.outline:active { background: #fff3e6; }
 .qa-btn.danger   { background: white; color: var(--red); border-color: var(--red); }
 .qa-btn.gold     { background: var(--gold); color: var(--maroon-dark); border-color: var(--gold); }
+.qa-btn.owner-btn { background: linear-gradient(135deg, #5a3a00, #7a5500); color: var(--gold-light); border-color: rgba(212,160,23,0.4); }
+.qa-btn.owner-btn:active { transform: scale(0.97); }
 .qa-btn:disabled { opacity: .45; cursor: not-allowed; }
 
 /* ── SECTION TITLES ── */
@@ -363,6 +529,9 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
 .row-btn.edit-btn:hover   { background: var(--gold); color: var(--maroon-dark); }
 .row-btn.delete-btn { background: #fff0f0; color: var(--red); border-color: #ffaaaa; }
 .row-btn.delete-btn:hover { background: var(--red); color: white; border-color: var(--red); }
+/* Hide edit btn until owner mode */
+.edit-btn.owner-only { display: none; }
+body.owner-mode .edit-btn.owner-only { display: flex; }
 
 /* ── MANUAL ENTRY ── */
 .manual-entry-section { background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px 18px; border: 1px solid var(--border); border-left: 4px solid var(--gold); margin-bottom: 18px; display: none; }
@@ -466,6 +635,12 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
 .modal-footer { display: flex; gap: 8px; margin-top: 16px; }
 .modal-footer button { flex: 1; }
 
+/* Owner mode modal has gold header */
+#owner-pass-modal .modal-header {
+  background: linear-gradient(135deg, #5a3a00, #3a2000);
+  border-bottom: 2px solid rgba(212,160,23,0.4);
+}
+
 /* ══════════════════════════════════════════════
    EDIT BOOKING MODAL
 ══════════════════════════════════════════════ */
@@ -511,6 +686,7 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
   .calendars-grid { grid-template-columns: repeat(2, 1fr); }
   .stats { grid-template-columns: repeat(4, 1fr); }
   .rh-metrics { grid-template-columns: repeat(4, 1fr); }
+  .ph-metrics { grid-template-columns: repeat(4, 1fr); }
   .me-grid { grid-template-columns: repeat(3, 1fr); }
   .edit-grid { grid-template-columns: repeat(3, 1fr); }
   .range-grid { grid-template-columns: 1fr 1fr auto; align-items: end; }
@@ -521,6 +697,7 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
   .info-cards-row     { grid-template-columns: 1fr; }
   .section-toggle-row { grid-template-columns: 1fr; }
   .edit-grid { grid-template-columns: 1fr; }
+  .ph-big-metrics { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -546,10 +723,10 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
 <div class="modal-overlay" id="owner-pass-modal" style="display:none;">
   <div class="modal-box">
     <div class="modal-header">
-      <div class="modal-header-icon">🔐</div>
+      <div class="modal-header-icon">👑</div>
       <div>
-        <h3>Owner Password Required</h3>
-        <p id="owner-modal-action-label">This action requires owner authorization</p>
+        <h3>Owner Mode</h3>
+        <p id="owner-modal-action-label">Enter owner password to continue</p>
       </div>
     </div>
     <div class="modal-body">
@@ -636,9 +813,9 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
           </select>
         </div>
         <div class="edit-field">
-  <label>Booked On Date</label>
-  <input type="date" id="edit-bookedon">
-</div>
+          <label>Booked On Date</label>
+          <input type="date" id="edit-bookedon">
+        </div>
       </div>
     </div>
     <div class="edit-modal-footer">
@@ -649,7 +826,7 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
 </div>
 
 <!-- ── HEADER ── -->
-<header>
+<header id="main-header">
   <div class="header-left">
     <div class="header-icon">🏨</div>
     <div>
@@ -658,32 +835,122 @@ table.bookings-table tbody tr.latest-row { background: #fffef0; }
     </div>
   </div>
   <div class="header-right">
+    <div class="owner-badge-header" id="owner-badge-header"><i class="fa fa-crown"></i> Owner</div>
     <div class="sync-badge busy" id="sync-badge"><i class="fa fa-sync fa-spin"></i> Syncing</div>
     <button class="logout-btn" onclick="logout()"><i class="fa fa-sign-out-alt"></i></button>
   </div>
 </header>
 
+<!-- ── OWNER MODE ACTIVE STRIP (shown when owner is unlocked) ── -->
+<div id="owner-mode-strip" style="display:none;">
+  <div class="owner-unlock-strip">
+    <div class="strip-left">
+      <div class="strip-icon">👑</div>
+      <div>
+        <div class="strip-text">Owner Mode Active</div>
+        <div class="strip-sub">Full access: platform analytics &amp; booking edits enabled</div>
+      </div>
+    </div>
+    <button class="owner-exit-btn" onclick="exitOwnerMode()"><i class="fa fa-lock"></i> Exit</button>
+  </div>
+</div>
+
 <!-- ── MAIN ── -->
 <main>
 
-  <!-- REVENUE HERO -->
+  <!-- REVENUE HERO (hotel stats — always visible) -->
   <div class="revenue-hero" id="revenue-hero">
     <div class="rh-top">
       <div class="rh-badge"><i class="fa fa-rupee-sign"></i> Revenue Dashboard</div>
       <div class="rh-tagline">Hotel Raj Garden · All Time</div>
     </div>
     <div class="rh-income-spotlight">
-<div class="rh-income-label">Total Revenue</div>
-
+      <div class="rh-income-label">Total Room Price (All Bookings)</div>
       <div class="rh-income-value" id="rh-income">Loading…</div>
-      <div class="rh-income-sub">Total collected at hotel (after advance deduction)</div>
+      <div class="rh-income-sub">Sum of all room prices booked</div>
     </div>
     <div class="rh-metrics">
-      <div class="rh-metric"><div class="rh-metric-val gold" id="rh-total-rev">—</div><div class="rh-metric-lbl">Total Income (Hotel)</div></div>
+      <div class="rh-metric"><div class="rh-metric-val gold" id="rh-total-rev">—</div><div class="rh-metric-lbl">Hotel Income</div></div>
       <div class="rh-metric"><div class="rh-metric-val" id="rh-bookings">—</div><div class="rh-metric-lbl">Bookings</div></div>
       <div class="rh-metric"><div class="rh-metric-val" id="rh-nights">—</div><div class="rh-metric-lbl">Nights Sold</div></div>
       <div class="rh-metric"><div class="rh-metric-val gold" id="rh-avg">—</div><div class="rh-metric-lbl">Avg Booking</div></div>
     </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       OWNER PLATFORM DASHBOARD (hidden until owner mode)
+  ════════════════════════════════════════ -->
+  <div id="owner-platform-section">
+    <div class="platform-hero">
+      <div class="ph-top">
+        <div class="ph-badge"><i class="fa fa-crown"></i> Platform Analytics · Owner View</div>
+        <div class="platform-date-filter">
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <label>From</label>
+            <input type="date" id="ph-from" onchange="renderPlatformDashboard()">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <label>To</label>
+            <input type="date" id="ph-to" onchange="renderPlatformDashboard()">
+          </div>
+          <button class="platform-filter-btn" onclick="renderPlatformDashboard()"><i class="fa fa-filter"></i> Apply</button>
+        </div>
+      </div>
+
+      <!-- Quick presets -->
+      <div class="ph-presets">
+        <button class="ph-preset-btn" onclick="setPlatformPreset('this-month')">This Month</button>
+        <button class="ph-preset-btn" onclick="setPlatformPreset('last-month')">Last Month</button>
+        <button class="ph-preset-btn" onclick="setPlatformPreset('last-3m')">Last 3 Months</button>
+        <button class="ph-preset-btn" onclick="setPlatformPreset('this-year')">This Year</button>
+        <button class="ph-preset-btn" onclick="setPlatformPreset('all')">All Time</button>
+      </div>
+
+      <div class="ph-filter-note" id="ph-filter-note">
+        📅 Revenue counted by <strong>booking date</strong> — when the customer booked, regardless of check-in date.
+      </div>
+
+      <!-- GMV + Platform Revenue big cards -->
+      <div class="ph-big-metrics">
+        <div class="ph-big-metric" data-icon="💰">
+          <div class="ph-big-label gmv-lbl"><i class="fa fa-chart-line"></i> Platform GMV</div>
+          <div class="ph-big-val gmv-val" id="ph-gmv">—</div>
+          <div class="ph-big-sub">Total room price of all bookings<br>(gross booking value on platform)</div>
+        </div>
+        <div class="ph-big-metric" data-icon="🏦">
+          <div class="ph-big-label rev-lbl"><i class="fa fa-rupee-sign"></i> Platform Revenue</div>
+          <div class="ph-big-val rev-val" id="ph-rev">—</div>
+          <div class="ph-big-sub">Total advance collected online<br>(Razorpay payments received)</div>
+        </div>
+      </div>
+
+      <!-- Breakdown metrics -->
+      <div class="ph-metrics">
+        <div class="ph-metric">
+          <div class="ph-metric-val gold" id="ph-bookings">—</div>
+          <div class="ph-metric-lbl">Bookings</div>
+        </div>
+        <div class="ph-metric">
+          <div class="ph-metric-val" id="ph-avg-gmv">—</div>
+          <div class="ph-metric-lbl">Avg GMV / Booking</div>
+        </div>
+        <div class="ph-metric">
+          <div class="ph-metric-val green" id="ph-take-rate">—</div>
+          <div class="ph-metric-lbl">Take Rate</div>
+        </div>
+        <div class="ph-metric">
+          <div class="ph-metric-val" id="ph-nights">—</div>
+          <div class="ph-metric-lbl">Nights Booked</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENTER OWNER MODE BUTTON (shown when not in owner mode) -->
+  <div id="enter-owner-btn-wrap" style="margin-bottom:14px;">
+    <button class="qa-btn owner-btn" onclick="enterOwnerMode()" style="width:100%;justify-content:center;padding:13px;">
+      <i class="fa fa-crown"></i> &nbsp;Enter Owner Mode — Platform Analytics &amp; Edit Access
+    </button>
   </div>
 
   <!-- CHECKIN BANNER -->
@@ -919,13 +1186,51 @@ let blockedDates = new Set();
 let savedDates   = new Set();
 let hasUnsaved   = false;
 
-// ── OWNER PASSWORD ────────────────────────────────────────────────────────────
-// Stored per session so you only type it once
-let ownerPassSession = sessionStorage.getItem('rg_owner') || '';
-
-// Queue for pending owner-gated actions
+// ── OWNER MODE STATE ──────────────────────────────────────────────────────────
+let ownerPassSession  = sessionStorage.getItem('rg_owner') || '';
+let ownerModeActive   = sessionStorage.getItem('rg_owner_mode') === '1';
 let ownerPendingCallback = null;
 
+// Reflects owner mode on body, header, strip, badge
+function applyOwnerModeUI() {
+  if (ownerModeActive) {
+    document.body.classList.add('owner-mode');
+    document.getElementById('main-header').classList.add('owner-active');
+    document.getElementById('owner-mode-strip').style.display = 'block';
+    document.getElementById('owner-badge-header').classList.add('show');
+    document.getElementById('owner-platform-section').classList.add('show');
+    document.getElementById('enter-owner-btn-wrap').style.display = 'none';
+    renderPlatformDashboard();
+  } else {
+    document.body.classList.remove('owner-mode');
+    document.getElementById('main-header').classList.remove('owner-active');
+    document.getElementById('owner-mode-strip').style.display = 'none';
+    document.getElementById('owner-badge-header').classList.remove('show');
+    document.getElementById('owner-platform-section').classList.remove('show');
+    document.getElementById('enter-owner-btn-wrap').style.display = 'block';
+  }
+  renderBookingsTable(); // re-render to show/hide edit buttons
+}
+
+function enterOwnerMode() {
+  if (ownerModeActive) return; // already in
+  requireOwner('Enter Owner Mode — Unlock platform analytics & edit access', (pass) => {
+    ownerModeActive = true;
+    sessionStorage.setItem('rg_owner_mode', '1');
+    toast('👑 Owner Mode activated.', 'ok');
+    applyOwnerModeUI();
+  });
+}
+
+function exitOwnerMode() {
+  ownerModeActive = false;
+  sessionStorage.removeItem('rg_owner_mode');
+  // Don't clear ownerPassSession — keep for re-entry
+  toast('🔒 Returned to Admin Mode.', 'info');
+  applyOwnerModeUI();
+}
+
+// For one-off owner-gated actions (delete, edit submit)
 function requireOwner(actionLabel, callback) {
   if (ownerPassSession) {
     callback(ownerPassSession);
@@ -958,7 +1263,6 @@ document.getElementById('owner-pass-input').addEventListener('keydown', e => {
   if (e.key === 'Escape') closeOwnerModal();
 });
 
-// If the server rejects the owner password, clear the cached one
 function handleOwnerRejected() {
   ownerPassSession = '';
   sessionStorage.removeItem('rg_owner');
@@ -979,12 +1283,24 @@ function attemptLogin() {
   }
 }
 document.getElementById('login-input').addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
-function logout() { sessionStorage.removeItem('rg_admin'); sessionStorage.removeItem('rg_owner'); location.reload(); }
+function logout() {
+  sessionStorage.removeItem('rg_admin');
+  sessionStorage.removeItem('rg_owner');
+  sessionStorage.removeItem('rg_owner_mode');
+  location.reload();
+}
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 async function init() {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('revenue-hero').classList.add('rh-loading');
+  // Set default platform date range to this month
+  const now = new Date();
+  const firstOfMonth = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-01`;
+  const today        = now.toISOString().split('T')[0];
+  document.getElementById('ph-from').value = firstOfMonth;
+  document.getElementById('ph-to').value   = today;
+  applyOwnerModeUI();
   await Promise.all([reloadDates(), loadBookings()]);
   renderCalendars();
 }
@@ -1047,6 +1363,80 @@ async function saveChanges() {
   } finally {
     document.getElementById('save-btn').disabled = false;
   }
+}
+
+// ── PLATFORM DASHBOARD ────────────────────────────────────────────────────────
+/**
+ * Revenue logic:
+ * - Booking date = b.timestamp (when the customer made the booking)
+ * - GMV          = sum of roomPrice for bookings made in date range
+ * - Platform Rev = sum of advancePaid for bookings made in date range
+ * Take rate = Platform Rev / GMV * 100
+ */
+function setPlatformPreset(preset) {
+  const now  = new Date();
+  let from, to;
+  const pad  = n => String(n).padStart(2, '0');
+  const fmt  = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  if (preset === 'this-month') {
+    from = fmt(new Date(now.getFullYear(), now.getMonth(), 1));
+    to   = fmt(now);
+  } else if (preset === 'last-month') {
+    const lm = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    from = fmt(lm);
+    to   = fmt(new Date(now.getFullYear(), now.getMonth(), 0));
+  } else if (preset === 'last-3m') {
+    const s = new Date(now); s.setMonth(s.getMonth() - 3);
+    from = fmt(s); to = fmt(now);
+  } else if (preset === 'this-year') {
+    from = `${now.getFullYear()}-01-01`;
+    to   = fmt(now);
+  } else {
+    from = '2020-01-01';
+    to   = fmt(now);
+  }
+  document.getElementById('ph-from').value = from;
+  document.getElementById('ph-to').value   = to;
+  // Update active preset button
+  document.querySelectorAll('.ph-preset-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  renderPlatformDashboard();
+}
+
+function renderPlatformDashboard() {
+  if (!ownerModeActive) return;
+  const fromStr = document.getElementById('ph-from').value;
+  const toStr   = document.getElementById('ph-to').value;
+  const fromTs  = fromStr ? new Date(fromStr).getTime() : 0;
+  // Include full last day
+  const toTs    = toStr   ? new Date(toStr).getTime() + 86399999 : Date.now();
+
+  const filtered = allBookings.filter(b => {
+    const ts = b.timestamp || 0;
+    return ts >= fromTs && ts <= toTs;
+  });
+
+  const gmv     = filtered.reduce((s, b) => s + (b.roomPrice   || 0), 0);
+  const rev     = filtered.reduce((s, b) => s + (b.advancePaid || 0), 0);
+  const nights  = filtered.reduce((s, b) => s + (b.nights      || 0), 0);
+  const cnt     = filtered.length;
+  const takeRate= gmv > 0 ? ((rev / gmv) * 100).toFixed(1) + '%' : '—';
+  const avgGmv  = cnt > 0 ? Math.round(gmv / cnt) : 0;
+
+  const fmt = n => '₹' + Math.round(n).toLocaleString('en-IN');
+
+  document.getElementById('ph-gmv').textContent     = fmt(gmv);
+  document.getElementById('ph-rev').textContent     = fmt(rev);
+  document.getElementById('ph-bookings').textContent= cnt;
+  document.getElementById('ph-avg-gmv').textContent = cnt ? fmt(avgGmv) : '—';
+  document.getElementById('ph-take-rate').textContent = takeRate;
+  document.getElementById('ph-nights').textContent  = nights;
+
+  // Update filter note with range
+  const fromLabel = fromStr ? new Date(fromStr).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' }) : 'all time';
+  const toLabel   = toStr   ? new Date(toStr).toLocaleDateString('en-IN',   { day:'2-digit', month:'short', year:'numeric' }) : 'today';
+  document.getElementById('ph-filter-note').innerHTML =
+    `📅 Showing bookings <strong>made between ${fromLabel} → ${toLabel}</strong> · Revenue counted by booking date (when the customer paid online), not check-in date.`;
 }
 
 // ── SECTION TOGGLES ───────────────────────────────────────────────────────────
@@ -1278,12 +1668,14 @@ function updateRevenueHero() {
   const nights  = b.reduce((s, x) => s + (x.nights      || 0), 0);
   const income  = room - advance;
   const fmt     = n => '₹' + Math.round(n).toLocaleString('en-IN');
-document.getElementById('rh-income').textContent    = fmt(room);
-document.getElementById('rh-total-rev').textContent = fmt(income);
+  document.getElementById('rh-income').textContent    = fmt(room);
+  document.getElementById('rh-total-rev').textContent = fmt(income);
   document.getElementById('rh-bookings').textContent  = b.length;
   document.getElementById('rh-nights').textContent    = nights;
   document.getElementById('rh-avg').textContent       = b.length ? fmt(room / b.length) : '—';
   document.getElementById('revenue-hero').classList.remove('rh-loading');
+  // Re-render platform if in owner mode
+  if (ownerModeActive) renderPlatformDashboard();
 }
 
 // ── SAVE BAR ──────────────────────────────────────────────────────────────────
@@ -1356,6 +1748,8 @@ function renderBookingsTable() {
     return;
   }
   const latestTs = list[0]?.timestamp || 0;
+  // Edit button only shown in owner mode
+  const editBtnClass = 'row-btn edit-btn owner-only';
   const rows = list.map((b, i) => {
     const income   = (b.roomPrice || 0) - (b.advancePaid || 0);
     const date     = b.timestamp ? new Date(b.timestamp).toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' }) : '—';
@@ -1376,7 +1770,7 @@ function renderBookingsTable() {
       <td>${coupon}</td>
       <td>
         <div class="row-actions">
-          <button class="row-btn edit-btn"   onclick="openEditModal('${inv}')"><i class="fa fa-pencil-alt"></i> Edit</button>
+          <button class="${editBtnClass}" onclick="openEditModal('${inv}')"><i class="fa fa-pencil-alt"></i> Edit</button>
           <button class="row-btn delete-btn" onclick="deleteBooking('${inv}', '${(b.guestName||'').replace(/'/g,"\\'")}')"><i class="fa fa-trash"></i></button>
         </div>
       </td>
@@ -1417,28 +1811,31 @@ function deleteBooking(invoiceNo, guestName) {
   });
 }
 
-// ── EDIT BOOKING MODAL ────────────────────────────────────────────────────────
+// ── EDIT BOOKING MODAL (owner-only) ───────────────────────────────────────────
 let editingInvoiceNo = null;
 
 function openEditModal(invoiceNo) {
-  requireOwner(`Edit booking #${invoiceNo}`, (ownerPass) => {
-    const b = allBookings.find(x => x.invoiceNo === invoiceNo);
-    if (!b) { toast('Booking not found.', 'err'); return; }
-    editingInvoiceNo = invoiceNo;
-    document.getElementById('edit-invoice').value    = b.invoiceNo  || '';
-    document.getElementById('edit-name').value       = b.guestName  || '';
-    document.getElementById('edit-phone').value      = b.guestPhone || '';
-    document.getElementById('edit-room').value       = b.roomType   || 'Deluxe AC Room';
-    document.getElementById('edit-checkin').value    = b.checkin    || '';
-    document.getElementById('edit-checkout').value   = b.checkout   || '';
-    document.getElementById('edit-roomprice').value  = b.roomPrice  || '';
-    document.getElementById('edit-advance').value    = b.advancePaid|| '';
-    document.getElementById('edit-coupon').value     = b.coupon !== 'None' ? (b.coupon || '') : '';
-    document.getElementById('edit-payid').value      = b.paymentId  || '';
-    document.getElementById('edit-source').value     = b.source     || 'website';
-    document.getElementById('edit-bookedon').value = b.timestamp ? new Date(b.timestamp).toISOString().split('T')[0] : '';
-    document.getElementById('edit-modal').style.display = 'flex';
-  });
+  // Edit is only for owner mode — but double-guard here
+  if (!ownerModeActive) {
+    toast('Enter Owner Mode to edit bookings.', 'err');
+    return;
+  }
+  const b = allBookings.find(x => x.invoiceNo === invoiceNo);
+  if (!b) { toast('Booking not found.', 'err'); return; }
+  editingInvoiceNo = invoiceNo;
+  document.getElementById('edit-invoice').value    = b.invoiceNo  || '';
+  document.getElementById('edit-name').value       = b.guestName  || '';
+  document.getElementById('edit-phone').value      = b.guestPhone || '';
+  document.getElementById('edit-room').value       = b.roomType   || 'Deluxe AC Room';
+  document.getElementById('edit-checkin').value    = b.checkin    || '';
+  document.getElementById('edit-checkout').value   = b.checkout   || '';
+  document.getElementById('edit-roomprice').value  = b.roomPrice  || '';
+  document.getElementById('edit-advance').value    = b.advancePaid|| '';
+  document.getElementById('edit-coupon').value     = b.coupon !== 'None' ? (b.coupon || '') : '';
+  document.getElementById('edit-payid').value      = b.paymentId  || '';
+  document.getElementById('edit-source').value     = b.source     || 'website';
+  document.getElementById('edit-bookedon').value   = b.timestamp ? new Date(b.timestamp).toISOString().split('T')[0] : '';
+  document.getElementById('edit-modal').style.display = 'flex';
 }
 
 function closeEditModal() {
@@ -1455,17 +1852,15 @@ async function submitEditBooking() {
     guestName:   document.getElementById('edit-name').value.trim(),
     guestPhone:  document.getElementById('edit-phone').value.trim(),
     roomType:    document.getElementById('edit-room').value,
-    checkin,
-    checkout,
-    nights,
+    checkin, checkout, nights,
     roomPrice:   parseInt(document.getElementById('edit-roomprice').value) || 0,
     advancePaid: parseInt(document.getElementById('edit-advance').value)   || 0,
     coupon:      document.getElementById('edit-coupon').value.trim() || 'None',
     paymentId:   document.getElementById('edit-payid').value.trim(),
     source:      document.getElementById('edit-source').value,
-    timestamp: document.getElementById('edit-bookedon').value
-  ? new Date(document.getElementById('edit-bookedon').value).getTime()
-  : undefined,
+    timestamp:   document.getElementById('edit-bookedon').value
+      ? new Date(document.getElementById('edit-bookedon').value).getTime()
+      : undefined,
   };
   try {
     const res = await fetch(`${BOOKINGS_API}?hotel=${HOTEL_ID}`, {
@@ -1489,7 +1884,6 @@ async function submitEditBooking() {
   } catch { toast('❌ Failed to save changes.', 'err'); }
 }
 
-// Close edit modal on overlay click
 document.getElementById('edit-modal').addEventListener('click', e => {
   if (e.target === document.getElementById('edit-modal')) closeEditModal();
 });
