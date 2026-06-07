@@ -7,34 +7,92 @@
   <title>Page Moved – Manauna Dham</title>
   <meta name="robots" content="noindex,follow">
   <link rel="canonical" href="https://www.crulio.com/ManaunaDham/hotels/">
-  <meta http-equiv="refresh" content="0;url=https://www.crulio.com/ManaunaDham/hotels/">
+  <meta http-equiv="refresh" content="7;url=https://www.crulio.com/ManaunaDham/hotels/">
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f5f5f5;color:#333;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:1rem}
-    .card{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);max-width:480px;width:100%;padding:2.5rem 2rem;text-align:center}
-    .icon{width:48px;height:48px;margin:0 auto 1.25rem;background:#e8f4ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
-    .icon svg{width:24px;height:24px;stroke:#1a73e8;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-    h1{font-size:1.25rem;font-weight:600;margin-bottom:.5rem;color:#111}
-    p{font-size:.925rem;color:#555;line-height:1.6;margin-bottom:1.25rem}
-    a{color:#1a73e8;font-weight:500;text-decoration:none}
-    a:hover{text-decoration:underline}
-    .progress{height:3px;background:#e0e0e0;border-radius:2px;overflow:hidden;margin-top:1.5rem}
-    .bar{height:100%;width:0;background:#1a73e8;border-radius:2px;animation:fill .6s ease-out forwards}
-    @keyframes fill{to{width:100%}}
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #7a0000, #d4a017);
+      font-family: Segoe UI, Arial, sans-serif;
+      color: white;
+    }
+    .card {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 36px;
+    }
+    p {
+      font-size: 18px;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      background: #7a0000;
+      padding: 12px 25px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 15px;
+      font-size: 18px;
+      word-break: break-all;
+    }
+    a:hover {
+      background: #a00000;
+    }
+    .progress-wrap {
+      background: rgba(255,255,255,0.2);
+      border-radius: 30px;
+      height: 6px;
+      margin-top: 24px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 100%;
+      background: white;
+      border-radius: 30px;
+      transform-origin: left;
+      animation: drain 7s linear forwards;
+    }
+    @keyframes drain {
+      from { transform: scaleX(1); }
+      to   { transform: scaleX(0); }
+    }
   </style>
+  <script>
+    var target = "https://www.crulio.com/ManaunaDham/hotels/";
+    var seconds = 7;
+    setTimeout(function () {
+      window.location.replace(target);
+    }, 7000);
+    window.onload = function () {
+      var el = document.getElementById("count");
+      var timer = setInterval(function () {
+        seconds--;
+        if (seconds >= 0) el.innerText = seconds;
+        else clearInterval(timer);
+      }, 1000);
+    };
+  </script>
 </head>
 <body>
   <div class="card">
-    <div class="icon">
-      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </div>
-    <h1>This page has moved.</h1>
-    <p>You are being redirected to the new location. Please update your bookmarks.</p>
-    <p><a href="https://www.crulio.com/ManaunaDham/hotels/">Click here if you are not redirected automatically.</a></p>
-    <div class="progress"><div class="bar"></div></div>
+    <h1>🙏 Jai Shree Shyam 🙏</h1>
+    <p>This page has moved. The new address is:</p>
+    <a href="https://www.crulio.com/ManaunaDham/hotels/">https://www.crulio.com/ManaunaDham/hotels/</a>
+    <p style="margin-top:24px;">You will be redirected in <b><span id="count">7</span></b> seconds…</p>
+    <p>If it does not happen automatically, click the button above.</p>
+    <div class="progress-wrap"><div class="progress-bar"></div></div>
   </div>
-  <script>
-    window.location.replace("https://www.crulio.com/ManaunaDham/hotels/");
-  </script>
 </body>
 </html>
