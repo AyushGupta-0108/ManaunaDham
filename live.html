@@ -1,99 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Live Darshan – Manauna Dham</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-  .desktop-nav{display:flex;gap:15px}
-.menu-btn{display:none;font-size:26px;cursor:pointer;color:white}
-.mobile-menu{display:none;flex-direction:column;background:#7a0000}
-.mobile-menu a{color:white;padding:12px;border-bottom:1px solid #aa0000;text-decoration:none}
-
-@media(max-width:900px){
-  .desktop-nav{display:none}
-  .menu-btn{display:block}
-}
-
-body{margin:0;font-family:Segoe UI,Arial;background:#fff6e6;text-align:center}
-header{background:#7a0000;color:white}
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:10px 20px
-}
-.logo{
-  font-weight:bold;
-  font-size:20px;
-}
-nav a{
-  color:white;
-  text-decoration:none;
-  font-weight:600;
-}
-nav a:hover{
-  text-decoration:underline;
-}
-nav a.live{
-  background:#008000;
-  padding:8px 14px;
-  border-radius:5px;
-}
-nav a.donate{
-  background:#d10000;
-  padding:8px 14px;
-  border-radius:5px;
-}
-
-.section{padding:70px 30px}
-img{max-width:320px;border-radius:16px;box-shadow:0 0 20px rgba(0,0,0,.35)}
-h2{color:#7a0000;margin-top:30px}
-p{font-size:18px}
-.btn{display:inline-block;margin-top:25px;background:#7a0000;color:white;padding:14px 34px;border-radius:10px;text-decoration:none;font-size:18px}
-</style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Moved – Manauna Dham</title>
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://www.crulio.com/ManaunaDham/live/">
+  <meta http-equiv="refresh" content="0;url=https://www.crulio.com/ManaunaDham/live/">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#f5f5f5;color:#333;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:1rem}
+    .card{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);max-width:480px;width:100%;padding:2.5rem 2rem;text-align:center}
+    .icon{width:48px;height:48px;margin:0 auto 1.25rem;background:#e8f4ff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .icon svg{width:24px;height:24px;stroke:#1a73e8;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    h1{font-size:1.25rem;font-weight:600;margin-bottom:.5rem;color:#111}
+    p{font-size:.925rem;color:#555;line-height:1.6;margin-bottom:1.25rem}
+    a{color:#1a73e8;font-weight:500;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .progress{height:3px;background:#e0e0e0;border-radius:2px;overflow:hidden;margin-top:1.5rem}
+    .bar{height:100%;width:0;background:#1a73e8;border-radius:2px;animation:fill .6s ease-out forwards}
+    @keyframes fill{to{width:100%}}
+  </style>
 </head>
-
 <body>
-<header>
-<div class="topbar">
-  <div class="logo">Manauna Dham</div>
-
-  <nav class="desktop-nav">
-    <a href="index.html">Home</a>
-    <a href="accommodations.html">Stay</a>
-    <a href="food.html">Food</a>
-    <a href="transport.html">Travel</a>
-    <a href="patient.html">Patient</a>
-    <a href="live.html" class="live">LIVE</a>
-  </nav>
-
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
-</div>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="accommodations.html">Accommodation</a>
-  <a href="food.html">Food</a>
-  <a href="transport.html">Transport</a>
-  <a href="patient.html">Patient Token</a>
-  <a href="live.html">Live Darshan</a>
-</div>
-</header>
-
-
-<div class="section">
-<img src="live.jfif">
-<h2>Live Darshan?</h2>
-<p>We get multiple requests from bhakts for live darshan. We will very soon talk from official mandir management to fulfill this wish of bhakts around the world.</p>
-</div>
-<script>
-function toggleMenu(){
-  let m=document.getElementById("mobileMenu");
-  m.style.display = m.style.display==="flex" ? "none" : "flex";
-}
-</script>
-<script src="assets/chatbot.js"></script>
+  <div class="card">
+    <div class="icon">
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </div>
+    <h1>This page has moved.</h1>
+    <p>You are being redirected to the new location. Please update your bookmarks.</p>
+    <p><a href="https://www.crulio.com/ManaunaDham/live/">Click here if you are not redirected automatically.</a></p>
+    <div class="progress"><div class="bar"></div></div>
+  </div>
+  <script>
+    window.location.replace("https://www.crulio.com/ManaunaDham/live/");
+  </script>
 </body>
 </html>
